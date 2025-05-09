@@ -285,5 +285,5 @@ def build_eap_dataset(
 
     if filer_same_length_counterfactuals:
         print(f"Removed {num_removed} out of {len(df)} datapoints that does not match token length.")
-    print(f"Filtered data size {eap_data=}")
+    print(f"Filtered data size {len(eap_data)=}")
     return pd.DataFrame(eap_data)
