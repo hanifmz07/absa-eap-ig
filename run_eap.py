@@ -73,43 +73,6 @@ def get_logit_positions(logits: torch.Tensor, input_length: torch.Tensor, labels
     return logits_batch
 
 
-def logit_diff(logits: torch.Tensor, clean_logits: torch.Tensor, input_length: torch.Tensor, labels: torch.Tensor,
-               mean=True, loss=False):
-    logits = get_logit_positions(logits, input_length)
-    good_bad = torch.gather(logits, -1, labels.to(logits.device))
-    results = good_bad[:, 0] - good_bad[:, 1]
-    if loss:
-        results = -results
-    if mean:
-        results = results.mean()
-    return results
-
-
-def logit_diff_multitoken(logits: torch.Tensor, clean_logits: torch.Tensor, input_lengths: torch.Tensor, labels: tuple,
-                          mean=True, loss=False):
-    correct_indices_batch, incorrect_indices_batch = labels  # Each is a list of tensors (batch_size length)
-
-    results = []
-    for i in range(len(correct_indices_batch)):
-        correct_ids = correct_indices_batch[i]  # Tensor of token ids
-        incorrect_ids = incorrect_indices_batch[i]
-
-        # Grab logits at the last sequence position for that sample
-        # (logits shape: [batch_size, seq_len, vocab_size])
-        final_logits = logits[i, -1]  # [vocab_size]
-
-        correct_score = final_logits[correct_ids].mean()  # or .sum()
-        incorrect_score = final_logits[incorrect_ids].mean()
-
-        diff = correct_score - incorrect_score
-        if loss:
-            diff = -diff
-        results.append(diff)
-
-    output = torch.stack(results)
-    return output.mean() if mean else output
-
-
 def prob_diff_multitoken(
     logits: torch.Tensor,
     clean_logits: torch.Tensor,
