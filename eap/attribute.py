@@ -11,6 +11,88 @@ from einops import einsum
 
 from .graph import Graph, LogitNode, AttentionNode
 
+
+def clean_generated_segment(text: str, element: str) -> str:
+    """
+    Extract the generated segment for a given element tag: 'A', 'O', or 'S'.
+
+    Args:
+        text (str): Full generated text.
+        element (str): Tag type, one of 'A', 'O', 'S'.
+
+    Returns:
+        str: The text inside the [element] ... segment, or empty if not found.
+    """
+    pattern = rf"\[{element}\](.*?)(\[\w\]|\Z)"
+    match = re.search(pattern, text)
+    if match:
+        return match.group(1).strip()
+    return ""
+
+
+def find_subsequence_positions(full: torch.Tensor, sub: torch.Tensor) -> List[int]:
+    """
+    Find the start indices where sub appears in full as a contiguous subsequence.
+
+    Args:
+        full (torch.Tensor): 1D tensor of token IDs.
+        sub (torch.Tensor): 1D tensor of token IDs to match.
+
+    Returns:
+        List[int]: Positions of each token in sub within full.
+    """
+    for i in range(len(full) - len(sub) + 1):
+        if torch.equal(full[i:i + len(sub)], sub):
+            return list(range(i, i + len(sub)))
+    return []
+
+
+def extract_target_logits(
+    model: HookedTransformer,
+    generated_text: str,
+    element: str,
+) -> Optional[List[float]]:
+    """
+    Extract the logits (predicted scores) for a generated segment marked with [A], [O], or [S].
+
+    Args:
+        model (HookedTransformer): The model used for prediction.
+        generated_text (str): Full generated text including input + output.
+        element (str): One of 'A', 'O', or 'S'.
+
+    Returns:
+        List of logits for each token in the cleaned target segment,
+        or None if the segment cannot be matched.
+    """
+    # Step 1: Extract the segment
+    segment_text = clean_generated_segment(generated_text, element)
+    if not segment_text:
+        print(f"[Warning] No segment found for [{element}] in:\n{generated_text}")
+        return None
+
+    # Step 2: Tokenize
+    full_tokens = model.to_tokens(generated_text, prepend_bos=False)[0]
+    segment_tokens = model.to_tokens(segment_text, prepend_bos=False)[0]
+
+    # Step 3: Locate target positions
+    target_positions = find_subsequence_positions(full_tokens, segment_tokens)
+    if not target_positions:
+        print(f"[Warning] Could not find token positions for segment: '{segment_text}'")
+        return None
+
+    # Step 4: Get logits
+    with torch.no_grad():
+        logits = model(full_tokens.unsqueeze(0), return_type="logits")[0]  # [seq_len, vocab_size]
+
+    # Step 5: Extract logit scores (from previous token)
+    scores = []
+    for pos, token_id in zip(target_positions, segment_tokens):
+        if pos == 0:
+            continue  # no previous token to predict from
+        scores.append(logits[pos - 1, token_id].item())
+
+    return scores
+
 def tokenize_plus(model: HookedTransformer, inputs: List[str], max_length: Optional[int] = None):
     """
     Tokenizes the input strings using the provided model.
@@ -261,7 +343,7 @@ def get_scores_eap(model: HookedTransformer, graph: Graph, dataloader:DataLoader
 
     return scores
 
-def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], steps=30, quiet=False):
+def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], steps=30, quiet=False, is_absa=False, absa_element=None):
     """Gets edge attribution scores using EAP with integrated gradients.
 
     Args:
@@ -303,7 +385,18 @@ def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLo
 
             input_activations_corrupted = activation_difference[:, :, graph.forward_index(graph.nodes['input'])].clone()
 
-            with model.hooks(fwd_hooks=fwd_hooks_clean):
+        with model.hooks(fwd_hooks=fwd_hooks_clean):
+            if is_absa:
+                clean_outputs = model.to_string(clean_tokens)  # convert tokens back to text
+                clean_scores = []
+                for gen_text in clean_outputs:
+                    target_scores = extract_target_logits(model, gen_text, absa_element)
+                    if target_scores is not None:
+                        clean_scores.append(torch.tensor(target_scores, device=model.cfg.device).mean())
+                    else:
+                        clean_scores.append(torch.tensor(0.0, device=model.cfg.device))  # fallback
+                clean_logits = torch.stack(clean_scores)
+            else:
                 clean_logits = model(clean_tokens, attention_mask=attention_mask)
 
             input_activations_clean = input_activations_corrupted - activation_difference[:, :, graph.forward_index(graph.nodes['input'])]
@@ -320,7 +413,19 @@ def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLo
             total_steps += 1
             with model.hooks(fwd_hooks=[(graph.nodes['input'].out_hook, input_interpolation_hook(step))], bwd_hooks=bwd_hooks):
                 logits = model(clean_tokens, attention_mask=attention_mask)
-                metric_value = metric(logits, clean_logits, input_lengths, label)
+                if is_absa:
+                    # Use same text as above
+                    gen_outputs = model.to_string(clean_tokens)
+                    step_scores = []
+                    for gen_text in gen_outputs:
+                        target_scores = extract_target_logits(model, gen_text, absa_element)
+                        if target_scores is not None:
+                            step_scores.append(torch.tensor(target_scores, device=model.cfg.device).mean())
+                        else:
+                            step_scores.append(torch.tensor(0.0, device=model.cfg.device))
+                    metric_value = torch.stack(step_scores).mean()
+                else:
+                    metric_value = metric(logits, clean_logits, input_lengths, label)
                 if torch.isnan(metric_value).any().item():
                     print("Metric value is NaN")
                     print(f"Clean: {clean}")
@@ -466,7 +571,7 @@ def get_scores_clean_corrupted(model: HookedTransformer, graph: Graph, dataloade
     return scores
 
 allowed_aggregations = {'sum', 'mean'}#, 'l2'}        
-def attribute(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], method: Literal['EAP', 'EAP-IG-inputs', 'clean-corrupted', 'EAP-IG-activations'], intervention: Literal['patching', 'zero', 'mean','mean-positional']='patching', aggregation='sum', ig_steps: Optional[int]=None, intervention_dataloader: Optional[DataLoader]=None, quiet=False):
+def attribute(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], method: Literal['EAP', 'EAP-IG-inputs', 'clean-corrupted', 'EAP-IG-activations'], intervention: Literal['patching', 'zero', 'mean','mean-positional']='patching', aggregation='sum', ig_steps: Optional[int]=None, intervention_dataloader: Optional[DataLoader]=None, quiet=False, is_absa=False, absa_element=None):
     assert model.cfg.use_attn_result, "Model must be configured to use attention result (model.cfg.use_attn_result)"
     assert model.cfg.use_split_qkv_input, "Model must be configured to use split qkv inputs (model.cfg.use_split_qkv_input)"
     assert model.cfg.use_hook_mlp_in, "Model must be configured to use hook MLP in (model.cfg.use_hook_mlp_in)"
