@@ -17,88 +17,13 @@ from .graph import Graph, LogitNode, AttentionNode
 from src import safe_parse, EAPDataset
 
 
-def clean_generated_segment(text: str, element: str) -> str:
-    """
-    Extract the generated segment for a given element tag: 'A', 'O', or 'S'.
-
-    Args:
-        text (str): Full generated text.
-        element (str): Tag type, one of 'A', 'O', 'S'.
-
-    Returns:
-        str: The text inside the [element] ... segment, or empty if not found.
-    """
-    pattern = rf"\[{element}\](.*?)(\[\w\]|\Z)"
-    match = re.search(pattern, text)
-    if match:
-        return match.group(1).strip()
-    return ""
-
-
-def find_subsequence_positions(full: torch.Tensor, sub: torch.Tensor) -> List[int]:
-    """
-    Find the start indices where sub appears in full as a contiguous subsequence.
-
-    Args:
-        full (torch.Tensor): 1D tensor of token IDs.
-        sub (torch.Tensor): 1D tensor of token IDs to match.
-
-    Returns:
-        List[int]: Positions of each token in sub within full.
-    """
-    for i in range(len(full) - len(sub) + 1):
-        if torch.equal(full[i:i + len(sub)], sub):
-            return list(range(i, i + len(sub)))
-    return []
-
-
-def extract_target_logits(
-    model: HookedTransformer,
-    generated_text: str,
-    element: Literal["A", "O", "S"],
-) -> Optional[List[float]]:
-    """
-    Extract the logits (predicted scores) for a generated segment marked with [A], [O], or [S].
-
-    Args:
-        model (HookedTransformer): The model used for prediction.
-        generated_text (str): Full generated text including input + output.
-        element (str): One of 'A', 'O', or 'S'.
-
-    Returns:
-        List of logits for each token in the cleaned target segment,
-        or None if the segment cannot be matched.
-    """
-    # Step 1: Extract the segment
-    segment_text = clean_generated_segment(generated_text, element)
-    if not segment_text:
-        print(f"[Warning] No segment found for [{element}] in:\n{generated_text}")
-        return None
-
-    # Step 2: Tokenize
-    full_tokens = model.to_tokens(generated_text, prepend_bos=False)[0]
-    segment_tokens = model.to_tokens(segment_text, prepend_bos=False)[0]
-
-    # Step 3: Locate target positions
-    target_positions = find_subsequence_positions(full_tokens, segment_tokens)
-    if not target_positions:
-        print(f"[Warning] Could not find token positions for segment: '{segment_text}'")
-        return None
-
-    # Step 4: Get logits
-    with torch.no_grad():
-        logits = model(full_tokens.unsqueeze(0), return_type="logits")[0]  # [seq_len, vocab_size]
-
-    # Step 5: Extract logit scores (from previous token)
-    scores = []
-    for pos, token_id in zip(target_positions, segment_tokens):
-        if pos == 0:
-            continue  # no previous token to predict from
-        scores.append(logits[pos - 1, token_id].item())
-
-    return scores
-
-
+# Automatically select device
+if torch.backends.mps.is_available():
+    DEVICE = torch.device("mps")
+elif torch.cuda.is_available():
+    DEVICE = torch.device("cuda")
+else:
+    DEVICE = torch.device("cpu")
 
 
 def tokenize_plus(model: HookedTransformer, inputs: List[str], max_length: Optional[int] = None):
@@ -279,9 +204,9 @@ def compute_mean_activations(model: HookedTransformer, graph: Graph, dataloader:
         if not means_initialized:
             # here is where we store the means
             if per_position:
-                means = torch.zeros((n_pos, graph.n_forward, model.cfg.d_model), device='mps', dtype=model.cfg.dtype)
+                means = torch.zeros((n_pos, graph.n_forward, model.cfg.d_model), device=DEVICE, dtype=model.cfg.dtype)
             else:
-                means = torch.zeros((graph.n_forward, model.cfg.d_model), device='mps', dtype=model.cfg.dtype)
+                means = torch.zeros((graph.n_forward, model.cfg.d_model), device=DEVICE, dtype=model.cfg.dtype)
             means_initialized = True
 
         if per_position:
@@ -309,7 +234,7 @@ def get_scores_eap(model: HookedTransformer, graph: Graph, dataloader:DataLoader
     Returns:
         Tensor: a [src_nodes, dst_nodes] tensor of scores for each edge
     """
-    scores = torch.zeros((graph.n_forward, graph.n_backward), device='mps', dtype=model.cfg.dtype)    
+    scores = torch.zeros((graph.n_forward, graph.n_backward), device=DEVICE, dtype=model.cfg.dtype)    
 
     if 'mean' in intervention:
         assert intervention_dataloader is not None, "Intervention dataloader must be provided for mean interventions"
@@ -351,9 +276,7 @@ def get_scores_eap(model: HookedTransformer, graph: Graph, dataloader:DataLoader
 
     return scores
 
-
-def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], steps=30, quiet=False, device="mps"):
-
+def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], steps=30, quiet=False):
     """Gets edge attribution scores using EAP with integrated gradients.
 
     Args:
@@ -367,7 +290,7 @@ def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLo
     Returns:
         Tensor: a [src_nodes, dst_nodes] tensor of scores for each edge
     """
-    scores = torch.zeros((graph.n_forward, graph.n_backward), device=device, dtype=model.cfg.dtype)    
+    scores = torch.zeros((graph.n_forward, graph.n_backward), device=DEVICE, dtype=model.cfg.dtype)    
     
     total_items = 0
     dataloader = dataloader if quiet else tqdm(dataloader)
@@ -443,7 +366,7 @@ def modified_get_scores_eap_ig(model,
                          batch_size: int = 4,
                          steps=30, 
                          quiet=False,
-                         device="mps"):
+                         device=DEVICE):
 
     scores = torch.zeros((graph.n_forward, graph.n_backward), device=device, dtype=model.cfg.dtype)    
     total_items = 0
@@ -559,7 +482,7 @@ def get_scores_ig_activations(model: HookedTransformer, graph: Graph, dataloader
         if not per_position:
             means = means.unsqueeze(0)
 
-    scores = torch.zeros((graph.n_forward, graph.n_backward), device='mps', dtype=model.cfg.dtype)    
+    scores = torch.zeros((graph.n_forward, graph.n_backward), device=DEVICE, dtype=model.cfg.dtype)    
     
     total_items = 0
     dataloader = dataloader if quiet else tqdm(dataloader)
@@ -633,7 +556,7 @@ def get_scores_clean_corrupted(model: HookedTransformer, graph: Graph, dataloade
         _type_: _description_
     """
 
-    scores = torch.zeros((graph.n_forward, graph.n_backward), device='mps', dtype=model.cfg.dtype)    
+    scores = torch.zeros((graph.n_forward, graph.n_backward), device=DEVICE, dtype=model.cfg.dtype)    
     
     total_items = 0
     dataloader = dataloader if quiet else tqdm(dataloader)
@@ -685,7 +608,7 @@ def attribute(model: HookedTransformer,
               is_absa=False, 
               absa_element=None,
               batch_size: int = 4,
-              device = "mps"):
+              device = DEVICE):
     assert model.cfg.use_attn_result, "Model must be configured to use attention result (model.cfg.use_attn_result)"
     assert model.cfg.use_split_qkv_input, "Model must be configured to use split qkv inputs (model.cfg.use_split_qkv_input)"
     assert model.cfg.use_hook_mlp_in, "Model must be configured to use hook MLP in (model.cfg.use_hook_mlp_in)"
@@ -708,7 +631,7 @@ def attribute(model: HookedTransformer,
                                                 steps=ig_steps,
                                                 quiet=quiet, device=device)
         else:
-            scores = get_scores_eap_ig(model, graph, dataloader, metric, steps=ig_steps, quiet=quiet, device=device)
+            scores = get_scores_eap_ig(model, graph, dataloader, metric, steps=ig_steps, quiet=quiet)
     elif method == 'clean-corrupted':
         if intervention != 'patching':
             raise ValueError(f"intervention must be 'patching' for clean-corrupted, but got {intervention}")
