@@ -1,7 +1,7 @@
 import argparse
 import pandas as pd
 from functools import partial
-import os
+import os, csv
 
 from eap.graph import Graph
 from eap.evaluate import evaluate_baseline_multitoken, evaluate_graph_multitoken
@@ -9,6 +9,15 @@ from eap.attribute import attribute
 from src.metric import logit_diff
 from src import load_finetuned_model
 
+
+def log_results_csv(log_path, element, metric, total_edges, baseline_score, top_k, score, faithfulness):
+    file_exists = os.path.isfile(log_path)
+    edge_percentage = top_k/total_edges
+    with open(log_path, "a", newline="") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(["element", "metric", "total_edges", "baseline_score", "top_k", "edge_percentage", "circuit_score", "faithfulness", ])
+        writer.writerow([element, metric, total_edges, f"{baseline_score:.4f}", top_k, f"{edge_percentage:.1%}", f"{score:.4f}", f"{faithfulness:.4%}", ])
 
 def main(args):
     print("Loading fine-tuned model...")
@@ -54,6 +63,8 @@ def main(args):
     print(f"Total real edges: {n_edges}")
 
     os.makedirs(args.output_dir, exist_ok=True)
+    log_file = os.path.join(args.output_dir, args.log_file) or os.path.join(args.output_dir, "faithfulness_log.csv")
+
     for top_k in args.topks:
         print(f"\nEvaluating circuit with top-k = {top_k} edges...")
         graph.reset()
@@ -68,12 +79,15 @@ def main(args):
         )
 
         faithfulness = results / baseline
-        print(f"Top-k logit_diff = {results:.4f} → faithfulness = {faithfulness:.1%}")
+        print(f"Top-{top_k} ({top_k/n_edges:.2%}) logit_diff = {results:.4f} → faithfulness = {faithfulness:.1%}")
         print(f"Included nodes: {graph.count_included_nodes()}, edges: {graph.count_included_edges()}")
 
-        output_path = f"{args.output_dir}/aspect_circuit_topk-{top_k}.pt"
+        output_path = f"{args.output_dir}/{args.element}_circuit_topk-{top_k}.pt"
         graph.to_pt(output_path)
         print(f"Saved circuit to {output_path}")
+
+        log_results_csv(log_file, args.element, "logit_diff", n_edges, baseline, top_k, results, faithfulness)
+
 
 
 if __name__ == "__main__":
@@ -87,6 +101,9 @@ if __name__ == "__main__":
     parser.add_argument("--topks", type=int, nargs="+", default=[100, 200, 500, 1000, 2000, 5000, 10000, 20000], help="Top-k values to evaluate")
     parser.add_argument("--output_dir", type=str, default="outputs", help="Directory to save circuits")
     parser.add_argument("--device", type=str, default="mps", help="Device to run model on: 'cuda', 'mps', or 'cpu'")
+    parser.add_argument("--element", type=str, default="aspect", choices=["aspect", "opinion", "sentiment"], help="Which ABSA element to attribute")
+    parser.add_argument("--log_file", type=str, default=None, help="CSV log file path (default: <output_dir>/faithfulness_log.csv)")
+
 
     args = parser.parse_args()
     main(args)
