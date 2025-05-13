@@ -1,6 +1,6 @@
 import torch, re, ast
 import pandas as pd
-from typing import Optional
+from typing import Optional, List, Tuple
 from transformers import AutoModelForCausalLM, AutoConfig
 from transformer_lens import HookedTransformer
 from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights
@@ -183,6 +183,27 @@ def filter_correct_data(
 
     return df_result
 
+
+def append_labels(model: HookedTransformer, clean: List[str], corrupted: List[str], labels: Tuple[List[torch.Tensor], List[torch.Tensor]]) -> Tuple[List[str], List[str]]:
+    """
+    For multi-token labels, add the labels (until second to last token) to clean and corrupted sentences
+
+    Args:
+        model (HookedTransformer): The model used for EAP.
+        clean: list of clean sentence strings
+        corrupted: list of corrupted sentences
+        labels: tu
+
+    Returns:
+        clean and corrupted sentences with gold target sentence appended.
+    """
+    new_clean, new_corrupted = [], []
+    for i in range(len(clean)):
+        new_clean.append(model.to_string([*model.to_tokens(clean[i]).squeeze(), *labels[0][i][:-1]]))
+        new_corrupted.append(model.to_string([*model.to_tokens(corrupted[i]).squeeze(), *labels[1][i][:-1]]))
+    return new_clean, new_corrupted
+
+
 def build_eap_dataset(
     model: HookedTransformer,
     df: pd.DataFrame,
@@ -191,7 +212,8 @@ def build_eap_dataset(
     corrupted_col: str,
     corrupted_triplet_col: str,
     suffix: str,
-    idx: int
+    idx: int,
+    filer_same_length_counterfactuals: bool = True,
 ) -> pd.DataFrame:
     """
     Builds an EAP dataset from a filtered dataframe for use with EAP-IG,
@@ -206,16 +228,25 @@ def build_eap_dataset(
         corrupted_triplet_col (str): Column name for the corrupted triplet string.
         suffix (str): Prompt suffix to add (e.g., "[A]").
         idx (int): Index in the triplet to extract (0=aspect, 1=opinion, 2=sentiment).
+        filer_same_length_counterfactuals (bool): If True, remove datapoints where
+            counterfactual token length differs from original token length.
 
     Returns:
         pd.DataFrame: DataFrame with clean/corrupted prompts, token indices, and raw label texts.
     """
     eap_data = []
-
+    num_removed = 0
     for _, row in df.iterrows():
         clean = row[sentence_col] + f" {suffix}"
         corrupted = row[corrupted_col] + f" {suffix}"
-        
+
+        if filer_same_length_counterfactuals:
+            clean_tokens = model.to_tokens(clean)
+            corrupted_tokens = model.to_tokens(corrupted)
+            if clean_tokens.shape[1] != corrupted_tokens.shape[1]:
+                num_removed += 1
+                continue
+
         try:
             original_triplet = ast.literal_eval(row[triplet_col])
             corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
@@ -223,8 +254,23 @@ def build_eap_dataset(
             correct_label = original_triplet[0][idx]
             incorrect_label = corrupted_triplet[0][idx]
 
-            correct_idx = model.to_tokens(correct_label).tolist()
-            incorrect_idx = model.to_tokens(incorrect_label).tolist()
+            # Peter: need to be careful here with the extra space in front of the string label,
+            # i.e if model is prediction "... [A]", then you need to prefix a space before
+            # label so correct label is " sushi" instead of "sushi". Not sure
+            # when this does not apply though, need to re-access when we do multi-task
+            # prediction like "[A] sushi [O]"
+            correct_idx = model.to_tokens(f" {correct_label}").tolist()
+            incorrect_idx = model.to_tokens(f" {incorrect_label}").tolist()
+
+            if len(correct_idx[0]) != len(incorrect_idx[0]):
+                num_removed += 1
+                continue
+
+            # if label has multiple tokens, append all but last label tokens to clean and corrupted
+            # because we need to obtain the right logit conditioned on the correct prefix
+            if len(correct_idx[0]) > 1: # TODO
+                clean += model.to_string(correct_idx[0][:-1])
+                corrupted += model.to_string(incorrect_idx[0][:-1])
 
             eap_data.append({
                 "clean": clean,
@@ -238,9 +284,12 @@ def build_eap_dataset(
             print(f"Skipping row due to parsing/tokenizing error: {e}")
             continue
 
+    if filer_same_length_counterfactuals:
+        print(f"Removed {num_removed} out of {len(df)} datapoints that does not match token length.")
+    print(f"Filtered data size {len(eap_data)=}")
     return pd.DataFrame(eap_data)
 
-
+  
 def safe_parse(raw):
     try:
         return ast.literal_eval(raw)[0]  # unbox the list-of-list
@@ -279,3 +328,4 @@ class EAPDataset(Dataset):
 
     def to_dataloader(self, batch_size: int):
         return DataLoader(self, batch_size=batch_size, collate_fn=collate_EAP, drop_last=False)
+

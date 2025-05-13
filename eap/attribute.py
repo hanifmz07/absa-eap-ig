@@ -1,5 +1,6 @@
-from typing import Callable, List, Union, Optional, Literal
+from typing import Callable, List, Union, Optional, Literal, Tuple
 from functools import partial
+import regex as re
 
 import torch
 from torch.utils.data import DataLoader
@@ -54,7 +55,7 @@ def find_subsequence_positions(full: torch.Tensor, sub: torch.Tensor) -> List[in
 def extract_target_logits(
     model: HookedTransformer,
     generated_text: str,
-    element: str,
+    element: Literal["A", "O", "S"],
 ) -> Optional[List[float]]:
     """
     Extract the logits (predicted scores) for a generated segment marked with [A], [O], or [S].
@@ -96,6 +97,9 @@ def extract_target_logits(
         scores.append(logits[pos - 1, token_id].item())
 
     return scores
+
+
+
 
 def tokenize_plus(model: HookedTransformer, inputs: List[str], max_length: Optional[int] = None):
     """
@@ -347,7 +351,9 @@ def get_scores_eap(model: HookedTransformer, graph: Graph, dataloader:DataLoader
 
     return scores
 
+
 def get_scores_eap_ig(model: HookedTransformer, graph: Graph, dataloader: DataLoader, metric: Callable[[Tensor], Tensor], steps=30, quiet=False, device="mps"):
+
     """Gets edge attribution scores using EAP with integrated gradients.
 
     Args:
@@ -665,6 +671,7 @@ def get_scores_clean_corrupted(model: HookedTransformer, graph: Graph, dataloade
     return scores
 
 allowed_aggregations = {'sum', 'mean'}#, 'l2'}        
+
 def attribute(model: HookedTransformer, 
               graph: Graph, 
               dataloader, 
