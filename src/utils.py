@@ -5,6 +5,7 @@ from transformers import AutoModelForCausalLM, AutoConfig
 from transformer_lens import HookedTransformer
 from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights
 from transformer_lens.HookedTransformerConfig import HookedTransformerConfig
+from torch.utils.data import Dataset, DataLoader
 
 # Automatically select device
 if torch.backends.mps.is_available():
@@ -287,3 +288,44 @@ def build_eap_dataset(
         print(f"Removed {num_removed} out of {len(df)} datapoints that does not match token length.")
     print(f"Filtered data size {len(eap_data)=}")
     return pd.DataFrame(eap_data)
+
+  
+def safe_parse(raw):
+    try:
+        return ast.literal_eval(raw)[0]  # unbox the list-of-list
+        # return ast.literal_eval(raw)[0][0]  # unbox the list-of-list
+    except Exception as e:
+        raise ValueError(f"Failed to parse: {raw}\n{e}")
+    
+def collate_EAP(batch):
+    clean, corrupted, labels = zip(*batch)
+
+    correct_idx_batch = [torch.tensor(l[0], dtype=torch.long) for l in labels]
+    incorrect_idx_batch = [torch.tensor(l[1], dtype=torch.long) for l in labels]
+
+    return list(clean), list(corrupted), (correct_idx_batch, incorrect_idx_batch)
+
+class EAPDataset(Dataset):
+    def __init__(self, df):
+        self.df = df
+
+    def __len__(self):
+        return len(self.df)
+
+    def shuffle(self):
+        self.df = self.df.sample(frac=1)
+
+    def head(self, n: int):
+        self.df = self.df.head(n)
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+        clean = row["clean"]
+        corrupted = row["corrupted"]
+        correct_idx = safe_parse(row["correct_idx"])
+        incorrect_idx = safe_parse(row["incorrect_idx"])
+        return clean, corrupted, [correct_idx, incorrect_idx]
+
+    def to_dataloader(self, batch_size: int):
+        return DataLoader(self, batch_size=batch_size, collate_fn=collate_EAP, drop_last=False)
+

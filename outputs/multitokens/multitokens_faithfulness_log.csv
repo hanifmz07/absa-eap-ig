@@ -1,0 +1,12 @@
+element,metric,total_edges,baseline_score,top_k,edge_percentage,circuit_score,faithfulness
+aspect,logit_diff,179749,29.4879,100,0.1%,-9.3306,-31.6423%
+aspect,logit_diff,179749,29.4879,200,0.1%,-5.2798,-17.9049%
+aspect,logit_diff,179749,29.4879,500,0.3%,-0.7901,-2.6794%
+aspect,logit_diff,179749,29.4879,1000,0.6%,3.1808,10.7867%
+aspect,logit_diff,179749,29.4879,2000,1.1%,10.2249,34.6749%
+aspect,logit_diff,179749,29.4879,5000,2.8%,18.4340,62.5139%
+aspect,logit_diff,179749,29.4879,10000,5.6%,21.4227,72.6492%
+aspect,logit_diff,179749,29.4879,20000,11.1%,25.4271,86.2290%
+aspect,logit_diff,179749,29.4879,30000,16.7%,26.4318,89.6361%
+aspect,logit_diff,179749,29.4879,40000,22.3%,26.8190,90.9493%
+aspect,logit_diff,179749,29.4879,50000,27.8%,27.0506,91.7347%
