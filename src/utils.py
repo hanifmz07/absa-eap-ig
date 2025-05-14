@@ -6,6 +6,7 @@ from transformer_lens import HookedTransformer
 from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights
 from transformer_lens.HookedTransformerConfig import HookedTransformerConfig
 from torch.utils.data import Dataset, DataLoader
+from eap.graph import Graph
 
 # Automatically select device
 if torch.backends.mps.is_available():
@@ -329,3 +330,26 @@ class EAPDataset(Dataset):
     def to_dataloader(self, batch_size: int):
         return DataLoader(self, batch_size=batch_size, collate_fn=collate_EAP, drop_last=False)
 
+
+def get_active_edges(graph, data_dicts):
+    for edge in graph.edges.values():
+        if edge.in_graph:
+            data_dicts["parent_node"].append(edge.parent.name)
+            data_dicts["child_node"].append(edge.child.name)
+            data_dicts["child_type"].append(edge.qkv)
+        else:
+            continue
+        
+    return data_dicts
+
+def edge_merging(graph_paths: List):
+
+    data_dicts = {"parent_node": [],
+                 "child_node": [],
+                 "child_type": []}
+    
+    for gp in graph_paths:
+        graph = Graph.from_pt(gp)
+        data_dict = get_active_edges(graph, data_dicts)
+    
+    return pd.DataFrame(data_dicts)
