@@ -54,8 +54,37 @@ def get_cfg_dict(base_model_name: str, hf_config) -> dict:
         }
     raise ValueError(f"Unknown or unsupported model type for: {base_model_name}")
 
+def load_model(base_model_name: str,
+               fine_tuned_model_path: Optional[str] = None,
+               device: str = device) -> HookedTransformer:
+    
+    """
+    Load either a base TransformerLens model or a fine-tuned HuggingFace model converted to TransformerLens.
 
-def load_finetuned_model(base_model_name: str, fine_tuned_model_path: str) -> HookedTransformer:
+    Args:
+        base_model_name (str): Name of the base model (e.g., "qwen/Qwen2-0.5B").
+        fine_tuned_model_path (Optional[str]): If given, loads and converts a fine-tuned HF model.
+        device (str): Device to load model onto.
+
+    Returns:
+        HookedTransformer: The loaded TransformerLens model.
+    """
+
+    if fine_tuned_model_path:
+        print(f"Loading fine-tuned model from HuggingFace at {fine_tuned_model_path}...")
+
+        model = load_finetuned_model(base_model_name, fine_tuned_model_path, device)
+
+    else:
+        print(f"Loading base TransformerLens model: {base_model_name}...")
+        model = HookedTransformer.from_pretrained(base_model_name, device=device)
+
+    return model
+    
+
+def load_finetuned_model(base_model_name: str, 
+                         fine_tuned_model_path: str, 
+                         device: str = device) -> HookedTransformer:
     """
     Load a fine-tuned HuggingFace Qwen2 model into TransformerLens.
 
@@ -88,23 +117,73 @@ def load_finetuned_model(base_model_name: str, fine_tuned_model_path: str) -> Ho
     return model
 
 
-def convert_triplet_string(triplet_str: str) -> str:
+def convert_triplet_string(triplet_str: str) -> tuple:
     """
-    Convert a triplet string to formatted label text.
-
-    Args:
-        triplet_str (str): A string representation of a triplet.
+    Safely parses a stringified triplet like '[("aspect", "opinion", "sentiment")]'
+    and returns the individual components.
 
     Returns:
-        str: Formatted triplet as "[A] aspect [O] opinion [S] sentiment"
+        Tuple of (aspect, opinion, sentiment) or empty strings if invalid.
     """
     try:
         triplet = ast.literal_eval(triplet_str)[0]
-        aspect, opinion, sentiment = triplet
-        return f"[A] {aspect} [O] {opinion} [S] {sentiment}"
+        return tuple(triplet)
     except (ValueError, SyntaxError, IndexError):
-        return ""
-    
+        return "", "", ""
+
+
+def format_by_mode(aspect: str, opinion: str, sentiment: str, mode: str = "AOS") -> str:
+    """
+    Formats the triplet based on the selected mode.
+
+    Args:
+        aspect, opinion, sentiment: Components of the triplet.
+        mode (str): One of "A", "O", "S", or "AOS".
+
+    Returns:
+        A formatted string containing only the selected tags and values.
+    """
+    parts = []
+    if "A" in mode:
+        parts.append(f"[A] {aspect}")
+    if "O" in mode:
+        parts.append(f"[O] {opinion}")
+    if "S" in mode:
+        parts.append(f"[S] {sentiment}")
+    return " ".join(parts)
+
+
+def build_suffix_from_mode(mode: str) -> str:
+    """
+    Builds the prompt suffix based on mode, e.g. "[A] [S]"
+
+    Args:
+        mode (str): One of "A", "O", "S", or "AOS"
+
+    Returns:
+        A space-separated suffix string.
+    """
+    mapping = {"A": "[A]", "O": "[O]", "S": "[S]"}
+    return " " + " ".join([mapping[c] for c in mode if c in mapping])
+
+
+def extract_by_mode(text: str, mode: str) -> str:
+    """
+    Extracts the relevant generated fields based on the selected mode.
+
+    Args:
+        text (str): The raw model output.
+        mode (str): One of "A", "O", "S", or "AOS".
+
+    Returns:
+        A cleaned string containing only the generated fields of interest.
+    """
+    result = []
+    for tag in mode:
+        match = re.search(rf"\[{tag}\]\s*(.*?)\s*(?=\[|$)", text)
+        result.append(f"[{tag}] {match.group(1).strip()}" if match else f"[{tag}]")
+    return " ".join(result).strip()
+
 
 def filter_correct_data(
     model,
@@ -112,32 +191,37 @@ def filter_correct_data(
     sentence_col: str,
     label_col: str,
     max_tokens: int = 50,
-    suffix: str = " [A] [O] [S]",
     filter_only_correct: bool = True,
+    filter_mode: str = "AOS",
     save_path: Optional[str] = None
 ) -> pd.DataFrame:
     """
-    Filters out samples where the model's generated output does not match the expected label,
-    and appends inference results back into the original DataFrame.
+    Filters a dataset based on whether the model correctly generates the target aspect,
+    opinion, sentiment, or full triplet depending on the specified mode.
 
     Args:
-        model: TransformerLens HookedTransformer model.
-        data (pd.DataFrame): Original DataFrame with input and label columns.
-        sentence_col (str): Column containing input sentences.
-        label_col (str): Column containing expected triplets.
-        max_tokens (int): Max tokens to generate.
-        suffix (str): Prompt suffix to guide generation.
-        filter_only_correct (bool): If True, keep only correct rows.
-        save_path (Optional[str]): If given, save the output CSV here.
+        model: A TransformerLens HookedTransformer model with `.generate()` method.
+        data (pd.DataFrame): DataFrame with sentences and triplet labels.
+        sentence_col (str): Column name containing the sentence inputs.
+        label_col (str): Column name containing stringified triplet labels.
+        max_tokens (int): Maximum number of tokens to generate.
+        filter_only_correct (bool): If True, only return matching predictions.
+        filter_mode (str): Must be one of "A", "O", "S", or "AOS".
+        save_path (Optional[str]): If given, saves filtered results to CSV.
 
     Returns:
-        pd.DataFrame: The original DataFrame with added columns:
-                      'original_label', 'inference', and 'is_match'.
+        pd.DataFrame: DataFrame with new columns: 'original_label', 'inference', and 'is_match'.
     """
+    valid_modes = {"A", "O", "S", "AOS"}
+    filter_mode = filter_mode.upper()
+    if filter_mode not in valid_modes:
+        raise ValueError(f"Invalid filter_mode '{filter_mode}'. Must be one of {valid_modes}.")
+
+    suffix = build_suffix_from_mode(filter_mode)
     inputs = data[sentence_col].tolist()
     labels = data[label_col].tolist()
 
-    results, tags, exp_labels = [], [], []
+    results, expected_labels, match_flags = [], [], []
 
     for prompt, label_raw in zip(inputs, labels):
         full_prompt = prompt + suffix
@@ -149,32 +233,39 @@ def filter_correct_data(
             return_type="str"
         )
 
-        cleaned = re.sub(r"<\|endoftext\|>", "", output)
-
-        if "[SSEP]" in cleaned:
-            cleaned = cleaned.split("[SSEP]", 1)[-1].strip()
-        elif cleaned.count("[A]") > 1:
-            cleaned = cleaned.split("[A] [O] [S]", 1)[-1].strip()
+        # Remove special tokens and clean up
+        raw_output = re.sub(r"<\|endoftext\|>", "", output)
+        if "[SSEP]" in raw_output:
+            raw_output = raw_output.split("[SSEP]", 1)[-1].strip()
+        elif raw_output.count("[A]") > 1:
+            raw_output = raw_output.split("[A] [O] [S]", 1)[-1].strip()
         else:
-            cleaned = cleaned.split(".", 1)[-1].strip()
+            raw_output = raw_output.split(".", 1)[-1].strip()
 
-        expected = convert_triplet_string(label_raw)
-        is_match = cleaned == expected
+        # Compare model output vs ground truth
+        aspect, opinion, sentiment = convert_triplet_string(label_raw)
+        expected = format_by_mode(aspect, opinion, sentiment, mode=filter_mode)
+        cleaned = extract_by_mode(raw_output, filter_mode)
+        is_match = cleaned.strip() == expected.strip()
 
-        exp_labels.append(expected)
+        #debugs
+        # print(full_prompt)
+        # print(output)
+        # print(cleaned)
+        # print(expected)
+
+        expected_labels.append(expected)
         results.append(cleaned)
-        tags.append(is_match)
+        match_flags.append(is_match)
 
-    # Add columns back to the original dataframe
     df_result = data.copy()
-    df_result["original_label"] = exp_labels
+    df_result["original_label"] = expected_labels
     df_result["inference"] = results
-    df_result["is_match"] = tags
+    df_result["is_match"] = match_flags
 
-    # Print stats
     total = len(df_result)
     correct = df_result["is_match"].sum()
-    print(f"✅ Correct: {correct} / {total} ({correct / total:.2%})")
+    print(f"Correct: {correct} / {total} ({correct / total:.2%}) with mode [{filter_mode}]")
 
     if filter_only_correct:
         df_result = df_result[df_result["is_match"]].reset_index(drop=True)
@@ -183,6 +274,7 @@ def filter_correct_data(
         df_result.to_csv(save_path, index=False)
 
     return df_result
+
 
 
 def append_labels(model: HookedTransformer, clean: List[str], corrupted: List[str], labels: Tuple[List[torch.Tensor], List[torch.Tensor]]) -> Tuple[List[str], List[str]]:
@@ -213,8 +305,8 @@ def build_eap_dataset(
     corrupted_col: str,
     corrupted_triplet_col: str,
     suffix: str,
-    idx: int,
     filer_same_length_counterfactuals: bool = True,
+    append_labels= False,
 ) -> pd.DataFrame:
     """
     Builds an EAP dataset from a filtered dataframe for use with EAP-IG,
@@ -228,62 +320,68 @@ def build_eap_dataset(
         corrupted_col (str): Column name for the corrupted sentence.
         corrupted_triplet_col (str): Column name for the corrupted triplet string.
         suffix (str): Prompt suffix to add (e.g., "[A]").
-        idx (int): Index in the triplet to extract (0=aspect, 1=opinion, 2=sentiment).
         filer_same_length_counterfactuals (bool): If True, remove datapoints where
             counterfactual token length differs from original token length.
 
     Returns:
         pd.DataFrame: DataFrame with clean/corrupted prompts, token indices, and raw label texts.
     """
+
+    if suffix == "[A]":
+        idx = 0
+    elif suffix == "[O]":
+        idx = 1
+    elif suffix == "[S]":
+        idx = 2
+    else:
+        raise ValueError(f"Invalid suffix '{suffix}'. Must be one of '[A]', '[O]', or '[S]'.")
+
     eap_data = []
     num_removed = 0
     for _, row in df.iterrows():
-        clean = row[sentence_col] + f" {suffix}"
-        corrupted = row[corrupted_col] + f" {suffix}"
+        if row["is_match"]:
+            clean = row[sentence_col] + f" {suffix}"
+            corrupted = row[corrupted_col] + f" {suffix}"
 
-        if filer_same_length_counterfactuals:
-            clean_tokens = model.to_tokens(clean)
-            corrupted_tokens = model.to_tokens(corrupted)
-            if clean_tokens.shape[1] != corrupted_tokens.shape[1]:
-                num_removed += 1
+            if filer_same_length_counterfactuals:
+                clean_tokens = model.to_tokens(clean)
+                corrupted_tokens = model.to_tokens(corrupted)
+                if clean_tokens.shape[1] != corrupted_tokens.shape[1]:
+                    num_removed += 1
+                    continue
+
+            try:
+                original_triplet = ast.literal_eval(row[triplet_col])
+                corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
+
+                correct_label = original_triplet[0][idx]
+                incorrect_label = corrupted_triplet[0][idx]
+
+                correct_idx = model.to_tokens(f" {correct_label}").tolist()
+                incorrect_idx = model.to_tokens(f" {incorrect_label}").tolist()
+
+                if len(correct_idx[0]) != len(incorrect_idx[0]):
+                    num_removed += 1
+                    continue
+
+                # if label has multiple tokens, append all but last label tokens to clean and corrupted
+                # because we need to obtain the right logit conditioned on the correct prefix
+                if append_labels:
+                    if len(correct_idx[0]) > 1: # TODO
+                        clean += model.to_string(correct_idx[0][:-1])
+                        corrupted += model.to_string(incorrect_idx[0][:-1])
+
+                eap_data.append({
+                    "clean": clean,
+                    "corrupted": corrupted,
+                    "correct_label": correct_label,
+                    "incorrect_label": incorrect_label,
+                    "correct_idx": correct_idx,
+                    "incorrect_idx": incorrect_idx,
+                })
+            except Exception as e:
+                print(f"Skipping row due to parsing/tokenizing error: {e}")
                 continue
-
-        try:
-            original_triplet = ast.literal_eval(row[triplet_col])
-            corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
-
-            correct_label = original_triplet[0][idx]
-            incorrect_label = corrupted_triplet[0][idx]
-
-            # Peter: need to be careful here with the extra space in front of the string label,
-            # i.e if model is prediction "... [A]", then you need to prefix a space before
-            # label so correct label is " sushi" instead of "sushi". Not sure
-            # when this does not apply though, need to re-access when we do multi-task
-            # prediction like "[A] sushi [O]"
-            correct_idx = model.to_tokens(f" {correct_label}").tolist()
-            incorrect_idx = model.to_tokens(f" {incorrect_label}").tolist()
-
-            if len(correct_idx[0]) != len(incorrect_idx[0]):
-                num_removed += 1
-                continue
-
-            # if label has multiple tokens, append all but last label tokens to clean and corrupted
-            # because we need to obtain the right logit conditioned on the correct prefix
-            if len(correct_idx[0]) > 1: # TODO
-                clean += model.to_string(correct_idx[0][:-1])
-                corrupted += model.to_string(incorrect_idx[0][:-1])
-
-            eap_data.append({
-                "clean": clean,
-                "corrupted": corrupted,
-                "correct_label": correct_label,
-                "incorrect_label": incorrect_label,
-                "correct_idx": correct_idx,
-                "incorrect_idx": incorrect_idx,
-            })
-        except Exception as e:
-            print(f"Skipping row due to parsing/tokenizing error: {e}")
-            continue
 
     if filer_same_length_counterfactuals:
         print(f"Removed {num_removed} out of {len(df)} datapoints that does not match token length.")
@@ -331,25 +429,24 @@ class EAPDataset(Dataset):
         return DataLoader(self, batch_size=batch_size, collate_fn=collate_EAP, drop_last=False)
 
 
-def get_active_edges(graph, data_dicts):
-    for edge in graph.edges.values():
-        if edge.in_graph:
-            data_dicts["parent_node"].append(edge.parent.name)
-            data_dicts["child_node"].append(edge.child.name)
-            data_dicts["child_type"].append(edge.qkv)
-        else:
-            continue
-        
-    return data_dicts
+def edge_merging(graph_paths: List[str]) -> pd.DataFrame:
+    edge_set = set()
 
-def edge_merging(graph_paths: List):
+    data_dict = {
+        "parent_node": [],
+        "child_node": [],
+        "child_type": [],
+    }
 
-    data_dicts = {"parent_node": [],
-                 "child_node": [],
-                 "child_type": []}
-    
     for gp in graph_paths:
         graph = Graph.from_pt(gp)
-        data_dict = get_active_edges(graph, data_dicts)
-    
-    return pd.DataFrame(data_dicts)
+        for edge in graph.edges.values():
+            if edge.in_graph:
+                edge_tuple = (edge.parent.name, edge.child.name, edge.qkv)
+                if edge_tuple not in edge_set:
+                    data_dict["parent_node"].append(edge.parent.name)
+                    data_dict["child_node"].append(edge.child.name)
+                    data_dict["child_type"].append(edge.qkv)
+                    edge_set.add(edge_tuple)
+
+    return pd.DataFrame(data_dict)
