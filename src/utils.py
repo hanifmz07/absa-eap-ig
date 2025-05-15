@@ -3,7 +3,7 @@ import pandas as pd
 from typing import Optional, List, Tuple
 from transformers import AutoModelForCausalLM, AutoConfig
 from transformer_lens import HookedTransformer
-from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights
+from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights, convert_bloom_weights
 from transformer_lens.HookedTransformerConfig import HookedTransformerConfig
 from torch.utils.data import Dataset, DataLoader
 from eap.graph import Graph
@@ -52,7 +52,26 @@ def get_cfg_dict(base_model_name: str, hf_config) -> dict:
             "gated_mlp": True,
             "default_prepend_bos": False,
         }
-    raise ValueError(f"Unknown or unsupported model type for: {base_model_name}")
+    elif "bloom" in base_model_name.lower():
+        return {
+            "d_model": hf_config.hidden_size,
+            "d_head": hf_config.hidden_size // hf_config.n_head,
+            "n_heads": hf_config.n_head,
+            "d_mlp": hf_config.hidden_size * 4,
+            "n_layers": hf_config.n_layer,
+            "n_ctx": 2048,  # Capped due to HF Tokenizer Constraints
+            "d_vocab": hf_config.vocab_size,
+            "act_fn": "gelu_fast",
+            "eps": hf_config.layer_norm_epsilon,
+            "normalization_type": "LN",
+            "post_embedding_ln": True,
+            "positional_embedding_type": "alibi",
+            "default_prepend_bos": False,
+        }
+    raise ValueError(
+            f"Unsupported base model: '{base_model_name}'. "
+            f"Currently supported: Qwen2, Bloom."
+        )
 
 def load_model(base_model_name: str,
                fine_tuned_model_path: Optional[str] = None,
@@ -107,7 +126,11 @@ def load_finetuned_model(base_model_name: str,
     cfg = HookedTransformerConfig.from_dict(get_cfg_dict(base_model_name, hf_config))
 
     # Convert state dict and load into HookedTransformer
-    state_dict = convert_qwen2_weights(hf_model, cfg)
+    if "qwen2" in base_model_name.lower():
+        state_dict = convert_qwen2_weights(hf_model, cfg)
+    elif "bloom" in base_model_name.lower():
+        state_dict = convert_bloom_weights(hf_model, cfg)
+
     model = HookedTransformer.from_pretrained(
         model_name=base_model_name,
         device=device
