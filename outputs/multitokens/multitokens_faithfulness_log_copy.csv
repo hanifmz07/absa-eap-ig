@@ -1,4 +1,4 @@
-element,metric,total_edges,baseline_score,top_k,edge_percentage,circuit_score,faithfulness
+element,metric,total_edges,baseline_score,top_k,edge_percentage,circuit_score,faithfulness,edges,nodes,total_nodes
 aspect,logit_diff,179749,29.3534,100,0.1%,-13.3859,-45.6027%
 aspect,logit_diff,179749,29.3534,200,0.1%,-12.2046,-41.5783%
 aspect,logit_diff,179749,29.3534,500,0.3%,-8.1677,-27.8254%
@@ -29,3 +29,13 @@ sentiment,logit_diff,179749,16.0028,10000,5.6%,3.4115,21.3184%
 sentiment,logit_diff,179749,16.0028,20000,11.1%,7.8051,48.7734%
 sentiment,logit_diff,179749,16.0028,30000,16.7%,9.8501,61.5526%
 sentiment,logit_diff,179749,16.0028,40000,22.3%,11.1242,69.5138%
+complete,-,179749,-,100,-,-,-,90,30,1036
+complete,-,179749,-,200,-,-,-,203,66,1036
+complete,-,179749,-,500,-,-,-,764,205,1036
+complete,-,179749,-,1000,-,-,-,1808,390,1036
+complete,-,179749,-,2000,-,-,-,4173,609,1036
+complete,-,179749,-,5000,-,-,-,10850,851,1036
+complete,-,179749,-,10000,-,-,-,20985,955,1036
+complete,-,179749,-,20000,-,-,-,39857,990,1036
+complete,-,179749,-,30000,-,-,-,57094,996,1036
+complete,-,179749,-,40000,-,-,-,68115,998,1036

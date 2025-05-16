@@ -23,7 +23,7 @@ python run_eap_multitokens.py \
   --output_dir "outputs/multitokens" \
   --batch_size 16 \
   --ig_steps 5 \
-  --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 50000 \
+  --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 \
   --device "cuda" \
   --element "aspect" \
   --log_file "multitokens_faithfulness_log.csv"
@@ -37,7 +37,7 @@ python run_eap_multitokens.py \
   --output_dir "outputs/multitokens" \
   --batch_size 16 \
   --ig_steps 5 \
-  --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 50000 \
+  --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 \
   --device "cuda" \
   --element "opinion" \
   --log_file "multitokens_faithfulness_log.csv"
@@ -52,7 +52,7 @@ python run_eap_multitokens.py \
   --output_dir "outputs/multitokens" \
   --batch_size 16 \
   --ig-steps 5 \
-  --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 50000 \
+  --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 \
   --device "cuda" \
   --element "sentiment" \
   --log_file "multitokens_faithfulness_log.csv"
