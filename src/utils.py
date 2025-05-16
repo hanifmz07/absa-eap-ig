@@ -140,6 +140,84 @@ def load_finetuned_model(base_model_name: str,
     return model
 
 
+class ABSAAutoRegressiveDataset(Dataset):
+    def __init__(self, data, tokenizer, max_len=128):
+        self.data = data
+        self.tokenizer = tokenizer
+        self.max_len = max_len
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        sample = self.data[idx]
+
+        # Concatenate prompt and label into one sequence
+        full_text = sample["input"].strip() + " " + sample["target"].strip()
+
+        encoding = self.tokenizer(
+            full_text,
+            padding="max_length",
+            truncation=True,
+            max_length=self.max_len,
+            return_tensors="pt"  
+        )
+        
+        tokens = encoding["input_ids"].squeeze()
+        return {
+            "tokens": tokens
+        }
+
+def apply_active_edge_unfreezing(model, csv_path):
+    """
+    Freezes all parameters in the model, and only unfreezes those specified
+    in the CSV file for targeted fine-tuning.
+    
+    Parameters:
+        model (HookedTransformer): The model to modify
+        csv_path (str): Path to CSV file with active edge data (with 'child_node' and 'child_type' columns)
+    """
+    df = pd.read_csv(csv_path)
+    attention_targets = set()
+    mlp_layers = set()
+
+    for _, row in df.iterrows():
+        child_node = row.get('child_node')
+        child_type = row.get('child_type')
+
+        if isinstance(child_node, str):
+            if child_node.startswith('a'):
+                layer = int(child_node.split('.')[0][1:])
+                head = int(child_node.split('.')[1][1:])
+                attention_targets.add((layer, head, child_type))
+            elif child_node.startswith('m'):
+                mlp_layers.add(int(child_node[1:]))
+
+    # === Freeze all parameters ===
+    for name, param in model.named_parameters():
+        param.requires_grad = False
+
+    head_dim = model.cfg.d_head
+
+    def unfreeze_head_param(param_tensor, head_index, head_dim):
+        param_tensor.requires_grad = True
+        param_tensor.data[head_index * head_dim : (head_index + 1) * head_dim].requires_grad = True
+
+    # Unfreeze attention parameters
+    for layer, head, typ in attention_targets:
+        if typ == 'q':
+            unfreeze_head_param(model.blocks[layer].attn.W_Q, head, head_dim)
+        elif typ == 'k':
+            unfreeze_head_param(model.blocks[layer].attn.W_K, head, head_dim)
+        elif typ == 'v':
+            unfreeze_head_param(model.blocks[layer].attn.W_V, head, head_dim)
+
+    # Unfreeze MLP parameters
+    for layer in mlp_layers:
+        model.blocks[layer].mlp.W_in.requires_grad = True
+        model.blocks[layer].mlp.W_out.requires_grad = True
+
+
 def convert_triplet_string(triplet_str: str) -> tuple:
     """
     Safely parses a stringified triplet like '[("aspect", "opinion", "sentiment")]'
