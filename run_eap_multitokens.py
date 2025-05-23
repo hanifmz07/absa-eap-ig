@@ -7,7 +7,7 @@ from eap.graph import Graph
 from eap.evaluate import evaluate_baseline_multitoken, evaluate_graph_multitoken
 from eap.attribute import attribute
 from src.metric import logit_diff
-from src import load_finetuned_model
+from src import load_finetuned_model, load_finetuned_model_lens_from_dir
 
 
 def log_results_csv(log_path, element, metric, total_edges, baseline_score, top_k, score, faithfulness):
@@ -21,7 +21,9 @@ def log_results_csv(log_path, element, metric, total_edges, baseline_score, top_
 
 def main(args):
     print("Loading fine-tuned model...")
-    model = load_finetuned_model(args.base_model, args.finetuned_model)
+    # model = load_finetuned_model(args.base_model, args.finetuned_model)
+    print(f"Loading model from {args.finetuned_model}")
+    model = load_finetuned_model_lens_from_dir(args.finetuned_model, args.device)
     model.to(args.device)
     model.cfg.device = args.device
     model.cfg.use_split_qkv_input = True
