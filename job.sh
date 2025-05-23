@@ -16,11 +16,14 @@ echo "Starting job on $(hostname)"
 # ======== Run Script ========
 echo "Running ABSA EAP-IG Evaluation on Aspect"
 
+# Uncomment the following line to use a specific GPU
+# export CUDA_VISIBLE_DEVICES=1
+
 python run_eap_multitokens.py \
   --base_model "Qwen/Qwen2.5-0.5B" \
-  --finetuned_model "models/fine_tuned_model/" \
-  --dataset "eap_dataset/eap_dataset_aspect_multitokens.csv" \
-  --output_dir "outputs/multitokens" \
+  --finetuned_model "outputs/models/2025-05-21 17:43:35.056477_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20" \
+  --dataset "eap_dataset/eap_dataset_aspect_multitokensv3.csv" \
+  --output_dir "outputs/multitokens/v3" \
   --batch_size 16 \
   --ig_steps 5 \
   --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 \
@@ -31,10 +34,10 @@ python run_eap_multitokens.py \
 echo "Running ABSA EAP-IG Evaluation on Opinion"
 
 python run_eap_multitokens.py \
-  --base-model "Qwen/Qwen2.5-0.5B" \
-  --finetuned_model "models/fine_tuned_model/" \
-  --dataset "eap_dataset/eap_dataset_opinion_multitokens.csv" \
-  --output_dir "outputs/multitokens" \
+  --base_model "Qwen/Qwen2.5-0.5B" \
+  --finetuned_model "outputs/models/2025-05-21 17:43:35.056477_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20" \
+  --dataset "eap_dataset/eap_dataset_opinion_multitokensv3.csv" \
+  --output_dir "outputs/multitokens/v3" \
   --batch_size 16 \
   --ig_steps 5 \
   --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 \
@@ -45,13 +48,12 @@ python run_eap_multitokens.py \
 echo "Running ABSA EAP-IG Evaluation on Sentiment"
 
 python run_eap_multitokens.py \
-  --base-model "Qwen/Qwen2.5-0.5B" \
-  --finetuned_model "models/fine_tuned_model/" \
   --base_model "Qwen/Qwen2.5-0.5B" \
-  --dataset "eap_dataset/eap_dataset_sentiment_multitokens.csv" \
-  --output_dir "outputs/multitokens" \
+  --finetuned_model "outputs/models/2025-05-21 17:43:35.056477_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20" \
+  --dataset "eap_dataset/eap_dataset_sentiment_multitokensv3.csv" \
+  --output_dir "outputs/multitokens/v3" \
   --batch_size 16 \
-  --ig-steps 5 \
+  --ig_steps 5 \
   --topks 100 200 500 1000 2000 5000 10000 20000 30000 40000 \
   --device "cuda" \
   --element "sentiment" \
