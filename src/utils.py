@@ -1,12 +1,15 @@
 import torch, re, ast
 import pandas as pd
-from typing import Optional, List, Tuple
+from typing import Optional, List, Tuple, Dict
 from transformers import AutoModelForCausalLM, AutoConfig
 from transformer_lens import HookedTransformer
 from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights, convert_bloom_weights
 from transformer_lens.HookedTransformerConfig import HookedTransformerConfig
 from torch.utils.data import Dataset, DataLoader
 from eap.graph import Graph
+import random
+import pickle
+import os
 
 # Automatically select device
 if torch.backends.mps.is_available():
@@ -139,12 +142,145 @@ def load_finetuned_model(base_model_name: str,
 
     return model
 
+def load_finetuned_model_lens_from_dir(dir: str, device: str = device) -> HookedTransformer:
+    """
+    Load a fine-tuned TransformerLens model from a specified directory.
+
+    Args:
+        dir (str): Directory containing the model files.
+        device (str): Device to load the model onto.
+    
+    Returns:
+        HookedTransformer: The loaded TransformerLens model.
+    """
+    with open(os.path.join(dir, 'model_config.pkl'), 'rb') as f:
+        new_cfg_dict = pickle.load(f)
+    new_cfg = HookedTransformerConfig.from_dict(new_cfg_dict)
+    new_model = HookedTransformer(new_cfg)
+    new_model.load_state_dict(torch.load(os.path.join(dir, 'model.pt'), map_location=device))
+    return new_model
+
+def calculate_metrics(predictions: List[List[Dict[str, str]]], targets: List[List[Dict[str, str]]], task='') -> Dict[str, float]:
+    """
+    Calculate precision, recall, and F1 score for the given predictions and targets for ABSA.
+
+    Args:
+        predictions (List[List[Dict[str, str]]]): List of predicted triplets.
+        targets (List[List[Dict[str, str]]]): List of target triplets.
+        task (str): The task name for which metrics are calculated.
+    
+    Returns:
+        Dict[str, float]: A dictionary containing precision, recall, and F1 score.
+    """
+    true_positive = 0
+    false_positive = 0
+    false_negative = 0
+    for prediction,target in zip(predictions,targets):
+        for target_tuple in target:
+            if target_tuple in prediction:
+                true_positive += 1
+            else:
+                false_negative += 1
+        false_positive += sum(1 for pred in prediction if pred not in target)
+    precision = true_positive/(true_positive + false_positive) if (true_positive + false_positive) > 0 else 0
+    recall = true_positive/(true_positive + false_negative) if (true_positive + false_negative) > 0 else 0
+    f1 = (2 * recall * precision)/(recall + precision) if (recall + precision) > 0 else 0
+    return {
+        f"precision_{task}" : precision,
+        f"recall_{task}" : recall,
+        f"f1_{task}" : f1
+    }
+
+def parse_absa_string(text: str) -> List[Dict[str, str]]:
+    """
+    Parses a string formatted as "[A] aspect [O] opinion [S] sentiment" into a list of dictionaries.
+    Each dictionary contains the tag as the key and the corresponding value.
+    For example, "[A] [O] [S] [A] harga [O] terjangkau [S] positive [SSEP] [A] fasilitas [O] nyaman [S] positive" becomes:
+    [{'A': 'harga', 'S': 'positive', 'O': 'terjangkau'},
+    {'A': 'fasilitas', 'S': 'positive', 'O': 'nyaman'}].
+
+    Args:
+        text (str): ABSA string output to be parsed.
+
+    Returns:
+        List[Dict[str, str]]: List of dictionaries of parsed ABSA output.
+
+    """
+    pattern = r"\[(\w+)\]\s*([^[]+)"
+    matches = re.findall(pattern, text)
+
+    result = []
+    current_dict = {}
+
+    for tag, content in matches:
+        if tag == "SSEP":  # Sentence separator -> Start a new dictionary
+            result.append(current_dict)
+            current_dict = {}
+        else:
+            current_dict[tag] = content.strip()
+
+    if current_dict:  # Append the last sentence if it exists
+        result.append(current_dict)
+
+    return result
+
+def postprocess_absa_outputs(preds: List[str], labels: List[str], sentence_id: List[int], task: List[str]) -> Dict[str, Dict[str, List[List[Dict[str, str]]]]]:
+    """
+    Aggregate the predictions for each order of elements in the triplet into one output.
+
+    Args:
+        preds (List[str]): List of predicted strings.
+        labels (List[str]): List of label strings.
+        sentence_id (List[int]): List of sentence IDs.
+        task (List[str]): List of task elements of the ABSA.
+    
+    Returns:
+        Dict[str, Dict[str, List[List[Dict[str, str]]]]]: A dictionary where the keys are task names and the values are dictionaries
+            containing predictions and targets for each sentence ID.
+    """
+    per_task1 = {}
+    for p, l, si, t in zip(preds, labels, sentence_id, task):
+        if t not in per_task1:
+            per_task1[t] = {}
+        if si not in per_task1[t]:
+            per_task1[t][si] = {
+                "m" : 0, # from mvp
+                "preds" : [],
+                "labels" : parse_absa_string(l)
+            }
+        per_task1[t][si]["preds"].extend(parse_absa_string(p))
+        per_task1[t][si]["m"] += 1
+    per_task2 = {}
+    for t, v1 in per_task1.items():
+        if t not in per_task2:
+            per_task2[t] = {
+                "predictions" : [],
+                "targets" : []
+            }
+        for si, v2 in v1.items():
+            m = v2["m"]
+            unique_preds = []
+            for el in v2["preds"]:
+                if el not in unique_preds:
+                    unique_preds.append(el)
+            aggregated = []
+            for el in unique_preds:
+                if v2["preds"].count(el) >= m/2:
+                    aggregated.append(el)
+            per_task2[t]["predictions"].append(aggregated)
+            per_task2[t]["targets"].append(v2["labels"])
+    return per_task2
+
+
 
 class ABSAAutoRegressiveDataset(Dataset):
-    def __init__(self, data, tokenizer, max_len=128):
+    def __init__(self, data, tokenizer, max_len=128, shuffle=False, seed=42):
         self.data = data
         self.tokenizer = tokenizer
         self.max_len = max_len
+        if shuffle:
+            random.seed(seed)
+            random.shuffle(self.data)
 
     def __len__(self):
         return len(self.data)
@@ -265,7 +401,8 @@ def build_suffix_from_mode(mode: str) -> str:
         A space-separated suffix string.
     """
     mapping = {"A": "[A]", "O": "[O]", "S": "[S]"}
-    return " " + " ".join([mapping[c] for c in mode if c in mapping])
+    # return " " + " ".join([mapping[c] for c in mode if c in mapping])
+    return ' [A] [O] [S]'
 
 
 def extract_by_mode(text: str, mode: str) -> str:
