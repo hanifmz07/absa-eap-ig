@@ -47,6 +47,9 @@ def main(args):
             return_type="str",
             verbose=False,
         )
+        
+        if isinstance(batch_outputs_text, str):
+            batch_outputs_text = [batch_outputs_text]
 
         outputs.extend(batch_outputs_text)
 
