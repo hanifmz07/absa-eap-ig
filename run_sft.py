@@ -87,6 +87,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     if not args.train_full_model and not args.circuit_csv_path:
-        parser.error("--circuit_csv_path is required when --train_full_model is set")
+        parser.error("--circuit_csv_path is required when --train_full_model is not set")
 
     main(args)
