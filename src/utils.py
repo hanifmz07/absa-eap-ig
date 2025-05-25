@@ -304,54 +304,87 @@ class ABSAAutoRegressiveDataset(Dataset):
             "tokens": tokens
         }
 
-def apply_active_edge_unfreezing(model, csv_path):
+def apply_active_edge_unfreezing(model, csv_path: str) -> None:
     """
-    Freezes all parameters in the model, and only unfreezes those specified
-    in the CSV file for targeted fine-tuning.
-    
-    Parameters:
-        model (HookedTransformer): The model to modify
-        csv_path (str): Path to CSV file with active edge data (with 'child_node' and 'child_type' columns)
+    Apply selective unfreezing and gradient masking to a TransformerLens model
+    based on active attention and MLP nodes from an edge CSV file.
+
+    This function:
+    - Parses active attention heads and MLP layers from the CSV.
+    - Applies gradient masking to inactive heads in attention projection matrices (W_Q, W_K, W_V, W_O).
+    - Unfreezes MLP layers, embedding, and unembedding weights.
+
+    Args:
+        model: TransformerLens model instance.
+        csv_path (str): Path to CSV file with 'child_node' and 'child_type' columns.
     """
     df = pd.read_csv(csv_path)
     attention_targets = set()
     mlp_layers = set()
+    heads_per_layer = {}
 
     for _, row in df.iterrows():
-        child_node = row.get('child_node')
-        child_type = row.get('child_type')
+        child_node = row.get("child_node")
+        child_type = row.get("child_type")
 
         if isinstance(child_node, str):
-            if child_node.startswith('a'):
-                layer = int(child_node.split('.')[0][1:])
-                head = int(child_node.split('.')[1][1:])
-                attention_targets.add((layer, head, child_type))
-            elif child_node.startswith('m'):
-                mlp_layers.add(int(child_node[1:]))
+            if child_node.startswith("a") and ".h" in child_node:
+                try:
+                    layer_str, head_str = child_node[1:].split(".h")
+                    layer = int(layer_str)
+                    head = int(head_str)
+                    attention_targets.add((layer, head, child_type))
+                    heads_per_layer.setdefault(layer, set()).add(head)
+                except ValueError:
+                    print(f"Warning: Could not parse attention node: {child_node}")
+            elif child_node.startswith("m"):
+                try:
+                    layer = int(child_node[1:])
+                    mlp_layers.add(layer)
+                except ValueError:
+                    print(f"Warning: Could not parse MLP node: {child_node}")
 
-    # === Freeze all parameters ===
-    for name, param in model.named_parameters():
-        param.requires_grad = False
+    # Freeze all registered buffers (e.g., positional embeddings)
+    for _, buffer in model.named_buffers():
+        if isinstance(buffer, torch.Tensor):
+            buffer.requires_grad = False
 
-    head_dim = model.cfg.d_head
+    def register_head_mask(weight_tensor: torch.Tensor, active_heads: list[int]) -> None:
+        """
+        Register a backward hook that masks gradients for inactive heads in the given weight tensor.
 
-    def unfreeze_head_param(param_tensor, head_index, head_dim):
-        param_tensor.requires_grad = True
-        param_tensor.data[head_index * head_dim : (head_index + 1) * head_dim].requires_grad = True
+        Args:
+            weight_tensor (torch.Tensor): The attention weight matrix (e.g., W_Q, W_K).
+            active_heads (list[int]): List of head indices to remain trainable.
+        """
+        mask = torch.zeros_like(weight_tensor)
+        for head in active_heads:
+            mask[head] = 1.0
 
-    # Unfreeze attention parameters
-    for layer, head, typ in attention_targets:
-        if typ == 'q':
-            unfreeze_head_param(model.blocks[layer].attn.W_Q, head, head_dim)
-        elif typ == 'k':
-            unfreeze_head_param(model.blocks[layer].attn.W_K, head, head_dim)
-        elif typ == 'v':
-            unfreeze_head_param(model.blocks[layer].attn.W_V, head, head_dim)
+        def mask_hook(grad):
+            return grad * mask
 
-    # Unfreeze MLP parameters
-    for layer in mlp_layers:
-        model.blocks[layer].mlp.W_in.requires_grad = True
-        model.blocks[layer].mlp.W_out.requires_grad = True
+        weight_tensor.register_hook(mask_hook)
+
+    # Apply gradient masks to W_Q, W_K, W_V
+    for proj_type in ['q', 'k', 'v']:
+        layer_to_heads = {
+            layer: [head for (l, head, t) in attention_targets if l == layer and t == proj_type]
+            for layer in set(l for (l, _, t) in attention_targets if t == proj_type)
+        }
+
+        for layer, heads in layer_to_heads.items():
+            if proj_type == 'q':
+                register_head_mask(model.blocks[layer].attn.W_Q, heads)
+            elif proj_type == 'k':
+                register_head_mask(model.blocks[layer].attn.W_K, heads)
+            elif proj_type == 'v':
+                register_head_mask(model.blocks[layer].attn.W_V, heads)
+
+    # Apply gradient masks to W_O for all heads involved in any Q/K/V projection
+    for layer, heads in heads_per_layer.items():
+        register_head_mask(model.blocks[layer].attn.W_O, heads)
+
 
 
 def convert_triplet_string(triplet_str: str) -> tuple:
