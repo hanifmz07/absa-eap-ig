@@ -385,17 +385,6 @@ def apply_active_edge_unfreezing(model, csv_path: str) -> None:
     for layer, heads in heads_per_layer.items():
         register_head_mask(model.blocks[layer].attn.W_O, heads)
 
-    # Unfreeze selected MLP layers
-    for layer in mlp_layers:
-        model.blocks[layer].mlp.W_in.requires_grad = True
-        model.blocks[layer].mlp.W_out.requires_grad = True
-        if hasattr(model.blocks[layer].mlp, "W_gate"):
-            model.blocks[layer].mlp.W_gate.requires_grad = True
-
-    # Unfreeze embedding and unembedding weights
-    model.embed.W_E.requires_grad = True
-    model.unembed.W_U.requires_grad = True
-    model.unembed.b_U.requires_grad = True
 
 
 def convert_triplet_string(triplet_str: str) -> tuple:
