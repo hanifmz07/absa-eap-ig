@@ -1,4 +1,7 @@
 __pycache__/
 .DS_Store
-models/
+outputs/models/
+outputs/evals/
 enveap
+__pycache__
+graphviz
