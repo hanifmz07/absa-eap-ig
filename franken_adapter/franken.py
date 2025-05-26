@@ -182,6 +182,7 @@ def finetune_franken_adapter(
     batch_size: int = 32,
     lr: float = 5e-4,
     freeze_embedding: bool = True,
+    circuit_path: Optional[str] = None,
     save_path: Optional[str] = None
 ) -> HookedTransformer:
     """
@@ -210,6 +211,12 @@ def finetune_franken_adapter(
     with open(json_data_path) as f:
         data = json.load(f)
     dataset = ABSAAutoRegressiveDataset(data, model.tokenizer)
+
+    if circuit_path:
+        print(f"Applying selective unfreezing from circuit file: {circuit_path}")
+        apply_active_edge_unfreezing(model, circuit_path)
+    else:
+        print("No circuit path provided; using default parameter setup.")
 
     if freeze_embedding:
         print("Freezing embedding layer (W_E)")
