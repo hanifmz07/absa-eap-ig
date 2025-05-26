@@ -5,3 +5,5 @@ outputs/evals/
 enveap
 __pycache__
 graphviz
+logs
+.ipynb_checkpoints
