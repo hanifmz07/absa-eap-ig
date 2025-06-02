@@ -321,7 +321,6 @@ def apply_active_edge_unfreezing(model, csv_path: str) -> None:
     df = pd.read_csv(csv_path)
     attention_targets = set()
     mlp_layers = set()
-    heads_per_layer = {}
 
     for _, row in df.iterrows():
         child_node = row.get("child_node")
@@ -334,7 +333,6 @@ def apply_active_edge_unfreezing(model, csv_path: str) -> None:
                     layer = int(layer_str)
                     head = int(head_str)
                     attention_targets.add((layer, head, child_type))
-                    heads_per_layer.setdefault(layer, set()).add(head)
                 except ValueError:
                     print(f"Warning: Could not parse attention node: {child_node}")
             elif child_node.startswith("m"):
@@ -366,20 +364,25 @@ def apply_active_edge_unfreezing(model, csv_path: str) -> None:
 
         weight_tensor.register_hook(mask_hook)
 
+
+    num_layers = model.cfg.n_layers
+
     # Apply gradient masks to W_Q, W_K, W_V
     for proj_type in ['q', 'k', 'v']:
-        layer_to_heads = {
-            layer: [head for (l, head, t) in attention_targets if l == layer and t == proj_type]
-            for layer in set(l for (l, _, t) in attention_targets if t == proj_type)
-        }
-
-        for layer, heads in layer_to_heads.items():
+        for layer in range(num_layers):
+            heads = [head for (l, head, t) in attention_targets if l == layer and t == proj_type]
             if proj_type == 'q':
                 register_head_mask(model.blocks[layer].attn.W_Q, heads)
             elif proj_type == 'k':
                 register_head_mask(model.blocks[layer].attn.W_K, heads)
             elif proj_type == 'v':
                 register_head_mask(model.blocks[layer].attn.W_V, heads)
+
+
+    heads_per_layer = {layer: set() for layer in range(num_layers)}
+
+    for (layer, head, _) in attention_targets:
+        heads_per_layer[layer].add(head)
 
     # Apply gradient masks to W_O for all heads involved in any Q/K/V projection
     for layer, heads in heads_per_layer.items():
