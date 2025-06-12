@@ -17,3 +17,4 @@ python run_sft.py \
   --seed 42 \
   --circuit_csv_path "outputs/multitokens/v3/complete_circuit_topk-20000.csv"
   # --train_full_model \
+  # --sample_size

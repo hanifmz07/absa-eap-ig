@@ -26,7 +26,13 @@ def main(args):
     model = load_model(args.model_name, device=device)
 
     # === Load Dataset ===
-    dataset = ABSAAutoRegressiveDataset(absa_data, model.tokenizer, shuffle=True, seed=args.seed)
+    dataset = ABSAAutoRegressiveDataset(
+        absa_data,
+        model.tokenizer,
+        shuffle=True,
+        seed=args.seed,
+        sample_size=args.sample_size
+    )
 
     # === Load Circuit CSV ===
     if not args.train_full_model:
@@ -54,6 +60,9 @@ def main(args):
     output_folder_name += f'_bs-{args.batch_size}'
     output_folder_name += f'_epochs-{args.num_epochs}'
     output_folder_name += f'_{args.circuit_csv_path.split("/")[-1].split(".")[0].split("_")[-1]}' if not args.train_full_model else ''
+    if args.sample_size is not None:
+        output_folder_name += f'_n{args.sample_size}'
+
     output_dir = os.path.join(output_dir, output_folder_name)
     print(f"Output directory: {output_dir}")
 
@@ -83,6 +92,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42, help="Training seed")
     parser.add_argument("--train_full_model", action='store_true', help="Whether to train the full model or not")
     parser.add_argument("--circuit_csv_path", type=str, help="Path to the circuit csv file, required only if --train_full_model is not set (only finetune the circuit)")
+    parser.add_argument("--sample_size", type=int, default=None, help="Number of samples to use from the training dataset (None means use all)")
 
     args = parser.parse_args()
     

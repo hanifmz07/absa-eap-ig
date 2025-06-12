@@ -3,7 +3,7 @@ from src.utils import postprocess_absa_outputs, calculate_metrics
 import torch
 import json
 from tqdm import tqdm
-import os
+import os, re
 import argparse
 
 def main(args):
@@ -46,6 +46,7 @@ def main(args):
             do_sample=False,
             return_type="str",
             verbose=False,
+            padding_side="left"
         )
         
         if isinstance(batch_outputs_text, str):
@@ -57,9 +58,36 @@ def main(args):
     outputs = [output[len(prompts[idx]):].strip() for idx, output in enumerate(outputs)]
 
     # Postprocess outputs and calculate metrics
-    grouped_per_task = postprocess_absa_outputs(outputs, labels, sentence_ids, tasks)
+ 
+    inference_results = []
+
+    per_task = {}
+    for prompt, pred, label, si in zip(prompts, outputs, labels, sentence_ids):
+        match = re.search(r"(\[[A-Z]\](\s)*)+$", prompt)
+        temp_task = match.group().strip()
+        task = re.sub(r"[\[\]\s]", "", temp_task).lower()
+        target_split = label.split(" [SSEP] ")
+        pred_clean = pred.split(temp_task+" ")[-1]
+        pred_split = pred_clean.split(" [SSEP] ")
+        inf_dict = {}
+        inf_dict["sentence_id"] = si
+        inf_dict["task_elements"] = task
+        inf_dict["input"] = prompt
+        inf_dict["target"] = label
+        inf_dict["prediction"] = pred_clean
+        inf_dict["target_list"] = target_split
+        inf_dict["prediction_list"] = pred_split
+
+        inference_results.append(inf_dict)
+
+        if task not in per_task.keys():
+            per_task[task] = {"predictions": [], "targets":[]}
+        per_task[task]["predictions"].append(pred_split)
+        per_task[task]["targets"].append(target_split)
+
+
     result_metrics = {}
-    for task, v in grouped_per_task.items():
+    for task, v in per_task.items():
         predictions = v["predictions"]
         targets = v["targets"]
         result_metrics.update(
@@ -82,7 +110,7 @@ def main(args):
     if args.save_predictions:
         inference_output_file = os.path.join(output_dir, "inference_results.json")
         with open(inference_output_file, "w") as f:
-            json.dump(outputs, f, indent=4)
+            json.dump(inference_results, f, indent=4)
         print(f"Inference results saved to {inference_output_file}")
 
 if __name__ == "__main__":
