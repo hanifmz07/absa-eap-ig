@@ -274,31 +274,30 @@ def postprocess_absa_outputs(preds: List[str], labels: List[str], sentence_id: L
 
 
 class ABSAAutoRegressiveDataset(Dataset):
-    def __init__(self, data, tokenizer, max_len=128, shuffle=False, seed=42):
+    def __init__(self, data, tokenizer, max_len=128, shuffle=False, seed=42, sample_size=None):
+        if shuffle:
+            random.seed(seed)
+            random.shuffle(data)
+        if sample_size is not None:
+            data = data[:sample_size]
+        
         self.data = data
         self.tokenizer = tokenizer
         self.max_len = max_len
-        if shuffle:
-            random.seed(seed)
-            random.shuffle(self.data)
 
     def __len__(self):
         return len(self.data)
 
     def __getitem__(self, idx):
         sample = self.data[idx]
-
-        # Concatenate prompt and label into one sequence
         full_text = sample["input"].strip() + " " + sample["target"].strip()
-
         encoding = self.tokenizer(
             full_text,
             padding="max_length",
             truncation=True,
             max_length=self.max_len,
-            return_tensors="pt"  
+            return_tensors="pt"
         )
-        
         tokens = encoding["input_ids"].squeeze()
         return {
             "tokens": tokens
@@ -613,7 +612,7 @@ def build_eap_dataset(
     eap_data = []
     num_removed = 0
     for _, row in df.iterrows():
-        if row["is_match"]:
+        if row["is_match"] and type(row[corrupted_col]) == str:
             clean = row[sentence_col] + f" {suffix}"
             corrupted = row[corrupted_col] + f" {suffix}"
 
@@ -665,10 +664,15 @@ def build_eap_dataset(
   
 def safe_parse(raw):
     try:
-        return ast.literal_eval(raw)[0]  # unbox the list-of-list
-        # return ast.literal_eval(raw)[0][0]  # unbox the list-of-list
+        # If already a list of lists (or torch tensor), just return it
+        if isinstance(raw, list):
+            return raw[0]
+        if isinstance(raw, str):
+            return ast.literal_eval(raw)[0]
+        raise ValueError(f"Unsupported type for parsing: {type(raw)}")
     except Exception as e:
         raise ValueError(f"Failed to parse: {raw}\n{e}")
+
     
 def collate_EAP(batch):
     clean, corrupted, labels = zip(*batch)
