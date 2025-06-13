@@ -54,6 +54,9 @@ def main(args):
 
         outputs.extend(batch_outputs_text)
 
+    # Cut off the prompts from the outputs
+    outputs = [output[len(prompts[idx]):].strip() for idx, output in enumerate(outputs)]
+
     # Postprocess outputs and calculate metrics
  
     inference_results = []
