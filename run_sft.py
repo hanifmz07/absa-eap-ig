@@ -8,6 +8,7 @@ import argparse
 from datetime import datetime
 import os
 import pickle
+from time import time
 
 def main(args):
     # === Set Device ===
@@ -66,8 +67,26 @@ def main(args):
     output_dir = os.path.join(output_dir, output_folder_name)
     print(f"Output directory: {output_dir}")
 
+    if args.sample_size == None:
+        sample_size = 15000
+    else:
+        sample_size = args.sample_size
     # === Start Training ===
+    start = time()
     trained_model = train(model, config, dataset)
+    elapsed = time() - start
+
+    total_samples = sample_size * args.num_epochs
+    samples_per_sec = total_samples / elapsed
+
+    total_steps = args.num_epochs * (sample_size // args.batch_size)
+    steps_per_sec = total_steps / elapsed
+
+    print(f"{sample_size} samples processed in {elapsed:.2f}s with {args.num_epochs} epochs: ({samples_per_sec:.2f} samples/sec)")
+    print(f"{total_steps} steps in {elapsed:.2f}s ({steps_per_sec:.2f} steps/sec)")
+
+    print("=======================================\n\n")
+
 
     os.makedirs(output_dir, exist_ok=True)
     # === Save Model State ===

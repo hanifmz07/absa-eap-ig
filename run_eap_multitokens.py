@@ -7,7 +7,7 @@ from eap.graph import Graph
 from eap.evaluate import evaluate_baseline_multitoken, evaluate_graph_multitoken
 from eap.attribute import attribute
 from src.metric import logit_diff
-from src import load_finetuned_model, load_finetuned_model_lens_from_dir
+from src.utils import load_finetuned_model, load_finetuned_model_lens_from_dir, edge_merging
 
 
 def log_results_csv(log_path, element, metric, total_edges, baseline_score, top_k, score, faithfulness):
@@ -90,6 +90,9 @@ def main(args):
 
         log_results_csv(log_file, args.element, "logit_diff", n_edges, baseline, top_k, results, faithfulness)
 
+        if args.element == "aos":
+            complete_edges = edge_merging(graph_paths=f"{args.output_dir}/{args.element}_circuit_topk-{top_k}.pt")
+            complete_edges.to_csv(f"{args.output_dir}/{args.element}_circuit_topk-{top_k}.csv", index=None)
 
 
 if __name__ == "__main__":
@@ -103,9 +106,8 @@ if __name__ == "__main__":
     parser.add_argument("--topks", type=int, nargs="+", default=[100, 200, 500, 1000, 2000, 5000, 10000, 20000], help="Top-k values to evaluate")
     parser.add_argument("--output_dir", type=str, default="outputs", help="Directory to save circuits")
     parser.add_argument("--device", type=str, default="mps", help="Device to run model on: 'cuda', 'mps', or 'cpu'")
-    parser.add_argument("--element", type=str, default="aspect", choices=["aspect", "opinion", "sentiment"], help="Which ABSA element to attribute")
+    parser.add_argument("--element", type=str, default="aspect", choices=["aspect", "opinion", "sentiment", "aos"], help="Which ABSA element to attribute")
     parser.add_argument("--log_file", type=str, default=None, help="CSV log file path (default: <output_dir>/faithfulness_log.csv)")
-
 
     args = parser.parse_args()
     main(args)
