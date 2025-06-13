@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=evals_loop
-#SBATCH --output=logs/eval_loop_%j.out
-#SBATCH --error=logs/eval_loop_%j.err
+#SBATCH --job-name=eval
+#SBATCH --output=logs/eval_%j.out
+#SBATCH --error=logs/eval_%j.err
 #SBATCH --gres=gpu:1         
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
