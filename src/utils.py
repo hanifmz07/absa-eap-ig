@@ -569,6 +569,8 @@ def append_labels(model: HookedTransformer, clean: List[str], corrupted: List[st
         new_corrupted.append(model.to_string([*model.to_tokens(corrupted[i]).squeeze(), *labels[1][i][:-1]]))
     return new_clean, new_corrupted
 
+def get_tag_suffix(order):
+    return " ".join(f"[{ch}]" for ch in order)
 
 def build_eap_dataset(
     model: HookedTransformer,
@@ -592,7 +594,7 @@ def build_eap_dataset(
         triplet_col (str): Column name for the original triplet string.
         corrupted_col (str): Column name for the corrupted sentence.
         corrupted_triplet_col (str): Column name for the corrupted triplet string.
-        suffix (str): Prompt suffix to add (e.g., "[A]").
+        suffix (str): Prompt suffix to add (e.g., "[A]"). Use "[A] [O] [S]" for the full simultaneous AOS dataset.
         filer_same_length_counterfactuals (bool): If True, remove datapoints where
             counterfactual token length differs from original token length.
 
@@ -606,13 +608,20 @@ def build_eap_dataset(
         idx = 1
     elif suffix == "[S]":
         idx = 2
+    elif suffix == "[A] [O] [S]":
+        assert "order" in df.columns, "Column 'order' must exist in the DataFrame"
+        idx = False
     else:
-        raise ValueError(f"Invalid suffix '{suffix}'. Must be one of '[A]', '[O]', or '[S]'.")
+        raise ValueError(f"Invalid suffix '{suffix}'. Must be one of '[A]', '[O]', '[S]' or '[A] [O] [S]'.")
 
     eap_data = []
     num_removed = 0
     for _, row in df.iterrows():
         if row["is_match"] and type(row[corrupted_col]) == str:
+
+            if not idx:
+                suffix = get_tag_suffix(row["order"])
+
             clean = row[sentence_col] + f" {suffix}"
             corrupted = row[corrupted_col] + f" {suffix}"
 
@@ -627,8 +636,16 @@ def build_eap_dataset(
                 original_triplet = ast.literal_eval(row[triplet_col])
                 corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
 
-                correct_label = original_triplet[0][idx]
-                incorrect_label = corrupted_triplet[0][idx]
+                if not idx:
+                    a_clean, o_clean, s_clean = original_triplet[0]
+                    a_corr, o_corr, s_corr = corrupted_triplet[0]
+
+                    correct_label = f"[A] {a_clean} [O] {o_clean} [S] {s_clean}"
+                    incorrect_label = f"[A] {a_corr} [O] {o_corr} [S] {s_corr}"
+                
+                else:
+                    correct_label = original_triplet[0][idx]
+                    incorrect_label = corrupted_triplet[0][idx]
 
                 correct_idx = model.to_tokens(f" {correct_label}").tolist()
                 incorrect_idx = model.to_tokens(f" {incorrect_label}").tolist()
@@ -659,7 +676,11 @@ def build_eap_dataset(
     if filer_same_length_counterfactuals:
         print(f"Removed {num_removed} out of {len(df)} datapoints that does not match token length.")
     print(f"Filtered data size {len(eap_data)=}")
-    return pd.DataFrame(eap_data)
+    
+    eap_df = pd.DataFrame(eap_data)
+    eap_df["correct_idx"] = eap_df["correct_idx"].apply(str)
+    eap_df["incorrect_idx"] = eap_df["incorrect_idx"].apply(str)    
+    return eap_df
 
   
 def safe_parse(raw):
@@ -728,3 +749,75 @@ def edge_merging(graph_paths: List[str]) -> pd.DataFrame:
                     edge_set.add(edge_tuple)
 
     return pd.DataFrame(data_dict)
+
+def create_full_AOS_dataset (dataset_path):
+
+    df = pd.read_csv(dataset_path)
+    
+    new_modified_texts = []
+    new_modified_triplets = []
+    
+    for i, row in df.iterrows():
+        try:
+    
+            triplet1 = ast.literal_eval(row['counterfact_triplet1_modified'])
+            aspect1 = triplet1[0][0]
+    
+            triplet3 = ast.literal_eval(row['counterfact_triplet3_modified'])
+            _, opinion3, sentiment3 = triplet3[0]
+    
+            # Replace aspect in sentence (assume it's the first word that matches the original aspect)
+            old_aspect3 = triplet3[0][0]
+            modified_text = row['counterfact3_modified'].replace(old_aspect3, aspect1, 1)
+            modified_triplet = [(aspect1, opinion3, sentiment3)]
+    
+            new_modified_texts.append(modified_text)
+            new_modified_triplets.append(str(modified_triplet))
+        except Exception as e:
+            print(f"Error in row {i}: {e}")
+            new_modified_texts.append("")
+            new_modified_triplets.append("")
+    
+    df["counterfact3_aspect_replaced"] = new_modified_texts
+    df["counterfact_triplet3_aspect_replaced"] = new_modified_triplets
+
+    return df
+
+# Helper function to extract A, O, S from a stringified triplet
+def parse_triplet(triplet_str):
+    matches = re.findall(r"\('([^']+)', '([^']+)', '([^']+)'\)", triplet_str)
+    return matches[0] if matches else ("", "", "")
+
+# Function to construct sequence variants
+def create_sequences(a, o, s):
+    return {
+        "AOS": f"[A] {a} [O] {o} [S] {s}",
+        "ASO": f"[A] {a} [S] {s} [O] {o}",
+        "SAO": f"[S] {s} [A] {a} [O] {o}",
+        "OAS": f"[O] {o} [A] {a} [S] {s}",
+        "OSA": f"[O] {o} [S] {s} [A] {a}",
+    }
+
+def create_aos_sequence_variant(dataset_path):
+
+    df = pd.read_csv(dataset_path)
+    records_with_match = []
+    
+    for _, row in df.iterrows():
+        orig_a, orig_o, orig_s = parse_triplet(row["original_triplet"])
+        cf3_a, cf3_o, cf3_s = parse_triplet(row["counterfact_triplet3_aspect_replaced"])
+        
+        for order, orig_seq in create_sequences(orig_a, orig_o, orig_s).items():
+            cf_seq = create_sequences(cf3_a, cf3_o, cf3_s)[order]
+            records_with_match.append({
+                "order": order,
+                "original_sentence": row["original_sentence"],
+                "original_triplet": row["original_triplet"],
+                "original_label_variant": orig_seq,
+                "counterfact3_aspect_replaced": row["counterfact3_aspect_replaced"],
+                "counterfact_triplet3_aspect_replaced": row["counterfact_triplet3_aspect_replaced"],
+                "counterfact_label_variant": cf_seq,
+                "is_match": row["is_match"]
+            })
+    
+    return pd.DataFrame(records_with_match)
