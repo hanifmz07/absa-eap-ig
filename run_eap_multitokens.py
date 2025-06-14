@@ -107,7 +107,7 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", type=str, default="outputs", help="Directory to save circuits")
     parser.add_argument("--device", type=str, default="mps", help="Device to run model on: 'cuda', 'mps', or 'cpu'")
     parser.add_argument("--element", type=str, default="aspect", choices=["aspect", "opinion", "sentiment", "aos"], help="Which ABSA element to attribute")
-    parser.add_argument("--log_file", type=str, default=None, help="CSV log file path (default: <output_dir>/faithfulness_log.csv)")
+    parser.add_argument("--log_file", type=str, default="faithfulness_log.csv", help="CSV log file path (default: <output_dir>/faithfulness_log.csv)")
 
     args = parser.parse_args()
     main(args)
