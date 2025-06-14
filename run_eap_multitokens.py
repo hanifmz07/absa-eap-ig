@@ -91,7 +91,7 @@ def main(args):
         log_results_csv(log_file, args.element, "logit_diff", n_edges, baseline, top_k, results, faithfulness)
 
         if args.element == "aos":
-            complete_edges = edge_merging(graph_paths=f"{args.output_dir}/{args.element}_circuit_topk-{top_k}.pt")
+            complete_edges = edge_merging(graph_paths=[f"{args.output_dir}/{args.element}_circuit_topk-{top_k}.pt"])
             complete_edges.to_csv(f"{args.output_dir}/{args.element}_circuit_topk-{top_k}.csv", index=None)
 
 
