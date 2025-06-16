@@ -13,7 +13,7 @@ All scripts loop over a fixed list of random seeds to ensure robust and reproduc
 Run full model fine-tuning across different seeds:
 
 ```bash
-sbatch sft.sh
+sbatch scripts/sft.sh
 ```
 
 ### 2. Dataset Creation
@@ -21,7 +21,7 @@ sbatch sft.sh
 Filter predictions, generate simultaneous AOS counterfactuals, and create AOS sequence variants:
 
 ```bash
-sbatch create_dataset.sh
+sbatch scripts/create_dataset.sh
 ```
 
 ### 3. Circuit Discovery
@@ -29,7 +29,7 @@ sbatch create_dataset.sh
 Run circuit discovery using EAP-IG for AOS elements:
 
 ```bash
-sbatch circuit_discovery.sh
+sbatch scripts/circuit_discovery.sh
 ```
 
 ### 4. Selective Circuit-Based Fine-Tuning
@@ -37,7 +37,7 @@ sbatch circuit_discovery.sh
 Apply targeted fine-tuning using circuit masking (attention heads and MLP layers) across different seeds and training sizes:
 
 ```bash
-sbatch sft_circuit.sh
+sbatch scripts/sft_circuit.sh
 ```
 
 ### 5. Evaluation
@@ -45,7 +45,7 @@ sbatch sft_circuit.sh
 Evaluate all models against the test set:
 
 ```bash
-sbatch eval.sh
+sbatch scripts/eval.sh
 ```
 
 ## Running the Scripts: SLURM vs Local
@@ -54,17 +54,19 @@ All job scripts (`*.sh`) in this project are written for SLURM using `sbatch`.
 
 To run them on a SLURM-based cluster:
 ```bash
-sbatch job.sh
+sbatch scripts/job.sh
 ```
 
 If you want to run the script locally using bash (for debugging or testing small parts), you can do so, but SLURM-specific directives (e.g., `#SBATCH --gres=gpu:1`) will be ignored.
 
-If you wish to run them locally (e.g., via `bash script_name.sh`), be aware:
+If you wish to run them locally (e.g., via `bash scripts/script_name.sh`), be aware:
 
 - SLURM directives will be ignored
 - You must manually ensure appropriate environment setup
 - GPU/CPU/memory configuration will need to be managed manually
 - Output will not go to logs/ unless you redirect it yourself
+
+or you can use the scripts on the `scripts/bash` to manually configure the GPU and enable logs (`scripts/bash/*.sh`).
 
 ## Folder Structure Convention
 
