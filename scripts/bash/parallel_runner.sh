@@ -4,13 +4,9 @@
 # The name for our tmux session
 SESSION_NAME="sft_runners"
 
-# An array holding the names of the scripts to run
+# An array holding the names of the scripts to run (change the folder of the parallel scripts as needed)
 SCRIPTS=(
-    "scripts/bash/sft/sft1.sh"
-    "scripts/bash/sft/sft2.sh"
-    "scripts/bash/sft/sft3.sh"
-    "scripts/bash/sft/sft4.sh"
-    "scripts/bash/sft/sft5.sh"
+    "scripts/bash/parallel_sft/*.sh"
 )
 # The command to activate the virtual environment
 ACTIVATE_CMD="source enveap/bin/activate"

@@ -30,7 +30,6 @@ echo "========================================================" >> "$STDOUT_LOG"
 {
     echo "Running ABSA SFT"
 
-    SEEDS=(42 123 2024 31415 777)
     SEEDS=(2024)
 
     for SEED in "${SEEDS[@]}"
