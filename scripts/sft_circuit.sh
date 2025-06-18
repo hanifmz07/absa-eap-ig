@@ -6,45 +6,36 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=100:00:00
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=you@example.com  # Change to your email
 
-echo "Running ABSA SFT"
+echo "Running ABSA SFT with Circuit-Based Training"
 
 SEEDS=(42 123 2024 31415 777)
-SAMPLE_SIZES=(100 500 1000 5000 7500 10000 15000)
+TOPKS=(1000 2000 5000)
 
 for SEED in "${SEEDS[@]}"
 do
-  for SAMPLE_SIZE in "${SAMPLE_SIZES[@]}"
-  do
-    echo "Running with sample size: $SAMPLE_SIZE and seed: $SEED"
+    echo "==========================================="
+    echo "Running circuit-based SFT for seed: $SEED"
+    echo "==========================================="
 
-    # Only run train_full_model if sample_size is not 15000
-    if [ "$SAMPLE_SIZE" -ne 15000 ]; then
-      python run_sft.py \
-        --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
-        --model_name "Qwen/Qwen2.5-0.5B" \
-        --output_dir "outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants" \
-        --num_epochs 20 \
-        --batch_size 16 \
-        --lr 1e-4 \
-        --seed $SEED \
-        --train_full_model \
-        --sample_size $SAMPLE_SIZE
-    fi
-
-    # Run with circuit-based training
-    for TOPK in 1000 2000 5000
+    for TOPK in "${TOPKS[@]}"
     do
-      python run_sft.py \
-        --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
-        --model_name "Qwen/Qwen2.5-0.5B" \
-        --output_dir "outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants" \
-        --num_epochs 20 \
-        --batch_size 16 \
-        --lr 1e-4 \
-        --seed $SEED \
-        --circuit_csv_path ""outputs/multitokens/seed_$SEED"/aos_circuit_topk-${TOPK}.csv" \
-        --sample_size $SAMPLE_SIZE
+        echo "Top-k: $TOPK"
+
+        python run_sft.py \
+          --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
+          --model_name "Qwen/Qwen2.5-0.5B" \
+          --output_dir "outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants" \
+          --num_epochs 20 \
+          --batch_size 16 \
+          --lr 1e-4 \
+          --seed $SEED \
+          --circuit_csv_path "outputs/multitokens/seed_$SEED/aos_circuit_topk-${TOPK}.csv"
+
+        echo -e "\n--- Finished seed $SEED | topk $TOPK ---\n"
     done
-  done
+
+    echo "\n----------------------------------------------------------------\n"
 done
