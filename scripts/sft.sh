@@ -6,6 +6,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --time=100:00:00
+#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=you@example.com  # change to your real email
 
 echo "Running ABSA SFT"
 
@@ -13,7 +15,9 @@ SEEDS=(42 123 2024 31415 777)
 
 for SEED in "${SEEDS[@]}"
 do
-    echo "Running full sft with seed: $SEED"
+    echo "==========================================="
+    echo "Running full SFT with seed: $SEED"
+    echo "==========================================="
 
     python run_sft.py \
       --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
@@ -23,7 +27,7 @@ do
       --batch_size 16 \
       --lr 1e-4 \
       --seed $SEED \
-      --train_full_model \
+      --train_full_model
 
+    echo "\n----------------------------------------------------------------\n"
 done
-
