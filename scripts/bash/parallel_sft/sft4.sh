@@ -12,6 +12,20 @@ STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).err"
 # Specifiy cuda device if needed
 export CUDA_VISIBLE_DEVICES=3
 
+# Extract language parameters from the command line arguments
+# Usage: ./sft5.sh <language>
+LANGUAGE="$1"
+if [ -z "$LANGUAGE" ]; then
+    echo "Usage: $0 <language>"
+    exit 1
+fi
+# Validate the language argument
+if [[ "$LANGUAGE" != "indo" && "$LANGUAGE" != "eng" && "$LANGUAGE" != "sunda" ]]; then
+    echo "Error: Invalid language specified. Use 'indo', 'eng', or 'sunda'."
+    exit 1
+fi
+
+
 # --- Step 1: Initialize Log Files ---
 # Clear previous logs and add a timestamp to mark the start of this run.
 # The '>' operator truncates the file to zero before writing.
@@ -42,9 +56,9 @@ echo "========================================================" >> "$STDOUT_LOG"
         # The output of this python command will now be correctly
         # redirected along with everything else in the loop.
         python run_sft.py \
-            --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
+            --train_json_path "hotel_dataset/${LANGUAGE}/hotel_aste_train_augmented_noreasoning.json" \
             --model_name "Qwen/Qwen2.5-0.5B" \
-            --output_dir "outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants" \
+            --output_dir "outputs/models/eap/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants" \
             --num_epochs 20 \
             --batch_size 16 \
             --lr 1e-4 \

@@ -6,10 +6,28 @@ SESSION_NAME="sft_runners"
 
 # An array holding the names of the scripts to run (change the folder of the parallel scripts as needed)
 SCRIPTS=(
-    "scripts/bash/parallel_sft/*.sh"
+    "scripts/bash/parallel_sft/sft1.sh"
+    "scripts/bash/parallel_sft/sft2.sh"
+    "scripts/bash/parallel_sft/sft3.sh"
+    "scripts/bash/parallel_sft/sft4.sh"
+    "scripts/bash/parallel_sft/sft5.sh"
 )
 # The command to activate the virtual environment
 ACTIVATE_CMD="source enveap/bin/activate"
+
+# Check if exactly 1 argument provided (language).
+if [ "$#" -ne 1 ]; then
+    echo "Error: Incorrect number of arguments."
+    echo "Usage: $0 <language (indo, eng, sunda)>"
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+LANGUAGE="$1"
+# Validate the language argument
+if [[ "$LANGUAGE" != "indo" && "$LANGUAGE" != "eng" && "$LANGUAGE" != "sunda" ]]; then
+    echo "Error: Invalid language specified. Use 'indo', 'eng', or 'sunda'."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
 
 # --- Script Logic ---
 
@@ -41,13 +59,14 @@ tmux split-window -h -t "$SESSION_NAME:0.1"
 
 # Loop through the panes and run the corresponding script in each one.
 # The pane indices are now predictable: 0, 2, 1, 3, 4
+
 for i in "${!SCRIPTS[@]}"; do
     PANE_INDEX=$i
     SCRIPT_NAME=${SCRIPTS[$i]}
     TARGET_PANE="$SESSION_NAME:0.$PANE_INDEX"
     
     # Construct the full command to be run in the pane
-    FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME}"
+    FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE}"
     
     echo "Setting up pane $PANE_INDEX to run: ${SCRIPT_NAME}"
     
