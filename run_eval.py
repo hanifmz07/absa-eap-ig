@@ -62,7 +62,7 @@ def main(args):
     inference_results = []
 
     per_task = {}
-    for prompt, pred, label, si in zip(prompts, outputs, labels, sentence_ids):
+    for prompt, pred, label, si, t in zip(prompts, outputs, labels, sentence_ids, tasks):
         match = re.search(r"(\[[A-Z]\](\s)*)+$", prompt)
         temp_task = match.group().strip()
         task = re.sub(r"[\[\]\s]", "", temp_task).lower()
@@ -71,7 +71,8 @@ def main(args):
         pred_split = pred_clean.split(" [SSEP] ")
         inf_dict = {}
         inf_dict["sentence_id"] = si
-        inf_dict["task_elements"] = task
+        inf_dict["task_elements"] = t
+        inf_dict["element_order"] = task
         inf_dict["input"] = prompt
         inf_dict["target"] = label
         inf_dict["prediction"] = pred_clean
