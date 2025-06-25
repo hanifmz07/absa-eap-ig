@@ -763,1440 +763,1440 @@
         "sentence_id": 3519,
         "instance_id": 17595,
         "task_elements": "aos",
-        "input": "every time i want to use a discount coupon , it never works . [A] [O] [S]",
-        "target": "[A] discount coupon [O] never works [S] negative",
+        "input": "the waiter was impolite . [A] [O] [S]",
+        "target": "[A] waiter [O] impolite [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17596,
         "task_elements": "aos",
-        "input": "every time i want to use a discount coupon , it never works . [A] [S] [O]",
-        "target": "[A] discount coupon [S] negative [O] never works",
+        "input": "the waiter was impolite . [A] [S] [O]",
+        "target": "[A] waiter [S] negative [O] impolite",
         "element_order": "aso"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17597,
         "task_elements": "aos",
-        "input": "every time i want to use a discount coupon , it never works . [O] [A] [S]",
-        "target": "[O] never works [A] discount coupon [S] negative",
+        "input": "the waiter was impolite . [O] [A] [S]",
+        "target": "[O] impolite [A] waiter [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17598,
         "task_elements": "aos",
-        "input": "every time i want to use a discount coupon , it never works . [O] [S] [A]",
-        "target": "[O] never works [S] negative [A] discount coupon",
+        "input": "the waiter was impolite . [O] [S] [A]",
+        "target": "[O] impolite [S] negative [A] waiter",
         "element_order": "osa"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17599,
         "task_elements": "aos",
-        "input": "every time i want to use a discount coupon , it never works . [S] [A] [O]",
-        "target": "[S] negative [A] discount coupon [O] never works",
+        "input": "the waiter was impolite . [S] [A] [O]",
+        "target": "[S] negative [A] waiter [O] impolite",
         "element_order": "sao"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17600,
         "task_elements": "aos",
-        "input": "the waiter was impolite . [A] [O] [S]",
-        "target": "[A] waiter [O] impolite [S] negative",
+        "input": "it's enough , just fix the elevator . because it looks very old . [A] [O] [S]",
+        "target": "[A] elevator [O] fix [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17601,
         "task_elements": "aos",
-        "input": "the waiter was impolite . [A] [S] [O]",
-        "target": "[A] waiter [S] negative [O] impolite",
+        "input": "it's enough , just fix the elevator . because it looks very old . [A] [S] [O]",
+        "target": "[A] elevator [S] positive [O] fix",
         "element_order": "aso"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17602,
         "task_elements": "aos",
-        "input": "the waiter was impolite . [O] [A] [S]",
-        "target": "[O] impolite [A] waiter [S] negative",
+        "input": "it's enough , just fix the elevator . because it looks very old . [O] [A] [S]",
+        "target": "[O] fix [A] elevator [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17603,
         "task_elements": "aos",
-        "input": "the waiter was impolite . [O] [S] [A]",
-        "target": "[O] impolite [S] negative [A] waiter",
+        "input": "it's enough , just fix the elevator . because it looks very old . [O] [S] [A]",
+        "target": "[O] fix [S] positive [A] elevator",
         "element_order": "osa"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17604,
         "task_elements": "aos",
-        "input": "the waiter was impolite . [S] [A] [O]",
-        "target": "[S] negative [A] waiter [O] impolite",
+        "input": "it's enough , just fix the elevator . because it looks very old . [S] [A] [O]",
+        "target": "[S] positive [A] elevator [O] fix",
         "element_order": "sao"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17605,
         "task_elements": "aos",
-        "input": "there are no accommodation facilities to the airport , and the place is far from the main road . [A] [O] [S]",
-        "target": "[A] accommodation facilities to the airport [O] no [S] negative",
+        "input": "it's just that the room is too small . [A] [O] [S]",
+        "target": "[A] room [O] too small [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17606,
         "task_elements": "aos",
-        "input": "there are no accommodation facilities to the airport , and the place is far from the main road . [A] [S] [O]",
-        "target": "[A] accommodation facilities to the airport [S] negative [O] no",
+        "input": "it's just that the room is too small . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] too small",
         "element_order": "aso"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17607,
         "task_elements": "aos",
-        "input": "there are no accommodation facilities to the airport , and the place is far from the main road . [O] [A] [S]",
-        "target": "[O] no [A] accommodation facilities to the airport [S] negative",
+        "input": "it's just that the room is too small . [O] [A] [S]",
+        "target": "[O] too small [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17608,
         "task_elements": "aos",
-        "input": "there are no accommodation facilities to the airport , and the place is far from the main road . [O] [S] [A]",
-        "target": "[O] no [S] negative [A] accommodation facilities to the airport",
+        "input": "it's just that the room is too small . [O] [S] [A]",
+        "target": "[O] too small [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17609,
         "task_elements": "aos",
-        "input": "there are no accommodation facilities to the airport , and the place is far from the main road . [S] [A] [O]",
-        "target": "[S] negative [A] accommodation facilities to the airport [O] no",
+        "input": "it's just that the room is too small . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] too small",
         "element_order": "sao"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17610,
         "task_elements": "aos",
-        "input": "i like the atmosphere of the inn . [A] [O] [S]",
-        "target": "[A] atmosphere of the inn [O] like [S] positive",
+        "input": "the wifi connection needs to be improved . [A] [O] [S]",
+        "target": "[A] wifi [O] needs to be improved [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17611,
         "task_elements": "aos",
-        "input": "i like the atmosphere of the inn . [A] [S] [O]",
-        "target": "[A] atmosphere of the inn [S] positive [O] like",
+        "input": "the wifi connection needs to be improved . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] needs to be improved",
         "element_order": "aso"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17612,
         "task_elements": "aos",
-        "input": "i like the atmosphere of the inn . [O] [A] [S]",
-        "target": "[O] like [A] atmosphere of the inn [S] positive",
+        "input": "the wifi connection needs to be improved . [O] [A] [S]",
+        "target": "[O] needs to be improved [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17613,
         "task_elements": "aos",
-        "input": "i like the atmosphere of the inn . [O] [S] [A]",
-        "target": "[O] like [S] positive [A] atmosphere of the inn",
+        "input": "the wifi connection needs to be improved . [O] [S] [A]",
+        "target": "[O] needs to be improved [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17614,
         "task_elements": "aos",
-        "input": "i like the atmosphere of the inn . [S] [A] [O]",
-        "target": "[S] positive [A] atmosphere of the inn [O] like",
+        "input": "the wifi connection needs to be improved . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] needs to be improved",
         "element_order": "sao"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17615,
         "task_elements": "aos",
-        "input": "the bedsheets are dirty . [A] [O] [S]",
-        "target": "[A] bedsheets [O] dirty [S] negative",
+        "input": "the service needs to be improved to be even better . [A] [O] [S]",
+        "target": "[A] service [O] needs to be improved [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17616,
         "task_elements": "aos",
-        "input": "the bedsheets are dirty . [A] [S] [O]",
-        "target": "[A] bedsheets [S] negative [O] dirty",
+        "input": "the service needs to be improved to be even better . [A] [S] [O]",
+        "target": "[A] service [S] positive [O] needs to be improved",
         "element_order": "aso"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17617,
         "task_elements": "aos",
-        "input": "the bedsheets are dirty . [O] [A] [S]",
-        "target": "[O] dirty [A] bedsheets [S] negative",
+        "input": "the service needs to be improved to be even better . [O] [A] [S]",
+        "target": "[O] needs to be improved [A] service [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17618,
         "task_elements": "aos",
-        "input": "the bedsheets are dirty . [O] [S] [A]",
-        "target": "[O] dirty [S] negative [A] bedsheets",
+        "input": "the service needs to be improved to be even better . [O] [S] [A]",
+        "target": "[O] needs to be improved [S] positive [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17619,
         "task_elements": "aos",
-        "input": "the bedsheets are dirty . [S] [A] [O]",
-        "target": "[S] negative [A] bedsheets [O] dirty",
+        "input": "the service needs to be improved to be even better . [S] [A] [O]",
+        "target": "[S] positive [A] service [O] needs to be improved",
         "element_order": "sao"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17620,
         "task_elements": "aos",
-        "input": "the breakfast was quite delicious . [A] [O] [S]",
-        "target": "[A] breakfast [O] quite delicious [S] positive",
+        "input": "the ac in room 515 wasn't cold enough . [A] [O] [S]",
+        "target": "[A] ac [O] wasn't cold enough [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17621,
         "task_elements": "aos",
-        "input": "the breakfast was quite delicious . [A] [S] [O]",
-        "target": "[A] breakfast [S] positive [O] quite delicious",
+        "input": "the ac in room 515 wasn't cold enough . [A] [S] [O]",
+        "target": "[A] ac [S] negative [O] wasn't cold enough",
         "element_order": "aso"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17622,
         "task_elements": "aos",
-        "input": "the breakfast was quite delicious . [O] [A] [S]",
-        "target": "[O] quite delicious [A] breakfast [S] positive",
+        "input": "the ac in room 515 wasn't cold enough . [O] [A] [S]",
+        "target": "[O] wasn't cold enough [A] ac [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17623,
         "task_elements": "aos",
-        "input": "the breakfast was quite delicious . [O] [S] [A]",
-        "target": "[O] quite delicious [S] positive [A] breakfast",
+        "input": "the ac in room 515 wasn't cold enough . [O] [S] [A]",
+        "target": "[O] wasn't cold enough [S] negative [A] ac",
         "element_order": "osa"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17624,
         "task_elements": "aos",
-        "input": "the breakfast was quite delicious . [S] [A] [O]",
-        "target": "[S] positive [A] breakfast [O] quite delicious",
+        "input": "the ac in room 515 wasn't cold enough . [S] [A] [O]",
+        "target": "[S] negative [A] ac [O] wasn't cold enough",
         "element_order": "sao"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17625,
         "task_elements": "aos",
-        "input": "the ac in room 515 wasn't cold enough . [A] [O] [S]",
-        "target": "[A] ac [O] wasn't cold enough [S] negative",
+        "input": "the friendliness of the hotel staff should be improved . [A] [O] [S]",
+        "target": "[A] friendliness of the hotel staff [O] should be improved [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17626,
         "task_elements": "aos",
-        "input": "the ac in room 515 wasn't cold enough . [A] [S] [O]",
-        "target": "[A] ac [S] negative [O] wasn't cold enough",
+        "input": "the friendliness of the hotel staff should be improved . [A] [S] [O]",
+        "target": "[A] friendliness of the hotel staff [S] positive [O] should be improved",
         "element_order": "aso"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17627,
         "task_elements": "aos",
-        "input": "the ac in room 515 wasn't cold enough . [O] [A] [S]",
-        "target": "[O] wasn't cold enough [A] ac [S] negative",
+        "input": "the friendliness of the hotel staff should be improved . [O] [A] [S]",
+        "target": "[O] should be improved [A] friendliness of the hotel staff [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17628,
         "task_elements": "aos",
-        "input": "the ac in room 515 wasn't cold enough . [O] [S] [A]",
-        "target": "[O] wasn't cold enough [S] negative [A] ac",
+        "input": "the friendliness of the hotel staff should be improved . [O] [S] [A]",
+        "target": "[O] should be improved [S] positive [A] friendliness of the hotel staff",
         "element_order": "osa"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17629,
         "task_elements": "aos",
-        "input": "the ac in room 515 wasn't cold enough . [S] [A] [O]",
-        "target": "[S] negative [A] ac [O] wasn't cold enough",
+        "input": "the friendliness of the hotel staff should be improved . [S] [A] [O]",
+        "target": "[S] positive [A] friendliness of the hotel staff [O] should be improved",
         "element_order": "sao"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17630,
         "task_elements": "aos",
-        "input": "the friendliness of the hotel staff should be improved . [A] [O] [S]",
-        "target": "[A] friendliness of the hotel staff [O] should be improved [S] positive",
+        "input": "alhamdulillah , the service is good . [A] [O] [S]",
+        "target": "[A] service [O] good [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17631,
         "task_elements": "aos",
-        "input": "the friendliness of the hotel staff should be improved . [A] [S] [O]",
-        "target": "[A] friendliness of the hotel staff [S] positive [O] should be improved",
+        "input": "alhamdulillah , the service is good . [A] [S] [O]",
+        "target": "[A] service [S] positive [O] good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17632,
         "task_elements": "aos",
-        "input": "the friendliness of the hotel staff should be improved . [O] [A] [S]",
-        "target": "[O] should be improved [A] friendliness of the hotel staff [S] positive",
+        "input": "alhamdulillah , the service is good . [O] [A] [S]",
+        "target": "[O] good [A] service [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17633,
         "task_elements": "aos",
-        "input": "the friendliness of the hotel staff should be improved . [O] [S] [A]",
-        "target": "[O] should be improved [S] positive [A] friendliness of the hotel staff",
+        "input": "alhamdulillah , the service is good . [O] [S] [A]",
+        "target": "[O] good [S] positive [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17634,
         "task_elements": "aos",
-        "input": "the friendliness of the hotel staff should be improved . [S] [A] [O]",
-        "target": "[S] positive [A] friendliness of the hotel staff [O] should be improved",
+        "input": "alhamdulillah , the service is good . [S] [A] [O]",
+        "target": "[S] positive [A] service [O] good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17635,
         "task_elements": "aos",
-        "input": "affordable price . love airly . [A] [O] [S]",
-        "target": "[A] price [O] affordable [S] positive",
+        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [A] [O] [S]",
+        "target": "[A] management [O] not good [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17636,
         "task_elements": "aos",
-        "input": "affordable price . love airly . [A] [S] [O]",
-        "target": "[A] price [S] positive [O] affordable",
+        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [A] [S] [O]",
+        "target": "[A] management [S] negative [O] not good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17637,
         "task_elements": "aos",
-        "input": "affordable price . love airly . [O] [A] [S]",
-        "target": "[O] affordable [A] price [S] positive",
+        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [O] [A] [S]",
+        "target": "[O] not good [A] management [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17638,
         "task_elements": "aos",
-        "input": "affordable price . love airly . [O] [S] [A]",
-        "target": "[O] affordable [S] positive [A] price",
+        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [O] [S] [A]",
+        "target": "[O] not good [S] negative [A] management",
         "element_order": "osa"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17639,
         "task_elements": "aos",
-        "input": "affordable price . love airly . [S] [A] [O]",
-        "target": "[S] positive [A] price [O] affordable",
+        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [S] [A] [O]",
+        "target": "[S] negative [A] management [O] not good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17640,
         "task_elements": "aos",
-        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [A] [O] [S]",
-        "target": "[A] management [O] not good [S] negative",
+        "input": "it's memorable because it's close to everywhere , but what disappointed me was that the room was dirty . [A] [O] [S]",
+        "target": "[A] room [O] dirty [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17641,
         "task_elements": "aos",
-        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [A] [S] [O]",
-        "target": "[A] management [S] negative [O] not good",
+        "input": "it's memorable because it's close to everywhere , but what disappointed me was that the room was dirty . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] dirty",
         "element_order": "aso"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17642,
         "task_elements": "aos",
-        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [O] [A] [S]",
-        "target": "[O] not good [A] management [S] negative",
+        "input": "it's memorable because it's close to everywhere , but what disappointed me was that the room was dirty . [O] [A] [S]",
+        "target": "[O] dirty [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17643,
         "task_elements": "aos",
-        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [O] [S] [A]",
-        "target": "[O] not good [S] negative [A] management",
+        "input": "it's memorable because it's close to everywhere , but what disappointed me was that the room was dirty . [O] [S] [A]",
+        "target": "[O] dirty [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17644,
         "task_elements": "aos",
-        "input": "the management is not good because i already bought a room , but my room was even sold to another party . [S] [A] [O]",
-        "target": "[S] negative [A] management [O] not good",
+        "input": "it's memorable because it's close to everywhere , but what disappointed me was that the room was dirty . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] dirty",
         "element_order": "sao"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17645,
         "task_elements": "aos",
-        "input": "there is no exhaust fan in the bathroom . [A] [O] [S]",
-        "target": "[A] exhaust fan [O] no [S] negative",
+        "input": "the receptionist is always available , but i don't know if there's an sop for curtains from airy . [A] [O] [S]",
+        "target": "[A] receptionist [O] always available [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17646,
         "task_elements": "aos",
-        "input": "there is no exhaust fan in the bathroom . [A] [S] [O]",
-        "target": "[A] exhaust fan [S] negative [O] no",
+        "input": "the receptionist is always available , but i don't know if there's an sop for curtains from airy . [A] [S] [O]",
+        "target": "[A] receptionist [S] positive [O] always available",
         "element_order": "aso"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17647,
         "task_elements": "aos",
-        "input": "there is no exhaust fan in the bathroom . [O] [A] [S]",
-        "target": "[O] no [A] exhaust fan [S] negative",
+        "input": "the receptionist is always available , but i don't know if there's an sop for curtains from airy . [O] [A] [S]",
+        "target": "[O] always available [A] receptionist [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17648,
         "task_elements": "aos",
-        "input": "there is no exhaust fan in the bathroom . [O] [S] [A]",
-        "target": "[O] no [S] negative [A] exhaust fan",
+        "input": "the receptionist is always available , but i don't know if there's an sop for curtains from airy . [O] [S] [A]",
+        "target": "[O] always available [S] positive [A] receptionist",
         "element_order": "osa"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17649,
         "task_elements": "aos",
-        "input": "there is no exhaust fan in the bathroom . [S] [A] [O]",
-        "target": "[S] negative [A] exhaust fan [O] no",
+        "input": "the receptionist is always available , but i don't know if there's an sop for curtains from airy . [S] [A] [O]",
+        "target": "[S] positive [A] receptionist [O] always available",
         "element_order": "sao"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17650,
         "task_elements": "aos",
-        "input": "the hotel is less comfortable . [A] [O] [S]",
-        "target": "[A] hotel [O] less comfortable [S] negative",
+        "input": "unfortunately , breakfast has been removed by airy . [A] [O] [S]",
+        "target": "[A] breakfast [O] removed [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17651,
         "task_elements": "aos",
-        "input": "the hotel is less comfortable . [A] [S] [O]",
-        "target": "[A] hotel [S] negative [O] less comfortable",
+        "input": "unfortunately , breakfast has been removed by airy . [A] [S] [O]",
+        "target": "[A] breakfast [S] negative [O] removed",
         "element_order": "aso"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17652,
         "task_elements": "aos",
-        "input": "the hotel is less comfortable . [O] [A] [S]",
-        "target": "[O] less comfortable [A] hotel [S] negative",
+        "input": "unfortunately , breakfast has been removed by airy . [O] [A] [S]",
+        "target": "[O] removed [A] breakfast [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17653,
         "task_elements": "aos",
-        "input": "the hotel is less comfortable . [O] [S] [A]",
-        "target": "[O] less comfortable [S] negative [A] hotel",
+        "input": "unfortunately , breakfast has been removed by airy . [O] [S] [A]",
+        "target": "[O] removed [S] negative [A] breakfast",
         "element_order": "osa"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17654,
         "task_elements": "aos",
-        "input": "the hotel is less comfortable . [S] [A] [O]",
-        "target": "[S] negative [A] hotel [O] less comfortable",
+        "input": "unfortunately , breakfast has been removed by airy . [S] [A] [O]",
+        "target": "[S] negative [A] breakfast [O] removed",
         "element_order": "sao"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17655,
         "task_elements": "aos",
-        "input": "continue this good service . [A] [O] [S]",
-        "target": "[A] service [O] good [S] positive",
+        "input": "the parking area is quite spacious . [A] [O] [S]",
+        "target": "[A] parking area [O] quite spacious [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17656,
         "task_elements": "aos",
-        "input": "continue this good service . [A] [S] [O]",
-        "target": "[A] service [S] positive [O] good",
+        "input": "the parking area is quite spacious . [A] [S] [O]",
+        "target": "[A] parking area [S] positive [O] quite spacious",
         "element_order": "aso"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17657,
         "task_elements": "aos",
-        "input": "continue this good service . [O] [A] [S]",
-        "target": "[O] good [A] service [S] positive",
+        "input": "the parking area is quite spacious . [O] [A] [S]",
+        "target": "[O] quite spacious [A] parking area [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17658,
         "task_elements": "aos",
-        "input": "continue this good service . [O] [S] [A]",
-        "target": "[O] good [S] positive [A] service",
+        "input": "the parking area is quite spacious . [O] [S] [A]",
+        "target": "[O] quite spacious [S] positive [A] parking area",
         "element_order": "osa"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17659,
         "task_elements": "aos",
-        "input": "continue this good service . [S] [A] [O]",
-        "target": "[S] positive [A] service [O] good",
+        "input": "the parking area is quite spacious . [S] [A] [O]",
+        "target": "[S] positive [A] parking area [O] quite spacious",
         "element_order": "sao"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17660,
         "task_elements": "aos",
-        "input": "the bathroom wasn't clean enough . [A] [O] [S]",
-        "target": "[A] bathroom [O] wasn't clean enough [S] negative",
+        "input": "why is breakfast eliminated , hufft . [A] [O] [S]",
+        "target": "[A] breakfast [O] eliminated [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17661,
         "task_elements": "aos",
-        "input": "the bathroom wasn't clean enough . [A] [S] [O]",
-        "target": "[A] bathroom [S] negative [O] wasn't clean enough",
+        "input": "why is breakfast eliminated , hufft . [A] [S] [O]",
+        "target": "[A] breakfast [S] negative [O] eliminated",
         "element_order": "aso"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17662,
         "task_elements": "aos",
-        "input": "the bathroom wasn't clean enough . [O] [A] [S]",
-        "target": "[O] wasn't clean enough [A] bathroom [S] negative",
+        "input": "why is breakfast eliminated , hufft . [O] [A] [S]",
+        "target": "[O] eliminated [A] breakfast [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17663,
         "task_elements": "aos",
-        "input": "the bathroom wasn't clean enough . [O] [S] [A]",
-        "target": "[O] wasn't clean enough [S] negative [A] bathroom",
+        "input": "why is breakfast eliminated , hufft . [O] [S] [A]",
+        "target": "[O] eliminated [S] negative [A] breakfast",
         "element_order": "osa"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17664,
         "task_elements": "aos",
-        "input": "the bathroom wasn't clean enough . [S] [A] [O]",
-        "target": "[S] negative [A] bathroom [O] wasn't clean enough",
+        "input": "why is breakfast eliminated , hufft . [S] [A] [O]",
+        "target": "[S] negative [A] breakfast [O] eliminated",
         "element_order": "sao"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17665,
         "task_elements": "aos",
-        "input": "why is breakfast eliminated , hufft . [A] [O] [S]",
-        "target": "[A] breakfast [O] eliminated [S] negative",
+        "input": "the room is just average . [A] [O] [S]",
+        "target": "[A] room [O] average [S] neutral",
         "element_order": "aos"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17666,
         "task_elements": "aos",
-        "input": "why is breakfast eliminated , hufft . [A] [S] [O]",
-        "target": "[A] breakfast [S] negative [O] eliminated",
+        "input": "the room is just average . [A] [S] [O]",
+        "target": "[A] room [S] neutral [O] average",
         "element_order": "aso"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17667,
         "task_elements": "aos",
-        "input": "why is breakfast eliminated , hufft . [O] [A] [S]",
-        "target": "[O] eliminated [A] breakfast [S] negative",
+        "input": "the room is just average . [O] [A] [S]",
+        "target": "[O] average [A] room [S] neutral",
         "element_order": "oas"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17668,
         "task_elements": "aos",
-        "input": "why is breakfast eliminated , hufft . [O] [S] [A]",
-        "target": "[O] eliminated [S] negative [A] breakfast",
+        "input": "the room is just average . [O] [S] [A]",
+        "target": "[O] average [S] neutral [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17669,
         "task_elements": "aos",
-        "input": "why is breakfast eliminated , hufft . [S] [A] [O]",
-        "target": "[S] negative [A] breakfast [O] eliminated",
+        "input": "the room is just average . [S] [A] [O]",
+        "target": "[S] neutral [A] room [O] average",
         "element_order": "sao"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17670,
         "task_elements": "aos",
-        "input": "the quality is adequate . [A] [O] [S]",
-        "target": "[A] quality [O] adequate [S] positive",
+        "input": "when i wanted to have soto madura for breakfast , there was no meat at all . the broth was also too salty , but luckily there were other breakfast options . [A] [O] [S]",
+        "target": "[A] breakfast [O] no meat [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17671,
         "task_elements": "aos",
-        "input": "the quality is adequate . [A] [S] [O]",
-        "target": "[A] quality [S] positive [O] adequate",
+        "input": "when i wanted to have soto madura for breakfast , there was no meat at all . the broth was also too salty , but luckily there were other breakfast options . [A] [S] [O]",
+        "target": "[A] breakfast [S] negative [O] no meat",
         "element_order": "aso"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17672,
         "task_elements": "aos",
-        "input": "the quality is adequate . [O] [A] [S]",
-        "target": "[O] adequate [A] quality [S] positive",
+        "input": "when i wanted to have soto madura for breakfast , there was no meat at all . the broth was also too salty , but luckily there were other breakfast options . [O] [A] [S]",
+        "target": "[O] no meat [A] breakfast [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17673,
         "task_elements": "aos",
-        "input": "the quality is adequate . [O] [S] [A]",
-        "target": "[O] adequate [S] positive [A] quality",
+        "input": "when i wanted to have soto madura for breakfast , there was no meat at all . the broth was also too salty , but luckily there were other breakfast options . [O] [S] [A]",
+        "target": "[O] no meat [S] negative [A] breakfast",
         "element_order": "osa"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17674,
         "task_elements": "aos",
-        "input": "the quality is adequate . [S] [A] [O]",
-        "target": "[S] positive [A] quality [O] adequate",
+        "input": "when i wanted to have soto madura for breakfast , there was no meat at all . the broth was also too salty , but luckily there were other breakfast options . [S] [A] [O]",
+        "target": "[S] negative [A] breakfast [O] no meat",
         "element_order": "sao"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17675,
         "task_elements": "aos",
-        "input": "the ac is cold . for that price , it's okay . [A] [O] [S]",
-        "target": "[A] ac [O] cold [S] positive",
+        "input": "there were no hangers at all , making it difficult to hang clothes in the closet . [A] [O] [S]",
+        "target": "[A] hangers [O] no [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17676,
         "task_elements": "aos",
-        "input": "the ac is cold . for that price , it's okay . [A] [S] [O]",
-        "target": "[A] ac [S] positive [O] cold",
+        "input": "there were no hangers at all , making it difficult to hang clothes in the closet . [A] [S] [O]",
+        "target": "[A] hangers [S] negative [O] no",
         "element_order": "aso"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17677,
         "task_elements": "aos",
-        "input": "the ac is cold . for that price , it's okay . [O] [A] [S]",
-        "target": "[O] cold [A] ac [S] positive",
+        "input": "there were no hangers at all , making it difficult to hang clothes in the closet . [O] [A] [S]",
+        "target": "[O] no [A] hangers [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17678,
         "task_elements": "aos",
-        "input": "the ac is cold . for that price , it's okay . [O] [S] [A]",
-        "target": "[O] cold [S] positive [A] ac",
+        "input": "there were no hangers at all , making it difficult to hang clothes in the closet . [O] [S] [A]",
+        "target": "[O] no [S] negative [A] hangers",
         "element_order": "osa"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17679,
         "task_elements": "aos",
-        "input": "the ac is cold . for that price , it's okay . [S] [A] [O]",
-        "target": "[S] positive [A] ac [O] cold",
+        "input": "there were no hangers at all , making it difficult to hang clothes in the closet . [S] [A] [O]",
+        "target": "[S] negative [A] hangers [O] no",
         "element_order": "sao"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17680,
         "task_elements": "aos",
-        "input": "there is no signpost directing to this hotel ! [A] [O] [S]",
-        "target": "[A] signpost [O] no [S] negative",
+        "input": "overall it's good , suitable for a stopover . the smoking area is in the parking lot , and it's troublesome to go up and down from the 2nd floor if you want to smoke . where's the tv remote ? [A] [O] [S]",
+        "target": "[A] overall [O] good [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17681,
         "task_elements": "aos",
-        "input": "there is no signpost directing to this hotel ! [A] [S] [O]",
-        "target": "[A] signpost [S] negative [O] no",
+        "input": "overall it's good , suitable for a stopover . the smoking area is in the parking lot , and it's troublesome to go up and down from the 2nd floor if you want to smoke . where's the tv remote ? [A] [S] [O]",
+        "target": "[A] overall [S] positive [O] good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17682,
         "task_elements": "aos",
-        "input": "there is no signpost directing to this hotel ! [O] [A] [S]",
-        "target": "[O] no [A] signpost [S] negative",
+        "input": "overall it's good , suitable for a stopover . the smoking area is in the parking lot , and it's troublesome to go up and down from the 2nd floor if you want to smoke . where's the tv remote ? [O] [A] [S]",
+        "target": "[O] good [A] overall [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17683,
         "task_elements": "aos",
-        "input": "there is no signpost directing to this hotel ! [O] [S] [A]",
-        "target": "[O] no [S] negative [A] signpost",
+        "input": "overall it's good , suitable for a stopover . the smoking area is in the parking lot , and it's troublesome to go up and down from the 2nd floor if you want to smoke . where's the tv remote ? [O] [S] [A]",
+        "target": "[O] good [S] positive [A] overall",
         "element_order": "osa"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17684,
         "task_elements": "aos",
-        "input": "there is no signpost directing to this hotel ! [S] [A] [O]",
-        "target": "[S] negative [A] signpost [O] no",
+        "input": "overall it's good , suitable for a stopover . the smoking area is in the parking lot , and it's troublesome to go up and down from the 2nd floor if you want to smoke . where's the tv remote ? [S] [A] [O]",
+        "target": "[S] positive [A] overall [O] good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17685,
         "task_elements": "aos",
-        "input": "the place is also very clean . [A] [O] [S]",
-        "target": "[A] place [O] very clean [S] positive",
+        "input": "the ac is not cold . [A] [O] [S]",
+        "target": "[A] ac [O] not cold [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17686,
         "task_elements": "aos",
-        "input": "the place is also very clean . [A] [S] [O]",
-        "target": "[A] place [S] positive [O] very clean",
+        "input": "the ac is not cold . [A] [S] [O]",
+        "target": "[A] ac [S] negative [O] not cold",
         "element_order": "aso"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17687,
         "task_elements": "aos",
-        "input": "the place is also very clean . [O] [A] [S]",
-        "target": "[O] very clean [A] place [S] positive",
+        "input": "the ac is not cold . [O] [A] [S]",
+        "target": "[O] not cold [A] ac [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17688,
         "task_elements": "aos",
-        "input": "the place is also very clean . [O] [S] [A]",
-        "target": "[O] very clean [S] positive [A] place",
+        "input": "the ac is not cold . [O] [S] [A]",
+        "target": "[O] not cold [S] negative [A] ac",
         "element_order": "osa"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17689,
         "task_elements": "aos",
-        "input": "the place is also very clean . [S] [A] [O]",
-        "target": "[S] positive [A] place [O] very clean",
+        "input": "the ac is not cold . [S] [A] [O]",
+        "target": "[S] negative [A] ac [O] not cold",
         "element_order": "sao"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17690,
         "task_elements": "aos",
-        "input": "this is the worst staying experience i've ever had . [A] [O] [S]",
-        "target": "[A] experience [O] worst [S] negative",
+        "input": "the wifi is bad . [A] [O] [S]",
+        "target": "[A] wifi [O] bad [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17691,
         "task_elements": "aos",
-        "input": "this is the worst staying experience i've ever had . [A] [S] [O]",
-        "target": "[A] experience [S] negative [O] worst",
+        "input": "the wifi is bad . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] bad",
         "element_order": "aso"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17692,
         "task_elements": "aos",
-        "input": "this is the worst staying experience i've ever had . [O] [A] [S]",
-        "target": "[O] worst [A] experience [S] negative",
+        "input": "the wifi is bad . [O] [A] [S]",
+        "target": "[O] bad [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17693,
         "task_elements": "aos",
-        "input": "this is the worst staying experience i've ever had . [O] [S] [A]",
-        "target": "[O] worst [S] negative [A] experience",
+        "input": "the wifi is bad . [O] [S] [A]",
+        "target": "[O] bad [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17694,
         "task_elements": "aos",
-        "input": "this is the worst staying experience i've ever had . [S] [A] [O]",
-        "target": "[S] negative [A] experience [O] worst",
+        "input": "the wifi is bad . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] bad",
         "element_order": "sao"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17695,
         "task_elements": "aos",
-        "input": "the water didn't flow in the morning . [A] [O] [S]",
-        "target": "[A] water [O] didn't flow [S] negative",
+        "input": "the service is fast . i was there when there were renovations . [A] [O] [S]",
+        "target": "[A] service [O] fast [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17696,
         "task_elements": "aos",
-        "input": "the water didn't flow in the morning . [A] [S] [O]",
-        "target": "[A] water [S] negative [O] didn't flow",
+        "input": "the service is fast . i was there when there were renovations . [A] [S] [O]",
+        "target": "[A] service [S] positive [O] fast",
         "element_order": "aso"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17697,
         "task_elements": "aos",
-        "input": "the water didn't flow in the morning . [O] [A] [S]",
-        "target": "[O] didn't flow [A] water [S] negative",
+        "input": "the service is fast . i was there when there were renovations . [O] [A] [S]",
+        "target": "[O] fast [A] service [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17698,
         "task_elements": "aos",
-        "input": "the water didn't flow in the morning . [O] [S] [A]",
-        "target": "[O] didn't flow [S] negative [A] water",
+        "input": "the service is fast . i was there when there were renovations . [O] [S] [A]",
+        "target": "[O] fast [S] positive [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17699,
         "task_elements": "aos",
-        "input": "the water didn't flow in the morning . [S] [A] [O]",
-        "target": "[S] negative [A] water [O] didn't flow",
+        "input": "the service is fast . i was there when there were renovations . [S] [A] [O]",
+        "target": "[S] positive [A] service [O] fast",
         "element_order": "sao"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17700,
         "task_elements": "aos",
-        "input": "suitable for those of you who want to backpack . the place is comfortable . close to the station , easy to go anywhere . [A] [O] [S]",
-        "target": "[A] place [O] comfortable [S] positive",
+        "input": "the receptionists need improvement to be more friendly and polite , thank you . [A] [O] [S]",
+        "target": "[A] receptionists [O] need improvement [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17701,
         "task_elements": "aos",
-        "input": "suitable for those of you who want to backpack . the place is comfortable . close to the station , easy to go anywhere . [A] [S] [O]",
-        "target": "[A] place [S] positive [O] comfortable",
+        "input": "the receptionists need improvement to be more friendly and polite , thank you . [A] [S] [O]",
+        "target": "[A] receptionists [S] negative [O] need improvement",
         "element_order": "aso"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17702,
         "task_elements": "aos",
-        "input": "suitable for those of you who want to backpack . the place is comfortable . close to the station , easy to go anywhere . [O] [A] [S]",
-        "target": "[O] comfortable [A] place [S] positive",
+        "input": "the receptionists need improvement to be more friendly and polite , thank you . [O] [A] [S]",
+        "target": "[O] need improvement [A] receptionists [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17703,
         "task_elements": "aos",
-        "input": "suitable for those of you who want to backpack . the place is comfortable . close to the station , easy to go anywhere . [O] [S] [A]",
-        "target": "[O] comfortable [S] positive [A] place",
+        "input": "the receptionists need improvement to be more friendly and polite , thank you . [O] [S] [A]",
+        "target": "[O] need improvement [S] negative [A] receptionists",
         "element_order": "osa"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17704,
         "task_elements": "aos",
-        "input": "suitable for those of you who want to backpack . the place is comfortable . close to the station , easy to go anywhere . [S] [A] [O]",
-        "target": "[S] positive [A] place [O] comfortable",
+        "input": "the receptionists need improvement to be more friendly and polite , thank you . [S] [A] [O]",
+        "target": "[S] negative [A] receptionists [O] need improvement",
         "element_order": "sao"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17705,
         "task_elements": "aos",
-        "input": "it will be a favorite place with affordable prices . just a suggestion for airy : the price on the app is more expensive than paying directly at the location . the difference isn't small , it's around 100 , 000 . please make the price cheaper if booking via the app , so people are more enthusiastic about using airy . [A] [O] [S]",
-        "target": "[A] price [O] affordable [S] positive",
+        "input": "there is a swimming pool that makes children happy . [A] [O] [S]",
+        "target": "[A] swimming pool [O] there is [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17706,
         "task_elements": "aos",
-        "input": "it will be a favorite place with affordable prices . just a suggestion for airy : the price on the app is more expensive than paying directly at the location . the difference isn't small , it's around 100 , 000 . please make the price cheaper if booking via the app , so people are more enthusiastic about using airy . [A] [S] [O]",
-        "target": "[A] price [S] positive [O] affordable",
+        "input": "there is a swimming pool that makes children happy . [A] [S] [O]",
+        "target": "[A] swimming pool [S] positive [O] there is",
         "element_order": "aso"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17707,
         "task_elements": "aos",
-        "input": "it will be a favorite place with affordable prices . just a suggestion for airy : the price on the app is more expensive than paying directly at the location . the difference isn't small , it's around 100 , 000 . please make the price cheaper if booking via the app , so people are more enthusiastic about using airy . [O] [A] [S]",
-        "target": "[O] affordable [A] price [S] positive",
+        "input": "there is a swimming pool that makes children happy . [O] [A] [S]",
+        "target": "[O] there is [A] swimming pool [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17708,
         "task_elements": "aos",
-        "input": "it will be a favorite place with affordable prices . just a suggestion for airy : the price on the app is more expensive than paying directly at the location . the difference isn't small , it's around 100 , 000 . please make the price cheaper if booking via the app , so people are more enthusiastic about using airy . [O] [S] [A]",
-        "target": "[O] affordable [S] positive [A] price",
+        "input": "there is a swimming pool that makes children happy . [O] [S] [A]",
+        "target": "[O] there is [S] positive [A] swimming pool",
         "element_order": "osa"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17709,
         "task_elements": "aos",
-        "input": "it will be a favorite place with affordable prices . just a suggestion for airy : the price on the app is more expensive than paying directly at the location . the difference isn't small , it's around 100 , 000 . please make the price cheaper if booking via the app , so people are more enthusiastic about using airy . [S] [A] [O]",
-        "target": "[S] positive [A] price [O] affordable",
+        "input": "there is a swimming pool that makes children happy . [S] [A] [O]",
+        "target": "[S] positive [A] swimming pool [O] there is",
         "element_order": "sao"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17710,
         "task_elements": "aos",
-        "input": "everything is good . unfortunately , you can't order food . [A] [O] [S]",
-        "target": "[A] everything [O] good [S] positive",
+        "input": "alhamdulillah , the place is comfortable . [A] [O] [S]",
+        "target": "[A] place [O] comfortable [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17711,
         "task_elements": "aos",
-        "input": "everything is good . unfortunately , you can't order food . [A] [S] [O]",
-        "target": "[A] everything [S] positive [O] good",
+        "input": "alhamdulillah , the place is comfortable . [A] [S] [O]",
+        "target": "[A] place [S] positive [O] comfortable",
         "element_order": "aso"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17712,
         "task_elements": "aos",
-        "input": "everything is good . unfortunately , you can't order food . [O] [A] [S]",
-        "target": "[O] good [A] everything [S] positive",
+        "input": "alhamdulillah , the place is comfortable . [O] [A] [S]",
+        "target": "[O] comfortable [A] place [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17713,
         "task_elements": "aos",
-        "input": "everything is good . unfortunately , you can't order food . [O] [S] [A]",
-        "target": "[O] good [S] positive [A] everything",
+        "input": "alhamdulillah , the place is comfortable . [O] [S] [A]",
+        "target": "[O] comfortable [S] positive [A] place",
         "element_order": "osa"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17714,
         "task_elements": "aos",
-        "input": "everything is good . unfortunately , you can't order food . [S] [A] [O]",
-        "target": "[S] positive [A] everything [O] good",
+        "input": "alhamdulillah , the place is comfortable . [S] [A] [O]",
+        "target": "[S] positive [A] place [O] comfortable",
         "element_order": "sao"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17715,
         "task_elements": "aos",
-        "input": "alhamdulillah , the place is comfortable . [A] [O] [S]",
-        "target": "[A] place [O] comfortable [S] positive",
+        "input": "the tv provided was bigger compared to other airy rooms in its class ( eco , and same price ) . [A] [O] [S]",
+        "target": "[A] tv [O] bigger [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17716,
         "task_elements": "aos",
-        "input": "alhamdulillah , the place is comfortable . [A] [S] [O]",
-        "target": "[A] place [S] positive [O] comfortable",
+        "input": "the tv provided was bigger compared to other airy rooms in its class ( eco , and same price ) . [A] [S] [O]",
+        "target": "[A] tv [S] positive [O] bigger",
         "element_order": "aso"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17717,
         "task_elements": "aos",
-        "input": "alhamdulillah , the place is comfortable . [O] [A] [S]",
-        "target": "[O] comfortable [A] place [S] positive",
+        "input": "the tv provided was bigger compared to other airy rooms in its class ( eco , and same price ) . [O] [A] [S]",
+        "target": "[O] bigger [A] tv [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17718,
         "task_elements": "aos",
-        "input": "alhamdulillah , the place is comfortable . [O] [S] [A]",
-        "target": "[O] comfortable [S] positive [A] place",
+        "input": "the tv provided was bigger compared to other airy rooms in its class ( eco , and same price ) . [O] [S] [A]",
+        "target": "[O] bigger [S] positive [A] tv",
         "element_order": "osa"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17719,
         "task_elements": "aos",
-        "input": "alhamdulillah , the place is comfortable . [S] [A] [O]",
-        "target": "[S] positive [A] place [O] comfortable",
+        "input": "the tv provided was bigger compared to other airy rooms in its class ( eco , and same price ) . [S] [A] [O]",
+        "target": "[S] positive [A] tv [O] bigger",
         "element_order": "sao"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17720,
         "task_elements": "aos",
-        "input": "please fix the ac drainpipe that goes to the bathroom ; it's very unpleasant to have water droplets from the ac drain hose falling on you while you're relieving yourself . [A] [O] [S]",
-        "target": "[A] ac drainpipe [O] please fix [S] negative",
+        "input": "served well . early check-in is free of charge . [A] [O] [S]",
+        "target": "[A] served [O] well [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17721,
         "task_elements": "aos",
-        "input": "please fix the ac drainpipe that goes to the bathroom ; it's very unpleasant to have water droplets from the ac drain hose falling on you while you're relieving yourself . [A] [S] [O]",
-        "target": "[A] ac drainpipe [S] negative [O] please fix",
+        "input": "served well . early check-in is free of charge . [A] [S] [O]",
+        "target": "[A] served [S] positive [O] well",
         "element_order": "aso"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17722,
         "task_elements": "aos",
-        "input": "please fix the ac drainpipe that goes to the bathroom ; it's very unpleasant to have water droplets from the ac drain hose falling on you while you're relieving yourself . [O] [A] [S]",
-        "target": "[O] please fix [A] ac drainpipe [S] negative",
+        "input": "served well . early check-in is free of charge . [O] [A] [S]",
+        "target": "[O] well [A] served [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17723,
         "task_elements": "aos",
-        "input": "please fix the ac drainpipe that goes to the bathroom ; it's very unpleasant to have water droplets from the ac drain hose falling on you while you're relieving yourself . [O] [S] [A]",
-        "target": "[O] please fix [S] negative [A] ac drainpipe",
+        "input": "served well . early check-in is free of charge . [O] [S] [A]",
+        "target": "[O] well [S] positive [A] served",
         "element_order": "osa"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17724,
         "task_elements": "aos",
-        "input": "please fix the ac drainpipe that goes to the bathroom ; it's very unpleasant to have water droplets from the ac drain hose falling on you while you're relieving yourself . [S] [A] [O]",
-        "target": "[S] negative [A] ac drainpipe [O] please fix",
+        "input": "served well . early check-in is free of charge . [S] [A] [O]",
+        "target": "[S] positive [A] served [O] well",
         "element_order": "sao"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17725,
         "task_elements": "aos",
-        "input": "the service is okay . [A] [O] [S]",
-        "target": "[A] service [O] okay [S] positive",
+        "input": "please fix the wifi for comfort . [A] [O] [S]",
+        "target": "[A] wifi [O] please fix [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17726,
         "task_elements": "aos",
-        "input": "the service is okay . [A] [S] [O]",
-        "target": "[A] service [S] positive [O] okay",
+        "input": "please fix the wifi for comfort . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] please fix",
         "element_order": "aso"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17727,
         "task_elements": "aos",
-        "input": "the service is okay . [O] [A] [S]",
-        "target": "[O] okay [A] service [S] positive",
+        "input": "please fix the wifi for comfort . [O] [A] [S]",
+        "target": "[O] please fix [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17728,
         "task_elements": "aos",
-        "input": "the service is okay . [O] [S] [A]",
-        "target": "[O] okay [S] positive [A] service",
+        "input": "please fix the wifi for comfort . [O] [S] [A]",
+        "target": "[O] please fix [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17729,
         "task_elements": "aos",
-        "input": "the service is okay . [S] [A] [O]",
-        "target": "[S] positive [A] service [O] okay",
+        "input": "please fix the wifi for comfort . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] please fix",
         "element_order": "sao"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17730,
         "task_elements": "aos",
-        "input": "the hotel is quite clean and close to ciwalk . [A] [O] [S]",
-        "target": "[A] hotel [O] quite clean [S] positive",
+        "input": "the hot water isn't working . [A] [O] [S]",
+        "target": "[A] hot water [O] isn't working [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17731,
         "task_elements": "aos",
-        "input": "the hotel is quite clean and close to ciwalk . [A] [S] [O]",
-        "target": "[A] hotel [S] positive [O] quite clean",
+        "input": "the hot water isn't working . [A] [S] [O]",
+        "target": "[A] hot water [S] negative [O] isn't working",
         "element_order": "aso"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17732,
         "task_elements": "aos",
-        "input": "the hotel is quite clean and close to ciwalk . [O] [A] [S]",
-        "target": "[O] quite clean [A] hotel [S] positive",
+        "input": "the hot water isn't working . [O] [A] [S]",
+        "target": "[O] isn't working [A] hot water [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17733,
         "task_elements": "aos",
-        "input": "the hotel is quite clean and close to ciwalk . [O] [S] [A]",
-        "target": "[O] quite clean [S] positive [A] hotel",
+        "input": "the hot water isn't working . [O] [S] [A]",
+        "target": "[O] isn't working [S] negative [A] hot water",
         "element_order": "osa"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17734,
         "task_elements": "aos",
-        "input": "the hotel is quite clean and close to ciwalk . [S] [A] [O]",
-        "target": "[S] positive [A] hotel [O] quite clean",
+        "input": "the hot water isn't working . [S] [A] [O]",
+        "target": "[S] negative [A] hot water [O] isn't working",
         "element_order": "sao"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17735,
         "task_elements": "aos",
-        "input": "the hot water isn't working . [A] [O] [S]",
-        "target": "[A] hot water [O] isn't working [S] negative",
+        "input": "it's a shame the bathroom smells . [A] [O] [S]",
+        "target": "[A] bathroom [O] smells [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17736,
         "task_elements": "aos",
-        "input": "the hot water isn't working . [A] [S] [O]",
-        "target": "[A] hot water [S] negative [O] isn't working",
+        "input": "it's a shame the bathroom smells . [A] [S] [O]",
+        "target": "[A] bathroom [S] positive [O] smells",
         "element_order": "aso"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17737,
         "task_elements": "aos",
-        "input": "the hot water isn't working . [O] [A] [S]",
-        "target": "[O] isn't working [A] hot water [S] negative",
+        "input": "it's a shame the bathroom smells . [O] [A] [S]",
+        "target": "[O] smells [A] bathroom [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17738,
         "task_elements": "aos",
-        "input": "the hot water isn't working . [O] [S] [A]",
-        "target": "[O] isn't working [S] negative [A] hot water",
+        "input": "it's a shame the bathroom smells . [O] [S] [A]",
+        "target": "[O] smells [S] positive [A] bathroom",
         "element_order": "osa"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17739,
         "task_elements": "aos",
-        "input": "the hot water isn't working . [S] [A] [O]",
-        "target": "[S] negative [A] hot water [O] isn't working",
+        "input": "it's a shame the bathroom smells . [S] [A] [O]",
+        "target": "[S] positive [A] bathroom [O] smells",
         "element_order": "sao"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17740,
         "task_elements": "aos",
-        "input": "well , everything is good . [A] [O] [S]",
-        "target": "[A] everything [O] good [S] positive",
+        "input": "everything is okay . [A] [O] [S]",
+        "target": "[A] everything [O] okay [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17741,
         "task_elements": "aos",
-        "input": "well , everything is good . [A] [S] [O]",
-        "target": "[A] everything [S] positive [O] good",
+        "input": "everything is okay . [A] [S] [O]",
+        "target": "[A] everything [S] positive [O] okay",
         "element_order": "aso"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17742,
         "task_elements": "aos",
-        "input": "well , everything is good . [O] [A] [S]",
-        "target": "[O] good [A] everything [S] positive",
+        "input": "everything is okay . [O] [A] [S]",
+        "target": "[O] okay [A] everything [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17743,
         "task_elements": "aos",
-        "input": "well , everything is good . [O] [S] [A]",
-        "target": "[O] good [S] positive [A] everything",
+        "input": "everything is okay . [O] [S] [A]",
+        "target": "[O] okay [S] positive [A] everything",
         "element_order": "osa"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17744,
         "task_elements": "aos",
-        "input": "well , everything is good . [S] [A] [O]",
-        "target": "[S] positive [A] everything [O] good",
+        "input": "everything is okay . [S] [A] [O]",
+        "target": "[S] positive [A] everything [O] okay",
         "element_order": "sao"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17745,
         "task_elements": "aos",
-        "input": "everything is okay . [A] [O] [S]",
-        "target": "[A] everything [O] okay [S] positive",
+        "input": "the lamp is not bright enough . [A] [O] [S]",
+        "target": "[A] lamp [O] not bright enough [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17746,
         "task_elements": "aos",
-        "input": "everything is okay . [A] [S] [O]",
-        "target": "[A] everything [S] positive [O] okay",
+        "input": "the lamp is not bright enough . [A] [S] [O]",
+        "target": "[A] lamp [S] negative [O] not bright enough",
         "element_order": "aso"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17747,
         "task_elements": "aos",
-        "input": "everything is okay . [O] [A] [S]",
-        "target": "[O] okay [A] everything [S] positive",
+        "input": "the lamp is not bright enough . [O] [A] [S]",
+        "target": "[O] not bright enough [A] lamp [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17748,
         "task_elements": "aos",
-        "input": "everything is okay . [O] [S] [A]",
-        "target": "[O] okay [S] positive [A] everything",
+        "input": "the lamp is not bright enough . [O] [S] [A]",
+        "target": "[O] not bright enough [S] negative [A] lamp",
         "element_order": "osa"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17749,
         "task_elements": "aos",
-        "input": "everything is okay . [S] [A] [O]",
-        "target": "[S] positive [A] everything [O] okay",
+        "input": "the lamp is not bright enough . [S] [A] [O]",
+        "target": "[S] negative [A] lamp [O] not bright enough",
         "element_order": "sao"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17750,
         "task_elements": "aos",
-        "input": "the receptionist wasn't friendly enough . [A] [O] [S]",
-        "target": "[A] receptionist [O] wasn't friendly enough [S] negative",
+        "input": "actually , in terms of service , airy is really great . however , the problem is that you cannot get a refund or reschedule . since my return to cirebon was postponed to october 12th , the room was forfeited . hopefully , in the future , it will be possible to reschedule . thank you . [A] [O] [S]",
+        "target": "[A] service [O] really great [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17751,
         "task_elements": "aos",
-        "input": "the receptionist wasn't friendly enough . [A] [S] [O]",
-        "target": "[A] receptionist [S] negative [O] wasn't friendly enough",
+        "input": "actually , in terms of service , airy is really great . however , the problem is that you cannot get a refund or reschedule . since my return to cirebon was postponed to october 12th , the room was forfeited . hopefully , in the future , it will be possible to reschedule . thank you . [A] [S] [O]",
+        "target": "[A] service [S] positive [O] really great",
         "element_order": "aso"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17752,
         "task_elements": "aos",
-        "input": "the receptionist wasn't friendly enough . [O] [A] [S]",
-        "target": "[O] wasn't friendly enough [A] receptionist [S] negative",
+        "input": "actually , in terms of service , airy is really great . however , the problem is that you cannot get a refund or reschedule . since my return to cirebon was postponed to october 12th , the room was forfeited . hopefully , in the future , it will be possible to reschedule . thank you . [O] [A] [S]",
+        "target": "[O] really great [A] service [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17753,
         "task_elements": "aos",
-        "input": "the receptionist wasn't friendly enough . [O] [S] [A]",
-        "target": "[O] wasn't friendly enough [S] negative [A] receptionist",
+        "input": "actually , in terms of service , airy is really great . however , the problem is that you cannot get a refund or reschedule . since my return to cirebon was postponed to october 12th , the room was forfeited . hopefully , in the future , it will be possible to reschedule . thank you . [O] [S] [A]",
+        "target": "[O] really great [S] positive [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17754,
         "task_elements": "aos",
-        "input": "the receptionist wasn't friendly enough . [S] [A] [O]",
-        "target": "[S] negative [A] receptionist [O] wasn't friendly enough",
+        "input": "actually , in terms of service , airy is really great . however , the problem is that you cannot get a refund or reschedule . since my return to cirebon was postponed to october 12th , the room was forfeited . hopefully , in the future , it will be possible to reschedule . thank you . [S] [A] [O]",
+        "target": "[S] positive [A] service [O] really great",
         "element_order": "sao"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17755,
         "task_elements": "aos",
-        "input": "the check-in process is not complicated . [A] [O] [S]",
-        "target": "[A] check-in process [O] not complicated [S] positive",
+        "input": "the room is very good for the price . [A] [O] [S]",
+        "target": "[A] room [O] very good [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17756,
         "task_elements": "aos",
-        "input": "the check-in process is not complicated . [A] [S] [O]",
-        "target": "[A] check-in process [S] positive [O] not complicated",
+        "input": "the room is very good for the price . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] very good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17757,
         "task_elements": "aos",
-        "input": "the check-in process is not complicated . [O] [A] [S]",
-        "target": "[O] not complicated [A] check-in process [S] positive",
+        "input": "the room is very good for the price . [O] [A] [S]",
+        "target": "[O] very good [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17758,
         "task_elements": "aos",
-        "input": "the check-in process is not complicated . [O] [S] [A]",
-        "target": "[O] not complicated [S] positive [A] check-in process",
+        "input": "the room is very good for the price . [O] [S] [A]",
+        "target": "[O] very good [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17759,
         "task_elements": "aos",
-        "input": "the check-in process is not complicated . [S] [A] [O]",
-        "target": "[S] positive [A] check-in process [O] not complicated",
+        "input": "the room is very good for the price . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] very good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17760,
         "task_elements": "aos",
-        "input": "the cleanliness is lacking ; there's dust and hair on the bed . [A] [O] [S]",
-        "target": "[A] cleanliness [O] lacking [S] negative",
+        "input": "the room was excellent . [A] [O] [S]",
+        "target": "[A] room [O] excellent [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17761,
         "task_elements": "aos",
-        "input": "the cleanliness is lacking ; there's dust and hair on the bed . [A] [S] [O]",
-        "target": "[A] cleanliness [S] negative [O] lacking",
+        "input": "the room was excellent . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] excellent",
         "element_order": "aso"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17762,
         "task_elements": "aos",
-        "input": "the cleanliness is lacking ; there's dust and hair on the bed . [O] [A] [S]",
-        "target": "[O] lacking [A] cleanliness [S] negative",
+        "input": "the room was excellent . [O] [A] [S]",
+        "target": "[O] excellent [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17763,
         "task_elements": "aos",
-        "input": "the cleanliness is lacking ; there's dust and hair on the bed . [O] [S] [A]",
-        "target": "[O] lacking [S] negative [A] cleanliness",
+        "input": "the room was excellent . [O] [S] [A]",
+        "target": "[O] excellent [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17764,
         "task_elements": "aos",
-        "input": "the cleanliness is lacking ; there's dust and hair on the bed . [S] [A] [O]",
-        "target": "[S] negative [A] cleanliness [O] lacking",
+        "input": "the room was excellent . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] excellent",
         "element_order": "sao"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17765,
         "task_elements": "aos",
-        "input": "the hot water didn't work . [A] [O] [S]",
-        "target": "[A] hot water [O] didn't work [S] negative",
+        "input": "the airy room is the best i've ever visited . [A] [O] [S]",
+        "target": "[A] airy room [O] best [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17766,
         "task_elements": "aos",
-        "input": "the hot water didn't work . [A] [S] [O]",
-        "target": "[A] hot water [S] negative [O] didn't work",
+        "input": "the airy room is the best i've ever visited . [A] [S] [O]",
+        "target": "[A] airy room [S] positive [O] best",
         "element_order": "aso"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17767,
         "task_elements": "aos",
-        "input": "the hot water didn't work . [O] [A] [S]",
-        "target": "[O] didn't work [A] hot water [S] negative",
+        "input": "the airy room is the best i've ever visited . [O] [A] [S]",
+        "target": "[O] best [A] airy room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17768,
         "task_elements": "aos",
-        "input": "the hot water didn't work . [O] [S] [A]",
-        "target": "[O] didn't work [S] negative [A] hot water",
+        "input": "the airy room is the best i've ever visited . [O] [S] [A]",
+        "target": "[O] best [S] positive [A] airy room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17769,
         "task_elements": "aos",
-        "input": "the hot water didn't work . [S] [A] [O]",
-        "target": "[S] negative [A] hot water [O] didn't work",
+        "input": "the airy room is the best i've ever visited . [S] [A] [O]",
+        "target": "[S] positive [A] airy room [O] best",
         "element_order": "sao"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17770,
         "task_elements": "aos",
-        "input": "a great hotel , keep it up . [A] [O] [S]",
-        "target": "[A] hotel [O] great [S] positive",
+        "input": "the parking is unsafe . my helmet was stolen , and the parking took no responsibility . [A] [O] [S]",
+        "target": "[A] parking [O] unsafe [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17771,
         "task_elements": "aos",
-        "input": "a great hotel , keep it up . [A] [S] [O]",
-        "target": "[A] hotel [S] positive [O] great",
+        "input": "the parking is unsafe . my helmet was stolen , and the parking took no responsibility . [A] [S] [O]",
+        "target": "[A] parking [S] negative [O] unsafe",
         "element_order": "aso"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17772,
         "task_elements": "aos",
-        "input": "a great hotel , keep it up . [O] [A] [S]",
-        "target": "[O] great [A] hotel [S] positive",
+        "input": "the parking is unsafe . my helmet was stolen , and the parking took no responsibility . [O] [A] [S]",
+        "target": "[O] unsafe [A] parking [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17773,
         "task_elements": "aos",
-        "input": "a great hotel , keep it up . [O] [S] [A]",
-        "target": "[O] great [S] positive [A] hotel",
+        "input": "the parking is unsafe . my helmet was stolen , and the parking took no responsibility . [O] [S] [A]",
+        "target": "[O] unsafe [S] negative [A] parking",
         "element_order": "osa"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17774,
         "task_elements": "aos",
-        "input": "a great hotel , keep it up . [S] [A] [O]",
-        "target": "[S] positive [A] hotel [O] great",
+        "input": "the parking is unsafe . my helmet was stolen , and the parking took no responsibility . [S] [A] [O]",
+        "target": "[S] negative [A] parking [O] unsafe",
         "element_order": "sao"
     },
     {
@@ -2243,1760 +2243,1760 @@
         "sentence_id": 3556,
         "instance_id": 17780,
         "task_elements": "aos",
-        "input": "overall , it's good . [A] [O] [S]",
-        "target": "[A] overall [O] good [S] negative",
+        "input": "the bathroom faucet is broken , and i've already reported it . no repairs have been done . [A] [O] [S]",
+        "target": "[A] bathroom faucet [O] broken [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17781,
         "task_elements": "aos",
-        "input": "overall , it's good . [A] [S] [O]",
-        "target": "[A] overall [S] negative [O] good",
+        "input": "the bathroom faucet is broken , and i've already reported it . no repairs have been done . [A] [S] [O]",
+        "target": "[A] bathroom faucet [S] negative [O] broken",
         "element_order": "aso"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17782,
         "task_elements": "aos",
-        "input": "overall , it's good . [O] [A] [S]",
-        "target": "[O] good [A] overall [S] negative",
+        "input": "the bathroom faucet is broken , and i've already reported it . no repairs have been done . [O] [A] [S]",
+        "target": "[O] broken [A] bathroom faucet [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17783,
         "task_elements": "aos",
-        "input": "overall , it's good . [O] [S] [A]",
-        "target": "[O] good [S] negative [A] overall",
+        "input": "the bathroom faucet is broken , and i've already reported it . no repairs have been done . [O] [S] [A]",
+        "target": "[O] broken [S] negative [A] bathroom faucet",
         "element_order": "osa"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17784,
         "task_elements": "aos",
-        "input": "overall , it's good . [S] [A] [O]",
-        "target": "[S] negative [A] overall [O] good",
+        "input": "the bathroom faucet is broken , and i've already reported it . no repairs have been done . [S] [A] [O]",
+        "target": "[S] negative [A] bathroom faucet [O] broken",
         "element_order": "sao"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17785,
         "task_elements": "aos",
-        "input": "the gate is locked ; only monthly residents have a key . so , if you come home late , it's a bit of a hassle ; you have to wake people up . but the atmosphere is quiet . [A] [O] [S]",
-        "target": "[A] atmosphere [O] quiet [S] positive",
+        "input": "the mattress was dusty . [A] [O] [S]",
+        "target": "[A] mattress [O] dusty [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17786,
         "task_elements": "aos",
-        "input": "the gate is locked ; only monthly residents have a key . so , if you come home late , it's a bit of a hassle ; you have to wake people up . but the atmosphere is quiet . [A] [S] [O]",
-        "target": "[A] atmosphere [S] positive [O] quiet",
+        "input": "the mattress was dusty . [A] [S] [O]",
+        "target": "[A] mattress [S] negative [O] dusty",
         "element_order": "aso"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17787,
         "task_elements": "aos",
-        "input": "the gate is locked ; only monthly residents have a key . so , if you come home late , it's a bit of a hassle ; you have to wake people up . but the atmosphere is quiet . [O] [A] [S]",
-        "target": "[O] quiet [A] atmosphere [S] positive",
+        "input": "the mattress was dusty . [O] [A] [S]",
+        "target": "[O] dusty [A] mattress [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17788,
         "task_elements": "aos",
-        "input": "the gate is locked ; only monthly residents have a key . so , if you come home late , it's a bit of a hassle ; you have to wake people up . but the atmosphere is quiet . [O] [S] [A]",
-        "target": "[O] quiet [S] positive [A] atmosphere",
+        "input": "the mattress was dusty . [O] [S] [A]",
+        "target": "[O] dusty [S] negative [A] mattress",
         "element_order": "osa"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17789,
         "task_elements": "aos",
-        "input": "the gate is locked ; only monthly residents have a key . so , if you come home late , it's a bit of a hassle ; you have to wake people up . but the atmosphere is quiet . [S] [A] [O]",
-        "target": "[S] positive [A] atmosphere [O] quiet",
+        "input": "the mattress was dusty . [S] [A] [O]",
+        "target": "[S] negative [A] mattress [O] dusty",
         "element_order": "sao"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17790,
         "task_elements": "aos",
-        "input": "the water in the bathroom often shuts off . [A] [O] [S]",
-        "target": "[A] water [O] often shuts off [S] negative",
+        "input": "i booked a room for 3 people , but the amenities were only provided for 2 people . the wifi didn't work . they provided soft drinks without clarifying whether they were free or not . i assumed they were free , but it turned out i had to pay . [A] [O] [S]",
+        "target": "[A] wifi [O] didn't work [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17791,
         "task_elements": "aos",
-        "input": "the water in the bathroom often shuts off . [A] [S] [O]",
-        "target": "[A] water [S] negative [O] often shuts off",
+        "input": "i booked a room for 3 people , but the amenities were only provided for 2 people . the wifi didn't work . they provided soft drinks without clarifying whether they were free or not . i assumed they were free , but it turned out i had to pay . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] didn't work",
         "element_order": "aso"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17792,
         "task_elements": "aos",
-        "input": "the water in the bathroom often shuts off . [O] [A] [S]",
-        "target": "[O] often shuts off [A] water [S] negative",
+        "input": "i booked a room for 3 people , but the amenities were only provided for 2 people . the wifi didn't work . they provided soft drinks without clarifying whether they were free or not . i assumed they were free , but it turned out i had to pay . [O] [A] [S]",
+        "target": "[O] didn't work [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17793,
         "task_elements": "aos",
-        "input": "the water in the bathroom often shuts off . [O] [S] [A]",
-        "target": "[O] often shuts off [S] negative [A] water",
+        "input": "i booked a room for 3 people , but the amenities were only provided for 2 people . the wifi didn't work . they provided soft drinks without clarifying whether they were free or not . i assumed they were free , but it turned out i had to pay . [O] [S] [A]",
+        "target": "[O] didn't work [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17794,
         "task_elements": "aos",
-        "input": "the water in the bathroom often shuts off . [S] [A] [O]",
-        "target": "[S] negative [A] water [O] often shuts off",
+        "input": "i booked a room for 3 people , but the amenities were only provided for 2 people . the wifi didn't work . they provided soft drinks without clarifying whether they were free or not . i assumed they were free , but it turned out i had to pay . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] didn't work",
         "element_order": "sao"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17795,
         "task_elements": "aos",
-        "input": "a comfortable place to stay . [A] [O] [S]",
-        "target": "[A] place [O] comfortable [S] positive",
+        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [A] [O] [S]",
+        "target": "[A] room [O] a bit cramped [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17796,
         "task_elements": "aos",
-        "input": "a comfortable place to stay . [A] [S] [O]",
-        "target": "[A] place [S] positive [O] comfortable",
+        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] a bit cramped",
         "element_order": "aso"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17797,
         "task_elements": "aos",
-        "input": "a comfortable place to stay . [O] [A] [S]",
-        "target": "[O] comfortable [A] place [S] positive",
+        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [O] [A] [S]",
+        "target": "[O] a bit cramped [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17798,
         "task_elements": "aos",
-        "input": "a comfortable place to stay . [O] [S] [A]",
-        "target": "[O] comfortable [S] positive [A] place",
+        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [O] [S] [A]",
+        "target": "[O] a bit cramped [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17799,
         "task_elements": "aos",
-        "input": "a comfortable place to stay . [S] [A] [O]",
-        "target": "[S] positive [A] place [O] comfortable",
+        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] a bit cramped",
         "element_order": "sao"
     },
     {
         "sentence_id": 3560,
         "instance_id": 17800,
         "task_elements": "aos",
-        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [A] [O] [S]",
-        "target": "[A] room [O] a bit cramped [S] negative",
+        "input": "there is a bit of peeling on the wall paint . [A] [O] [S]",
+        "target": "[A] wall paint [O] peeling [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3560,
         "instance_id": 17801,
         "task_elements": "aos",
-        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [A] [S] [O]",
-        "target": "[A] room [S] negative [O] a bit cramped",
+        "input": "there is a bit of peeling on the wall paint . [A] [S] [O]",
+        "target": "[A] wall paint [S] negative [O] peeling",
         "element_order": "aso"
     },
     {
         "sentence_id": 3560,
         "instance_id": 17802,
         "task_elements": "aos",
-        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [O] [A] [S]",
-        "target": "[O] a bit cramped [A] room [S] negative",
+        "input": "there is a bit of peeling on the wall paint . [O] [A] [S]",
+        "target": "[O] peeling [A] wall paint [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3560,
         "instance_id": 17803,
         "task_elements": "aos",
-        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [O] [S] [A]",
-        "target": "[O] a bit cramped [S] negative [A] room",
+        "input": "there is a bit of peeling on the wall paint . [O] [S] [A]",
+        "target": "[O] peeling [S] negative [A] wall paint",
         "element_order": "osa"
     },
     {
         "sentence_id": 3560,
         "instance_id": 17804,
         "task_elements": "aos",
-        "input": "the room is a bit cramped , making it a bit difficult to pray because i'm tall , so it's a bit difficult . the signal is also a bit weak inside the room . [S] [A] [O]",
-        "target": "[S] negative [A] room [O] a bit cramped",
+        "input": "there is a bit of peeling on the wall paint . [S] [A] [O]",
+        "target": "[S] negative [A] wall paint [O] peeling",
         "element_order": "sao"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17805,
         "task_elements": "aos",
-        "input": "the service is bad . [A] [O] [S]",
-        "target": "[A] service [O] bad [S] negative",
+        "input": "the room is clean , only the reviews about the presence of small animals in room 307 have not been followed up on . [A] [O] [S]",
+        "target": "[A] room [O] clean [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17806,
         "task_elements": "aos",
-        "input": "the service is bad . [A] [S] [O]",
-        "target": "[A] service [S] negative [O] bad",
+        "input": "the room is clean , only the reviews about the presence of small animals in room 307 have not been followed up on . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] clean",
         "element_order": "aso"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17807,
         "task_elements": "aos",
-        "input": "the service is bad . [O] [A] [S]",
-        "target": "[O] bad [A] service [S] negative",
+        "input": "the room is clean , only the reviews about the presence of small animals in room 307 have not been followed up on . [O] [A] [S]",
+        "target": "[O] clean [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17808,
         "task_elements": "aos",
-        "input": "the service is bad . [O] [S] [A]",
-        "target": "[O] bad [S] negative [A] service",
+        "input": "the room is clean , only the reviews about the presence of small animals in room 307 have not been followed up on . [O] [S] [A]",
+        "target": "[O] clean [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17809,
         "task_elements": "aos",
-        "input": "the service is bad . [S] [A] [O]",
-        "target": "[S] negative [A] service [O] bad",
+        "input": "the room is clean , only the reviews about the presence of small animals in room 307 have not been followed up on . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] clean",
         "element_order": "sao"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17810,
         "task_elements": "aos",
-        "input": "everything is okay , but the photos of the room are different from the actual room . [A] [O] [S]",
-        "target": "[A] everything [O] okay [S] positive",
+        "input": "the receptionist was nice , i feel comfortable staying here . thank you for the airy promo . [A] [O] [S]",
+        "target": "[A] receptionist [O] nice [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17811,
         "task_elements": "aos",
-        "input": "everything is okay , but the photos of the room are different from the actual room . [A] [S] [O]",
-        "target": "[A] everything [S] positive [O] okay",
+        "input": "the receptionist was nice , i feel comfortable staying here . thank you for the airy promo . [A] [S] [O]",
+        "target": "[A] receptionist [S] positive [O] nice",
         "element_order": "aso"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17812,
         "task_elements": "aos",
-        "input": "everything is okay , but the photos of the room are different from the actual room . [O] [A] [S]",
-        "target": "[O] okay [A] everything [S] positive",
+        "input": "the receptionist was nice , i feel comfortable staying here . thank you for the airy promo . [O] [A] [S]",
+        "target": "[O] nice [A] receptionist [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17813,
         "task_elements": "aos",
-        "input": "everything is okay , but the photos of the room are different from the actual room . [O] [S] [A]",
-        "target": "[O] okay [S] positive [A] everything",
+        "input": "the receptionist was nice , i feel comfortable staying here . thank you for the airy promo . [O] [S] [A]",
+        "target": "[O] nice [S] positive [A] receptionist",
         "element_order": "osa"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17814,
         "task_elements": "aos",
-        "input": "everything is okay , but the photos of the room are different from the actual room . [S] [A] [O]",
-        "target": "[S] positive [A] everything [O] okay",
+        "input": "the receptionist was nice , i feel comfortable staying here . thank you for the airy promo . [S] [A] [O]",
+        "target": "[S] positive [A] receptionist [O] nice",
         "element_order": "sao"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17815,
         "task_elements": "aos",
-        "input": "the owners are kind . [A] [O] [S]",
-        "target": "[A] owners [O] kind [S] positive",
+        "input": "the breakfast was mediocre . [A] [O] [S]",
+        "target": "[A] breakfast [O] mediocre [S] neutral",
         "element_order": "aos"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17816,
         "task_elements": "aos",
-        "input": "the owners are kind . [A] [S] [O]",
-        "target": "[A] owners [S] positive [O] kind",
+        "input": "the breakfast was mediocre . [A] [S] [O]",
+        "target": "[A] breakfast [S] neutral [O] mediocre",
         "element_order": "aso"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17817,
         "task_elements": "aos",
-        "input": "the owners are kind . [O] [A] [S]",
-        "target": "[O] kind [A] owners [S] positive",
+        "input": "the breakfast was mediocre . [O] [A] [S]",
+        "target": "[O] mediocre [A] breakfast [S] neutral",
         "element_order": "oas"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17818,
         "task_elements": "aos",
-        "input": "the owners are kind . [O] [S] [A]",
-        "target": "[O] kind [S] positive [A] owners",
+        "input": "the breakfast was mediocre . [O] [S] [A]",
+        "target": "[O] mediocre [S] neutral [A] breakfast",
         "element_order": "osa"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17819,
         "task_elements": "aos",
-        "input": "the owners are kind . [S] [A] [O]",
-        "target": "[S] positive [A] owners [O] kind",
+        "input": "the breakfast was mediocre . [S] [A] [O]",
+        "target": "[S] neutral [A] breakfast [O] mediocre",
         "element_order": "sao"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17820,
         "task_elements": "aos",
-        "input": "the staff are friendly . [A] [O] [S]",
-        "target": "[A] staff [O] friendly [S] positive",
+        "input": "the service is not good . [A] [O] [S]",
+        "target": "[A] service [O] not good [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17821,
         "task_elements": "aos",
-        "input": "the staff are friendly . [A] [S] [O]",
-        "target": "[A] staff [S] positive [O] friendly",
+        "input": "the service is not good . [A] [S] [O]",
+        "target": "[A] service [S] negative [O] not good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17822,
         "task_elements": "aos",
-        "input": "the staff are friendly . [O] [A] [S]",
-        "target": "[O] friendly [A] staff [S] positive",
+        "input": "the service is not good . [O] [A] [S]",
+        "target": "[O] not good [A] service [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17823,
         "task_elements": "aos",
-        "input": "the staff are friendly . [O] [S] [A]",
-        "target": "[O] friendly [S] positive [A] staff",
+        "input": "the service is not good . [O] [S] [A]",
+        "target": "[O] not good [S] negative [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17824,
         "task_elements": "aos",
-        "input": "the staff are friendly . [S] [A] [O]",
-        "target": "[S] positive [A] staff [O] friendly",
+        "input": "the service is not good . [S] [A] [O]",
+        "target": "[S] negative [A] service [O] not good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17825,
         "task_elements": "aos",
-        "input": "the bathroom is not clean enough . [A] [O] [S]",
-        "target": "[A] bathroom [O] not clean enough [S] negative",
+        "input": "the place is okay . [A] [O] [S]",
+        "target": "[A] place [O] okay [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17826,
         "task_elements": "aos",
-        "input": "the bathroom is not clean enough . [A] [S] [O]",
-        "target": "[A] bathroom [S] negative [O] not clean enough",
+        "input": "the place is okay . [A] [S] [O]",
+        "target": "[A] place [S] positive [O] okay",
         "element_order": "aso"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17827,
         "task_elements": "aos",
-        "input": "the bathroom is not clean enough . [O] [A] [S]",
-        "target": "[O] not clean enough [A] bathroom [S] negative",
+        "input": "the place is okay . [O] [A] [S]",
+        "target": "[O] okay [A] place [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17828,
         "task_elements": "aos",
-        "input": "the bathroom is not clean enough . [O] [S] [A]",
-        "target": "[O] not clean enough [S] negative [A] bathroom",
+        "input": "the place is okay . [O] [S] [A]",
+        "target": "[O] okay [S] positive [A] place",
         "element_order": "osa"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17829,
         "task_elements": "aos",
-        "input": "the bathroom is not clean enough . [S] [A] [O]",
-        "target": "[S] negative [A] bathroom [O] not clean enough",
+        "input": "the place is okay . [S] [A] [O]",
+        "target": "[S] positive [A] place [O] okay",
         "element_order": "sao"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17830,
         "task_elements": "aos",
-        "input": "very satisfied with the available facilities ( : . [A] [O] [S]",
-        "target": "[A] facilities [O] very satisfied [S] positive",
+        "input": "it's like a boarding house . it is still new though . overall , everything is good . it's just very concerning when entering the room . my phone immediately had no signal . in a big city that already has 4g , but even 2g signal is not available . how can we not communicate with family ? if you want to make a call , you have to run to the terrace to get a signal . [A] [O] [S]",
+        "target": "[A] overall [O] good [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17831,
         "task_elements": "aos",
-        "input": "very satisfied with the available facilities ( : . [A] [S] [O]",
-        "target": "[A] facilities [S] positive [O] very satisfied",
+        "input": "it's like a boarding house . it is still new though . overall , everything is good . it's just very concerning when entering the room . my phone immediately had no signal . in a big city that already has 4g , but even 2g signal is not available . how can we not communicate with family ? if you want to make a call , you have to run to the terrace to get a signal . [A] [S] [O]",
+        "target": "[A] overall [S] positive [O] good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17832,
         "task_elements": "aos",
-        "input": "very satisfied with the available facilities ( : . [O] [A] [S]",
-        "target": "[O] very satisfied [A] facilities [S] positive",
+        "input": "it's like a boarding house . it is still new though . overall , everything is good . it's just very concerning when entering the room . my phone immediately had no signal . in a big city that already has 4g , but even 2g signal is not available . how can we not communicate with family ? if you want to make a call , you have to run to the terrace to get a signal . [O] [A] [S]",
+        "target": "[O] good [A] overall [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17833,
         "task_elements": "aos",
-        "input": "very satisfied with the available facilities ( : . [O] [S] [A]",
-        "target": "[O] very satisfied [S] positive [A] facilities",
+        "input": "it's like a boarding house . it is still new though . overall , everything is good . it's just very concerning when entering the room . my phone immediately had no signal . in a big city that already has 4g , but even 2g signal is not available . how can we not communicate with family ? if you want to make a call , you have to run to the terrace to get a signal . [O] [S] [A]",
+        "target": "[O] good [S] positive [A] overall",
         "element_order": "osa"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17834,
         "task_elements": "aos",
-        "input": "very satisfied with the available facilities ( : . [S] [A] [O]",
-        "target": "[S] positive [A] facilities [O] very satisfied",
+        "input": "it's like a boarding house . it is still new though . overall , everything is good . it's just very concerning when entering the room . my phone immediately had no signal . in a big city that already has 4g , but even 2g signal is not available . how can we not communicate with family ? if you want to make a call , you have to run to the terrace to get a signal . [S] [A] [O]",
+        "target": "[S] positive [A] overall [O] good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17835,
         "task_elements": "aos",
-        "input": "the breakfast was just porridge and bread . [A] [O] [S]",
-        "target": "[A] breakfast [O] just porridge and bread [S] negative",
+        "input": "the room is too cramped . [A] [O] [S]",
+        "target": "[A] room [O] too cramped [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17836,
         "task_elements": "aos",
-        "input": "the breakfast was just porridge and bread . [A] [S] [O]",
-        "target": "[A] breakfast [S] negative [O] just porridge and bread",
+        "input": "the room is too cramped . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] too cramped",
         "element_order": "aso"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17837,
         "task_elements": "aos",
-        "input": "the breakfast was just porridge and bread . [O] [A] [S]",
-        "target": "[O] just porridge and bread [A] breakfast [S] negative",
+        "input": "the room is too cramped . [O] [A] [S]",
+        "target": "[O] too cramped [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17838,
         "task_elements": "aos",
-        "input": "the breakfast was just porridge and bread . [O] [S] [A]",
-        "target": "[O] just porridge and bread [S] negative [A] breakfast",
+        "input": "the room is too cramped . [O] [S] [A]",
+        "target": "[O] too cramped [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17839,
         "task_elements": "aos",
-        "input": "the breakfast was just porridge and bread . [S] [A] [O]",
-        "target": "[S] negative [A] breakfast [O] just porridge and bread",
+        "input": "the room is too cramped . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] too cramped",
         "element_order": "sao"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17840,
         "task_elements": "aos",
-        "input": "the lobby's room design is too deep ; if possible , the wall partition should be opened so that the view outside can be seen . [A] [O] [S]",
-        "target": "[A] lobby's room design [O] too deep [S] negative",
+        "input": "just average , the room wasn't clean enough . [A] [O] [S]",
+        "target": "[A] room [O] wasn't clean enough [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17841,
         "task_elements": "aos",
-        "input": "the lobby's room design is too deep ; if possible , the wall partition should be opened so that the view outside can be seen . [A] [S] [O]",
-        "target": "[A] lobby's room design [S] negative [O] too deep",
+        "input": "just average , the room wasn't clean enough . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] wasn't clean enough",
         "element_order": "aso"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17842,
         "task_elements": "aos",
-        "input": "the lobby's room design is too deep ; if possible , the wall partition should be opened so that the view outside can be seen . [O] [A] [S]",
-        "target": "[O] too deep [A] lobby's room design [S] negative",
+        "input": "just average , the room wasn't clean enough . [O] [A] [S]",
+        "target": "[O] wasn't clean enough [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17843,
         "task_elements": "aos",
-        "input": "the lobby's room design is too deep ; if possible , the wall partition should be opened so that the view outside can be seen . [O] [S] [A]",
-        "target": "[O] too deep [S] negative [A] lobby's room design",
+        "input": "just average , the room wasn't clean enough . [O] [S] [A]",
+        "target": "[O] wasn't clean enough [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17844,
         "task_elements": "aos",
-        "input": "the lobby's room design is too deep ; if possible , the wall partition should be opened so that the view outside can be seen . [S] [A] [O]",
-        "target": "[S] negative [A] lobby's room design [O] too deep",
+        "input": "just average , the room wasn't clean enough . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] wasn't clean enough",
         "element_order": "sao"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17845,
         "task_elements": "aos",
-        "input": "only the towel was dirty . [A] [O] [S]",
-        "target": "[A] towel [O] dirty [S] negative",
+        "input": "the room is very budget in jakarta . [A] [O] [S]",
+        "target": "[A] room [O] very budget [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17846,
         "task_elements": "aos",
-        "input": "only the towel was dirty . [A] [S] [O]",
-        "target": "[A] towel [S] negative [O] dirty",
+        "input": "the room is very budget in jakarta . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] very budget",
         "element_order": "aso"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17847,
         "task_elements": "aos",
-        "input": "only the towel was dirty . [O] [A] [S]",
-        "target": "[O] dirty [A] towel [S] negative",
+        "input": "the room is very budget in jakarta . [O] [A] [S]",
+        "target": "[O] very budget [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17848,
         "task_elements": "aos",
-        "input": "only the towel was dirty . [O] [S] [A]",
-        "target": "[O] dirty [S] negative [A] towel",
+        "input": "the room is very budget in jakarta . [O] [S] [A]",
+        "target": "[O] very budget [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17849,
         "task_elements": "aos",
-        "input": "only the towel was dirty . [S] [A] [O]",
-        "target": "[S] negative [A] towel [O] dirty",
+        "input": "the room is very budget in jakarta . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] very budget",
         "element_order": "sao"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17850,
         "task_elements": "aos",
-        "input": "the hot water sometimes doesn't work . [A] [O] [S]",
-        "target": "[A] hot water [O] sometimes doesn't work [S] negative",
+        "input": "i just wasn't given the wifi password because the signal was bad there . [A] [O] [S]",
+        "target": "[A] wifi password [O] wasn't given [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17851,
         "task_elements": "aos",
-        "input": "the hot water sometimes doesn't work . [A] [S] [O]",
-        "target": "[A] hot water [S] negative [O] sometimes doesn't work",
+        "input": "i just wasn't given the wifi password because the signal was bad there . [A] [S] [O]",
+        "target": "[A] wifi password [S] negative [O] wasn't given",
         "element_order": "aso"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17852,
         "task_elements": "aos",
-        "input": "the hot water sometimes doesn't work . [O] [A] [S]",
-        "target": "[O] sometimes doesn't work [A] hot water [S] negative",
+        "input": "i just wasn't given the wifi password because the signal was bad there . [O] [A] [S]",
+        "target": "[O] wasn't given [A] wifi password [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17853,
         "task_elements": "aos",
-        "input": "the hot water sometimes doesn't work . [O] [S] [A]",
-        "target": "[O] sometimes doesn't work [S] negative [A] hot water",
+        "input": "i just wasn't given the wifi password because the signal was bad there . [O] [S] [A]",
+        "target": "[O] wasn't given [S] negative [A] wifi password",
         "element_order": "osa"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17854,
         "task_elements": "aos",
-        "input": "the hot water sometimes doesn't work . [S] [A] [O]",
-        "target": "[S] negative [A] hot water [O] sometimes doesn't work",
+        "input": "i just wasn't given the wifi password because the signal was bad there . [S] [A] [O]",
+        "target": "[S] negative [A] wifi password [O] wasn't given",
         "element_order": "sao"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17855,
         "task_elements": "aos",
-        "input": "i just wasn't given the wifi password because the signal was bad there . [A] [O] [S]",
-        "target": "[A] wifi password [O] wasn't given [S] negative",
+        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [A] [O] [S]",
+        "target": "[A] address [O] difficult to find [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17856,
         "task_elements": "aos",
-        "input": "i just wasn't given the wifi password because the signal was bad there . [A] [S] [O]",
-        "target": "[A] wifi password [S] negative [O] wasn't given",
+        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [A] [S] [O]",
+        "target": "[A] address [S] negative [O] difficult to find",
         "element_order": "aso"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17857,
         "task_elements": "aos",
-        "input": "i just wasn't given the wifi password because the signal was bad there . [O] [A] [S]",
-        "target": "[O] wasn't given [A] wifi password [S] negative",
+        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [O] [A] [S]",
+        "target": "[O] difficult to find [A] address [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17858,
         "task_elements": "aos",
-        "input": "i just wasn't given the wifi password because the signal was bad there . [O] [S] [A]",
-        "target": "[O] wasn't given [S] negative [A] wifi password",
+        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [O] [S] [A]",
+        "target": "[O] difficult to find [S] negative [A] address",
         "element_order": "osa"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17859,
         "task_elements": "aos",
-        "input": "i just wasn't given the wifi password because the signal was bad there . [S] [A] [O]",
-        "target": "[S] negative [A] wifi password [O] wasn't given",
+        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [S] [A] [O]",
+        "target": "[S] negative [A] address [O] difficult to find",
         "element_order": "sao"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17860,
         "task_elements": "aos",
-        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [A] [O] [S]",
-        "target": "[A] address [O] difficult to find [S] negative",
+        "input": "there are no hangers in the closet either . [A] [O] [S]",
+        "target": "[A] hangers [O] no [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17861,
         "task_elements": "aos",
-        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [A] [S] [O]",
-        "target": "[A] address [S] negative [O] difficult to find",
+        "input": "there are no hangers in the closet either . [A] [S] [O]",
+        "target": "[A] hangers [S] negative [O] no",
         "element_order": "aso"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17862,
         "task_elements": "aos",
-        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [O] [A] [S]",
-        "target": "[O] difficult to find [A] address [S] negative",
+        "input": "there are no hangers in the closet either . [O] [A] [S]",
+        "target": "[O] no [A] hangers [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17863,
         "task_elements": "aos",
-        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [O] [S] [A]",
-        "target": "[O] difficult to find [S] negative [A] address",
+        "input": "there are no hangers in the closet either . [O] [S] [A]",
+        "target": "[O] no [S] negative [A] hangers",
         "element_order": "osa"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17864,
         "task_elements": "aos",
-        "input": "it was initially difficult to find the address , but i was able to find the address at the new location by phone number due to the schedule . [S] [A] [O]",
-        "target": "[S] negative [A] address [O] difficult to find",
+        "input": "there are no hangers in the closet either . [S] [A] [O]",
+        "target": "[S] negative [A] hangers [O] no",
         "element_order": "sao"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17865,
         "task_elements": "aos",
-        "input": "there are no snacks . [A] [O] [S]",
-        "target": "[A] snacks [O] no [S] negative",
+        "input": "the room is handsome . [A] [O] [S]",
+        "target": "[A] room [O] handsome [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17866,
         "task_elements": "aos",
-        "input": "there are no snacks . [A] [S] [O]",
-        "target": "[A] snacks [S] negative [O] no",
+        "input": "the room is handsome . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] handsome",
         "element_order": "aso"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17867,
         "task_elements": "aos",
-        "input": "there are no snacks . [O] [A] [S]",
-        "target": "[O] no [A] snacks [S] negative",
+        "input": "the room is handsome . [O] [A] [S]",
+        "target": "[O] handsome [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17868,
         "task_elements": "aos",
-        "input": "there are no snacks . [O] [S] [A]",
-        "target": "[O] no [S] negative [A] snacks",
+        "input": "the room is handsome . [O] [S] [A]",
+        "target": "[O] handsome [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17869,
         "task_elements": "aos",
-        "input": "there are no snacks . [S] [A] [O]",
-        "target": "[S] negative [A] snacks [O] no",
+        "input": "the room is handsome . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] handsome",
         "element_order": "sao"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17870,
         "task_elements": "aos",
-        "input": "the bathroom door lock is broken . [A] [O] [S]",
-        "target": "[A] bathroom door [O] broken [S] negative",
+        "input": "there are no snacks . [A] [O] [S]",
+        "target": "[A] snacks [O] no [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17871,
         "task_elements": "aos",
-        "input": "the bathroom door lock is broken . [A] [S] [O]",
-        "target": "[A] bathroom door [S] negative [O] broken",
+        "input": "there are no snacks . [A] [S] [O]",
+        "target": "[A] snacks [S] negative [O] no",
         "element_order": "aso"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17872,
         "task_elements": "aos",
-        "input": "the bathroom door lock is broken . [O] [A] [S]",
-        "target": "[O] broken [A] bathroom door [S] negative",
+        "input": "there are no snacks . [O] [A] [S]",
+        "target": "[O] no [A] snacks [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17873,
         "task_elements": "aos",
-        "input": "the bathroom door lock is broken . [O] [S] [A]",
-        "target": "[O] broken [S] negative [A] bathroom door",
+        "input": "there are no snacks . [O] [S] [A]",
+        "target": "[O] no [S] negative [A] snacks",
         "element_order": "osa"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17874,
         "task_elements": "aos",
-        "input": "the bathroom door lock is broken . [S] [A] [O]",
-        "target": "[S] negative [A] bathroom door [O] broken",
+        "input": "there are no snacks . [S] [A] [O]",
+        "target": "[S] negative [A] snacks [O] no",
         "element_order": "sao"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17875,
         "task_elements": "aos",
-        "input": "the ac isn't working perfectly , so it's hot . [A] [O] [S]",
-        "target": "[A] ac [O] isn't working perfectly [S] negative",
+        "input": "the bathroom door lock is broken . [A] [O] [S]",
+        "target": "[A] bathroom door [O] broken [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17876,
         "task_elements": "aos",
-        "input": "the ac isn't working perfectly , so it's hot . [A] [S] [O]",
-        "target": "[A] ac [S] negative [O] isn't working perfectly",
+        "input": "the bathroom door lock is broken . [A] [S] [O]",
+        "target": "[A] bathroom door [S] negative [O] broken",
         "element_order": "aso"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17877,
         "task_elements": "aos",
-        "input": "the ac isn't working perfectly , so it's hot . [O] [A] [S]",
-        "target": "[O] isn't working perfectly [A] ac [S] negative",
+        "input": "the bathroom door lock is broken . [O] [A] [S]",
+        "target": "[O] broken [A] bathroom door [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17878,
         "task_elements": "aos",
-        "input": "the ac isn't working perfectly , so it's hot . [O] [S] [A]",
-        "target": "[O] isn't working perfectly [S] negative [A] ac",
+        "input": "the bathroom door lock is broken . [O] [S] [A]",
+        "target": "[O] broken [S] negative [A] bathroom door",
         "element_order": "osa"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17879,
         "task_elements": "aos",
-        "input": "the ac isn't working perfectly , so it's hot . [S] [A] [O]",
-        "target": "[S] negative [A] ac [O] isn't working perfectly",
+        "input": "the bathroom door lock is broken . [S] [A] [O]",
+        "target": "[S] negative [A] bathroom door [O] broken",
         "element_order": "sao"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17880,
         "task_elements": "aos",
-        "input": "the pool is the only thing that's quite recommended . [A] [O] [S]",
-        "target": "[A] pool [O] quite recommended [S] positive",
+        "input": "the service is lacking . [A] [O] [S]",
+        "target": "[A] service [O] lacking [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17881,
         "task_elements": "aos",
-        "input": "the pool is the only thing that's quite recommended . [A] [S] [O]",
-        "target": "[A] pool [S] positive [O] quite recommended",
+        "input": "the service is lacking . [A] [S] [O]",
+        "target": "[A] service [S] negative [O] lacking",
         "element_order": "aso"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17882,
         "task_elements": "aos",
-        "input": "the pool is the only thing that's quite recommended . [O] [A] [S]",
-        "target": "[O] quite recommended [A] pool [S] positive",
+        "input": "the service is lacking . [O] [A] [S]",
+        "target": "[O] lacking [A] service [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17883,
         "task_elements": "aos",
-        "input": "the pool is the only thing that's quite recommended . [O] [S] [A]",
-        "target": "[O] quite recommended [S] positive [A] pool",
+        "input": "the service is lacking . [O] [S] [A]",
+        "target": "[O] lacking [S] negative [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17884,
         "task_elements": "aos",
-        "input": "the pool is the only thing that's quite recommended . [S] [A] [O]",
-        "target": "[S] positive [A] pool [O] quite recommended",
+        "input": "the service is lacking . [S] [A] [O]",
+        "target": "[S] negative [A] service [O] lacking",
         "element_order": "sao"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17885,
         "task_elements": "aos",
-        "input": "the building is not ready yet . [A] [O] [S]",
-        "target": "[A] building [O] not ready [S] negative",
+        "input": "the ac isn't working perfectly , so it's hot . [A] [O] [S]",
+        "target": "[A] ac [O] isn't working perfectly [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17886,
         "task_elements": "aos",
-        "input": "the building is not ready yet . [A] [S] [O]",
-        "target": "[A] building [S] negative [O] not ready",
+        "input": "the ac isn't working perfectly , so it's hot . [A] [S] [O]",
+        "target": "[A] ac [S] negative [O] isn't working perfectly",
         "element_order": "aso"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17887,
         "task_elements": "aos",
-        "input": "the building is not ready yet . [O] [A] [S]",
-        "target": "[O] not ready [A] building [S] negative",
+        "input": "the ac isn't working perfectly , so it's hot . [O] [A] [S]",
+        "target": "[O] isn't working perfectly [A] ac [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17888,
         "task_elements": "aos",
-        "input": "the building is not ready yet . [O] [S] [A]",
-        "target": "[O] not ready [S] negative [A] building",
+        "input": "the ac isn't working perfectly , so it's hot . [O] [S] [A]",
+        "target": "[O] isn't working perfectly [S] negative [A] ac",
         "element_order": "osa"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17889,
         "task_elements": "aos",
-        "input": "the building is not ready yet . [S] [A] [O]",
-        "target": "[S] negative [A] building [O] not ready",
+        "input": "the ac isn't working perfectly , so it's hot . [S] [A] [O]",
+        "target": "[S] negative [A] ac [O] isn't working perfectly",
         "element_order": "sao"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17890,
         "task_elements": "aos",
-        "input": "i usually stay at airy , but this time the hotel receptionist was not friendly . [A] [O] [S]",
-        "target": "[A] hotel receptionist [O] not friendly [S] negative",
+        "input": "the pool is the only thing that's quite recommended . [A] [O] [S]",
+        "target": "[A] pool [O] quite recommended [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17891,
         "task_elements": "aos",
-        "input": "i usually stay at airy , but this time the hotel receptionist was not friendly . [A] [S] [O]",
-        "target": "[A] hotel receptionist [S] negative [O] not friendly",
+        "input": "the pool is the only thing that's quite recommended . [A] [S] [O]",
+        "target": "[A] pool [S] positive [O] quite recommended",
         "element_order": "aso"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17892,
         "task_elements": "aos",
-        "input": "i usually stay at airy , but this time the hotel receptionist was not friendly . [O] [A] [S]",
-        "target": "[O] not friendly [A] hotel receptionist [S] negative",
+        "input": "the pool is the only thing that's quite recommended . [O] [A] [S]",
+        "target": "[O] quite recommended [A] pool [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17893,
         "task_elements": "aos",
-        "input": "i usually stay at airy , but this time the hotel receptionist was not friendly . [O] [S] [A]",
-        "target": "[O] not friendly [S] negative [A] hotel receptionist",
+        "input": "the pool is the only thing that's quite recommended . [O] [S] [A]",
+        "target": "[O] quite recommended [S] positive [A] pool",
         "element_order": "osa"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17894,
         "task_elements": "aos",
-        "input": "i usually stay at airy , but this time the hotel receptionist was not friendly . [S] [A] [O]",
-        "target": "[S] negative [A] hotel receptionist [O] not friendly",
+        "input": "the pool is the only thing that's quite recommended . [S] [A] [O]",
+        "target": "[S] positive [A] pool [O] quite recommended",
         "element_order": "sao"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17895,
         "task_elements": "aos",
-        "input": "the walls were full of dead mosquitoes . i could kill 20 mosquitoes in one night . the bathroom was also dirty . [A] [O] [S]",
-        "target": "[A] bathroom [O] dirty [S] negative",
+        "input": "the building is not ready yet . [A] [O] [S]",
+        "target": "[A] building [O] not ready [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17896,
         "task_elements": "aos",
-        "input": "the walls were full of dead mosquitoes . i could kill 20 mosquitoes in one night . the bathroom was also dirty . [A] [S] [O]",
-        "target": "[A] bathroom [S] negative [O] dirty",
+        "input": "the building is not ready yet . [A] [S] [O]",
+        "target": "[A] building [S] negative [O] not ready",
         "element_order": "aso"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17897,
         "task_elements": "aos",
-        "input": "the walls were full of dead mosquitoes . i could kill 20 mosquitoes in one night . the bathroom was also dirty . [O] [A] [S]",
-        "target": "[O] dirty [A] bathroom [S] negative",
+        "input": "the building is not ready yet . [O] [A] [S]",
+        "target": "[O] not ready [A] building [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17898,
         "task_elements": "aos",
-        "input": "the walls were full of dead mosquitoes . i could kill 20 mosquitoes in one night . the bathroom was also dirty . [O] [S] [A]",
-        "target": "[O] dirty [S] negative [A] bathroom",
+        "input": "the building is not ready yet . [O] [S] [A]",
+        "target": "[O] not ready [S] negative [A] building",
         "element_order": "osa"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17899,
         "task_elements": "aos",
-        "input": "the walls were full of dead mosquitoes . i could kill 20 mosquitoes in one night . the bathroom was also dirty . [S] [A] [O]",
-        "target": "[S] negative [A] bathroom [O] dirty",
+        "input": "the building is not ready yet . [S] [A] [O]",
+        "target": "[S] negative [A] building [O] not ready",
         "element_order": "sao"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17900,
         "task_elements": "aos",
-        "input": "the hotel is comfortable , especially with the promo from airy . if i go to malang , i want to stay here again . [A] [O] [S]",
-        "target": "[A] hotel [O] comfortable [S] positive",
+        "input": "the service is good , even to the point of being taken to the airport . [A] [O] [S]",
+        "target": "[A] service [O] good [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17901,
         "task_elements": "aos",
-        "input": "the hotel is comfortable , especially with the promo from airy . if i go to malang , i want to stay here again . [A] [S] [O]",
-        "target": "[A] hotel [S] positive [O] comfortable",
+        "input": "the service is good , even to the point of being taken to the airport . [A] [S] [O]",
+        "target": "[A] service [S] positive [O] good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17902,
         "task_elements": "aos",
-        "input": "the hotel is comfortable , especially with the promo from airy . if i go to malang , i want to stay here again . [O] [A] [S]",
-        "target": "[O] comfortable [A] hotel [S] positive",
+        "input": "the service is good , even to the point of being taken to the airport . [O] [A] [S]",
+        "target": "[O] good [A] service [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17903,
         "task_elements": "aos",
-        "input": "the hotel is comfortable , especially with the promo from airy . if i go to malang , i want to stay here again . [O] [S] [A]",
-        "target": "[O] comfortable [S] positive [A] hotel",
+        "input": "the service is good , even to the point of being taken to the airport . [O] [S] [A]",
+        "target": "[O] good [S] positive [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17904,
         "task_elements": "aos",
-        "input": "the hotel is comfortable , especially with the promo from airy . if i go to malang , i want to stay here again . [S] [A] [O]",
-        "target": "[S] positive [A] hotel [O] comfortable",
+        "input": "the service is good , even to the point of being taken to the airport . [S] [A] [O]",
+        "target": "[S] positive [A] service [O] good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17905,
         "task_elements": "aos",
-        "input": "the check-in service is slow . [A] [O] [S]",
-        "target": "[A] check-in service [O] slow [S] negative",
+        "input": "its cleanliness needs to be improved . [A] [O] [S]",
+        "target": "[A] cleanliness [O] needs to be improved [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17906,
         "task_elements": "aos",
-        "input": "the check-in service is slow . [A] [S] [O]",
-        "target": "[A] check-in service [S] negative [O] slow",
+        "input": "its cleanliness needs to be improved . [A] [S] [O]",
+        "target": "[A] cleanliness [S] negative [O] needs to be improved",
         "element_order": "aso"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17907,
         "task_elements": "aos",
-        "input": "the check-in service is slow . [O] [A] [S]",
-        "target": "[O] slow [A] check-in service [S] negative",
+        "input": "its cleanliness needs to be improved . [O] [A] [S]",
+        "target": "[O] needs to be improved [A] cleanliness [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17908,
         "task_elements": "aos",
-        "input": "the check-in service is slow . [O] [S] [A]",
-        "target": "[O] slow [S] negative [A] check-in service",
+        "input": "its cleanliness needs to be improved . [O] [S] [A]",
+        "target": "[O] needs to be improved [S] negative [A] cleanliness",
         "element_order": "osa"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17909,
         "task_elements": "aos",
-        "input": "the check-in service is slow . [S] [A] [O]",
-        "target": "[S] negative [A] check-in service [O] slow",
+        "input": "its cleanliness needs to be improved . [S] [A] [O]",
+        "target": "[S] negative [A] cleanliness [O] needs to be improved",
         "element_order": "sao"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17910,
         "task_elements": "aos",
-        "input": "the room is very comfortable . [A] [O] [S]",
-        "target": "[A] room [O] very comfortable [S] positive",
+        "input": "the ac is just for decoration and not cold . [A] [O] [S]",
+        "target": "[A] ac [O] not cold [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17911,
         "task_elements": "aos",
-        "input": "the room is very comfortable . [A] [S] [O]",
-        "target": "[A] room [S] positive [O] very comfortable",
+        "input": "the ac is just for decoration and not cold . [A] [S] [O]",
+        "target": "[A] ac [S] negative [O] not cold",
         "element_order": "aso"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17912,
         "task_elements": "aos",
-        "input": "the room is very comfortable . [O] [A] [S]",
-        "target": "[O] very comfortable [A] room [S] positive",
+        "input": "the ac is just for decoration and not cold . [O] [A] [S]",
+        "target": "[O] not cold [A] ac [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17913,
         "task_elements": "aos",
-        "input": "the room is very comfortable . [O] [S] [A]",
-        "target": "[O] very comfortable [S] positive [A] room",
+        "input": "the ac is just for decoration and not cold . [O] [S] [A]",
+        "target": "[O] not cold [S] negative [A] ac",
         "element_order": "osa"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17914,
         "task_elements": "aos",
-        "input": "the room is very comfortable . [S] [A] [O]",
-        "target": "[S] positive [A] room [O] very comfortable",
+        "input": "the ac is just for decoration and not cold . [S] [A] [O]",
+        "target": "[S] negative [A] ac [O] not cold",
         "element_order": "sao"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17915,
         "task_elements": "aos",
-        "input": "breakfast could be more diverse . [A] [O] [S]",
-        "target": "[A] breakfast [O] more diverse [S] negative",
+        "input": "very happy with the room facilities , it would be better if there was breakfast . [A] [O] [S]",
+        "target": "[A] room facilities [O] very happy [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17916,
         "task_elements": "aos",
-        "input": "breakfast could be more diverse . [A] [S] [O]",
-        "target": "[A] breakfast [S] negative [O] more diverse",
+        "input": "very happy with the room facilities , it would be better if there was breakfast . [A] [S] [O]",
+        "target": "[A] room facilities [S] positive [O] very happy",
         "element_order": "aso"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17917,
         "task_elements": "aos",
-        "input": "breakfast could be more diverse . [O] [A] [S]",
-        "target": "[O] more diverse [A] breakfast [S] negative",
+        "input": "very happy with the room facilities , it would be better if there was breakfast . [O] [A] [S]",
+        "target": "[O] very happy [A] room facilities [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17918,
         "task_elements": "aos",
-        "input": "breakfast could be more diverse . [O] [S] [A]",
-        "target": "[O] more diverse [S] negative [A] breakfast",
+        "input": "very happy with the room facilities , it would be better if there was breakfast . [O] [S] [A]",
+        "target": "[O] very happy [S] positive [A] room facilities",
         "element_order": "osa"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17919,
         "task_elements": "aos",
-        "input": "breakfast could be more diverse . [S] [A] [O]",
-        "target": "[S] negative [A] breakfast [O] more diverse",
+        "input": "very happy with the room facilities , it would be better if there was breakfast . [S] [A] [O]",
+        "target": "[S] positive [A] room facilities [O] very happy",
         "element_order": "sao"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17920,
         "task_elements": "aos",
-        "input": "the ac is just for decoration and not cold . [A] [O] [S]",
-        "target": "[A] ac [O] not cold [S] negative",
+        "input": "the place is nice , near a restaurant . [A] [O] [S]",
+        "target": "[A] place [O] nice [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17921,
         "task_elements": "aos",
-        "input": "the ac is just for decoration and not cold . [A] [S] [O]",
-        "target": "[A] ac [S] negative [O] not cold",
+        "input": "the place is nice , near a restaurant . [A] [S] [O]",
+        "target": "[A] place [S] positive [O] nice",
         "element_order": "aso"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17922,
         "task_elements": "aos",
-        "input": "the ac is just for decoration and not cold . [O] [A] [S]",
-        "target": "[O] not cold [A] ac [S] negative",
+        "input": "the place is nice , near a restaurant . [O] [A] [S]",
+        "target": "[O] nice [A] place [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17923,
         "task_elements": "aos",
-        "input": "the ac is just for decoration and not cold . [O] [S] [A]",
-        "target": "[O] not cold [S] negative [A] ac",
+        "input": "the place is nice , near a restaurant . [O] [S] [A]",
+        "target": "[O] nice [S] positive [A] place",
         "element_order": "osa"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17924,
         "task_elements": "aos",
-        "input": "the ac is just for decoration and not cold . [S] [A] [O]",
-        "target": "[S] negative [A] ac [O] not cold",
+        "input": "the place is nice , near a restaurant . [S] [A] [O]",
+        "target": "[S] positive [A] place [O] nice",
         "element_order": "sao"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17925,
         "task_elements": "aos",
-        "input": "the location is strategic to the old city , just a short walk away . [A] [O] [S]",
-        "target": "[A] location [O] strategic [S] positive",
+        "input": "the room is spacious and has a folding chair . it only lacks a mirror in the room ; the only mirror is in the bathroom , so you have to wait for the person in the bathroom to finish before you can get ready . [A] [O] [S]",
+        "target": "[A] room [O] spacious [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17926,
         "task_elements": "aos",
-        "input": "the location is strategic to the old city , just a short walk away . [A] [S] [O]",
-        "target": "[A] location [S] positive [O] strategic",
+        "input": "the room is spacious and has a folding chair . it only lacks a mirror in the room ; the only mirror is in the bathroom , so you have to wait for the person in the bathroom to finish before you can get ready . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] spacious",
         "element_order": "aso"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17927,
         "task_elements": "aos",
-        "input": "the location is strategic to the old city , just a short walk away . [O] [A] [S]",
-        "target": "[O] strategic [A] location [S] positive",
+        "input": "the room is spacious and has a folding chair . it only lacks a mirror in the room ; the only mirror is in the bathroom , so you have to wait for the person in the bathroom to finish before you can get ready . [O] [A] [S]",
+        "target": "[O] spacious [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17928,
         "task_elements": "aos",
-        "input": "the location is strategic to the old city , just a short walk away . [O] [S] [A]",
-        "target": "[O] strategic [S] positive [A] location",
+        "input": "the room is spacious and has a folding chair . it only lacks a mirror in the room ; the only mirror is in the bathroom , so you have to wait for the person in the bathroom to finish before you can get ready . [O] [S] [A]",
+        "target": "[O] spacious [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17929,
         "task_elements": "aos",
-        "input": "the location is strategic to the old city , just a short walk away . [S] [A] [O]",
-        "target": "[S] positive [A] location [O] strategic",
+        "input": "the room is spacious and has a folding chair . it only lacks a mirror in the room ; the only mirror is in the bathroom , so you have to wait for the person in the bathroom to finish before you can get ready . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] spacious",
         "element_order": "sao"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17930,
         "task_elements": "aos",
-        "input": "security is maintained because there are cctv cameras and security personnel . [A] [O] [S]",
-        "target": "[A] security [O] maintained [S] positive",
+        "input": "the room was very satisfying . just a little note , the location of this inn is inside an alley . it might be a little difficult to find . [A] [O] [S]",
+        "target": "[A] room [O] very satisfying [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17931,
         "task_elements": "aos",
-        "input": "security is maintained because there are cctv cameras and security personnel . [A] [S] [O]",
-        "target": "[A] security [S] positive [O] maintained",
+        "input": "the room was very satisfying . just a little note , the location of this inn is inside an alley . it might be a little difficult to find . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] very satisfying",
         "element_order": "aso"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17932,
         "task_elements": "aos",
-        "input": "security is maintained because there are cctv cameras and security personnel . [O] [A] [S]",
-        "target": "[O] maintained [A] security [S] positive",
+        "input": "the room was very satisfying . just a little note , the location of this inn is inside an alley . it might be a little difficult to find . [O] [A] [S]",
+        "target": "[O] very satisfying [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17933,
         "task_elements": "aos",
-        "input": "security is maintained because there are cctv cameras and security personnel . [O] [S] [A]",
-        "target": "[O] maintained [S] positive [A] security",
+        "input": "the room was very satisfying . just a little note , the location of this inn is inside an alley . it might be a little difficult to find . [O] [S] [A]",
+        "target": "[O] very satisfying [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17934,
         "task_elements": "aos",
-        "input": "security is maintained because there are cctv cameras and security personnel . [S] [A] [O]",
-        "target": "[S] positive [A] security [O] maintained",
+        "input": "the room was very satisfying . just a little note , the location of this inn is inside an alley . it might be a little difficult to find . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] very satisfying",
         "element_order": "sao"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17935,
         "task_elements": "aos",
-        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [A] [O] [S]",
-        "target": "[A] service [O] good [S] positive",
+        "input": "the drainage in the bathroom was clogged . [A] [O] [S]",
+        "target": "[A] drainage [O] clogged [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17936,
         "task_elements": "aos",
-        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [A] [S] [O]",
-        "target": "[A] service [S] positive [O] good",
+        "input": "the drainage in the bathroom was clogged . [A] [S] [O]",
+        "target": "[A] drainage [S] negative [O] clogged",
         "element_order": "aso"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17937,
         "task_elements": "aos",
-        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [O] [A] [S]",
-        "target": "[O] good [A] service [S] positive",
+        "input": "the drainage in the bathroom was clogged . [O] [A] [S]",
+        "target": "[O] clogged [A] drainage [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17938,
         "task_elements": "aos",
-        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [O] [S] [A]",
-        "target": "[O] good [S] positive [A] service",
+        "input": "the drainage in the bathroom was clogged . [O] [S] [A]",
+        "target": "[O] clogged [S] negative [A] drainage",
         "element_order": "osa"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17939,
         "task_elements": "aos",
-        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [S] [A] [O]",
-        "target": "[S] positive [A] service [O] good",
+        "input": "the drainage in the bathroom was clogged . [S] [A] [O]",
+        "target": "[S] negative [A] drainage [O] clogged",
         "element_order": "sao"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17940,
         "task_elements": "aos",
-        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [A] [O] [S]",
-        "target": "[A] check-in time [O] did not match [S] negative",
+        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [A] [O] [S]",
+        "target": "[A] service [O] good [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17941,
         "task_elements": "aos",
-        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [A] [S] [O]",
-        "target": "[A] check-in time [S] negative [O] did not match",
+        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [A] [S] [O]",
+        "target": "[A] service [S] positive [O] good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17942,
         "task_elements": "aos",
-        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [O] [A] [S]",
-        "target": "[O] did not match [A] check-in time [S] negative",
+        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [O] [A] [S]",
+        "target": "[O] good [A] service [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17943,
         "task_elements": "aos",
-        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [O] [S] [A]",
-        "target": "[O] did not match [S] negative [A] check-in time",
+        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [O] [S] [A]",
+        "target": "[O] good [S] positive [A] service",
         "element_order": "osa"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17944,
         "task_elements": "aos",
-        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [S] [A] [O]",
-        "target": "[S] negative [A] check-in time [O] did not match",
+        "input": "the service is good . there are many culinary options near the hotel , making it easy for those who want to explore the cuisine . [S] [A] [O]",
+        "target": "[S] positive [A] service [O] good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17945,
         "task_elements": "aos",
-        "input": "the location is strategic , near malang square , lots of places to eat . [A] [O] [S]",
-        "target": "[A] location [O] strategic [S] positive",
+        "input": "the condition of the place is not as good compared to other places in its class . [A] [O] [S]",
+        "target": "[A] place [O] not as good [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17946,
         "task_elements": "aos",
-        "input": "the location is strategic , near malang square , lots of places to eat . [A] [S] [O]",
-        "target": "[A] location [S] positive [O] strategic",
+        "input": "the condition of the place is not as good compared to other places in its class . [A] [S] [O]",
+        "target": "[A] place [S] negative [O] not as good",
         "element_order": "aso"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17947,
         "task_elements": "aos",
-        "input": "the location is strategic , near malang square , lots of places to eat . [O] [A] [S]",
-        "target": "[O] strategic [A] location [S] positive",
+        "input": "the condition of the place is not as good compared to other places in its class . [O] [A] [S]",
+        "target": "[O] not as good [A] place [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17948,
         "task_elements": "aos",
-        "input": "the location is strategic , near malang square , lots of places to eat . [O] [S] [A]",
-        "target": "[O] strategic [S] positive [A] location",
+        "input": "the condition of the place is not as good compared to other places in its class . [O] [S] [A]",
+        "target": "[O] not as good [S] negative [A] place",
         "element_order": "osa"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17949,
         "task_elements": "aos",
-        "input": "the location is strategic , near malang square , lots of places to eat . [S] [A] [O]",
-        "target": "[S] positive [A] location [O] strategic",
+        "input": "the condition of the place is not as good compared to other places in its class . [S] [A] [O]",
+        "target": "[S] negative [A] place [O] not as good",
         "element_order": "sao"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17950,
         "task_elements": "aos",
-        "input": "the staff is not friendly enough . [A] [O] [S]",
-        "target": "[A] staff [O] not friendly enough [S] negative",
+        "input": "they said there was a hot shower , but there wasn't . they said they would provide drinking water , but in reality , they didn't either . please fix it . thank you . [A] [O] [S]",
+        "target": "[A] hot shower [O] there wasn't [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17951,
         "task_elements": "aos",
-        "input": "the staff is not friendly enough . [A] [S] [O]",
-        "target": "[A] staff [S] negative [O] not friendly enough",
+        "input": "they said there was a hot shower , but there wasn't . they said they would provide drinking water , but in reality , they didn't either . please fix it . thank you . [A] [S] [O]",
+        "target": "[A] hot shower [S] negative [O] there wasn't",
         "element_order": "aso"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17952,
         "task_elements": "aos",
-        "input": "the staff is not friendly enough . [O] [A] [S]",
-        "target": "[O] not friendly enough [A] staff [S] negative",
+        "input": "they said there was a hot shower , but there wasn't . they said they would provide drinking water , but in reality , they didn't either . please fix it . thank you . [O] [A] [S]",
+        "target": "[O] there wasn't [A] hot shower [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17953,
         "task_elements": "aos",
-        "input": "the staff is not friendly enough . [O] [S] [A]",
-        "target": "[O] not friendly enough [S] negative [A] staff",
+        "input": "they said there was a hot shower , but there wasn't . they said they would provide drinking water , but in reality , they didn't either . please fix it . thank you . [O] [S] [A]",
+        "target": "[O] there wasn't [S] negative [A] hot shower",
         "element_order": "osa"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17954,
         "task_elements": "aos",
-        "input": "the staff is not friendly enough . [S] [A] [O]",
-        "target": "[S] negative [A] staff [O] not friendly enough",
+        "input": "they said there was a hot shower , but there wasn't . they said they would provide drinking water , but in reality , they didn't either . please fix it . thank you . [S] [A] [O]",
+        "target": "[S] negative [A] hot shower [O] there wasn't",
         "element_order": "sao"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17955,
         "task_elements": "aos",
-        "input": "it's a shame the elevator isn't working . [A] [O] [S]",
-        "target": "[A] elevator [O] isn't working [S] negative",
+        "input": "the room smelled not fragrant . it would be better if given air freshener . [A] [O] [S]",
+        "target": "[A] room [O] not fragrant [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17956,
         "task_elements": "aos",
-        "input": "it's a shame the elevator isn't working . [A] [S] [O]",
-        "target": "[A] elevator [S] negative [O] isn't working",
+        "input": "the room smelled not fragrant . it would be better if given air freshener . [A] [S] [O]",
+        "target": "[A] room [S] negative [O] not fragrant",
         "element_order": "aso"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17957,
         "task_elements": "aos",
-        "input": "it's a shame the elevator isn't working . [O] [A] [S]",
-        "target": "[O] isn't working [A] elevator [S] negative",
+        "input": "the room smelled not fragrant . it would be better if given air freshener . [O] [A] [S]",
+        "target": "[O] not fragrant [A] room [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17958,
         "task_elements": "aos",
-        "input": "it's a shame the elevator isn't working . [O] [S] [A]",
-        "target": "[O] isn't working [S] negative [A] elevator",
+        "input": "the room smelled not fragrant . it would be better if given air freshener . [O] [S] [A]",
+        "target": "[O] not fragrant [S] negative [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17959,
         "task_elements": "aos",
-        "input": "it's a shame the elevator isn't working . [S] [A] [O]",
-        "target": "[S] negative [A] elevator [O] isn't working",
+        "input": "the room smelled not fragrant . it would be better if given air freshener . [S] [A] [O]",
+        "target": "[S] negative [A] room [O] not fragrant",
         "element_order": "sao"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17960,
         "task_elements": "aos",
-        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [A] [O] [S]",
-        "target": "[A] room [O] spacious [S] positive",
+        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [A] [O] [S]",
+        "target": "[A] check-in time [O] did not match [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17961,
         "task_elements": "aos",
-        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [A] [S] [O]",
-        "target": "[A] room [S] positive [O] spacious",
+        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [A] [S] [O]",
+        "target": "[A] check-in time [S] negative [O] did not match",
         "element_order": "aso"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17962,
         "task_elements": "aos",
-        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [O] [A] [S]",
-        "target": "[O] spacious [A] room [S] positive",
+        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [O] [A] [S]",
+        "target": "[O] did not match [A] check-in time [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17963,
         "task_elements": "aos",
-        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [O] [S] [A]",
-        "target": "[O] spacious [S] positive [A] room",
+        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [O] [S] [A]",
+        "target": "[O] did not match [S] negative [A] check-in time",
         "element_order": "osa"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17964,
         "task_elements": "aos",
-        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [S] [A] [O]",
-        "target": "[S] positive [A] room [O] spacious",
+        "input": "the check-in time did not match the important information from the hotel ; it was stated that check-in was at 2 pm , but in fact , it was only possible to check in after 5 pm . [S] [A] [O]",
+        "target": "[S] negative [A] check-in time [O] did not match",
         "element_order": "sao"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17965,
         "task_elements": "aos",
-        "input": "during my stay there , the hotel's electricity was out until dawn , and there was no clarity or compensation from the hotel . i and several others had to keep pushing before we were given compensation to stay at another hotel at 4 am . please improve the hotel's system and management , sop , and customer care from airy rooms , especially in terms of service . thank you . [A] [O] [S]",
-        "target": "[A] hotel's system and management [O] please improve [S] negative",
+        "input": "the staff is not friendly enough . [A] [O] [S]",
+        "target": "[A] staff [O] not friendly enough [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17966,
         "task_elements": "aos",
-        "input": "during my stay there , the hotel's electricity was out until dawn , and there was no clarity or compensation from the hotel . i and several others had to keep pushing before we were given compensation to stay at another hotel at 4 am . please improve the hotel's system and management , sop , and customer care from airy rooms , especially in terms of service . thank you . [A] [S] [O]",
-        "target": "[A] hotel's system and management [S] negative [O] please improve",
+        "input": "the staff is not friendly enough . [A] [S] [O]",
+        "target": "[A] staff [S] negative [O] not friendly enough",
         "element_order": "aso"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17967,
         "task_elements": "aos",
-        "input": "during my stay there , the hotel's electricity was out until dawn , and there was no clarity or compensation from the hotel . i and several others had to keep pushing before we were given compensation to stay at another hotel at 4 am . please improve the hotel's system and management , sop , and customer care from airy rooms , especially in terms of service . thank you . [O] [A] [S]",
-        "target": "[O] please improve [A] hotel's system and management [S] negative",
+        "input": "the staff is not friendly enough . [O] [A] [S]",
+        "target": "[O] not friendly enough [A] staff [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17968,
         "task_elements": "aos",
-        "input": "during my stay there , the hotel's electricity was out until dawn , and there was no clarity or compensation from the hotel . i and several others had to keep pushing before we were given compensation to stay at another hotel at 4 am . please improve the hotel's system and management , sop , and customer care from airy rooms , especially in terms of service . thank you . [O] [S] [A]",
-        "target": "[O] please improve [S] negative [A] hotel's system and management",
+        "input": "the staff is not friendly enough . [O] [S] [A]",
+        "target": "[O] not friendly enough [S] negative [A] staff",
         "element_order": "osa"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17969,
         "task_elements": "aos",
-        "input": "during my stay there , the hotel's electricity was out until dawn , and there was no clarity or compensation from the hotel . i and several others had to keep pushing before we were given compensation to stay at another hotel at 4 am . please improve the hotel's system and management , sop , and customer care from airy rooms , especially in terms of service . thank you . [S] [A] [O]",
-        "target": "[S] negative [A] hotel's system and management [O] please improve",
+        "input": "the staff is not friendly enough . [S] [A] [O]",
+        "target": "[S] negative [A] staff [O] not friendly enough",
         "element_order": "sao"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17970,
         "task_elements": "aos",
-        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [A] [O] [S]",
-        "target": "[A] guard [O] disappointed [S] negative",
+        "input": "it's a shame the elevator isn't working . [A] [O] [S]",
+        "target": "[A] elevator [O] isn't working [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17971,
         "task_elements": "aos",
-        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [A] [S] [O]",
-        "target": "[A] guard [S] negative [O] disappointed",
+        "input": "it's a shame the elevator isn't working . [A] [S] [O]",
+        "target": "[A] elevator [S] negative [O] isn't working",
         "element_order": "aso"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17972,
         "task_elements": "aos",
-        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [O] [A] [S]",
-        "target": "[O] disappointed [A] guard [S] negative",
+        "input": "it's a shame the elevator isn't working . [O] [A] [S]",
+        "target": "[O] isn't working [A] elevator [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17973,
         "task_elements": "aos",
-        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [O] [S] [A]",
-        "target": "[O] disappointed [S] negative [A] guard",
+        "input": "it's a shame the elevator isn't working . [O] [S] [A]",
+        "target": "[O] isn't working [S] negative [A] elevator",
         "element_order": "osa"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17974,
         "task_elements": "aos",
-        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [S] [A] [O]",
-        "target": "[S] negative [A] guard [O] disappointed",
+        "input": "it's a shame the elevator isn't working . [S] [A] [O]",
+        "target": "[S] negative [A] elevator [O] isn't working",
         "element_order": "sao"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17975,
         "task_elements": "aos",
-        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [A] [O] [S]",
-        "target": "[A] water [O] no [S] negative",
+        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [A] [O] [S]",
+        "target": "[A] room [O] spacious [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17976,
         "task_elements": "aos",
-        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [A] [S] [O]",
-        "target": "[A] water [S] negative [O] no",
+        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] spacious",
         "element_order": "aso"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17977,
         "task_elements": "aos",
-        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [O] [A] [S]",
-        "target": "[O] no [A] water [S] negative",
+        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [O] [A] [S]",
+        "target": "[O] spacious [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17978,
         "task_elements": "aos",
-        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [O] [S] [A]",
-        "target": "[O] no [S] negative [A] water",
+        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [O] [S] [A]",
+        "target": "[O] spacious [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17979,
         "task_elements": "aos",
-        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [S] [A] [O]",
-        "target": "[S] negative [A] water [O] no",
+        "input": "the room is spacious , the location is quite far from the main road , but it's easy to get around using online transportation . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] spacious",
         "element_order": "sao"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17980,
         "task_elements": "aos",
-        "input": "the room is quite comfortable . [A] [O] [S]",
-        "target": "[A] room [O] quite comfortable [S] positive",
+        "input": "there were no sandals . they said there was free wifi , but they didn't give me the password ; how strange . [A] [O] [S]",
+        "target": "[A] sandals [O] no [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17981,
         "task_elements": "aos",
-        "input": "the room is quite comfortable . [A] [S] [O]",
-        "target": "[A] room [S] positive [O] quite comfortable",
+        "input": "there were no sandals . they said there was free wifi , but they didn't give me the password ; how strange . [A] [S] [O]",
+        "target": "[A] sandals [S] negative [O] no",
         "element_order": "aso"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17982,
         "task_elements": "aos",
-        "input": "the room is quite comfortable . [O] [A] [S]",
-        "target": "[O] quite comfortable [A] room [S] positive",
+        "input": "there were no sandals . they said there was free wifi , but they didn't give me the password ; how strange . [O] [A] [S]",
+        "target": "[O] no [A] sandals [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17983,
         "task_elements": "aos",
-        "input": "the room is quite comfortable . [O] [S] [A]",
-        "target": "[O] quite comfortable [S] positive [A] room",
+        "input": "there were no sandals . they said there was free wifi , but they didn't give me the password ; how strange . [O] [S] [A]",
+        "target": "[O] no [S] negative [A] sandals",
         "element_order": "osa"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17984,
         "task_elements": "aos",
-        "input": "the room is quite comfortable . [S] [A] [O]",
-        "target": "[S] positive [A] room [O] quite comfortable",
+        "input": "there were no sandals . they said there was free wifi , but they didn't give me the password ; how strange . [S] [A] [O]",
+        "target": "[S] negative [A] sandals [O] no",
         "element_order": "sao"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17985,
         "task_elements": "aos",
-        "input": "the hotel is nice , close to ciwalk , so there are many culinary and shopping options . there is also a swimming pool . it's quite good for a little exercise . [A] [O] [S]",
-        "target": "[A] hotel [O] nice [S] positive",
+        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [A] [O] [S]",
+        "target": "[A] guard [O] disappointed [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17986,
         "task_elements": "aos",
-        "input": "the hotel is nice , close to ciwalk , so there are many culinary and shopping options . there is also a swimming pool . it's quite good for a little exercise . [A] [S] [O]",
-        "target": "[A] hotel [S] positive [O] nice",
+        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [A] [S] [O]",
+        "target": "[A] guard [S] negative [O] disappointed",
         "element_order": "aso"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17987,
         "task_elements": "aos",
-        "input": "the hotel is nice , close to ciwalk , so there are many culinary and shopping options . there is also a swimming pool . it's quite good for a little exercise . [O] [A] [S]",
-        "target": "[O] nice [A] hotel [S] positive",
+        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [O] [A] [S]",
+        "target": "[O] disappointed [A] guard [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17988,
         "task_elements": "aos",
-        "input": "the hotel is nice , close to ciwalk , so there are many culinary and shopping options . there is also a swimming pool . it's quite good for a little exercise . [O] [S] [A]",
-        "target": "[O] nice [S] positive [A] hotel",
+        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [O] [S] [A]",
+        "target": "[O] disappointed [S] negative [A] guard",
         "element_order": "osa"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17989,
         "task_elements": "aos",
-        "input": "the hotel is nice , close to ciwalk , so there are many culinary and shopping options . there is also a swimming pool . it's quite good for a little exercise . [S] [A] [O]",
-        "target": "[S] positive [A] hotel [O] nice",
+        "input": "disappointed with the guard because we arrived late at night and still had work to do , returning to the hotel at 11 pm , and then overslept until 11 am . we only started looking for food around 12 pm , and while we were showering , the guard kept banging on the door with a sour face and was unfriendly . when we said we were still getting ready , he said fiercely , 'don't be long , and those people are waiting in front of the room . [S] [A] [O]",
+        "target": "[S] negative [A] guard [O] disappointed",
         "element_order": "sao"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17990,
         "task_elements": "aos",
-        "input": "the room is dirty . [A] [O] [S]",
-        "target": "[A] room [O] dirty [S] negative",
+        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [A] [O] [S]",
+        "target": "[A] water [O] no [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17991,
         "task_elements": "aos",
-        "input": "the room is dirty . [A] [S] [O]",
-        "target": "[A] room [S] negative [O] dirty",
+        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [A] [S] [O]",
+        "target": "[A] water [S] negative [O] no",
         "element_order": "aso"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17992,
         "task_elements": "aos",
-        "input": "the room is dirty . [O] [A] [S]",
-        "target": "[O] dirty [A] room [S] negative",
+        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [O] [A] [S]",
+        "target": "[O] no [A] water [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17993,
         "task_elements": "aos",
-        "input": "the room is dirty . [O] [S] [A]",
-        "target": "[O] dirty [S] negative [A] room",
+        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [O] [S] [A]",
+        "target": "[O] no [S] negative [A] water",
         "element_order": "osa"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17994,
         "task_elements": "aos",
-        "input": "the room is dirty . [S] [A] [O]",
-        "target": "[S] negative [A] room [O] dirty",
+        "input": "there was no water for the morning shower , supposedly because the inn had run out . this delayed our schedule . upon the first confirmation , we were asked to wait 15 minutes , but it was still not available . upon the second confirmation , we were informed that the inn was still checking , and as a result , the water still didn't flow to our room . [S] [A] [O]",
+        "target": "[S] negative [A] water [O] no",
         "element_order": "sao"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17995,
         "task_elements": "aos",
-        "input": "the mattress is hard : ( . [A] [O] [S]",
-        "target": "[A] mattress [O] hard [S] negative",
+        "input": "the room is quite comfortable . [A] [O] [S]",
+        "target": "[A] room [O] quite comfortable [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17996,
         "task_elements": "aos",
-        "input": "the mattress is hard : ( . [A] [S] [O]",
-        "target": "[A] mattress [S] negative [O] hard",
+        "input": "the room is quite comfortable . [A] [S] [O]",
+        "target": "[A] room [S] positive [O] quite comfortable",
         "element_order": "aso"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17997,
         "task_elements": "aos",
-        "input": "the mattress is hard : ( . [O] [A] [S]",
-        "target": "[O] hard [A] mattress [S] negative",
+        "input": "the room is quite comfortable . [O] [A] [S]",
+        "target": "[O] quite comfortable [A] room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17998,
         "task_elements": "aos",
-        "input": "the mattress is hard : ( . [O] [S] [A]",
-        "target": "[O] hard [S] negative [A] mattress",
+        "input": "the room is quite comfortable . [O] [S] [A]",
+        "target": "[O] quite comfortable [S] positive [A] room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17999,
         "task_elements": "aos",
-        "input": "the mattress is hard : ( . [S] [A] [O]",
-        "target": "[S] negative [A] mattress [O] hard",
+        "input": "the room is quite comfortable . [S] [A] [O]",
+        "target": "[S] positive [A] room [O] quite comfortable",
         "element_order": "sao"
     },
     {

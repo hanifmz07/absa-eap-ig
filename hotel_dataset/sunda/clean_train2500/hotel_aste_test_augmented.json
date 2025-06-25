@@ -763,1640 +763,1640 @@
         "sentence_id": 3519,
         "instance_id": 17595,
         "task_elements": "aos",
-        "input": "unggal rék maké kupon diskon téh teu bisa waé , nya . [A] [O] [S]",
-        "target": "[A] kupon diskon [O] teu bisa [S] negative",
+        "input": "palayanna teu sopan . [A] [O] [S]",
+        "target": "[A] palayanna [O] teu sopan [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17596,
         "task_elements": "aos",
-        "input": "unggal rék maké kupon diskon téh teu bisa waé , nya . [A] [S] [O]",
-        "target": "[A] kupon diskon [S] negative [O] teu bisa",
+        "input": "palayanna teu sopan . [A] [S] [O]",
+        "target": "[A] palayanna [S] negative [O] teu sopan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17597,
         "task_elements": "aos",
-        "input": "unggal rék maké kupon diskon téh teu bisa waé , nya . [O] [A] [S]",
-        "target": "[O] teu bisa [A] kupon diskon [S] negative",
+        "input": "palayanna teu sopan . [O] [A] [S]",
+        "target": "[O] teu sopan [A] palayanna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17598,
         "task_elements": "aos",
-        "input": "unggal rék maké kupon diskon téh teu bisa waé , nya . [S] [A] [O]",
-        "target": "[S] negative [A] kupon diskon [O] teu bisa",
+        "input": "palayanna teu sopan . [S] [A] [O]",
+        "target": "[S] negative [A] palayanna [O] teu sopan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3519,
         "instance_id": 17599,
         "task_elements": "aos",
-        "input": "unggal rék maké kupon diskon téh teu bisa waé , nya . [O] [S] [A]",
-        "target": "[O] teu bisa [S] negative [A] kupon diskon",
+        "input": "palayanna teu sopan . [O] [S] [A]",
+        "target": "[O] teu sopan [S] negative [A] palayanna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17600,
         "task_elements": "aos",
-        "input": "palayanna teu sopan . [A] [O] [S]",
-        "target": "[A] palayanna [O] teu sopan [S] negative",
+        "input": "lumayan , ngan ukur lift-na wé nu kudu dibenerkeun . da geus katempo heubeul pisan . [A] [O] [S]",
+        "target": "[A] lift-na [O] kudu dibenerkeun [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17601,
         "task_elements": "aos",
-        "input": "palayanna teu sopan . [A] [S] [O]",
-        "target": "[A] palayanna [S] negative [O] teu sopan",
+        "input": "lumayan , ngan ukur lift-na wé nu kudu dibenerkeun . da geus katempo heubeul pisan . [A] [S] [O]",
+        "target": "[A] lift-na [S] negative [O] kudu dibenerkeun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17602,
         "task_elements": "aos",
-        "input": "palayanna teu sopan . [O] [A] [S]",
-        "target": "[O] teu sopan [A] palayanna [S] negative",
+        "input": "lumayan , ngan ukur lift-na wé nu kudu dibenerkeun . da geus katempo heubeul pisan . [O] [A] [S]",
+        "target": "[O] kudu dibenerkeun [A] lift-na [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17603,
         "task_elements": "aos",
-        "input": "palayanna teu sopan . [S] [A] [O]",
-        "target": "[S] negative [A] palayanna [O] teu sopan",
+        "input": "lumayan , ngan ukur lift-na wé nu kudu dibenerkeun . da geus katempo heubeul pisan . [S] [A] [O]",
+        "target": "[S] negative [A] lift-na [O] kudu dibenerkeun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3520,
         "instance_id": 17604,
         "task_elements": "aos",
-        "input": "palayanna teu sopan . [O] [S] [A]",
-        "target": "[O] teu sopan [S] negative [A] palayanna",
+        "input": "lumayan , ngan ukur lift-na wé nu kudu dibenerkeun . da geus katempo heubeul pisan . [O] [S] [A]",
+        "target": "[O] kudu dibenerkeun [S] negative [A] lift-na",
         "element_order": "osa"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17605,
         "task_elements": "aos",
-        "input": "euweuh fasilitas akomodasi ka bandara , tempatna jauh ti jalan gedé . [A] [O] [S]",
-        "target": "[A] fasilitas akomodasi ka bandara [O] euweuh [S] negative",
+        "input": "ngan ukur ruangan téh heurin teuing . [A] [O] [S]",
+        "target": "[A] ruangan [O] heurin teuing [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17606,
         "task_elements": "aos",
-        "input": "euweuh fasilitas akomodasi ka bandara , tempatna jauh ti jalan gedé . [A] [S] [O]",
-        "target": "[A] fasilitas akomodasi ka bandara [S] negative [O] euweuh",
+        "input": "ngan ukur ruangan téh heurin teuing . [A] [S] [O]",
+        "target": "[A] ruangan [S] negative [O] heurin teuing",
         "element_order": "aso"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17607,
         "task_elements": "aos",
-        "input": "euweuh fasilitas akomodasi ka bandara , tempatna jauh ti jalan gedé . [O] [A] [S]",
-        "target": "[O] euweuh [A] fasilitas akomodasi ka bandara [S] negative",
+        "input": "ngan ukur ruangan téh heurin teuing . [O] [A] [S]",
+        "target": "[O] heurin teuing [A] ruangan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17608,
         "task_elements": "aos",
-        "input": "euweuh fasilitas akomodasi ka bandara , tempatna jauh ti jalan gedé . [S] [A] [O]",
-        "target": "[S] negative [A] fasilitas akomodasi ka bandara [O] euweuh",
+        "input": "ngan ukur ruangan téh heurin teuing . [S] [A] [O]",
+        "target": "[S] negative [A] ruangan [O] heurin teuing",
         "element_order": "sao"
     },
     {
         "sentence_id": 3521,
         "instance_id": 17609,
         "task_elements": "aos",
-        "input": "euweuh fasilitas akomodasi ka bandara , tempatna jauh ti jalan gedé . [O] [S] [A]",
-        "target": "[O] euweuh [S] negative [A] fasilitas akomodasi ka bandara",
+        "input": "ngan ukur ruangan téh heurin teuing . [O] [S] [A]",
+        "target": "[O] heurin teuing [S] negative [A] ruangan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17610,
         "task_elements": "aos",
-        "input": "resep pisan kana suasana panginepanna . [A] [O] [S]",
-        "target": "[A] suasana panginepanna [O] resep [S] positive",
+        "input": "keur konéksi wifi , leuwih ditingkatkeun deui . [A] [O] [S]",
+        "target": "[A] wifi [O] leuwih ditingkatkeun deui [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17611,
         "task_elements": "aos",
-        "input": "resep pisan kana suasana panginepanna . [A] [S] [O]",
-        "target": "[A] suasana panginepanna [S] positive [O] resep",
+        "input": "keur konéksi wifi , leuwih ditingkatkeun deui . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] leuwih ditingkatkeun deui",
         "element_order": "aso"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17612,
         "task_elements": "aos",
-        "input": "resep pisan kana suasana panginepanna . [O] [A] [S]",
-        "target": "[O] resep [A] suasana panginepanna [S] positive",
+        "input": "keur konéksi wifi , leuwih ditingkatkeun deui . [O] [A] [S]",
+        "target": "[O] leuwih ditingkatkeun deui [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17613,
         "task_elements": "aos",
-        "input": "resep pisan kana suasana panginepanna . [S] [A] [O]",
-        "target": "[S] positive [A] suasana panginepanna [O] resep",
+        "input": "keur konéksi wifi , leuwih ditingkatkeun deui . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] leuwih ditingkatkeun deui",
         "element_order": "sao"
     },
     {
         "sentence_id": 3522,
         "instance_id": 17614,
         "task_elements": "aos",
-        "input": "resep pisan kana suasana panginepanna . [O] [S] [A]",
-        "target": "[O] resep [S] positive [A] suasana panginepanna",
+        "input": "keur konéksi wifi , leuwih ditingkatkeun deui . [O] [S] [A]",
+        "target": "[O] leuwih ditingkatkeun deui [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17615,
         "task_elements": "aos",
-        "input": "seprena kotor . [A] [O] [S]",
-        "target": "[A] seprena [O] kotor [S] negative",
+        "input": "palayananna kudu ditingkatkeun deui ameh leuwih alus deui . [A] [O] [S]",
+        "target": "[A] palayananna [O] kudu ditingkatkeun deui [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17616,
         "task_elements": "aos",
-        "input": "seprena kotor . [A] [S] [O]",
-        "target": "[A] seprena [S] negative [O] kotor",
+        "input": "palayananna kudu ditingkatkeun deui ameh leuwih alus deui . [A] [S] [O]",
+        "target": "[A] palayananna [S] positive [O] kudu ditingkatkeun deui",
         "element_order": "aso"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17617,
         "task_elements": "aos",
-        "input": "seprena kotor . [O] [A] [S]",
-        "target": "[O] kotor [A] seprena [S] negative",
+        "input": "palayananna kudu ditingkatkeun deui ameh leuwih alus deui . [O] [A] [S]",
+        "target": "[O] kudu ditingkatkeun deui [A] palayananna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17618,
         "task_elements": "aos",
-        "input": "seprena kotor . [S] [A] [O]",
-        "target": "[S] negative [A] seprena [O] kotor",
+        "input": "palayananna kudu ditingkatkeun deui ameh leuwih alus deui . [S] [A] [O]",
+        "target": "[S] positive [A] palayananna [O] kudu ditingkatkeun deui",
         "element_order": "sao"
     },
     {
         "sentence_id": 3523,
         "instance_id": 17619,
         "task_elements": "aos",
-        "input": "seprena kotor . [O] [S] [A]",
-        "target": "[O] kotor [S] negative [A] seprena",
+        "input": "palayananna kudu ditingkatkeun deui ameh leuwih alus deui . [O] [S] [A]",
+        "target": "[O] kudu ditingkatkeun deui [S] positive [A] palayananna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17620,
         "task_elements": "aos",
-        "input": "sarapan téh lumayan ngeunah . [A] [O] [S]",
-        "target": "[A] sarapan [O] lumayan ngeunah [S] positive",
+        "input": "ac-na karasa kurang tiis di kamar 515 . [A] [O] [S]",
+        "target": "[A] ac-na [O] kurang tiis [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17621,
         "task_elements": "aos",
-        "input": "sarapan téh lumayan ngeunah . [A] [S] [O]",
-        "target": "[A] sarapan [S] positive [O] lumayan ngeunah",
+        "input": "ac-na karasa kurang tiis di kamar 515 . [A] [S] [O]",
+        "target": "[A] ac-na [S] negative [O] kurang tiis",
         "element_order": "aso"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17622,
         "task_elements": "aos",
-        "input": "sarapan téh lumayan ngeunah . [O] [A] [S]",
-        "target": "[O] lumayan ngeunah [A] sarapan [S] positive",
+        "input": "ac-na karasa kurang tiis di kamar 515 . [O] [A] [S]",
+        "target": "[O] kurang tiis [A] ac-na [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17623,
         "task_elements": "aos",
-        "input": "sarapan téh lumayan ngeunah . [S] [A] [O]",
-        "target": "[S] positive [A] sarapan [O] lumayan ngeunah",
+        "input": "ac-na karasa kurang tiis di kamar 515 . [S] [A] [O]",
+        "target": "[S] negative [A] ac-na [O] kurang tiis",
         "element_order": "sao"
     },
     {
         "sentence_id": 3524,
         "instance_id": 17624,
         "task_elements": "aos",
-        "input": "sarapan téh lumayan ngeunah . [O] [S] [A]",
-        "target": "[O] lumayan ngeunah [S] positive [A] sarapan",
+        "input": "ac-na karasa kurang tiis di kamar 515 . [O] [S] [A]",
+        "target": "[O] kurang tiis [S] negative [A] ac-na",
         "element_order": "osa"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17625,
         "task_elements": "aos",
-        "input": "ac-na karasa kurang tiis di kamar 515 . [A] [O] [S]",
-        "target": "[A] ac-na [O] kurang tiis [S] negative",
+        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [A] [O] [S]",
+        "target": "[A] karamahan pagawé hotél [O] ditingkatkeun deui [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17626,
         "task_elements": "aos",
-        "input": "ac-na karasa kurang tiis di kamar 515 . [A] [S] [O]",
-        "target": "[A] ac-na [S] negative [O] kurang tiis",
+        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [A] [S] [O]",
+        "target": "[A] karamahan pagawé hotél [S] positive [O] ditingkatkeun deui",
         "element_order": "aso"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17627,
         "task_elements": "aos",
-        "input": "ac-na karasa kurang tiis di kamar 515 . [O] [A] [S]",
-        "target": "[O] kurang tiis [A] ac-na [S] negative",
+        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [O] [A] [S]",
+        "target": "[O] ditingkatkeun deui [A] karamahan pagawé hotél [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17628,
         "task_elements": "aos",
-        "input": "ac-na karasa kurang tiis di kamar 515 . [S] [A] [O]",
-        "target": "[S] negative [A] ac-na [O] kurang tiis",
+        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [S] [A] [O]",
+        "target": "[S] positive [A] karamahan pagawé hotél [O] ditingkatkeun deui",
         "element_order": "sao"
     },
     {
         "sentence_id": 3525,
         "instance_id": 17629,
         "task_elements": "aos",
-        "input": "ac-na karasa kurang tiis di kamar 515 . [O] [S] [A]",
-        "target": "[O] kurang tiis [S] negative [A] ac-na",
+        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [O] [S] [A]",
+        "target": "[O] ditingkatkeun deui [S] positive [A] karamahan pagawé hotél",
         "element_order": "osa"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17630,
         "task_elements": "aos",
-        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [A] [O] [S]",
-        "target": "[A] karamahan pagawé hotél [O] ditingkatkeun deui [S] positive",
+        "input": "alhamdulillah , palayananna alus . [A] [O] [S]",
+        "target": "[A] palayananna [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17631,
         "task_elements": "aos",
-        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [A] [S] [O]",
-        "target": "[A] karamahan pagawé hotél [S] positive [O] ditingkatkeun deui",
+        "input": "alhamdulillah , palayananna alus . [A] [S] [O]",
+        "target": "[A] palayananna [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17632,
         "task_elements": "aos",
-        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [O] [A] [S]",
-        "target": "[O] ditingkatkeun deui [A] karamahan pagawé hotél [S] positive",
+        "input": "alhamdulillah , palayananna alus . [O] [A] [S]",
+        "target": "[O] alus [A] palayananna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17633,
         "task_elements": "aos",
-        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [S] [A] [O]",
-        "target": "[S] positive [A] karamahan pagawé hotél [O] ditingkatkeun deui",
+        "input": "alhamdulillah , palayananna alus . [S] [A] [O]",
+        "target": "[S] positive [A] palayananna [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3526,
         "instance_id": 17634,
         "task_elements": "aos",
-        "input": "karamahan pagawé hotél kudu ditingkatkeun deui . [O] [S] [A]",
-        "target": "[O] ditingkatkeun deui [S] positive [A] karamahan pagawé hotél",
+        "input": "alhamdulillah , palayananna alus . [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] palayananna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17635,
         "task_elements": "aos",
-        "input": "hargana kajangkau . resep pisan kana airy . [A] [O] [S]",
-        "target": "[A] hargana [O] kajangkau [S] positive",
+        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [A] [O] [S]",
+        "target": "[A] manajeménna [O] teu alus [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17636,
         "task_elements": "aos",
-        "input": "hargana kajangkau . resep pisan kana airy . [A] [S] [O]",
-        "target": "[A] hargana [S] positive [O] kajangkau",
+        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [A] [S] [O]",
+        "target": "[A] manajeménna [S] negative [O] teu alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17637,
         "task_elements": "aos",
-        "input": "hargana kajangkau . resep pisan kana airy . [O] [A] [S]",
-        "target": "[O] kajangkau [A] hargana [S] positive",
+        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [O] [A] [S]",
+        "target": "[O] teu alus [A] manajeménna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17638,
         "task_elements": "aos",
-        "input": "hargana kajangkau . resep pisan kana airy . [S] [A] [O]",
-        "target": "[S] positive [A] hargana [O] kajangkau",
+        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [S] [A] [O]",
+        "target": "[S] negative [A] manajeménna [O] teu alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3527,
         "instance_id": 17639,
         "task_elements": "aos",
-        "input": "hargana kajangkau . resep pisan kana airy . [O] [S] [A]",
-        "target": "[O] kajangkau [S] positive [A] hargana",
+        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [O] [S] [A]",
+        "target": "[O] teu alus [S] negative [A] manajeménna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17640,
         "task_elements": "aos",
-        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [A] [O] [S]",
-        "target": "[A] manajeménna [O] teu alus [S] negative",
+        "input": "berkesan sabab deukeut kamana-mana , ngan nu matak kecewa téh kamarna kotor . [A] [O] [S]",
+        "target": "[A] kamarna [O] kotor [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17641,
         "task_elements": "aos",
-        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [A] [S] [O]",
-        "target": "[A] manajeménna [S] negative [O] teu alus",
+        "input": "berkesan sabab deukeut kamana-mana , ngan nu matak kecewa téh kamarna kotor . [A] [S] [O]",
+        "target": "[A] kamarna [S] negative [O] kotor",
         "element_order": "aso"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17642,
         "task_elements": "aos",
-        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [O] [A] [S]",
-        "target": "[O] teu alus [A] manajeménna [S] negative",
+        "input": "berkesan sabab deukeut kamana-mana , ngan nu matak kecewa téh kamarna kotor . [O] [A] [S]",
+        "target": "[O] kotor [A] kamarna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17643,
         "task_elements": "aos",
-        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [S] [A] [O]",
-        "target": "[S] negative [A] manajeménna [O] teu alus",
+        "input": "berkesan sabab deukeut kamana-mana , ngan nu matak kecewa téh kamarna kotor . [S] [A] [O]",
+        "target": "[S] negative [A] kamarna [O] kotor",
         "element_order": "sao"
     },
     {
         "sentence_id": 3528,
         "instance_id": 17644,
         "task_elements": "aos",
-        "input": "manajeménna teu alus sabab geus meuli kamar ngan kalahkah kamar urang dijual ka batur . [O] [S] [A]",
-        "target": "[O] teu alus [S] negative [A] manajeménna",
+        "input": "berkesan sabab deukeut kamana-mana , ngan nu matak kecewa téh kamarna kotor . [O] [S] [A]",
+        "target": "[O] kotor [S] negative [A] kamarna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17645,
         "task_elements": "aos",
-        "input": "kamar mandi euweuh pamiceun anginna . [A] [O] [S]",
-        "target": "[A] pamiceun anginna [O] euweuh [S] negative",
+        "input": "résepsionis mah sok aya waé . ngan teu nyaho deui lamun aya aturan sop hordeng ti airy-na . [A] [O] [S]",
+        "target": "[A] résepsionis [O] sok aya waé [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17646,
         "task_elements": "aos",
-        "input": "kamar mandi euweuh pamiceun anginna . [A] [S] [O]",
-        "target": "[A] pamiceun anginna [S] negative [O] euweuh",
+        "input": "résepsionis mah sok aya waé . ngan teu nyaho deui lamun aya aturan sop hordeng ti airy-na . [A] [S] [O]",
+        "target": "[A] résepsionis [S] positive [O] sok aya waé",
         "element_order": "aso"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17647,
         "task_elements": "aos",
-        "input": "kamar mandi euweuh pamiceun anginna . [O] [A] [S]",
-        "target": "[O] euweuh [A] pamiceun anginna [S] negative",
+        "input": "résepsionis mah sok aya waé . ngan teu nyaho deui lamun aya aturan sop hordeng ti airy-na . [O] [A] [S]",
+        "target": "[O] sok aya waé [A] résepsionis [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17648,
         "task_elements": "aos",
-        "input": "kamar mandi euweuh pamiceun anginna . [S] [A] [O]",
-        "target": "[S] negative [A] pamiceun anginna [O] euweuh",
+        "input": "résepsionis mah sok aya waé . ngan teu nyaho deui lamun aya aturan sop hordeng ti airy-na . [S] [A] [O]",
+        "target": "[S] positive [A] résepsionis [O] sok aya waé",
         "element_order": "sao"
     },
     {
         "sentence_id": 3529,
         "instance_id": 17649,
         "task_elements": "aos",
-        "input": "kamar mandi euweuh pamiceun anginna . [O] [S] [A]",
-        "target": "[O] euweuh [S] negative [A] pamiceun anginna",
+        "input": "résepsionis mah sok aya waé . ngan teu nyaho deui lamun aya aturan sop hordeng ti airy-na . [O] [S] [A]",
+        "target": "[O] sok aya waé [S] positive [A] résepsionis",
         "element_order": "osa"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17650,
         "task_elements": "aos",
-        "input": "hotél kurang ngeunaheun . [A] [O] [S]",
-        "target": "[A] hotél [O] kurang ngeunaheun [S] negative",
+        "input": "hanjakal , sarapan ayeuna geus dieuweuhkeun ku airy . [A] [O] [S]",
+        "target": "[A] sarapan [O] dieuweuhkeun [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17651,
         "task_elements": "aos",
-        "input": "hotél kurang ngeunaheun . [A] [S] [O]",
-        "target": "[A] hotél [S] negative [O] kurang ngeunaheun",
+        "input": "hanjakal , sarapan ayeuna geus dieuweuhkeun ku airy . [A] [S] [O]",
+        "target": "[A] sarapan [S] negative [O] dieuweuhkeun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17652,
         "task_elements": "aos",
-        "input": "hotél kurang ngeunaheun . [O] [A] [S]",
-        "target": "[O] kurang ngeunaheun [A] hotél [S] negative",
+        "input": "hanjakal , sarapan ayeuna geus dieuweuhkeun ku airy . [O] [A] [S]",
+        "target": "[O] dieuweuhkeun [A] sarapan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17653,
         "task_elements": "aos",
-        "input": "hotél kurang ngeunaheun . [S] [A] [O]",
-        "target": "[S] negative [A] hotél [O] kurang ngeunaheun",
+        "input": "hanjakal , sarapan ayeuna geus dieuweuhkeun ku airy . [S] [A] [O]",
+        "target": "[S] negative [A] sarapan [O] dieuweuhkeun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3530,
         "instance_id": 17654,
         "task_elements": "aos",
-        "input": "hotél kurang ngeunaheun . [O] [S] [A]",
-        "target": "[O] kurang ngeunaheun [S] negative [A] hotél",
+        "input": "hanjakal , sarapan ayeuna geus dieuweuhkeun ku airy . [O] [S] [A]",
+        "target": "[O] dieuweuhkeun [S] negative [A] sarapan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17655,
         "task_elements": "aos",
-        "input": "tuluykeun palayanan nu alus kieu mah . [A] [O] [S]",
-        "target": "[A] palayanan [O] alus [S] positive",
+        "input": "parkiran lumayan lega . [A] [O] [S]",
+        "target": "[A] parkiran [O] lumayan lega [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17656,
         "task_elements": "aos",
-        "input": "tuluykeun palayanan nu alus kieu mah . [A] [S] [O]",
-        "target": "[A] palayanan [S] positive [O] alus",
+        "input": "parkiran lumayan lega . [A] [S] [O]",
+        "target": "[A] parkiran [S] positive [O] lumayan lega",
         "element_order": "aso"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17657,
         "task_elements": "aos",
-        "input": "tuluykeun palayanan nu alus kieu mah . [O] [A] [S]",
-        "target": "[O] alus [A] palayanan [S] positive",
+        "input": "parkiran lumayan lega . [O] [A] [S]",
+        "target": "[O] lumayan lega [A] parkiran [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17658,
         "task_elements": "aos",
-        "input": "tuluykeun palayanan nu alus kieu mah . [S] [A] [O]",
-        "target": "[S] positive [A] palayanan [O] alus",
+        "input": "parkiran lumayan lega . [S] [A] [O]",
+        "target": "[S] positive [A] parkiran [O] lumayan lega",
         "element_order": "sao"
     },
     {
         "sentence_id": 3531,
         "instance_id": 17659,
         "task_elements": "aos",
-        "input": "tuluykeun palayanan nu alus kieu mah . [O] [S] [A]",
-        "target": "[O] alus [S] positive [A] palayanan",
+        "input": "parkiran lumayan lega . [O] [S] [A]",
+        "target": "[O] lumayan lega [S] positive [A] parkiran",
         "element_order": "osa"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17660,
         "task_elements": "aos",
-        "input": "kamar mandina kurang beresih . [A] [O] [S]",
-        "target": "[A] kamar mandina [O] kurang beresih [S] negative",
+        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [A] [O] [S]",
+        "target": "[A] sarapan [O] dieuweuhkeun [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17661,
         "task_elements": "aos",
-        "input": "kamar mandina kurang beresih . [A] [S] [O]",
-        "target": "[A] kamar mandina [S] negative [O] kurang beresih",
+        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [A] [S] [O]",
+        "target": "[A] sarapan [S] negative [O] dieuweuhkeun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17662,
         "task_elements": "aos",
-        "input": "kamar mandina kurang beresih . [O] [A] [S]",
-        "target": "[O] kurang beresih [A] kamar mandina [S] negative",
+        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [O] [A] [S]",
+        "target": "[O] dieuweuhkeun [A] sarapan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17663,
         "task_elements": "aos",
-        "input": "kamar mandina kurang beresih . [S] [A] [O]",
-        "target": "[S] negative [A] kamar mandina [O] kurang beresih",
+        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [S] [A] [O]",
+        "target": "[S] negative [A] sarapan [O] dieuweuhkeun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3532,
         "instance_id": 17664,
         "task_elements": "aos",
-        "input": "kamar mandina kurang beresih . [O] [S] [A]",
-        "target": "[O] kurang beresih [S] negative [A] kamar mandina",
+        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [O] [S] [A]",
+        "target": "[O] dieuweuhkeun [S] negative [A] sarapan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17665,
         "task_elements": "aos",
-        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [A] [O] [S]",
-        "target": "[A] sarapan [O] dieuweuhkeun [S] negative",
+        "input": "kamar téh biasa waé . [A] [O] [S]",
+        "target": "[A] kamar [O] biasa waé [S] neutral",
         "element_order": "aos"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17666,
         "task_elements": "aos",
-        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [A] [S] [O]",
-        "target": "[A] sarapan [S] negative [O] dieuweuhkeun",
+        "input": "kamar téh biasa waé . [A] [S] [O]",
+        "target": "[A] kamar [S] neutral [O] biasa waé",
         "element_order": "aso"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17667,
         "task_elements": "aos",
-        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [O] [A] [S]",
-        "target": "[O] dieuweuhkeun [A] sarapan [S] negative",
+        "input": "kamar téh biasa waé . [O] [A] [S]",
+        "target": "[O] biasa waé [A] kamar [S] neutral",
         "element_order": "oas"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17668,
         "task_elements": "aos",
-        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [S] [A] [O]",
-        "target": "[S] negative [A] sarapan [O] dieuweuhkeun",
+        "input": "kamar téh biasa waé . [S] [A] [O]",
+        "target": "[S] neutral [A] kamar [O] biasa waé",
         "element_order": "sao"
     },
     {
         "sentence_id": 3533,
         "instance_id": 17669,
         "task_elements": "aos",
-        "input": "ku naon sarapan téh dieuweuhkeun , hufft . [O] [S] [A]",
-        "target": "[O] dieuweuhkeun [S] negative [A] sarapan",
+        "input": "kamar téh biasa waé . [O] [S] [A]",
+        "target": "[O] biasa waé [S] neutral [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17670,
         "task_elements": "aos",
-        "input": "kualitasna mah sasuai lah . [A] [O] [S]",
-        "target": "[A] kualitasna [O] sasuai [S] positive",
+        "input": "pas rék sarapan soto madura geus euweuh dagingan pisan , kuahna ogé asin teuing . ngan untung aya pilihan sarapan nu séjén . [A] [O] [S]",
+        "target": "[A] sarapan [O] euweuh dagingan [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17671,
         "task_elements": "aos",
-        "input": "kualitasna mah sasuai lah . [A] [S] [O]",
-        "target": "[A] kualitasna [S] positive [O] sasuai",
+        "input": "pas rék sarapan soto madura geus euweuh dagingan pisan , kuahna ogé asin teuing . ngan untung aya pilihan sarapan nu séjén . [A] [S] [O]",
+        "target": "[A] sarapan [S] negative [O] euweuh dagingan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17672,
         "task_elements": "aos",
-        "input": "kualitasna mah sasuai lah . [O] [A] [S]",
-        "target": "[O] sasuai [A] kualitasna [S] positive",
+        "input": "pas rék sarapan soto madura geus euweuh dagingan pisan , kuahna ogé asin teuing . ngan untung aya pilihan sarapan nu séjén . [O] [A] [S]",
+        "target": "[O] euweuh dagingan [A] sarapan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17673,
         "task_elements": "aos",
-        "input": "kualitasna mah sasuai lah . [S] [A] [O]",
-        "target": "[S] positive [A] kualitasna [O] sasuai",
+        "input": "pas rék sarapan soto madura geus euweuh dagingan pisan , kuahna ogé asin teuing . ngan untung aya pilihan sarapan nu séjén . [S] [A] [O]",
+        "target": "[S] negative [A] sarapan [O] euweuh dagingan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3534,
         "instance_id": 17674,
         "task_elements": "aos",
-        "input": "kualitasna mah sasuai lah . [O] [S] [A]",
-        "target": "[O] sasuai [S] positive [A] kualitasna",
+        "input": "pas rék sarapan soto madura geus euweuh dagingan pisan , kuahna ogé asin teuing . ngan untung aya pilihan sarapan nu séjén . [O] [S] [A]",
+        "target": "[O] euweuh dagingan [S] negative [A] sarapan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17675,
         "task_elements": "aos",
-        "input": "ac-na tiis . keur harga sakitu mah oké lah . [A] [O] [S]",
-        "target": "[A] ac-na [O] tiis [S] positive",
+        "input": "euweuh gantungan baju pisan , jadi hésé lamun rék ngagantungkeun baju dina lomari . [A] [O] [S]",
+        "target": "[A] gantungan [O] euweuh [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17676,
         "task_elements": "aos",
-        "input": "ac-na tiis . keur harga sakitu mah oké lah . [A] [S] [O]",
-        "target": "[A] ac-na [S] positive [O] tiis",
+        "input": "euweuh gantungan baju pisan , jadi hésé lamun rék ngagantungkeun baju dina lomari . [A] [S] [O]",
+        "target": "[A] gantungan [S] negative [O] euweuh",
         "element_order": "aso"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17677,
         "task_elements": "aos",
-        "input": "ac-na tiis . keur harga sakitu mah oké lah . [O] [A] [S]",
-        "target": "[O] tiis [A] ac-na [S] positive",
+        "input": "euweuh gantungan baju pisan , jadi hésé lamun rék ngagantungkeun baju dina lomari . [O] [A] [S]",
+        "target": "[O] euweuh [A] gantungan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17678,
         "task_elements": "aos",
-        "input": "ac-na tiis . keur harga sakitu mah oké lah . [S] [A] [O]",
-        "target": "[S] positive [A] ac-na [O] tiis",
+        "input": "euweuh gantungan baju pisan , jadi hésé lamun rék ngagantungkeun baju dina lomari . [S] [A] [O]",
+        "target": "[S] negative [A] gantungan [O] euweuh",
         "element_order": "sao"
     },
     {
         "sentence_id": 3535,
         "instance_id": 17679,
         "task_elements": "aos",
-        "input": "ac-na tiis . keur harga sakitu mah oké lah . [O] [S] [A]",
-        "target": "[O] tiis [S] positive [A] ac-na",
+        "input": "euweuh gantungan baju pisan , jadi hésé lamun rék ngagantungkeun baju dina lomari . [O] [S] [A]",
+        "target": "[O] euweuh [S] negative [A] gantungan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17680,
         "task_elements": "aos",
-        "input": "euweuh papan ngaran panunjuk ka hotél ieu ! [A] [O] [S]",
-        "target": "[A] papan ngaran [O] euweuh [S] negative",
+        "input": "sakabéhna mah alus , cocog keur tempat ngéndong . area ngaroko di parkiran , nu di lante 2 ripuh lamun hayang turun naék ngaroko . remote tv-na kamana nya ? [A] [O] [S]",
+        "target": "[A] sakabéhna [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17681,
         "task_elements": "aos",
-        "input": "euweuh papan ngaran panunjuk ka hotél ieu ! [A] [S] [O]",
-        "target": "[A] papan ngaran [S] negative [O] euweuh",
+        "input": "sakabéhna mah alus , cocog keur tempat ngéndong . area ngaroko di parkiran , nu di lante 2 ripuh lamun hayang turun naék ngaroko . remote tv-na kamana nya ? [A] [S] [O]",
+        "target": "[A] sakabéhna [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17682,
         "task_elements": "aos",
-        "input": "euweuh papan ngaran panunjuk ka hotél ieu ! [O] [A] [S]",
-        "target": "[O] euweuh [A] papan ngaran [S] negative",
+        "input": "sakabéhna mah alus , cocog keur tempat ngéndong . area ngaroko di parkiran , nu di lante 2 ripuh lamun hayang turun naék ngaroko . remote tv-na kamana nya ? [O] [A] [S]",
+        "target": "[O] alus [A] sakabéhna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17683,
         "task_elements": "aos",
-        "input": "euweuh papan ngaran panunjuk ka hotél ieu ! [S] [A] [O]",
-        "target": "[S] negative [A] papan ngaran [O] euweuh",
+        "input": "sakabéhna mah alus , cocog keur tempat ngéndong . area ngaroko di parkiran , nu di lante 2 ripuh lamun hayang turun naék ngaroko . remote tv-na kamana nya ? [S] [A] [O]",
+        "target": "[S] positive [A] sakabéhna [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3536,
         "instance_id": 17684,
         "task_elements": "aos",
-        "input": "euweuh papan ngaran panunjuk ka hotél ieu ! [O] [S] [A]",
-        "target": "[O] euweuh [S] negative [A] papan ngaran",
+        "input": "sakabéhna mah alus , cocog keur tempat ngéndong . area ngaroko di parkiran , nu di lante 2 ripuh lamun hayang turun naék ngaroko . remote tv-na kamana nya ? [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] sakabéhna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17685,
         "task_elements": "aos",
-        "input": "beresih pisan deuih tempatna . [A] [O] [S]",
-        "target": "[A] tempatna [O] beresih pisan [S] positive",
+        "input": "ac-na teu tiis . [A] [O] [S]",
+        "target": "[A] ac-na [O] teu tiis [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17686,
         "task_elements": "aos",
-        "input": "beresih pisan deuih tempatna . [A] [S] [O]",
-        "target": "[A] tempatna [S] positive [O] beresih pisan",
+        "input": "ac-na teu tiis . [A] [S] [O]",
+        "target": "[A] ac-na [S] negative [O] teu tiis",
         "element_order": "aso"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17687,
         "task_elements": "aos",
-        "input": "beresih pisan deuih tempatna . [O] [A] [S]",
-        "target": "[O] beresih pisan [A] tempatna [S] positive",
+        "input": "ac-na teu tiis . [O] [A] [S]",
+        "target": "[O] teu tiis [A] ac-na [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17688,
         "task_elements": "aos",
-        "input": "beresih pisan deuih tempatna . [S] [A] [O]",
-        "target": "[S] positive [A] tempatna [O] beresih pisan",
+        "input": "ac-na teu tiis . [S] [A] [O]",
+        "target": "[S] negative [A] ac-na [O] teu tiis",
         "element_order": "sao"
     },
     {
         "sentence_id": 3537,
         "instance_id": 17689,
         "task_elements": "aos",
-        "input": "beresih pisan deuih tempatna . [O] [S] [A]",
-        "target": "[O] beresih pisan [S] positive [A] tempatna",
+        "input": "ac-na teu tiis . [O] [S] [A]",
+        "target": "[O] teu tiis [S] negative [A] ac-na",
         "element_order": "osa"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17690,
         "task_elements": "aos",
-        "input": "ieu pangalaman ngendong pang gorengna nu kungsi kaalaman ku urang . [A] [O] [S]",
-        "target": "[A] pangalaman [O] pang gorengna [S] negative",
+        "input": "wifi goréng . [A] [O] [S]",
+        "target": "[A] wifi [O] goréng [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17691,
         "task_elements": "aos",
-        "input": "ieu pangalaman ngendong pang gorengna nu kungsi kaalaman ku urang . [A] [S] [O]",
-        "target": "[A] pangalaman [S] negative [O] pang gorengna",
+        "input": "wifi goréng . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] goréng",
         "element_order": "aso"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17692,
         "task_elements": "aos",
-        "input": "ieu pangalaman ngendong pang gorengna nu kungsi kaalaman ku urang . [O] [A] [S]",
-        "target": "[O] pang gorengna [A] pangalaman [S] negative",
+        "input": "wifi goréng . [O] [A] [S]",
+        "target": "[O] goréng [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17693,
         "task_elements": "aos",
-        "input": "ieu pangalaman ngendong pang gorengna nu kungsi kaalaman ku urang . [S] [A] [O]",
-        "target": "[S] negative [A] pangalaman [O] pang gorengna",
+        "input": "wifi goréng . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] goréng",
         "element_order": "sao"
     },
     {
         "sentence_id": 3538,
         "instance_id": 17694,
         "task_elements": "aos",
-        "input": "ieu pangalaman ngendong pang gorengna nu kungsi kaalaman ku urang . [O] [S] [A]",
-        "target": "[O] pang gorengna [S] negative [A] pangalaman",
+        "input": "wifi goréng . [O] [S] [A]",
+        "target": "[O] goréng [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17695,
         "task_elements": "aos",
-        "input": "cai teu ngocor isuk-isuk . [A] [O] [S]",
-        "target": "[A] cai [O] teu ngocor [S] negative",
+        "input": "palayananna gancang . pas urang ka ditu , keur aya rénovasi . [A] [O] [S]",
+        "target": "[A] palayananna [O] gancang [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17696,
         "task_elements": "aos",
-        "input": "cai teu ngocor isuk-isuk . [A] [S] [O]",
-        "target": "[A] cai [S] negative [O] teu ngocor",
+        "input": "palayananna gancang . pas urang ka ditu , keur aya rénovasi . [A] [S] [O]",
+        "target": "[A] palayananna [S] positive [O] gancang",
         "element_order": "aso"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17697,
         "task_elements": "aos",
-        "input": "cai teu ngocor isuk-isuk . [O] [A] [S]",
-        "target": "[O] teu ngocor [A] cai [S] negative",
+        "input": "palayananna gancang . pas urang ka ditu , keur aya rénovasi . [O] [A] [S]",
+        "target": "[O] gancang [A] palayananna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17698,
         "task_elements": "aos",
-        "input": "cai teu ngocor isuk-isuk . [S] [A] [O]",
-        "target": "[S] negative [A] cai [O] teu ngocor",
+        "input": "palayananna gancang . pas urang ka ditu , keur aya rénovasi . [S] [A] [O]",
+        "target": "[S] positive [A] palayananna [O] gancang",
         "element_order": "sao"
     },
     {
         "sentence_id": 3539,
         "instance_id": 17699,
         "task_elements": "aos",
-        "input": "cai teu ngocor isuk-isuk . [O] [S] [A]",
-        "target": "[O] teu ngocor [S] negative [A] cai",
+        "input": "palayananna gancang . pas urang ka ditu , keur aya rénovasi . [O] [S] [A]",
+        "target": "[O] gancang [S] positive [A] palayananna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17700,
         "task_elements": "aos",
-        "input": "cocok pisan keur anu backpacker . tempatna ngeunaheun . deukeut ti stasiun , kamana-mana ogé gampang . [A] [O] [S]",
-        "target": "[A] tempatna [O] ngeunaheun [S] positive",
+        "input": "keur résépsionis kudu dibenerkeun ameh leuwih ramah jeung sopan , nuhun . [A] [O] [S]",
+        "target": "[A] résépsionis [O] kudu dibenerkeun [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17701,
         "task_elements": "aos",
-        "input": "cocok pisan keur anu backpacker . tempatna ngeunaheun . deukeut ti stasiun , kamana-mana ogé gampang . [A] [S] [O]",
-        "target": "[A] tempatna [S] positive [O] ngeunaheun",
+        "input": "keur résépsionis kudu dibenerkeun ameh leuwih ramah jeung sopan , nuhun . [A] [S] [O]",
+        "target": "[A] résépsionis [S] negative [O] kudu dibenerkeun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17702,
         "task_elements": "aos",
-        "input": "cocok pisan keur anu backpacker . tempatna ngeunaheun . deukeut ti stasiun , kamana-mana ogé gampang . [O] [A] [S]",
-        "target": "[O] ngeunaheun [A] tempatna [S] positive",
+        "input": "keur résépsionis kudu dibenerkeun ameh leuwih ramah jeung sopan , nuhun . [O] [A] [S]",
+        "target": "[O] kudu dibenerkeun [A] résépsionis [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17703,
         "task_elements": "aos",
-        "input": "cocok pisan keur anu backpacker . tempatna ngeunaheun . deukeut ti stasiun , kamana-mana ogé gampang . [S] [A] [O]",
-        "target": "[S] positive [A] tempatna [O] ngeunaheun",
+        "input": "keur résépsionis kudu dibenerkeun ameh leuwih ramah jeung sopan , nuhun . [S] [A] [O]",
+        "target": "[S] negative [A] résépsionis [O] kudu dibenerkeun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3540,
         "instance_id": 17704,
         "task_elements": "aos",
-        "input": "cocok pisan keur anu backpacker . tempatna ngeunaheun . deukeut ti stasiun , kamana-mana ogé gampang . [O] [S] [A]",
-        "target": "[O] ngeunaheun [S] positive [A] tempatna",
+        "input": "keur résépsionis kudu dibenerkeun ameh leuwih ramah jeung sopan , nuhun . [O] [S] [A]",
+        "target": "[O] kudu dibenerkeun [S] negative [A] résépsionis",
         "element_order": "osa"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17705,
         "task_elements": "aos",
-        "input": "bakal jadi tempat paporit ku harga nu bisa dijangkau . ngan ukur méré saran ka airy . harga di aplikasi leuwih mahal tibatan mayar langsung di tempat . bédana lain lumayan , 100 rébuan bédana téh . cik mere harga dina aplikasi téh leuwih murah atuh , ameh sumanget maké airy . [A] [O] [S]",
-        "target": "[A] harga [O] bisa dijangkau [S] positive",
+        "input": "aya kolam renang nu matak barudak resep . [A] [O] [S]",
+        "target": "[A] kolam renang [O] aya [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17706,
         "task_elements": "aos",
-        "input": "bakal jadi tempat paporit ku harga nu bisa dijangkau . ngan ukur méré saran ka airy . harga di aplikasi leuwih mahal tibatan mayar langsung di tempat . bédana lain lumayan , 100 rébuan bédana téh . cik mere harga dina aplikasi téh leuwih murah atuh , ameh sumanget maké airy . [A] [S] [O]",
-        "target": "[A] harga [S] positive [O] bisa dijangkau",
+        "input": "aya kolam renang nu matak barudak resep . [A] [S] [O]",
+        "target": "[A] kolam renang [S] positive [O] aya",
         "element_order": "aso"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17707,
         "task_elements": "aos",
-        "input": "bakal jadi tempat paporit ku harga nu bisa dijangkau . ngan ukur méré saran ka airy . harga di aplikasi leuwih mahal tibatan mayar langsung di tempat . bédana lain lumayan , 100 rébuan bédana téh . cik mere harga dina aplikasi téh leuwih murah atuh , ameh sumanget maké airy . [O] [A] [S]",
-        "target": "[O] bisa dijangkau [A] harga [S] positive",
+        "input": "aya kolam renang nu matak barudak resep . [O] [A] [S]",
+        "target": "[O] aya [A] kolam renang [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17708,
         "task_elements": "aos",
-        "input": "bakal jadi tempat paporit ku harga nu bisa dijangkau . ngan ukur méré saran ka airy . harga di aplikasi leuwih mahal tibatan mayar langsung di tempat . bédana lain lumayan , 100 rébuan bédana téh . cik mere harga dina aplikasi téh leuwih murah atuh , ameh sumanget maké airy . [S] [A] [O]",
-        "target": "[S] positive [A] harga [O] bisa dijangkau",
+        "input": "aya kolam renang nu matak barudak resep . [S] [A] [O]",
+        "target": "[S] positive [A] kolam renang [O] aya",
         "element_order": "sao"
     },
     {
         "sentence_id": 3541,
         "instance_id": 17709,
         "task_elements": "aos",
-        "input": "bakal jadi tempat paporit ku harga nu bisa dijangkau . ngan ukur méré saran ka airy . harga di aplikasi leuwih mahal tibatan mayar langsung di tempat . bédana lain lumayan , 100 rébuan bédana téh . cik mere harga dina aplikasi téh leuwih murah atuh , ameh sumanget maké airy . [O] [S] [A]",
-        "target": "[O] bisa dijangkau [S] positive [A] harga",
+        "input": "aya kolam renang nu matak barudak resep . [O] [S] [A]",
+        "target": "[O] aya [S] positive [A] kolam renang",
         "element_order": "osa"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17710,
         "task_elements": "aos",
-        "input": "sakabéhna mah alus . hanjakal teu bisa mesen dahareun . [A] [O] [S]",
-        "target": "[A] sakabéhna [O] alus [S] positive",
+        "input": "alhamdulillah tempatna ngeunaheun . [A] [O] [S]",
+        "target": "[A] tempatna [O] ngeunaheun [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17711,
         "task_elements": "aos",
-        "input": "sakabéhna mah alus . hanjakal teu bisa mesen dahareun . [A] [S] [O]",
-        "target": "[A] sakabéhna [S] positive [O] alus",
+        "input": "alhamdulillah tempatna ngeunaheun . [A] [S] [O]",
+        "target": "[A] tempatna [S] positive [O] ngeunaheun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17712,
         "task_elements": "aos",
-        "input": "sakabéhna mah alus . hanjakal teu bisa mesen dahareun . [O] [A] [S]",
-        "target": "[O] alus [A] sakabéhna [S] positive",
+        "input": "alhamdulillah tempatna ngeunaheun . [O] [A] [S]",
+        "target": "[O] ngeunaheun [A] tempatna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17713,
         "task_elements": "aos",
-        "input": "sakabéhna mah alus . hanjakal teu bisa mesen dahareun . [S] [A] [O]",
-        "target": "[S] positive [A] sakabéhna [O] alus",
+        "input": "alhamdulillah tempatna ngeunaheun . [S] [A] [O]",
+        "target": "[S] positive [A] tempatna [O] ngeunaheun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3542,
         "instance_id": 17714,
         "task_elements": "aos",
-        "input": "sakabéhna mah alus . hanjakal teu bisa mesen dahareun . [O] [S] [A]",
-        "target": "[O] alus [S] positive [A] sakabéhna",
+        "input": "alhamdulillah tempatna ngeunaheun . [O] [S] [A]",
+        "target": "[O] ngeunaheun [S] positive [A] tempatna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17715,
         "task_elements": "aos",
-        "input": "alhamdulillah tempatna ngeunaheun . [A] [O] [S]",
-        "target": "[A] tempatna [O] ngeunaheun [S] positive",
+        "input": "tv nu disadiakeun leuwih gedé dibandingkeun kamar airy nu séjén dina kelasna ( eco , jeung harga sarua ) . [A] [O] [S]",
+        "target": "[A] tv [O] leuwih gedé [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17716,
         "task_elements": "aos",
-        "input": "alhamdulillah tempatna ngeunaheun . [A] [S] [O]",
-        "target": "[A] tempatna [S] positive [O] ngeunaheun",
+        "input": "tv nu disadiakeun leuwih gedé dibandingkeun kamar airy nu séjén dina kelasna ( eco , jeung harga sarua ) . [A] [S] [O]",
+        "target": "[A] tv [S] positive [O] leuwih gedé",
         "element_order": "aso"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17717,
         "task_elements": "aos",
-        "input": "alhamdulillah tempatna ngeunaheun . [O] [A] [S]",
-        "target": "[O] ngeunaheun [A] tempatna [S] positive",
+        "input": "tv nu disadiakeun leuwih gedé dibandingkeun kamar airy nu séjén dina kelasna ( eco , jeung harga sarua ) . [O] [A] [S]",
+        "target": "[O] leuwih gedé [A] tv [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17718,
         "task_elements": "aos",
-        "input": "alhamdulillah tempatna ngeunaheun . [S] [A] [O]",
-        "target": "[S] positive [A] tempatna [O] ngeunaheun",
+        "input": "tv nu disadiakeun leuwih gedé dibandingkeun kamar airy nu séjén dina kelasna ( eco , jeung harga sarua ) . [S] [A] [O]",
+        "target": "[S] positive [A] tv [O] leuwih gedé",
         "element_order": "sao"
     },
     {
         "sentence_id": 3543,
         "instance_id": 17719,
         "task_elements": "aos",
-        "input": "alhamdulillah tempatna ngeunaheun . [O] [S] [A]",
-        "target": "[O] ngeunaheun [S] positive [A] tempatna",
+        "input": "tv nu disadiakeun leuwih gedé dibandingkeun kamar airy nu séjén dina kelasna ( eco , jeung harga sarua ) . [O] [S] [A]",
+        "target": "[O] leuwih gedé [S] positive [A] tv",
         "element_order": "osa"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17720,
         "task_elements": "aos",
-        "input": "saluran ac nu ka kamar mandi téh benerkeun atuh , masalahna teu ngeunah pisan , keur ngompol ogé kabaseuhan ku cai tina selang pamiceunan ac . [A] [O] [S]",
-        "target": "[A] saluran ac [O] benerkeun atuh [S] negative",
+        "input": "dilayanan anu alus . asup leuwih awal teu kudu mayar . [A] [O] [S]",
+        "target": "[A] dilayanan [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17721,
         "task_elements": "aos",
-        "input": "saluran ac nu ka kamar mandi téh benerkeun atuh , masalahna teu ngeunah pisan , keur ngompol ogé kabaseuhan ku cai tina selang pamiceunan ac . [A] [S] [O]",
-        "target": "[A] saluran ac [S] negative [O] benerkeun atuh",
+        "input": "dilayanan anu alus . asup leuwih awal teu kudu mayar . [A] [S] [O]",
+        "target": "[A] dilayanan [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17722,
         "task_elements": "aos",
-        "input": "saluran ac nu ka kamar mandi téh benerkeun atuh , masalahna teu ngeunah pisan , keur ngompol ogé kabaseuhan ku cai tina selang pamiceunan ac . [O] [A] [S]",
-        "target": "[O] benerkeun atuh [A] saluran ac [S] negative",
+        "input": "dilayanan anu alus . asup leuwih awal teu kudu mayar . [O] [A] [S]",
+        "target": "[O] alus [A] dilayanan [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17723,
         "task_elements": "aos",
-        "input": "saluran ac nu ka kamar mandi téh benerkeun atuh , masalahna teu ngeunah pisan , keur ngompol ogé kabaseuhan ku cai tina selang pamiceunan ac . [S] [A] [O]",
-        "target": "[S] negative [A] saluran ac [O] benerkeun atuh",
+        "input": "dilayanan anu alus . asup leuwih awal teu kudu mayar . [S] [A] [O]",
+        "target": "[S] positive [A] dilayanan [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3544,
         "instance_id": 17724,
         "task_elements": "aos",
-        "input": "saluran ac nu ka kamar mandi téh benerkeun atuh , masalahna teu ngeunah pisan , keur ngompol ogé kabaseuhan ku cai tina selang pamiceunan ac . [O] [S] [A]",
-        "target": "[O] benerkeun atuh [S] negative [A] saluran ac",
+        "input": "dilayanan anu alus . asup leuwih awal teu kudu mayar . [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] dilayanan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17725,
         "task_elements": "aos",
-        "input": "palayanan oke . [A] [O] [S]",
-        "target": "[A] palayanan [O] oke [S] positive",
+        "input": "wifi cik dibenerkeun keur kanyamanan . [A] [O] [S]",
+        "target": "[A] wifi [O] cik dibenerkeun [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17726,
         "task_elements": "aos",
-        "input": "palayanan oke . [A] [S] [O]",
-        "target": "[A] palayanan [S] positive [O] oke",
+        "input": "wifi cik dibenerkeun keur kanyamanan . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] cik dibenerkeun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17727,
         "task_elements": "aos",
-        "input": "palayanan oke . [O] [A] [S]",
-        "target": "[O] oke [A] palayanan [S] positive",
+        "input": "wifi cik dibenerkeun keur kanyamanan . [O] [A] [S]",
+        "target": "[O] cik dibenerkeun [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17728,
         "task_elements": "aos",
-        "input": "palayanan oke . [S] [A] [O]",
-        "target": "[S] positive [A] palayanan [O] oke",
+        "input": "wifi cik dibenerkeun keur kanyamanan . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] cik dibenerkeun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3545,
         "instance_id": 17729,
         "task_elements": "aos",
-        "input": "palayanan oke . [O] [S] [A]",
-        "target": "[O] oke [S] positive [A] palayanan",
+        "input": "wifi cik dibenerkeun keur kanyamanan . [O] [S] [A]",
+        "target": "[O] cik dibenerkeun [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17730,
         "task_elements": "aos",
-        "input": "hotél lumayan beresih jeung deukeut ka ciwalk . [A] [O] [S]",
-        "target": "[A] hotél [O] lumayan beresih [S] positive",
+        "input": "cai panas na teu hurung . [A] [O] [S]",
+        "target": "[A] cai panas [O] teu hurung [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17731,
         "task_elements": "aos",
-        "input": "hotél lumayan beresih jeung deukeut ka ciwalk . [A] [S] [O]",
-        "target": "[A] hotél [S] positive [O] lumayan beresih",
+        "input": "cai panas na teu hurung . [A] [S] [O]",
+        "target": "[A] cai panas [S] negative [O] teu hurung",
         "element_order": "aso"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17732,
         "task_elements": "aos",
-        "input": "hotél lumayan beresih jeung deukeut ka ciwalk . [O] [A] [S]",
-        "target": "[O] lumayan beresih [A] hotél [S] positive",
+        "input": "cai panas na teu hurung . [O] [A] [S]",
+        "target": "[O] teu hurung [A] cai panas [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17733,
         "task_elements": "aos",
-        "input": "hotél lumayan beresih jeung deukeut ka ciwalk . [S] [A] [O]",
-        "target": "[S] positive [A] hotél [O] lumayan beresih",
+        "input": "cai panas na teu hurung . [S] [A] [O]",
+        "target": "[S] negative [A] cai panas [O] teu hurung",
         "element_order": "sao"
     },
     {
         "sentence_id": 3546,
         "instance_id": 17734,
         "task_elements": "aos",
-        "input": "hotél lumayan beresih jeung deukeut ka ciwalk . [O] [S] [A]",
-        "target": "[O] lumayan beresih [S] positive [A] hotél",
+        "input": "cai panas na teu hurung . [O] [S] [A]",
+        "target": "[O] teu hurung [S] negative [A] cai panas",
         "element_order": "osa"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17735,
         "task_elements": "aos",
-        "input": "cai panas na teu hurung . [A] [O] [S]",
-        "target": "[A] cai panas [O] teu hurung [S] negative",
+        "input": "hanjakal kamar mandi téh bau . [A] [O] [S]",
+        "target": "[A] kamar mandi [O] bau [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17736,
         "task_elements": "aos",
-        "input": "cai panas na teu hurung . [A] [S] [O]",
-        "target": "[A] cai panas [S] negative [O] teu hurung",
+        "input": "hanjakal kamar mandi téh bau . [A] [S] [O]",
+        "target": "[A] kamar mandi [S] positive [O] bau",
         "element_order": "aso"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17737,
         "task_elements": "aos",
-        "input": "cai panas na teu hurung . [O] [A] [S]",
-        "target": "[O] teu hurung [A] cai panas [S] negative",
+        "input": "hanjakal kamar mandi téh bau . [O] [A] [S]",
+        "target": "[O] bau [A] kamar mandi [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17738,
         "task_elements": "aos",
-        "input": "cai panas na teu hurung . [S] [A] [O]",
-        "target": "[S] negative [A] cai panas [O] teu hurung",
+        "input": "hanjakal kamar mandi téh bau . [S] [A] [O]",
+        "target": "[S] positive [A] kamar mandi [O] bau",
         "element_order": "sao"
     },
     {
         "sentence_id": 3547,
         "instance_id": 17739,
         "task_elements": "aos",
-        "input": "cai panas na teu hurung . [O] [S] [A]",
-        "target": "[O] teu hurung [S] negative [A] cai panas",
+        "input": "hanjakal kamar mandi téh bau . [O] [S] [A]",
+        "target": "[O] bau [S] positive [A] kamar mandi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17740,
         "task_elements": "aos",
-        "input": "oke lah , sakabehna ogé alus . [A] [O] [S]",
-        "target": "[A] sakabehna [O] alus [S] positive",
+        "input": "sakabéh gé oke . [A] [O] [S]",
+        "target": "[A] sakabéh [O] oke [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17741,
         "task_elements": "aos",
-        "input": "oke lah , sakabehna ogé alus . [A] [S] [O]",
-        "target": "[A] sakabehna [S] positive [O] alus",
+        "input": "sakabéh gé oke . [A] [S] [O]",
+        "target": "[A] sakabéh [S] positive [O] oke",
         "element_order": "aso"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17742,
         "task_elements": "aos",
-        "input": "oke lah , sakabehna ogé alus . [O] [A] [S]",
-        "target": "[O] alus [A] sakabehna [S] positive",
+        "input": "sakabéh gé oke . [O] [A] [S]",
+        "target": "[O] oke [A] sakabéh [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17743,
         "task_elements": "aos",
-        "input": "oke lah , sakabehna ogé alus . [S] [A] [O]",
-        "target": "[S] positive [A] sakabehna [O] alus",
+        "input": "sakabéh gé oke . [S] [A] [O]",
+        "target": "[S] positive [A] sakabéh [O] oke",
         "element_order": "sao"
     },
     {
         "sentence_id": 3548,
         "instance_id": 17744,
         "task_elements": "aos",
-        "input": "oke lah , sakabehna ogé alus . [O] [S] [A]",
-        "target": "[O] alus [S] positive [A] sakabehna",
+        "input": "sakabéh gé oke . [O] [S] [A]",
+        "target": "[O] oke [S] positive [A] sakabéh",
         "element_order": "osa"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17745,
         "task_elements": "aos",
-        "input": "sakabéh gé oke . [A] [O] [S]",
-        "target": "[A] sakabéh [O] oke [S] positive",
+        "input": "lampuna kurang caang . [A] [O] [S]",
+        "target": "[A] lampuna [O] kurang caang [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17746,
         "task_elements": "aos",
-        "input": "sakabéh gé oke . [A] [S] [O]",
-        "target": "[A] sakabéh [S] positive [O] oke",
+        "input": "lampuna kurang caang . [A] [S] [O]",
+        "target": "[A] lampuna [S] negative [O] kurang caang",
         "element_order": "aso"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17747,
         "task_elements": "aos",
-        "input": "sakabéh gé oke . [O] [A] [S]",
-        "target": "[O] oke [A] sakabéh [S] positive",
+        "input": "lampuna kurang caang . [O] [A] [S]",
+        "target": "[O] kurang caang [A] lampuna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17748,
         "task_elements": "aos",
-        "input": "sakabéh gé oke . [S] [A] [O]",
-        "target": "[S] positive [A] sakabéh [O] oke",
+        "input": "lampuna kurang caang . [S] [A] [O]",
+        "target": "[S] negative [A] lampuna [O] kurang caang",
         "element_order": "sao"
     },
     {
         "sentence_id": 3549,
         "instance_id": 17749,
         "task_elements": "aos",
-        "input": "sakabéh gé oke . [O] [S] [A]",
-        "target": "[O] oke [S] positive [A] sakabéh",
+        "input": "lampuna kurang caang . [O] [S] [A]",
+        "target": "[O] kurang caang [S] negative [A] lampuna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17750,
         "task_elements": "aos",
-        "input": "resepsionisna kurang ramah . [A] [O] [S]",
-        "target": "[A] resepsionisna [O] kurang ramah [S] negative",
+        "input": "sabenerna mah lamun ti segi palayanan mah airy téh geus oke pisan ngan . . . nu jadi masalah téh teu bisa dibalikeun atawa dijadwalkeun ulang . ku sabab balik ka cirebon téh diundur jadi tanggal 12 oktober , jadi kamar téh hangus . lamun bisa kahareupna mah ameh bisa dijadwalkeun ulang . nuhun . [A] [O] [S]",
+        "target": "[A] palayanan [O] oke pisan [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17751,
         "task_elements": "aos",
-        "input": "resepsionisna kurang ramah . [A] [S] [O]",
-        "target": "[A] resepsionisna [S] negative [O] kurang ramah",
+        "input": "sabenerna mah lamun ti segi palayanan mah airy téh geus oke pisan ngan . . . nu jadi masalah téh teu bisa dibalikeun atawa dijadwalkeun ulang . ku sabab balik ka cirebon téh diundur jadi tanggal 12 oktober , jadi kamar téh hangus . lamun bisa kahareupna mah ameh bisa dijadwalkeun ulang . nuhun . [A] [S] [O]",
+        "target": "[A] palayanan [S] positive [O] oke pisan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17752,
         "task_elements": "aos",
-        "input": "resepsionisna kurang ramah . [O] [A] [S]",
-        "target": "[O] kurang ramah [A] resepsionisna [S] negative",
+        "input": "sabenerna mah lamun ti segi palayanan mah airy téh geus oke pisan ngan . . . nu jadi masalah téh teu bisa dibalikeun atawa dijadwalkeun ulang . ku sabab balik ka cirebon téh diundur jadi tanggal 12 oktober , jadi kamar téh hangus . lamun bisa kahareupna mah ameh bisa dijadwalkeun ulang . nuhun . [O] [A] [S]",
+        "target": "[O] oke pisan [A] palayanan [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17753,
         "task_elements": "aos",
-        "input": "resepsionisna kurang ramah . [S] [A] [O]",
-        "target": "[S] negative [A] resepsionisna [O] kurang ramah",
+        "input": "sabenerna mah lamun ti segi palayanan mah airy téh geus oke pisan ngan . . . nu jadi masalah téh teu bisa dibalikeun atawa dijadwalkeun ulang . ku sabab balik ka cirebon téh diundur jadi tanggal 12 oktober , jadi kamar téh hangus . lamun bisa kahareupna mah ameh bisa dijadwalkeun ulang . nuhun . [S] [A] [O]",
+        "target": "[S] positive [A] palayanan [O] oke pisan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3550,
         "instance_id": 17754,
         "task_elements": "aos",
-        "input": "resepsionisna kurang ramah . [O] [S] [A]",
-        "target": "[O] kurang ramah [S] negative [A] resepsionisna",
+        "input": "sabenerna mah lamun ti segi palayanan mah airy téh geus oke pisan ngan . . . nu jadi masalah téh teu bisa dibalikeun atawa dijadwalkeun ulang . ku sabab balik ka cirebon téh diundur jadi tanggal 12 oktober , jadi kamar téh hangus . lamun bisa kahareupna mah ameh bisa dijadwalkeun ulang . nuhun . [O] [S] [A]",
+        "target": "[O] oke pisan [S] positive [A] palayanan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17755,
         "task_elements": "aos",
-        "input": "prosés asup téh teu riweuh . [A] [O] [S]",
-        "target": "[A] prosés asup [O] teu riweuh [S] positive",
+        "input": "keur kamar mah , sasua jeung hargana , alus pisan . [A] [O] [S]",
+        "target": "[A] kamar [O] alus pisan [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17756,
         "task_elements": "aos",
-        "input": "prosés asup téh teu riweuh . [A] [S] [O]",
-        "target": "[A] prosés asup [S] positive [O] teu riweuh",
+        "input": "keur kamar mah , sasua jeung hargana , alus pisan . [A] [S] [O]",
+        "target": "[A] kamar [S] positive [O] alus pisan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17757,
         "task_elements": "aos",
-        "input": "prosés asup téh teu riweuh . [O] [A] [S]",
-        "target": "[O] teu riweuh [A] prosés asup [S] positive",
+        "input": "keur kamar mah , sasua jeung hargana , alus pisan . [O] [A] [S]",
+        "target": "[O] alus pisan [A] kamar [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17758,
         "task_elements": "aos",
-        "input": "prosés asup téh teu riweuh . [S] [A] [O]",
-        "target": "[S] positive [A] prosés asup [O] teu riweuh",
+        "input": "keur kamar mah , sasua jeung hargana , alus pisan . [S] [A] [O]",
+        "target": "[S] positive [A] kamar [O] alus pisan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3551,
         "instance_id": 17759,
         "task_elements": "aos",
-        "input": "prosés asup téh teu riweuh . [O] [S] [A]",
-        "target": "[O] teu riweuh [S] positive [A] prosés asup",
+        "input": "keur kamar mah , sasua jeung hargana , alus pisan . [O] [S] [A]",
+        "target": "[O] alus pisan [S] positive [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17760,
         "task_elements": "aos",
-        "input": "aya sababaraha hal nu kudu ditingkatkeun deui , siga tv . ngan bisa lalajo sababaraha saluran alus jeung . [A] [O] [S]",
-        "target": "[A] tv [O] kudu ditingkatkeun deui [S] negative",
+        "input": "kamar nu alus pisan . [A] [O] [S]",
+        "target": "[A] kamar [O] alus pisan [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17761,
         "task_elements": "aos",
-        "input": "aya sababaraha hal nu kudu ditingkatkeun deui , siga tv . ngan bisa lalajo sababaraha saluran alus jeung . [A] [S] [O]",
-        "target": "[A] tv [S] negative [O] kudu ditingkatkeun deui",
+        "input": "kamar nu alus pisan . [A] [S] [O]",
+        "target": "[A] kamar [S] positive [O] alus pisan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17762,
         "task_elements": "aos",
-        "input": "aya sababaraha hal nu kudu ditingkatkeun deui , siga tv . ngan bisa lalajo sababaraha saluran alus jeung . [O] [A] [S]",
-        "target": "[O] kudu ditingkatkeun deui [A] tv [S] negative",
+        "input": "kamar nu alus pisan . [O] [A] [S]",
+        "target": "[O] alus pisan [A] kamar [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17763,
         "task_elements": "aos",
-        "input": "aya sababaraha hal nu kudu ditingkatkeun deui , siga tv . ngan bisa lalajo sababaraha saluran alus jeung . [S] [A] [O]",
-        "target": "[S] negative [A] tv [O] kudu ditingkatkeun deui",
+        "input": "kamar nu alus pisan . [S] [A] [O]",
+        "target": "[S] positive [A] kamar [O] alus pisan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3552,
         "instance_id": 17764,
         "task_elements": "aos",
-        "input": "aya sababaraha hal nu kudu ditingkatkeun deui , siga tv . ngan bisa lalajo sababaraha saluran alus jeung . [O] [S] [A]",
-        "target": "[O] kudu ditingkatkeun deui [S] negative [A] tv",
+        "input": "kamar nu alus pisan . [O] [S] [A]",
+        "target": "[O] alus pisan [S] positive [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17765,
         "task_elements": "aos",
-        "input": "kamar nu alus pisan . [A] [O] [S]",
-        "target": "[A] kamar [O] alus pisan [S] positive",
+        "input": "airy room pangalusna nu pernah didatangan ku urang . [A] [O] [S]",
+        "target": "[A] airy room [O] pangalusna [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17766,
         "task_elements": "aos",
-        "input": "kamar nu alus pisan . [A] [S] [O]",
-        "target": "[A] kamar [S] positive [O] alus pisan",
+        "input": "airy room pangalusna nu pernah didatangan ku urang . [A] [S] [O]",
+        "target": "[A] airy room [S] positive [O] pangalusna",
         "element_order": "aso"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17767,
         "task_elements": "aos",
-        "input": "kamar nu alus pisan . [O] [A] [S]",
-        "target": "[O] alus pisan [A] kamar [S] positive",
+        "input": "airy room pangalusna nu pernah didatangan ku urang . [O] [A] [S]",
+        "target": "[O] pangalusna [A] airy room [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17768,
         "task_elements": "aos",
-        "input": "kamar nu alus pisan . [S] [A] [O]",
-        "target": "[S] positive [A] kamar [O] alus pisan",
+        "input": "airy room pangalusna nu pernah didatangan ku urang . [S] [A] [O]",
+        "target": "[S] positive [A] airy room [O] pangalusna",
         "element_order": "sao"
     },
     {
         "sentence_id": 3553,
         "instance_id": 17769,
         "task_elements": "aos",
-        "input": "kamar nu alus pisan . [O] [S] [A]",
-        "target": "[O] alus pisan [S] positive [A] kamar",
+        "input": "airy room pangalusna nu pernah didatangan ku urang . [O] [S] [A]",
+        "target": "[O] pangalusna [S] positive [A] airy room",
         "element_order": "osa"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17770,
         "task_elements": "aos",
-        "input": "kamar 215 nya pikasieuneun pisan . [A] [O] [S]",
-        "target": "[A] kamar [O] pikasieuneun pisan [S] negative",
+        "input": "parkirna teu aman . hélm urang leungit jeung euweuh tanggung jawab ti pihak parkir . [A] [O] [S]",
+        "target": "[A] parkirna [O] teu aman [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17771,
         "task_elements": "aos",
-        "input": "kamar 215 nya pikasieuneun pisan . [A] [S] [O]",
-        "target": "[A] kamar [S] negative [O] pikasieuneun pisan",
+        "input": "parkirna teu aman . hélm urang leungit jeung euweuh tanggung jawab ti pihak parkir . [A] [S] [O]",
+        "target": "[A] parkirna [S] negative [O] teu aman",
         "element_order": "aso"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17772,
         "task_elements": "aos",
-        "input": "kamar 215 nya pikasieuneun pisan . [O] [A] [S]",
-        "target": "[O] pikasieuneun pisan [A] kamar [S] negative",
+        "input": "parkirna teu aman . hélm urang leungit jeung euweuh tanggung jawab ti pihak parkir . [O] [A] [S]",
+        "target": "[O] teu aman [A] parkirna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17773,
         "task_elements": "aos",
-        "input": "kamar 215 nya pikasieuneun pisan . [S] [A] [O]",
-        "target": "[S] negative [A] kamar [O] pikasieuneun pisan",
+        "input": "parkirna teu aman . hélm urang leungit jeung euweuh tanggung jawab ti pihak parkir . [S] [A] [O]",
+        "target": "[S] negative [A] parkirna [O] teu aman",
         "element_order": "sao"
     },
     {
         "sentence_id": 3554,
         "instance_id": 17774,
         "task_elements": "aos",
-        "input": "kamar 215 nya pikasieuneun pisan . [O] [S] [A]",
-        "target": "[O] pikasieuneun pisan [S] negative [A] kamar",
+        "input": "parkirna teu aman . hélm urang leungit jeung euweuh tanggung jawab ti pihak parkir . [O] [S] [A]",
+        "target": "[O] teu aman [S] negative [A] parkirna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3555,
         "instance_id": 17775,
         "task_elements": "aos",
-        "input": "aya balkon ngan teu bisa dibuka . [A] [O] [S]",
-        "target": "[A] balkon [O] teu bisa dibuka [S] negative",
+        "input": "lokasina deukeut jeung stasion . pertahankeun . [A] [O] [S]",
+        "target": "[A] lokasina [O] deukeut [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3555,
         "instance_id": 17776,
         "task_elements": "aos",
-        "input": "aya balkon ngan teu bisa dibuka . [A] [S] [O]",
-        "target": "[A] balkon [S] negative [O] teu bisa dibuka",
+        "input": "lokasina deukeut jeung stasion . pertahankeun . [A] [S] [O]",
+        "target": "[A] lokasina [S] positive [O] deukeut",
         "element_order": "aso"
     },
     {
         "sentence_id": 3555,
         "instance_id": 17777,
         "task_elements": "aos",
-        "input": "aya balkon ngan teu bisa dibuka . [O] [A] [S]",
-        "target": "[O] teu bisa dibuka [A] balkon [S] negative",
+        "input": "lokasina deukeut jeung stasion . pertahankeun . [O] [A] [S]",
+        "target": "[O] deukeut [A] lokasina [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3555,
         "instance_id": 17778,
         "task_elements": "aos",
-        "input": "aya balkon ngan teu bisa dibuka . [S] [A] [O]",
-        "target": "[S] negative [A] balkon [O] teu bisa dibuka",
+        "input": "lokasina deukeut jeung stasion . pertahankeun . [S] [A] [O]",
+        "target": "[S] positive [A] lokasina [O] deukeut",
         "element_order": "sao"
     },
     {
         "sentence_id": 3555,
         "instance_id": 17779,
         "task_elements": "aos",
-        "input": "aya balkon ngan teu bisa dibuka . [O] [S] [A]",
-        "target": "[O] teu bisa dibuka [S] negative [A] balkon",
+        "input": "lokasina deukeut jeung stasion . pertahankeun . [O] [S] [A]",
+        "target": "[O] deukeut [S] positive [A] lokasina",
         "element_order": "osa"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17780,
         "task_elements": "aos",
-        "input": "alus sakabehna . [A] [O] [S]",
-        "target": "[A] sakabehna [O] alus [S] positive",
+        "input": "keran kamar mandi ruksak , geus laporan . euweuh nu ngoméan . [A] [O] [S]",
+        "target": "[A] keran kamar mandi [O] ruksak [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17781,
         "task_elements": "aos",
-        "input": "alus sakabehna . [A] [S] [O]",
-        "target": "[A] sakabehna [S] positive [O] alus",
+        "input": "keran kamar mandi ruksak , geus laporan . euweuh nu ngoméan . [A] [S] [O]",
+        "target": "[A] keran kamar mandi [S] negative [O] ruksak",
         "element_order": "aso"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17782,
         "task_elements": "aos",
-        "input": "alus sakabehna . [O] [A] [S]",
-        "target": "[O] alus [A] sakabehna [S] positive",
+        "input": "keran kamar mandi ruksak , geus laporan . euweuh nu ngoméan . [O] [A] [S]",
+        "target": "[O] ruksak [A] keran kamar mandi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17783,
         "task_elements": "aos",
-        "input": "alus sakabehna . [S] [A] [O]",
-        "target": "[S] positive [A] sakabehna [O] alus",
+        "input": "keran kamar mandi ruksak , geus laporan . euweuh nu ngoméan . [S] [A] [O]",
+        "target": "[S] negative [A] keran kamar mandi [O] ruksak",
         "element_order": "sao"
     },
     {
         "sentence_id": 3556,
         "instance_id": 17784,
         "task_elements": "aos",
-        "input": "alus sakabehna . [O] [S] [A]",
-        "target": "[O] alus [S] positive [A] sakabehna",
+        "input": "keran kamar mandi ruksak , geus laporan . euweuh nu ngoméan . [O] [S] [A]",
+        "target": "[O] ruksak [S] negative [A] keran kamar mandi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17785,
         "task_elements": "aos",
-        "input": "cai di kamar mandi sok mindeng pareum . [A] [O] [S]",
-        "target": "[A] cai [O] sok mindeng pareum [S] negative",
+        "input": "kasurna aya kebulan . [A] [O] [S]",
+        "target": "[A] kasurna [O] aya kebulan [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17786,
         "task_elements": "aos",
-        "input": "cai di kamar mandi sok mindeng pareum . [A] [S] [O]",
-        "target": "[A] cai [S] negative [O] sok mindeng pareum",
+        "input": "kasurna aya kebulan . [A] [S] [O]",
+        "target": "[A] kasurna [S] negative [O] aya kebulan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17787,
         "task_elements": "aos",
-        "input": "cai di kamar mandi sok mindeng pareum . [O] [A] [S]",
-        "target": "[O] sok mindeng pareum [A] cai [S] negative",
+        "input": "kasurna aya kebulan . [O] [A] [S]",
+        "target": "[O] aya kebulan [A] kasurna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17788,
         "task_elements": "aos",
-        "input": "cai di kamar mandi sok mindeng pareum . [S] [A] [O]",
-        "target": "[S] negative [A] cai [O] sok mindeng pareum",
+        "input": "kasurna aya kebulan . [S] [A] [O]",
+        "target": "[S] negative [A] kasurna [O] aya kebulan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3557,
         "instance_id": 17789,
         "task_elements": "aos",
-        "input": "cai di kamar mandi sok mindeng pareum . [O] [S] [A]",
-        "target": "[O] sok mindeng pareum [S] negative [A] cai",
+        "input": "kasurna aya kebulan . [O] [S] [A]",
+        "target": "[O] aya kebulan [S] negative [A] kasurna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17790,
         "task_elements": "aos",
-        "input": "kamar mandi téh kurang alus . [A] [O] [S]",
-        "target": "[A] kamar mandi [O] kurang alus [S] negative",
+        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [A] [O] [S]",
+        "target": "[A] wifi [O] teu hurung [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17791,
         "task_elements": "aos",
-        "input": "kamar mandi téh kurang alus . [A] [S] [O]",
-        "target": "[A] kamar mandi [S] negative [O] kurang alus",
+        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [A] [S] [O]",
+        "target": "[A] wifi [S] negative [O] teu hurung",
         "element_order": "aso"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17792,
         "task_elements": "aos",
-        "input": "kamar mandi téh kurang alus . [O] [A] [S]",
-        "target": "[O] kurang alus [A] kamar mandi [S] negative",
+        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [O] [A] [S]",
+        "target": "[O] teu hurung [A] wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17793,
         "task_elements": "aos",
-        "input": "kamar mandi téh kurang alus . [S] [A] [O]",
-        "target": "[S] negative [A] kamar mandi [O] kurang alus",
+        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [S] [A] [O]",
+        "target": "[S] negative [A] wifi [O] teu hurung",
         "element_order": "sao"
     },
     {
         "sentence_id": 3558,
         "instance_id": 17794,
         "task_elements": "aos",
-        "input": "kamar mandi téh kurang alus . [O] [S] [A]",
-        "target": "[O] kurang alus [S] negative [A] kamar mandi",
+        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [O] [S] [A]",
+        "target": "[O] teu hurung [S] negative [A] wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17795,
         "task_elements": "aos",
-        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [A] [O] [S]",
-        "target": "[A] wifi [O] teu hurung [S] negative",
+        "input": "kamarna rada heurin jadi rék solat téh rada hésé da awak urang jangkung , jadi rada hésé . sinyal ogé rada hésé di jero kamar . [A] [O] [S]",
+        "target": "[A] kamarna [O] rada heurin [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17796,
         "task_elements": "aos",
-        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [A] [S] [O]",
-        "target": "[A] wifi [S] negative [O] teu hurung",
+        "input": "kamarna rada heurin jadi rék solat téh rada hésé da awak urang jangkung , jadi rada hésé . sinyal ogé rada hésé di jero kamar . [A] [S] [O]",
+        "target": "[A] kamarna [S] negative [O] rada heurin",
         "element_order": "aso"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17797,
         "task_elements": "aos",
-        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [O] [A] [S]",
-        "target": "[O] teu hurung [A] wifi [S] negative",
+        "input": "kamarna rada heurin jadi rék solat téh rada hésé da awak urang jangkung , jadi rada hésé . sinyal ogé rada hésé di jero kamar . [O] [A] [S]",
+        "target": "[O] rada heurin [A] kamarna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17798,
         "task_elements": "aos",
-        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [S] [A] [O]",
-        "target": "[S] negative [A] wifi [O] teu hurung",
+        "input": "kamarna rada heurin jadi rék solat téh rada hésé da awak urang jangkung , jadi rada hésé . sinyal ogé rada hésé di jero kamar . [S] [A] [O]",
+        "target": "[S] negative [A] kamarna [O] rada heurin",
         "element_order": "sao"
     },
     {
         "sentence_id": 3559,
         "instance_id": 17799,
         "task_elements": "aos",
-        "input": "mesen kamar keur 3 urang ngan fasilitasna disadiakeun keur 2 urang . wifi na teu hurung . disadiakeun inuman nu teu dijelaskeun gratis atawa henteu . dipikir téh gratis , singhoreng mayar . [O] [S] [A]",
-        "target": "[O] teu hurung [S] negative [A] wifi",
+        "input": "kamarna rada heurin jadi rék solat téh rada hésé da awak urang jangkung , jadi rada hésé . sinyal ogé rada hésé di jero kamar . [O] [S] [A]",
+        "target": "[O] rada heurin [S] negative [A] kamarna",
         "element_order": "osa"
     },
     {
@@ -2443,1560 +2443,1560 @@
         "sentence_id": 3561,
         "instance_id": 17805,
         "task_elements": "aos",
-        "input": "tempatna mah ngeunah , enya sanajan rada asup gang leutik ngan mobil masih bisa asup da . deukeut ogé ka malioboro , sahenteuna lamun urang ka jogja deui sigana bakal ngendong di dieu deui . [A] [O] [S]",
-        "target": "[A] tempatna [O] ngeunah [S] positive",
+        "input": "kamar mah beresih , ngan ukur ulasan ngeunaan ayana binatang leutik di kamar 307 can kénéh ditindaklanjuti . [A] [O] [S]",
+        "target": "[A] kamar [O] beresih [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17806,
         "task_elements": "aos",
-        "input": "tempatna mah ngeunah , enya sanajan rada asup gang leutik ngan mobil masih bisa asup da . deukeut ogé ka malioboro , sahenteuna lamun urang ka jogja deui sigana bakal ngendong di dieu deui . [A] [S] [O]",
-        "target": "[A] tempatna [S] positive [O] ngeunah",
+        "input": "kamar mah beresih , ngan ukur ulasan ngeunaan ayana binatang leutik di kamar 307 can kénéh ditindaklanjuti . [A] [S] [O]",
+        "target": "[A] kamar [S] positive [O] beresih",
         "element_order": "aso"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17807,
         "task_elements": "aos",
-        "input": "tempatna mah ngeunah , enya sanajan rada asup gang leutik ngan mobil masih bisa asup da . deukeut ogé ka malioboro , sahenteuna lamun urang ka jogja deui sigana bakal ngendong di dieu deui . [O] [A] [S]",
-        "target": "[O] ngeunah [A] tempatna [S] positive",
+        "input": "kamar mah beresih , ngan ukur ulasan ngeunaan ayana binatang leutik di kamar 307 can kénéh ditindaklanjuti . [O] [A] [S]",
+        "target": "[O] beresih [A] kamar [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17808,
         "task_elements": "aos",
-        "input": "tempatna mah ngeunah , enya sanajan rada asup gang leutik ngan mobil masih bisa asup da . deukeut ogé ka malioboro , sahenteuna lamun urang ka jogja deui sigana bakal ngendong di dieu deui . [S] [A] [O]",
-        "target": "[S] positive [A] tempatna [O] ngeunah",
+        "input": "kamar mah beresih , ngan ukur ulasan ngeunaan ayana binatang leutik di kamar 307 can kénéh ditindaklanjuti . [S] [A] [O]",
+        "target": "[S] positive [A] kamar [O] beresih",
         "element_order": "sao"
     },
     {
         "sentence_id": 3561,
         "instance_id": 17809,
         "task_elements": "aos",
-        "input": "tempatna mah ngeunah , enya sanajan rada asup gang leutik ngan mobil masih bisa asup da . deukeut ogé ka malioboro , sahenteuna lamun urang ka jogja deui sigana bakal ngendong di dieu deui . [O] [S] [A]",
-        "target": "[O] ngeunah [S] positive [A] tempatna",
+        "input": "kamar mah beresih , ngan ukur ulasan ngeunaan ayana binatang leutik di kamar 307 can kénéh ditindaklanjuti . [O] [S] [A]",
+        "target": "[O] beresih [S] positive [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17810,
         "task_elements": "aos",
-        "input": "cai di bathup kotor . [A] [O] [S]",
-        "target": "[A] cai [O] kotor [S] negative",
+        "input": "si tetehna bageur , betah cicing di dieu . nuhun nya promo airy-na . [A] [O] [S]",
+        "target": "[A] tetehna [O] bageur [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17811,
         "task_elements": "aos",
-        "input": "cai di bathup kotor . [A] [S] [O]",
-        "target": "[A] cai [S] negative [O] kotor",
+        "input": "si tetehna bageur , betah cicing di dieu . nuhun nya promo airy-na . [A] [S] [O]",
+        "target": "[A] tetehna [S] positive [O] bageur",
         "element_order": "aso"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17812,
         "task_elements": "aos",
-        "input": "cai di bathup kotor . [O] [A] [S]",
-        "target": "[O] kotor [A] cai [S] negative",
+        "input": "si tetehna bageur , betah cicing di dieu . nuhun nya promo airy-na . [O] [A] [S]",
+        "target": "[O] bageur [A] tetehna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17813,
         "task_elements": "aos",
-        "input": "cai di bathup kotor . [S] [A] [O]",
-        "target": "[S] negative [A] cai [O] kotor",
+        "input": "si tetehna bageur , betah cicing di dieu . nuhun nya promo airy-na . [S] [A] [O]",
+        "target": "[S] positive [A] tetehna [O] bageur",
         "element_order": "sao"
     },
     {
         "sentence_id": 3562,
         "instance_id": 17814,
         "task_elements": "aos",
-        "input": "cai di bathup kotor . [O] [S] [A]",
-        "target": "[O] kotor [S] negative [A] cai",
+        "input": "si tetehna bageur , betah cicing di dieu . nuhun nya promo airy-na . [O] [S] [A]",
+        "target": "[O] bageur [S] positive [A] tetehna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17815,
         "task_elements": "aos",
-        "input": "stafna ramah . [A] [O] [S]",
-        "target": "[A] stafna [O] ramah [S] positive",
+        "input": "sarapan biasa wé . [A] [O] [S]",
+        "target": "[A] sarapan [O] biasa [S] neutral",
         "element_order": "aos"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17816,
         "task_elements": "aos",
-        "input": "stafna ramah . [A] [S] [O]",
-        "target": "[A] stafna [S] positive [O] ramah",
+        "input": "sarapan biasa wé . [A] [S] [O]",
+        "target": "[A] sarapan [S] neutral [O] biasa",
         "element_order": "aso"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17817,
         "task_elements": "aos",
-        "input": "stafna ramah . [O] [A] [S]",
-        "target": "[O] ramah [A] stafna [S] positive",
+        "input": "sarapan biasa wé . [O] [A] [S]",
+        "target": "[O] biasa [A] sarapan [S] neutral",
         "element_order": "oas"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17818,
         "task_elements": "aos",
-        "input": "stafna ramah . [S] [A] [O]",
-        "target": "[S] positive [A] stafna [O] ramah",
+        "input": "sarapan biasa wé . [S] [A] [O]",
+        "target": "[S] neutral [A] sarapan [O] biasa",
         "element_order": "sao"
     },
     {
         "sentence_id": 3563,
         "instance_id": 17819,
         "task_elements": "aos",
-        "input": "stafna ramah . [O] [S] [A]",
-        "target": "[O] ramah [S] positive [A] stafna",
+        "input": "sarapan biasa wé . [O] [S] [A]",
+        "target": "[O] biasa [S] neutral [A] sarapan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17820,
         "task_elements": "aos",
-        "input": "palayanna kurang muaskeun , ngan saukur ditanya cai panas gé beungeutna geus haseum , jeung siga nu kapaksa ngabantuna . [A] [O] [S]",
-        "target": "[A] palayanna [O] kurang muaskeun [S] negative",
+        "input": "palayanan téh kurang alus . [A] [O] [S]",
+        "target": "[A] palayanan [O] kurang alus [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17821,
         "task_elements": "aos",
-        "input": "palayanna kurang muaskeun , ngan saukur ditanya cai panas gé beungeutna geus haseum , jeung siga nu kapaksa ngabantuna . [A] [S] [O]",
-        "target": "[A] palayanna [S] negative [O] kurang muaskeun",
+        "input": "palayanan téh kurang alus . [A] [S] [O]",
+        "target": "[A] palayanan [S] negative [O] kurang alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17822,
         "task_elements": "aos",
-        "input": "palayanna kurang muaskeun , ngan saukur ditanya cai panas gé beungeutna geus haseum , jeung siga nu kapaksa ngabantuna . [O] [A] [S]",
-        "target": "[O] kurang muaskeun [A] palayanna [S] negative",
+        "input": "palayanan téh kurang alus . [O] [A] [S]",
+        "target": "[O] kurang alus [A] palayanan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17823,
         "task_elements": "aos",
-        "input": "palayanna kurang muaskeun , ngan saukur ditanya cai panas gé beungeutna geus haseum , jeung siga nu kapaksa ngabantuna . [S] [A] [O]",
-        "target": "[S] negative [A] palayanna [O] kurang muaskeun",
+        "input": "palayanan téh kurang alus . [S] [A] [O]",
+        "target": "[S] negative [A] palayanan [O] kurang alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3564,
         "instance_id": 17824,
         "task_elements": "aos",
-        "input": "palayanna kurang muaskeun , ngan saukur ditanya cai panas gé beungeutna geus haseum , jeung siga nu kapaksa ngabantuna . [O] [S] [A]",
-        "target": "[O] kurang muaskeun [S] negative [A] palayanna",
+        "input": "palayanan téh kurang alus . [O] [S] [A]",
+        "target": "[O] kurang alus [S] negative [A] palayanan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17825,
         "task_elements": "aos",
-        "input": "kamarna lega . mun masalah kabersihan mah nilaina 3 tina 5 . [A] [O] [S]",
-        "target": "[A] kamarna [O] lega [S] positive",
+        "input": "tempatna oke . [A] [O] [S]",
+        "target": "[A] tempatna [O] oke [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17826,
         "task_elements": "aos",
-        "input": "kamarna lega . mun masalah kabersihan mah nilaina 3 tina 5 . [A] [S] [O]",
-        "target": "[A] kamarna [S] positive [O] lega",
+        "input": "tempatna oke . [A] [S] [O]",
+        "target": "[A] tempatna [S] positive [O] oke",
         "element_order": "aso"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17827,
         "task_elements": "aos",
-        "input": "kamarna lega . mun masalah kabersihan mah nilaina 3 tina 5 . [O] [A] [S]",
-        "target": "[O] lega [A] kamarna [S] positive",
+        "input": "tempatna oke . [O] [A] [S]",
+        "target": "[O] oke [A] tempatna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17828,
         "task_elements": "aos",
-        "input": "kamarna lega . mun masalah kabersihan mah nilaina 3 tina 5 . [S] [A] [O]",
-        "target": "[S] positive [A] kamarna [O] lega",
+        "input": "tempatna oke . [S] [A] [O]",
+        "target": "[S] positive [A] tempatna [O] oke",
         "element_order": "sao"
     },
     {
         "sentence_id": 3565,
         "instance_id": 17829,
         "task_elements": "aos",
-        "input": "kamarna lega . mun masalah kabersihan mah nilaina 3 tina 5 . [O] [S] [A]",
-        "target": "[O] lega [S] positive [A] kamarna",
+        "input": "tempatna oke . [O] [S] [A]",
+        "target": "[O] oke [S] positive [A] tempatna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17830,
         "task_elements": "aos",
-        "input": "palayanan téh kurang alus . [A] [O] [S]",
-        "target": "[A] palayanan [O] kurang alus [S] negative",
+        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [A] [O] [S]",
+        "target": "[A] sakabéhna [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17831,
         "task_elements": "aos",
-        "input": "palayanan téh kurang alus . [A] [S] [O]",
-        "target": "[A] palayanan [S] negative [O] kurang alus",
+        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [A] [S] [O]",
+        "target": "[A] sakabéhna [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17832,
         "task_elements": "aos",
-        "input": "palayanan téh kurang alus . [O] [A] [S]",
-        "target": "[O] kurang alus [A] palayanan [S] negative",
+        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [O] [A] [S]",
+        "target": "[O] alus [A] sakabéhna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17833,
         "task_elements": "aos",
-        "input": "palayanan téh kurang alus . [S] [A] [O]",
-        "target": "[S] negative [A] palayanan [O] kurang alus",
+        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [S] [A] [O]",
+        "target": "[S] positive [A] sakabéhna [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3566,
         "instance_id": 17834,
         "task_elements": "aos",
-        "input": "palayanan téh kurang alus . [O] [S] [A]",
-        "target": "[O] kurang alus [S] negative [A] palayanan",
+        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] sakabéhna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17835,
         "task_elements": "aos",
-        "input": "tempatna oke . [A] [O] [S]",
-        "target": "[A] tempatna [O] oke [S] positive",
+        "input": "kamar heurin teuing . [A] [O] [S]",
+        "target": "[A] kamar [O] heurin teuing [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17836,
         "task_elements": "aos",
-        "input": "tempatna oke . [A] [S] [O]",
-        "target": "[A] tempatna [S] positive [O] oke",
+        "input": "kamar heurin teuing . [A] [S] [O]",
+        "target": "[A] kamar [S] negative [O] heurin teuing",
         "element_order": "aso"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17837,
         "task_elements": "aos",
-        "input": "tempatna oke . [O] [A] [S]",
-        "target": "[O] oke [A] tempatna [S] positive",
+        "input": "kamar heurin teuing . [O] [A] [S]",
+        "target": "[O] heurin teuing [A] kamar [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17838,
         "task_elements": "aos",
-        "input": "tempatna oke . [S] [A] [O]",
-        "target": "[S] positive [A] tempatna [O] oke",
+        "input": "kamar heurin teuing . [S] [A] [O]",
+        "target": "[S] negative [A] kamar [O] heurin teuing",
         "element_order": "sao"
     },
     {
         "sentence_id": 3567,
         "instance_id": 17839,
         "task_elements": "aos",
-        "input": "tempatna oke . [O] [S] [A]",
-        "target": "[O] oke [S] positive [A] tempatna",
+        "input": "kamar heurin teuing . [O] [S] [A]",
+        "target": "[O] heurin teuing [S] negative [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17840,
         "task_elements": "aos",
-        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [A] [O] [S]",
-        "target": "[A] sakabéhna [O] alus [S] positive",
+        "input": "biasa wé , kamar kurang beresih . [A] [O] [S]",
+        "target": "[A] kamar [O] kurang beresih [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17841,
         "task_elements": "aos",
-        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [A] [S] [O]",
-        "target": "[A] sakabéhna [S] positive [O] alus",
+        "input": "biasa wé , kamar kurang beresih . [A] [S] [O]",
+        "target": "[A] kamar [S] negative [O] kurang beresih",
         "element_order": "aso"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17842,
         "task_elements": "aos",
-        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [O] [A] [S]",
-        "target": "[O] alus [A] sakabéhna [S] positive",
+        "input": "biasa wé , kamar kurang beresih . [O] [A] [S]",
+        "target": "[O] kurang beresih [A] kamar [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17843,
         "task_elements": "aos",
-        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [S] [A] [O]",
-        "target": "[S] positive [A] sakabéhna [O] alus",
+        "input": "biasa wé , kamar kurang beresih . [S] [A] [O]",
+        "target": "[S] negative [A] kamar [O] kurang beresih",
         "element_order": "sao"
     },
     {
         "sentence_id": 3568,
         "instance_id": 17844,
         "task_elements": "aos",
-        "input": "karasa siga kos-kosan . enya sih , anyar kénéh . ngan , sakabéhna mah alus . ngan miris pisan pas asup ka kamar . hp urang langsung euweuh sinyal . di kota gedé nu geus 4g tapi sinyal 2g ogé euweuh . maenya urang teu bisa komunikasi jeung kulawarga . lamun rék nelepon kudu lumpat ka teras keur meunangkeun sinyal . [O] [S] [A]",
-        "target": "[O] alus [S] positive [A] sakabéhna",
+        "input": "biasa wé , kamar kurang beresih . [O] [S] [A]",
+        "target": "[O] kurang beresih [S] negative [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17845,
         "task_elements": "aos",
-        "input": "kamar heurin teuing . [A] [O] [S]",
-        "target": "[A] kamar [O] heurin teuing [S] negative",
+        "input": "kamar nu murah pisan di jakarta . [A] [O] [S]",
+        "target": "[A] kamar [O] murah pisan [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17846,
         "task_elements": "aos",
-        "input": "kamar heurin teuing . [A] [S] [O]",
-        "target": "[A] kamar [S] negative [O] heurin teuing",
+        "input": "kamar nu murah pisan di jakarta . [A] [S] [O]",
+        "target": "[A] kamar [S] negative [O] murah pisan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17847,
         "task_elements": "aos",
-        "input": "kamar heurin teuing . [O] [A] [S]",
-        "target": "[O] heurin teuing [A] kamar [S] negative",
+        "input": "kamar nu murah pisan di jakarta . [O] [A] [S]",
+        "target": "[O] murah pisan [A] kamar [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17848,
         "task_elements": "aos",
-        "input": "kamar heurin teuing . [S] [A] [O]",
-        "target": "[S] negative [A] kamar [O] heurin teuing",
+        "input": "kamar nu murah pisan di jakarta . [S] [A] [O]",
+        "target": "[S] negative [A] kamar [O] murah pisan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3569,
         "instance_id": 17849,
         "task_elements": "aos",
-        "input": "kamar heurin teuing . [O] [S] [A]",
-        "target": "[O] heurin teuing [S] negative [A] kamar",
+        "input": "kamar nu murah pisan di jakarta . [O] [S] [A]",
+        "target": "[O] murah pisan [S] negative [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17850,
         "task_elements": "aos",
-        "input": "cai haneut sakapeung sok pareum . [A] [O] [S]",
-        "target": "[A] cai haneut [O] sakapeung sok pareum [S] negative",
+        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [A] [O] [S]",
+        "target": "[A] sandi wifi [O] teu dibéré [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17851,
         "task_elements": "aos",
-        "input": "cai haneut sakapeung sok pareum . [A] [S] [O]",
-        "target": "[A] cai haneut [S] negative [O] sakapeung sok pareum",
+        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [A] [S] [O]",
+        "target": "[A] sandi wifi [S] negative [O] teu dibéré",
         "element_order": "aso"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17852,
         "task_elements": "aos",
-        "input": "cai haneut sakapeung sok pareum . [O] [A] [S]",
-        "target": "[O] sakapeung sok pareum [A] cai haneut [S] negative",
+        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [O] [A] [S]",
+        "target": "[O] teu dibéré [A] sandi wifi [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17853,
         "task_elements": "aos",
-        "input": "cai haneut sakapeung sok pareum . [S] [A] [O]",
-        "target": "[S] negative [A] cai haneut [O] sakapeung sok pareum",
+        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [S] [A] [O]",
+        "target": "[S] negative [A] sandi wifi [O] teu dibéré",
         "element_order": "sao"
     },
     {
         "sentence_id": 3570,
         "instance_id": 17854,
         "task_elements": "aos",
-        "input": "cai haneut sakapeung sok pareum . [O] [S] [A]",
-        "target": "[O] sakapeung sok pareum [S] negative [A] cai haneut",
+        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [O] [S] [A]",
+        "target": "[O] teu dibéré [S] negative [A] sandi wifi",
         "element_order": "osa"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17855,
         "task_elements": "aos",
-        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [A] [O] [S]",
-        "target": "[A] sandi wifi [O] teu dibéré [S] negative",
+        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [A] [O] [S]",
+        "target": "[A] alamatna [O] hésé néangan [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17856,
         "task_elements": "aos",
-        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [A] [S] [O]",
-        "target": "[A] sandi wifi [S] negative [O] teu dibéré",
+        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [A] [S] [O]",
+        "target": "[A] alamatna [S] negative [O] hésé néangan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17857,
         "task_elements": "aos",
-        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [O] [A] [S]",
-        "target": "[O] teu dibéré [A] sandi wifi [S] negative",
+        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [O] [A] [S]",
+        "target": "[O] hésé néangan [A] alamatna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17858,
         "task_elements": "aos",
-        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [S] [A] [O]",
-        "target": "[S] negative [A] sandi wifi [O] teu dibéré",
+        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [S] [A] [O]",
+        "target": "[S] negative [A] alamatna [O] hésé néangan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3571,
         "instance_id": 17859,
         "task_elements": "aos",
-        "input": "ngan teu dibéré sandi wifi wé da di dinya mah hésé sinyal . [O] [S] [A]",
-        "target": "[O] teu dibéré [S] negative [A] sandi wifi",
+        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [O] [S] [A]",
+        "target": "[O] hésé néangan [S] negative [A] alamatna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17860,
         "task_elements": "aos",
-        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [A] [O] [S]",
-        "target": "[A] alamatna [O] hésé néangan [S] negative",
+        "input": "di lomari euweuh gantungan baju . [A] [O] [S]",
+        "target": "[A] gantungan baju [O] euweuh [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17861,
         "task_elements": "aos",
-        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [A] [S] [O]",
-        "target": "[A] alamatna [S] negative [O] hésé néangan",
+        "input": "di lomari euweuh gantungan baju . [A] [S] [O]",
+        "target": "[A] gantungan baju [S] negative [O] euweuh",
         "element_order": "aso"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17862,
         "task_elements": "aos",
-        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [O] [A] [S]",
-        "target": "[O] hésé néangan [A] alamatna [S] negative",
+        "input": "di lomari euweuh gantungan baju . [O] [A] [S]",
+        "target": "[O] euweuh [A] gantungan baju [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17863,
         "task_elements": "aos",
-        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [S] [A] [O]",
-        "target": "[S] negative [A] alamatna [O] hésé néangan",
+        "input": "di lomari euweuh gantungan baju . [S] [A] [O]",
+        "target": "[S] negative [A] gantungan baju [O] euweuh",
         "element_order": "sao"
     },
     {
         "sentence_id": 3572,
         "instance_id": 17864,
         "task_elements": "aos",
-        "input": "mimitina mah hésé néangan alamatna , ngan sanggeus nelepon ka nomer telepon nu aya , kakara bisa manggihan alamatna , akibat jadwal . [O] [S] [A]",
-        "target": "[O] hésé néangan [S] negative [A] alamatna",
+        "input": "di lomari euweuh gantungan baju . [O] [S] [A]",
+        "target": "[O] euweuh [S] negative [A] gantungan baju",
         "element_order": "osa"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17865,
         "task_elements": "aos",
-        "input": "konci panto kamar mandina ruksak . [A] [O] [S]",
-        "target": "[A] panto kamar mandina [O] ruksak [S] negative",
+        "input": "kamarna kasep . [A] [O] [S]",
+        "target": "[A] kamarna [O] kasep [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17866,
         "task_elements": "aos",
-        "input": "konci panto kamar mandina ruksak . [A] [S] [O]",
-        "target": "[A] panto kamar mandina [S] negative [O] ruksak",
+        "input": "kamarna kasep . [A] [S] [O]",
+        "target": "[A] kamarna [S] positive [O] kasep",
         "element_order": "aso"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17867,
         "task_elements": "aos",
-        "input": "konci panto kamar mandina ruksak . [O] [A] [S]",
-        "target": "[O] ruksak [A] panto kamar mandina [S] negative",
+        "input": "kamarna kasep . [O] [A] [S]",
+        "target": "[O] kasep [A] kamarna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17868,
         "task_elements": "aos",
-        "input": "konci panto kamar mandina ruksak . [S] [A] [O]",
-        "target": "[S] negative [A] panto kamar mandina [O] ruksak",
+        "input": "kamarna kasep . [S] [A] [O]",
+        "target": "[S] positive [A] kamarna [O] kasep",
         "element_order": "sao"
     },
     {
         "sentence_id": 3573,
         "instance_id": 17869,
         "task_elements": "aos",
-        "input": "konci panto kamar mandina ruksak . [O] [S] [A]",
-        "target": "[O] ruksak [S] negative [A] panto kamar mandina",
+        "input": "kamarna kasep . [O] [S] [A]",
+        "target": "[O] kasep [S] positive [A] kamarna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17870,
         "task_elements": "aos",
-        "input": "palayananna kurang . [A] [O] [S]",
-        "target": "[A] palayananna [O] kurang [S] negative",
+        "input": "euweuh cemilan . [A] [O] [S]",
+        "target": "[A] cemilan [O] euweuh [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17871,
         "task_elements": "aos",
-        "input": "palayananna kurang . [A] [S] [O]",
-        "target": "[A] palayananna [S] negative [O] kurang",
+        "input": "euweuh cemilan . [A] [S] [O]",
+        "target": "[A] cemilan [S] negative [O] euweuh",
         "element_order": "aso"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17872,
         "task_elements": "aos",
-        "input": "palayananna kurang . [O] [A] [S]",
-        "target": "[O] kurang [A] palayananna [S] negative",
+        "input": "euweuh cemilan . [O] [A] [S]",
+        "target": "[O] euweuh [A] cemilan [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17873,
         "task_elements": "aos",
-        "input": "palayananna kurang . [S] [A] [O]",
-        "target": "[S] negative [A] palayananna [O] kurang",
+        "input": "euweuh cemilan . [S] [A] [O]",
+        "target": "[S] negative [A] cemilan [O] euweuh",
         "element_order": "sao"
     },
     {
         "sentence_id": 3574,
         "instance_id": 17874,
         "task_elements": "aos",
-        "input": "palayananna kurang . [O] [S] [A]",
-        "target": "[O] kurang [S] negative [A] palayananna",
+        "input": "euweuh cemilan . [O] [S] [A]",
+        "target": "[O] euweuh [S] negative [A] cemilan",
         "element_order": "osa"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17875,
         "task_elements": "aos",
-        "input": "ac na teu hurung sampurna , jadi karasa panas . [A] [O] [S]",
-        "target": "[A] ac [O] teu hurung sampurna [S] negative",
+        "input": "konci panto kamar mandina ruksak . [A] [O] [S]",
+        "target": "[A] panto kamar mandina [O] ruksak [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17876,
         "task_elements": "aos",
-        "input": "ac na teu hurung sampurna , jadi karasa panas . [A] [S] [O]",
-        "target": "[A] ac [S] negative [O] teu hurung sampurna",
+        "input": "konci panto kamar mandina ruksak . [A] [S] [O]",
+        "target": "[A] panto kamar mandina [S] negative [O] ruksak",
         "element_order": "aso"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17877,
         "task_elements": "aos",
-        "input": "ac na teu hurung sampurna , jadi karasa panas . [O] [A] [S]",
-        "target": "[O] teu hurung sampurna [A] ac [S] negative",
+        "input": "konci panto kamar mandina ruksak . [O] [A] [S]",
+        "target": "[O] ruksak [A] panto kamar mandina [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17878,
         "task_elements": "aos",
-        "input": "ac na teu hurung sampurna , jadi karasa panas . [S] [A] [O]",
-        "target": "[S] negative [A] ac [O] teu hurung sampurna",
+        "input": "konci panto kamar mandina ruksak . [S] [A] [O]",
+        "target": "[S] negative [A] panto kamar mandina [O] ruksak",
         "element_order": "sao"
     },
     {
         "sentence_id": 3575,
         "instance_id": 17879,
         "task_elements": "aos",
-        "input": "ac na teu hurung sampurna , jadi karasa panas . [O] [S] [A]",
-        "target": "[O] teu hurung sampurna [S] negative [A] ac",
+        "input": "konci panto kamar mandina ruksak . [O] [S] [A]",
+        "target": "[O] ruksak [S] negative [A] panto kamar mandina",
         "element_order": "osa"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17880,
         "task_elements": "aos",
-        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [A] [O] [S]",
-        "target": "[A] kolamna [O] lumayan dirékoméndasikeun [S] positive",
+        "input": "palayananna kurang . [A] [O] [S]",
+        "target": "[A] palayananna [O] kurang [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17881,
         "task_elements": "aos",
-        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [A] [S] [O]",
-        "target": "[A] kolamna [S] positive [O] lumayan dirékoméndasikeun",
+        "input": "palayananna kurang . [A] [S] [O]",
+        "target": "[A] palayananna [S] negative [O] kurang",
         "element_order": "aso"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17882,
         "task_elements": "aos",
-        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [O] [A] [S]",
-        "target": "[O] lumayan dirékoméndasikeun [A] kolamna [S] positive",
+        "input": "palayananna kurang . [O] [A] [S]",
+        "target": "[O] kurang [A] palayananna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17883,
         "task_elements": "aos",
-        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [S] [A] [O]",
-        "target": "[S] positive [A] kolamna [O] lumayan dirékoméndasikeun",
+        "input": "palayananna kurang . [S] [A] [O]",
+        "target": "[S] negative [A] palayananna [O] kurang",
         "element_order": "sao"
     },
     {
         "sentence_id": 3576,
         "instance_id": 17884,
         "task_elements": "aos",
-        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [O] [S] [A]",
-        "target": "[O] lumayan dirékoméndasikeun [S] positive [A] kolamna",
+        "input": "palayananna kurang . [O] [S] [A]",
+        "target": "[O] kurang [S] negative [A] palayananna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17885,
         "task_elements": "aos",
-        "input": "gedongna can siap kénéh . [A] [O] [S]",
-        "target": "[A] gedongna [O] can siap [S] negative",
+        "input": "ac na teu hurung sampurna , jadi karasa panas . [A] [O] [S]",
+        "target": "[A] ac [O] teu hurung sampurna [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17886,
         "task_elements": "aos",
-        "input": "gedongna can siap kénéh . [A] [S] [O]",
-        "target": "[A] gedongna [S] negative [O] can siap",
+        "input": "ac na teu hurung sampurna , jadi karasa panas . [A] [S] [O]",
+        "target": "[A] ac [S] negative [O] teu hurung sampurna",
         "element_order": "aso"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17887,
         "task_elements": "aos",
-        "input": "gedongna can siap kénéh . [O] [A] [S]",
-        "target": "[O] can siap [A] gedongna [S] negative",
+        "input": "ac na teu hurung sampurna , jadi karasa panas . [O] [A] [S]",
+        "target": "[O] teu hurung sampurna [A] ac [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17888,
         "task_elements": "aos",
-        "input": "gedongna can siap kénéh . [S] [A] [O]",
-        "target": "[S] negative [A] gedongna [O] can siap",
+        "input": "ac na teu hurung sampurna , jadi karasa panas . [S] [A] [O]",
+        "target": "[S] negative [A] ac [O] teu hurung sampurna",
         "element_order": "sao"
     },
     {
         "sentence_id": 3577,
         "instance_id": 17889,
         "task_elements": "aos",
-        "input": "gedongna can siap kénéh . [O] [S] [A]",
-        "target": "[O] can siap [S] negative [A] gedongna",
+        "input": "ac na teu hurung sampurna , jadi karasa panas . [O] [S] [A]",
+        "target": "[O] teu hurung sampurna [S] negative [A] ac",
         "element_order": "osa"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17890,
         "task_elements": "aos",
-        "input": "kamar mandi téh bau . [A] [O] [S]",
-        "target": "[A] kamar mandi [O] bau [S] negative",
+        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [A] [O] [S]",
+        "target": "[A] kolamna [O] lumayan dirékoméndasikeun [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17891,
         "task_elements": "aos",
-        "input": "kamar mandi téh bau . [A] [S] [O]",
-        "target": "[A] kamar mandi [S] negative [O] bau",
+        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [A] [S] [O]",
+        "target": "[A] kolamna [S] positive [O] lumayan dirékoméndasikeun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17892,
         "task_elements": "aos",
-        "input": "kamar mandi téh bau . [O] [A] [S]",
-        "target": "[O] bau [A] kamar mandi [S] negative",
+        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [O] [A] [S]",
+        "target": "[O] lumayan dirékoméndasikeun [A] kolamna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17893,
         "task_elements": "aos",
-        "input": "kamar mandi téh bau . [S] [A] [O]",
-        "target": "[S] negative [A] kamar mandi [O] bau",
+        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [S] [A] [O]",
+        "target": "[S] positive [A] kolamna [O] lumayan dirékoméndasikeun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3578,
         "instance_id": 17894,
         "task_elements": "aos",
-        "input": "kamar mandi téh bau . [O] [S] [A]",
-        "target": "[O] bau [S] negative [A] kamar mandi",
+        "input": "kolamna hungkul nu lumayan dirékoméndasikeun mah . [O] [S] [A]",
+        "target": "[O] lumayan dirékoméndasikeun [S] positive [A] kolamna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17895,
         "task_elements": "aos",
-        "input": "tembok pinuh ku reungit paéh . sapeuting bisa maéhan 20 reungit . kamar mandi ogé kotor . [A] [O] [S]",
-        "target": "[A] kamar mandi [O] kotor [S] negative",
+        "input": "gedongna can siap kénéh . [A] [O] [S]",
+        "target": "[A] gedongna [O] can siap [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17896,
         "task_elements": "aos",
-        "input": "tembok pinuh ku reungit paéh . sapeuting bisa maéhan 20 reungit . kamar mandi ogé kotor . [A] [S] [O]",
-        "target": "[A] kamar mandi [S] negative [O] kotor",
+        "input": "gedongna can siap kénéh . [A] [S] [O]",
+        "target": "[A] gedongna [S] negative [O] can siap",
         "element_order": "aso"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17897,
         "task_elements": "aos",
-        "input": "tembok pinuh ku reungit paéh . sapeuting bisa maéhan 20 reungit . kamar mandi ogé kotor . [O] [A] [S]",
-        "target": "[O] kotor [A] kamar mandi [S] negative",
+        "input": "gedongna can siap kénéh . [O] [A] [S]",
+        "target": "[O] can siap [A] gedongna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17898,
         "task_elements": "aos",
-        "input": "tembok pinuh ku reungit paéh . sapeuting bisa maéhan 20 reungit . kamar mandi ogé kotor . [S] [A] [O]",
-        "target": "[S] negative [A] kamar mandi [O] kotor",
+        "input": "gedongna can siap kénéh . [S] [A] [O]",
+        "target": "[S] negative [A] gedongna [O] can siap",
         "element_order": "sao"
     },
     {
         "sentence_id": 3579,
         "instance_id": 17899,
         "task_elements": "aos",
-        "input": "tembok pinuh ku reungit paéh . sapeuting bisa maéhan 20 reungit . kamar mandi ogé kotor . [O] [S] [A]",
-        "target": "[O] kotor [S] negative [A] kamar mandi",
+        "input": "gedongna can siap kénéh . [O] [S] [A]",
+        "target": "[O] can siap [S] negative [A] gedongna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17900,
         "task_elements": "aos",
-        "input": "hotélna mah ngeunaheun komo deui meunang promo ti airy . lamun ka malang hayang ngendong di dieu deui . [A] [O] [S]",
-        "target": "[A] hotélna [O] ngeunaheun [S] positive",
+        "input": "palayananna alus . nepi ka dianteurkeun ogé ka bandara . [A] [O] [S]",
+        "target": "[A] palayananna [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17901,
         "task_elements": "aos",
-        "input": "hotélna mah ngeunaheun komo deui meunang promo ti airy . lamun ka malang hayang ngendong di dieu deui . [A] [S] [O]",
-        "target": "[A] hotélna [S] positive [O] ngeunaheun",
+        "input": "palayananna alus . nepi ka dianteurkeun ogé ka bandara . [A] [S] [O]",
+        "target": "[A] palayananna [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17902,
         "task_elements": "aos",
-        "input": "hotélna mah ngeunaheun komo deui meunang promo ti airy . lamun ka malang hayang ngendong di dieu deui . [O] [A] [S]",
-        "target": "[O] ngeunaheun [A] hotélna [S] positive",
+        "input": "palayananna alus . nepi ka dianteurkeun ogé ka bandara . [O] [A] [S]",
+        "target": "[O] alus [A] palayananna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17903,
         "task_elements": "aos",
-        "input": "hotélna mah ngeunaheun komo deui meunang promo ti airy . lamun ka malang hayang ngendong di dieu deui . [S] [A] [O]",
-        "target": "[S] positive [A] hotélna [O] ngeunaheun",
+        "input": "palayananna alus . nepi ka dianteurkeun ogé ka bandara . [S] [A] [O]",
+        "target": "[S] positive [A] palayananna [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3580,
         "instance_id": 17904,
         "task_elements": "aos",
-        "input": "hotélna mah ngeunaheun komo deui meunang promo ti airy . lamun ka malang hayang ngendong di dieu deui . [O] [S] [A]",
-        "target": "[O] ngeunaheun [S] positive [A] hotélna",
+        "input": "palayananna alus . nepi ka dianteurkeun ogé ka bandara . [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] palayananna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17905,
         "task_elements": "aos",
-        "input": "palayanan asup lila . [A] [O] [S]",
-        "target": "[A] palayanan asup [O] lila [S] negative",
+        "input": "kaberesihanna kudu ditingkatkeun deui . [A] [O] [S]",
+        "target": "[A] kaberesihanna [O] kudu ditingkatkeun deui [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17906,
         "task_elements": "aos",
-        "input": "palayanan asup lila . [A] [S] [O]",
-        "target": "[A] palayanan asup [S] negative [O] lila",
+        "input": "kaberesihanna kudu ditingkatkeun deui . [A] [S] [O]",
+        "target": "[A] kaberesihanna [S] negative [O] kudu ditingkatkeun deui",
         "element_order": "aso"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17907,
         "task_elements": "aos",
-        "input": "palayanan asup lila . [O] [A] [S]",
-        "target": "[O] lila [A] palayanan asup [S] negative",
+        "input": "kaberesihanna kudu ditingkatkeun deui . [O] [A] [S]",
+        "target": "[O] kudu ditingkatkeun deui [A] kaberesihanna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17908,
         "task_elements": "aos",
-        "input": "palayanan asup lila . [S] [A] [O]",
-        "target": "[S] negative [A] palayanan asup [O] lila",
+        "input": "kaberesihanna kudu ditingkatkeun deui . [S] [A] [O]",
+        "target": "[S] negative [A] kaberesihanna [O] kudu ditingkatkeun deui",
         "element_order": "sao"
     },
     {
         "sentence_id": 3581,
         "instance_id": 17909,
         "task_elements": "aos",
-        "input": "palayanan asup lila . [O] [S] [A]",
-        "target": "[O] lila [S] negative [A] palayanan asup",
+        "input": "kaberesihanna kudu ditingkatkeun deui . [O] [S] [A]",
+        "target": "[O] kudu ditingkatkeun deui [S] negative [A] kaberesihanna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17910,
         "task_elements": "aos",
-        "input": "kamar ngeunaheun pisan . [A] [O] [S]",
-        "target": "[A] kamar [O] ngeunaheun pisan [S] positive",
+        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [A] [O] [S]",
+        "target": "[A] ac-na [O] teu tiis [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17911,
         "task_elements": "aos",
-        "input": "kamar ngeunaheun pisan . [A] [S] [O]",
-        "target": "[A] kamar [S] positive [O] ngeunaheun pisan",
+        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [A] [S] [O]",
+        "target": "[A] ac-na [S] negative [O] teu tiis",
         "element_order": "aso"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17912,
         "task_elements": "aos",
-        "input": "kamar ngeunaheun pisan . [O] [A] [S]",
-        "target": "[O] ngeunaheun pisan [A] kamar [S] positive",
+        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [O] [A] [S]",
+        "target": "[O] teu tiis [A] ac-na [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17913,
         "task_elements": "aos",
-        "input": "kamar ngeunaheun pisan . [S] [A] [O]",
-        "target": "[S] positive [A] kamar [O] ngeunaheun pisan",
+        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [S] [A] [O]",
+        "target": "[S] negative [A] ac-na [O] teu tiis",
         "element_order": "sao"
     },
     {
         "sentence_id": 3582,
         "instance_id": 17914,
         "task_elements": "aos",
-        "input": "kamar ngeunaheun pisan . [O] [S] [A]",
-        "target": "[O] ngeunaheun pisan [S] positive [A] kamar",
+        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [O] [S] [A]",
+        "target": "[O] teu tiis [S] negative [A] ac-na",
         "element_order": "osa"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17915,
         "task_elements": "aos",
-        "input": "sarapan ameh leuwih rupa-rupa . [A] [O] [S]",
-        "target": "[A] sarapan [O] leuwih rupa-rupa [S] negative",
+        "input": "resep pisan ku fasilitas kamarna , bakal leuwih alus lamun aya sarapan isuk-isukna . [A] [O] [S]",
+        "target": "[A] fasilitas kamarna [O] resep pisan [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17916,
         "task_elements": "aos",
-        "input": "sarapan ameh leuwih rupa-rupa . [A] [S] [O]",
-        "target": "[A] sarapan [S] negative [O] leuwih rupa-rupa",
+        "input": "resep pisan ku fasilitas kamarna , bakal leuwih alus lamun aya sarapan isuk-isukna . [A] [S] [O]",
+        "target": "[A] fasilitas kamarna [S] positive [O] resep pisan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17917,
         "task_elements": "aos",
-        "input": "sarapan ameh leuwih rupa-rupa . [O] [A] [S]",
-        "target": "[O] leuwih rupa-rupa [A] sarapan [S] negative",
+        "input": "resep pisan ku fasilitas kamarna , bakal leuwih alus lamun aya sarapan isuk-isukna . [O] [A] [S]",
+        "target": "[O] resep pisan [A] fasilitas kamarna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17918,
         "task_elements": "aos",
-        "input": "sarapan ameh leuwih rupa-rupa . [S] [A] [O]",
-        "target": "[S] negative [A] sarapan [O] leuwih rupa-rupa",
+        "input": "resep pisan ku fasilitas kamarna , bakal leuwih alus lamun aya sarapan isuk-isukna . [S] [A] [O]",
+        "target": "[S] positive [A] fasilitas kamarna [O] resep pisan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3583,
         "instance_id": 17919,
         "task_elements": "aos",
-        "input": "sarapan ameh leuwih rupa-rupa . [O] [S] [A]",
-        "target": "[O] leuwih rupa-rupa [S] negative [A] sarapan",
+        "input": "resep pisan ku fasilitas kamarna , bakal leuwih alus lamun aya sarapan isuk-isukna . [O] [S] [A]",
+        "target": "[O] resep pisan [S] positive [A] fasilitas kamarna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17920,
         "task_elements": "aos",
-        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [A] [O] [S]",
-        "target": "[A] ac-na [O] teu tiis [S] negative",
+        "input": "alus tempatna mah , deukeut ka tempat dahar . [A] [O] [S]",
+        "target": "[A] tempatna [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17921,
         "task_elements": "aos",
-        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [A] [S] [O]",
-        "target": "[A] ac-na [S] negative [O] teu tiis",
+        "input": "alus tempatna mah , deukeut ka tempat dahar . [A] [S] [O]",
+        "target": "[A] tempatna [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17922,
         "task_elements": "aos",
-        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [O] [A] [S]",
-        "target": "[O] teu tiis [A] ac-na [S] negative",
+        "input": "alus tempatna mah , deukeut ka tempat dahar . [O] [A] [S]",
+        "target": "[O] alus [A] tempatna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17923,
         "task_elements": "aos",
-        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [S] [A] [O]",
-        "target": "[S] negative [A] ac-na [O] teu tiis",
+        "input": "alus tempatna mah , deukeut ka tempat dahar . [S] [A] [O]",
+        "target": "[S] positive [A] tempatna [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3584,
         "instance_id": 17924,
         "task_elements": "aos",
-        "input": "ac-na mah ngan ukur pajangan hungkul , teu tiis . [O] [S] [A]",
-        "target": "[O] teu tiis [S] negative [A] ac-na",
+        "input": "alus tempatna mah , deukeut ka tempat dahar . [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] tempatna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17925,
         "task_elements": "aos",
-        "input": "hotél airy pangalusna nu pernah kaalaman ku urang . [A] [O] [S]",
-        "target": "[A] hotél [O] pangalusna [S] positive",
+        "input": "kamarna lega , aya korsi lipet , ngan kurang kaca wéh di kamar téh . kaca mah ngan aya nu di kamar mandi , jadi kudu ngadagoan nu di kamar mandi bérés kakara bisa dandan ? [A] [O] [S]",
+        "target": "[A] kamarna [O] lega [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17926,
         "task_elements": "aos",
-        "input": "hotél airy pangalusna nu pernah kaalaman ku urang . [A] [S] [O]",
-        "target": "[A] hotél [S] positive [O] pangalusna",
+        "input": "kamarna lega , aya korsi lipet , ngan kurang kaca wéh di kamar téh . kaca mah ngan aya nu di kamar mandi , jadi kudu ngadagoan nu di kamar mandi bérés kakara bisa dandan ? [A] [S] [O]",
+        "target": "[A] kamarna [S] positive [O] lega",
         "element_order": "aso"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17927,
         "task_elements": "aos",
-        "input": "hotél airy pangalusna nu pernah kaalaman ku urang . [O] [A] [S]",
-        "target": "[O] pangalusna [A] hotél [S] positive",
+        "input": "kamarna lega , aya korsi lipet , ngan kurang kaca wéh di kamar téh . kaca mah ngan aya nu di kamar mandi , jadi kudu ngadagoan nu di kamar mandi bérés kakara bisa dandan ? [O] [A] [S]",
+        "target": "[O] lega [A] kamarna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17928,
         "task_elements": "aos",
-        "input": "hotél airy pangalusna nu pernah kaalaman ku urang . [S] [A] [O]",
-        "target": "[S] positive [A] hotél [O] pangalusna",
+        "input": "kamarna lega , aya korsi lipet , ngan kurang kaca wéh di kamar téh . kaca mah ngan aya nu di kamar mandi , jadi kudu ngadagoan nu di kamar mandi bérés kakara bisa dandan ? [S] [A] [O]",
+        "target": "[S] positive [A] kamarna [O] lega",
         "element_order": "sao"
     },
     {
         "sentence_id": 3585,
         "instance_id": 17929,
         "task_elements": "aos",
-        "input": "hotél airy pangalusna nu pernah kaalaman ku urang . [O] [S] [A]",
-        "target": "[O] pangalusna [S] positive [A] hotél",
+        "input": "kamarna lega , aya korsi lipet , ngan kurang kaca wéh di kamar téh . kaca mah ngan aya nu di kamar mandi , jadi kudu ngadagoan nu di kamar mandi bérés kakara bisa dandan ? [O] [S] [A]",
+        "target": "[O] lega [S] positive [A] kamarna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17930,
         "task_elements": "aos",
-        "input": "lokasina strategis pisan lamun rék ka kota tua mah , tinggal leumpang . [A] [O] [S]",
-        "target": "[A] lokasina [O] strategis [S] positive",
+        "input": "kamar muaskeun pisan . saeutik catetan , hanjakal , lokasina panginepan téh di jero gang . jadi rada hésé meureun néanganana . [A] [O] [S]",
+        "target": "[A] kamar [O] muaskeun pisan [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17931,
         "task_elements": "aos",
-        "input": "lokasina strategis pisan lamun rék ka kota tua mah , tinggal leumpang . [A] [S] [O]",
-        "target": "[A] lokasina [S] positive [O] strategis",
+        "input": "kamar muaskeun pisan . saeutik catetan , hanjakal , lokasina panginepan téh di jero gang . jadi rada hésé meureun néanganana . [A] [S] [O]",
+        "target": "[A] kamar [S] positive [O] muaskeun pisan",
         "element_order": "aso"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17932,
         "task_elements": "aos",
-        "input": "lokasina strategis pisan lamun rék ka kota tua mah , tinggal leumpang . [O] [A] [S]",
-        "target": "[O] strategis [A] lokasina [S] positive",
+        "input": "kamar muaskeun pisan . saeutik catetan , hanjakal , lokasina panginepan téh di jero gang . jadi rada hésé meureun néanganana . [O] [A] [S]",
+        "target": "[O] muaskeun pisan [A] kamar [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17933,
         "task_elements": "aos",
-        "input": "lokasina strategis pisan lamun rék ka kota tua mah , tinggal leumpang . [S] [A] [O]",
-        "target": "[S] positive [A] lokasina [O] strategis",
+        "input": "kamar muaskeun pisan . saeutik catetan , hanjakal , lokasina panginepan téh di jero gang . jadi rada hésé meureun néanganana . [S] [A] [O]",
+        "target": "[S] positive [A] kamar [O] muaskeun pisan",
         "element_order": "sao"
     },
     {
         "sentence_id": 3586,
         "instance_id": 17934,
         "task_elements": "aos",
-        "input": "lokasina strategis pisan lamun rék ka kota tua mah , tinggal leumpang . [O] [S] [A]",
-        "target": "[O] strategis [S] positive [A] lokasina",
+        "input": "kamar muaskeun pisan . saeutik catetan , hanjakal , lokasina panginepan téh di jero gang . jadi rada hésé meureun néanganana . [O] [S] [A]",
+        "target": "[O] muaskeun pisan [S] positive [A] kamar",
         "element_order": "osa"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17935,
         "task_elements": "aos",
-        "input": "kaamanan kajaga sabab aya cctv jeung kaamanan . [A] [O] [S]",
-        "target": "[A] kaamanan [O] kajaga [S] positive",
+        "input": "pamiceunan cai di kamar mandi mengpet . [A] [O] [S]",
+        "target": "[A] pamiceunan cai [O] mengpet [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17936,
         "task_elements": "aos",
-        "input": "kaamanan kajaga sabab aya cctv jeung kaamanan . [A] [S] [O]",
-        "target": "[A] kaamanan [S] positive [O] kajaga",
+        "input": "pamiceunan cai di kamar mandi mengpet . [A] [S] [O]",
+        "target": "[A] pamiceunan cai [S] negative [O] mengpet",
         "element_order": "aso"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17937,
         "task_elements": "aos",
-        "input": "kaamanan kajaga sabab aya cctv jeung kaamanan . [O] [A] [S]",
-        "target": "[O] kajaga [A] kaamanan [S] positive",
+        "input": "pamiceunan cai di kamar mandi mengpet . [O] [A] [S]",
+        "target": "[O] mengpet [A] pamiceunan cai [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17938,
         "task_elements": "aos",
-        "input": "kaamanan kajaga sabab aya cctv jeung kaamanan . [S] [A] [O]",
-        "target": "[S] positive [A] kaamanan [O] kajaga",
+        "input": "pamiceunan cai di kamar mandi mengpet . [S] [A] [O]",
+        "target": "[S] negative [A] pamiceunan cai [O] mengpet",
         "element_order": "sao"
     },
     {
         "sentence_id": 3587,
         "instance_id": 17939,
         "task_elements": "aos",
-        "input": "kaamanan kajaga sabab aya cctv jeung kaamanan . [O] [S] [A]",
-        "target": "[O] kajaga [S] positive [A] kaamanan",
+        "input": "pamiceunan cai di kamar mandi mengpet . [O] [S] [A]",
+        "target": "[O] mengpet [S] negative [A] pamiceunan cai",
         "element_order": "osa"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17940,
         "task_elements": "aos",
-        "input": "alus pisan sakabehna . [A] [O] [S]",
-        "target": "[A] sakabehna [O] alus pisan [S] positive",
+        "input": "palayananna alus . loba kuliner di deukeut hotél pikeun ngagampangkeun nu rék nguliner . [A] [O] [S]",
+        "target": "[A] palayananna [O] alus [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17941,
         "task_elements": "aos",
-        "input": "alus pisan sakabehna . [A] [S] [O]",
-        "target": "[A] sakabehna [S] positive [O] alus pisan",
+        "input": "palayananna alus . loba kuliner di deukeut hotél pikeun ngagampangkeun nu rék nguliner . [A] [S] [O]",
+        "target": "[A] palayananna [S] positive [O] alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17942,
         "task_elements": "aos",
-        "input": "alus pisan sakabehna . [O] [A] [S]",
-        "target": "[O] alus pisan [A] sakabehna [S] positive",
+        "input": "palayananna alus . loba kuliner di deukeut hotél pikeun ngagampangkeun nu rék nguliner . [O] [A] [S]",
+        "target": "[O] alus [A] palayananna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17943,
         "task_elements": "aos",
-        "input": "alus pisan sakabehna . [S] [A] [O]",
-        "target": "[S] positive [A] sakabehna [O] alus pisan",
+        "input": "palayananna alus . loba kuliner di deukeut hotél pikeun ngagampangkeun nu rék nguliner . [S] [A] [O]",
+        "target": "[S] positive [A] palayananna [O] alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3588,
         "instance_id": 17944,
         "task_elements": "aos",
-        "input": "alus pisan sakabehna . [O] [S] [A]",
-        "target": "[O] alus pisan [S] positive [A] sakabehna",
+        "input": "palayananna alus . loba kuliner di deukeut hotél pikeun ngagampangkeun nu rék nguliner . [O] [S] [A]",
+        "target": "[O] alus [S] positive [A] palayananna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17945,
         "task_elements": "aos",
-        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [A] [O] [S]",
-        "target": "[A] kamarna [O] kurang seungit [S] negative",
+        "input": "kaayaan tempatna kurang alus dibandingkeun jeung tempat sakelasna . [A] [O] [S]",
+        "target": "[A] tempatna [O] kurang alus [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17946,
         "task_elements": "aos",
-        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [A] [S] [O]",
-        "target": "[A] kamarna [S] negative [O] kurang seungit",
+        "input": "kaayaan tempatna kurang alus dibandingkeun jeung tempat sakelasna . [A] [S] [O]",
+        "target": "[A] tempatna [S] negative [O] kurang alus",
         "element_order": "aso"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17947,
         "task_elements": "aos",
-        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [O] [A] [S]",
-        "target": "[O] kurang seungit [A] kamarna [S] negative",
+        "input": "kaayaan tempatna kurang alus dibandingkeun jeung tempat sakelasna . [O] [A] [S]",
+        "target": "[O] kurang alus [A] tempatna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17948,
         "task_elements": "aos",
-        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [S] [A] [O]",
-        "target": "[S] negative [A] kamarna [O] kurang seungit",
+        "input": "kaayaan tempatna kurang alus dibandingkeun jeung tempat sakelasna . [S] [A] [O]",
+        "target": "[S] negative [A] tempatna [O] kurang alus",
         "element_order": "sao"
     },
     {
         "sentence_id": 3589,
         "instance_id": 17949,
         "task_elements": "aos",
-        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [O] [S] [A]",
-        "target": "[O] kurang seungit [S] negative [A] kamarna",
+        "input": "kaayaan tempatna kurang alus dibandingkeun jeung tempat sakelasna . [O] [S] [A]",
+        "target": "[O] kurang alus [S] negative [A] tempatna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17950,
         "task_elements": "aos",
-        "input": "lokasina strategis deukeut alun-alun malang , loba tempat dahar . [A] [O] [S]",
-        "target": "[A] lokasina [O] strategis [S] positive",
+        "input": "cenah mah aya pancuran cai panas , singhoreng euweuh . dijieun dibéré cai nginum , ngan buktina ogé henteu . cik dibenerkeun deui . nuhun . [A] [O] [S]",
+        "target": "[A] pancuran cai panas [O] euweuh [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17951,
         "task_elements": "aos",
-        "input": "lokasina strategis deukeut alun-alun malang , loba tempat dahar . [A] [S] [O]",
-        "target": "[A] lokasina [S] positive [O] strategis",
+        "input": "cenah mah aya pancuran cai panas , singhoreng euweuh . dijieun dibéré cai nginum , ngan buktina ogé henteu . cik dibenerkeun deui . nuhun . [A] [S] [O]",
+        "target": "[A] pancuran cai panas [S] negative [O] euweuh",
         "element_order": "aso"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17952,
         "task_elements": "aos",
-        "input": "lokasina strategis deukeut alun-alun malang , loba tempat dahar . [O] [A] [S]",
-        "target": "[O] strategis [A] lokasina [S] positive",
+        "input": "cenah mah aya pancuran cai panas , singhoreng euweuh . dijieun dibéré cai nginum , ngan buktina ogé henteu . cik dibenerkeun deui . nuhun . [O] [A] [S]",
+        "target": "[O] euweuh [A] pancuran cai panas [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17953,
         "task_elements": "aos",
-        "input": "lokasina strategis deukeut alun-alun malang , loba tempat dahar . [S] [A] [O]",
-        "target": "[S] positive [A] lokasina [O] strategis",
+        "input": "cenah mah aya pancuran cai panas , singhoreng euweuh . dijieun dibéré cai nginum , ngan buktina ogé henteu . cik dibenerkeun deui . nuhun . [S] [A] [O]",
+        "target": "[S] negative [A] pancuran cai panas [O] euweuh",
         "element_order": "sao"
     },
     {
         "sentence_id": 3590,
         "instance_id": 17954,
         "task_elements": "aos",
-        "input": "lokasina strategis deukeut alun-alun malang , loba tempat dahar . [O] [S] [A]",
-        "target": "[O] strategis [S] positive [A] lokasina",
+        "input": "cenah mah aya pancuran cai panas , singhoreng euweuh . dijieun dibéré cai nginum , ngan buktina ogé henteu . cik dibenerkeun deui . nuhun . [O] [S] [A]",
+        "target": "[O] euweuh [S] negative [A] pancuran cai panas",
         "element_order": "osa"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17955,
         "task_elements": "aos",
-        "input": "cai pancuranna leutik . [A] [O] [S]",
-        "target": "[A] cai pancuranna [O] leutik [S] negative",
+        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [A] [O] [S]",
+        "target": "[A] kamarna [O] kurang seungit [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17956,
         "task_elements": "aos",
-        "input": "cai pancuranna leutik . [A] [S] [O]",
-        "target": "[A] cai pancuranna [S] negative [O] leutik",
+        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [A] [S] [O]",
+        "target": "[A] kamarna [S] negative [O] kurang seungit",
         "element_order": "aso"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17957,
         "task_elements": "aos",
-        "input": "cai pancuranna leutik . [O] [A] [S]",
-        "target": "[O] leutik [A] cai pancuranna [S] negative",
+        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [O] [A] [S]",
+        "target": "[O] kurang seungit [A] kamarna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17958,
         "task_elements": "aos",
-        "input": "cai pancuranna leutik . [S] [A] [O]",
-        "target": "[S] negative [A] cai pancuranna [O] leutik",
+        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [S] [A] [O]",
+        "target": "[S] negative [A] kamarna [O] kurang seungit",
         "element_order": "sao"
     },
     {
         "sentence_id": 3591,
         "instance_id": 17959,
         "task_elements": "aos",
-        "input": "cai pancuranna leutik . [O] [S] [A]",
-        "target": "[O] leutik [S] negative [A] cai pancuranna",
+        "input": "bau kamarna kurang seungit . mun dibéré pangharum ruangan mah leuwih alus . [O] [S] [A]",
+        "target": "[O] kurang seungit [S] negative [A] kamarna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17960,
         "task_elements": "aos",
-        "input": "pagawe téh kurang ramah . [A] [O] [S]",
-        "target": "[A] pagawe [O] kurang ramah [S] negative",
+        "input": "waktu asup teu sasuai jeung informasi penting ti hotél , ditulisna asup jam 2 beurang , buktina kakara bisa asup jam 5 leuwih . [A] [O] [S]",
+        "target": "[A] waktu asup [O] teu sasuai [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17961,
         "task_elements": "aos",
-        "input": "pagawe téh kurang ramah . [A] [S] [O]",
-        "target": "[A] pagawe [S] negative [O] kurang ramah",
+        "input": "waktu asup teu sasuai jeung informasi penting ti hotél , ditulisna asup jam 2 beurang , buktina kakara bisa asup jam 5 leuwih . [A] [S] [O]",
+        "target": "[A] waktu asup [S] negative [O] teu sasuai",
         "element_order": "aso"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17962,
         "task_elements": "aos",
-        "input": "pagawe téh kurang ramah . [O] [A] [S]",
-        "target": "[O] kurang ramah [A] pagawe [S] negative",
+        "input": "waktu asup teu sasuai jeung informasi penting ti hotél , ditulisna asup jam 2 beurang , buktina kakara bisa asup jam 5 leuwih . [O] [A] [S]",
+        "target": "[O] teu sasuai [A] waktu asup [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17963,
         "task_elements": "aos",
-        "input": "pagawe téh kurang ramah . [S] [A] [O]",
-        "target": "[S] negative [A] pagawe [O] kurang ramah",
+        "input": "waktu asup teu sasuai jeung informasi penting ti hotél , ditulisna asup jam 2 beurang , buktina kakara bisa asup jam 5 leuwih . [S] [A] [O]",
+        "target": "[S] negative [A] waktu asup [O] teu sasuai",
         "element_order": "sao"
     },
     {
         "sentence_id": 3592,
         "instance_id": 17964,
         "task_elements": "aos",
-        "input": "pagawe téh kurang ramah . [O] [S] [A]",
-        "target": "[O] kurang ramah [S] negative [A] pagawe",
+        "input": "waktu asup teu sasuai jeung informasi penting ti hotél , ditulisna asup jam 2 beurang , buktina kakara bisa asup jam 5 leuwih . [O] [S] [A]",
+        "target": "[O] teu sasuai [S] negative [A] waktu asup",
         "element_order": "osa"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17965,
         "task_elements": "aos",
-        "input": "hanjakal lift na teu hurung . [A] [O] [S]",
-        "target": "[A] lift [O] teu hurung [S] negative",
+        "input": "pagawe téh kurang ramah . [A] [O] [S]",
+        "target": "[A] pagawe [O] kurang ramah [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17966,
         "task_elements": "aos",
-        "input": "hanjakal lift na teu hurung . [A] [S] [O]",
-        "target": "[A] lift [S] negative [O] teu hurung",
+        "input": "pagawe téh kurang ramah . [A] [S] [O]",
+        "target": "[A] pagawe [S] negative [O] kurang ramah",
         "element_order": "aso"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17967,
         "task_elements": "aos",
-        "input": "hanjakal lift na teu hurung . [O] [A] [S]",
-        "target": "[O] teu hurung [A] lift [S] negative",
+        "input": "pagawe téh kurang ramah . [O] [A] [S]",
+        "target": "[O] kurang ramah [A] pagawe [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17968,
         "task_elements": "aos",
-        "input": "hanjakal lift na teu hurung . [S] [A] [O]",
-        "target": "[S] negative [A] lift [O] teu hurung",
+        "input": "pagawe téh kurang ramah . [S] [A] [O]",
+        "target": "[S] negative [A] pagawe [O] kurang ramah",
         "element_order": "sao"
     },
     {
         "sentence_id": 3593,
         "instance_id": 17969,
         "task_elements": "aos",
-        "input": "hanjakal lift na teu hurung . [O] [S] [A]",
-        "target": "[O] teu hurung [S] negative [A] lift",
+        "input": "pagawe téh kurang ramah . [O] [S] [A]",
+        "target": "[O] kurang ramah [S] negative [A] pagawe",
         "element_order": "osa"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17970,
         "task_elements": "aos",
-        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [A] [O] [S]",
-        "target": "[A] kamarna [O] lega [S] positive",
+        "input": "hanjakal lift na teu hurung . [A] [O] [S]",
+        "target": "[A] lift [O] teu hurung [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17971,
         "task_elements": "aos",
-        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [A] [S] [O]",
-        "target": "[A] kamarna [S] positive [O] lega",
+        "input": "hanjakal lift na teu hurung . [A] [S] [O]",
+        "target": "[A] lift [S] negative [O] teu hurung",
         "element_order": "aso"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17972,
         "task_elements": "aos",
-        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [O] [A] [S]",
-        "target": "[O] lega [A] kamarna [S] positive",
+        "input": "hanjakal lift na teu hurung . [O] [A] [S]",
+        "target": "[O] teu hurung [A] lift [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17973,
         "task_elements": "aos",
-        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [S] [A] [O]",
-        "target": "[S] positive [A] kamarna [O] lega",
+        "input": "hanjakal lift na teu hurung . [S] [A] [O]",
+        "target": "[S] negative [A] lift [O] teu hurung",
         "element_order": "sao"
     },
     {
         "sentence_id": 3594,
         "instance_id": 17974,
         "task_elements": "aos",
-        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [O] [S] [A]",
-        "target": "[O] lega [S] positive [A] kamarna",
+        "input": "hanjakal lift na teu hurung . [O] [S] [A]",
+        "target": "[O] teu hurung [S] negative [A] lift",
         "element_order": "osa"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17975,
         "task_elements": "aos",
-        "input": "basa ngendong di dinya , listrik hotél pareum nepi ka subuh teu hurung . euweuh kajelasan jeung kompensasi ti pihak hotél nepi ka urang jeung sababaraha urang tuluy ngadorong , kakara dibéré kompensasi ngendong di hotél séjén jam 4 isuk-isuk . cik dibenerkeun sistim jeung manajemén hotél , sop jeung customer care ti airy rooms . utamana dina hal palayanna . nuhun . [A] [O] [S]",
-        "target": "[A] sistim jeung manajemén hotél [O] cik dibenerkeun [S] negative",
+        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [A] [O] [S]",
+        "target": "[A] kamarna [O] lega [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17976,
         "task_elements": "aos",
-        "input": "basa ngendong di dinya , listrik hotél pareum nepi ka subuh teu hurung . euweuh kajelasan jeung kompensasi ti pihak hotél nepi ka urang jeung sababaraha urang tuluy ngadorong , kakara dibéré kompensasi ngendong di hotél séjén jam 4 isuk-isuk . cik dibenerkeun sistim jeung manajemén hotél , sop jeung customer care ti airy rooms . utamana dina hal palayanna . nuhun . [A] [S] [O]",
-        "target": "[A] sistim jeung manajemén hotél [S] negative [O] cik dibenerkeun",
+        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [A] [S] [O]",
+        "target": "[A] kamarna [S] positive [O] lega",
         "element_order": "aso"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17977,
         "task_elements": "aos",
-        "input": "basa ngendong di dinya , listrik hotél pareum nepi ka subuh teu hurung . euweuh kajelasan jeung kompensasi ti pihak hotél nepi ka urang jeung sababaraha urang tuluy ngadorong , kakara dibéré kompensasi ngendong di hotél séjén jam 4 isuk-isuk . cik dibenerkeun sistim jeung manajemén hotél , sop jeung customer care ti airy rooms . utamana dina hal palayanna . nuhun . [O] [A] [S]",
-        "target": "[O] cik dibenerkeun [A] sistim jeung manajemén hotél [S] negative",
+        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [O] [A] [S]",
+        "target": "[O] lega [A] kamarna [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17978,
         "task_elements": "aos",
-        "input": "basa ngendong di dinya , listrik hotél pareum nepi ka subuh teu hurung . euweuh kajelasan jeung kompensasi ti pihak hotél nepi ka urang jeung sababaraha urang tuluy ngadorong , kakara dibéré kompensasi ngendong di hotél séjén jam 4 isuk-isuk . cik dibenerkeun sistim jeung manajemén hotél , sop jeung customer care ti airy rooms . utamana dina hal palayanna . nuhun . [S] [A] [O]",
-        "target": "[S] negative [A] sistim jeung manajemén hotél [O] cik dibenerkeun",
+        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [S] [A] [O]",
+        "target": "[S] positive [A] kamarna [O] lega",
         "element_order": "sao"
     },
     {
         "sentence_id": 3595,
         "instance_id": 17979,
         "task_elements": "aos",
-        "input": "basa ngendong di dinya , listrik hotél pareum nepi ka subuh teu hurung . euweuh kajelasan jeung kompensasi ti pihak hotél nepi ka urang jeung sababaraha urang tuluy ngadorong , kakara dibéré kompensasi ngendong di hotél séjén jam 4 isuk-isuk . cik dibenerkeun sistim jeung manajemén hotél , sop jeung customer care ti airy rooms . utamana dina hal palayanna . nuhun . [O] [S] [A]",
-        "target": "[O] cik dibenerkeun [S] negative [A] sistim jeung manajemén hotél",
+        "input": "kamarna lega , lokasina lumayan jauh ti jalan utama , ngan lamun rék kamana-mana bisa maké angkutan on . [O] [S] [A]",
+        "target": "[O] lega [S] positive [A] kamarna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17980,
         "task_elements": "aos",
-        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [A] [O] [S]",
-        "target": "[A] nu ngajagana [O] kecewa [S] negative",
+        "input": "sendalna euweuh . cenah mah gratis wifi , ngan singhoréng teu dibéré sandina , ah anéh . [A] [O] [S]",
+        "target": "[A] sendalna [O] euweuh [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17981,
         "task_elements": "aos",
-        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [A] [S] [O]",
-        "target": "[A] nu ngajagana [S] negative [O] kecewa",
+        "input": "sendalna euweuh . cenah mah gratis wifi , ngan singhoréng teu dibéré sandina , ah anéh . [A] [S] [O]",
+        "target": "[A] sendalna [S] negative [O] euweuh",
         "element_order": "aso"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17982,
         "task_elements": "aos",
-        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [O] [A] [S]",
-        "target": "[O] kecewa [A] nu ngajagana [S] negative",
+        "input": "sendalna euweuh . cenah mah gratis wifi , ngan singhoréng teu dibéré sandina , ah anéh . [O] [A] [S]",
+        "target": "[O] euweuh [A] sendalna [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17983,
         "task_elements": "aos",
-        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [S] [A] [O]",
-        "target": "[S] negative [A] nu ngajagana [O] kecewa",
+        "input": "sendalna euweuh . cenah mah gratis wifi , ngan singhoréng teu dibéré sandina , ah anéh . [S] [A] [O]",
+        "target": "[S] negative [A] sendalna [O] euweuh",
         "element_order": "sao"
     },
     {
         "sentence_id": 3596,
         "instance_id": 17984,
         "task_elements": "aos",
-        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [O] [S] [A]",
-        "target": "[O] kecewa [S] negative [A] nu ngajagana",
+        "input": "sendalna euweuh . cenah mah gratis wifi , ngan singhoréng teu dibéré sandina , ah anéh . [O] [S] [A]",
+        "target": "[O] euweuh [S] negative [A] sendalna",
         "element_order": "osa"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17985,
         "task_elements": "aos",
-        "input": "ruangan lumayan ngeunaheun . [A] [O] [S]",
-        "target": "[A] ruangan [O] lumayan ngeunaheun [S] positive",
+        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [A] [O] [S]",
+        "target": "[A] nu ngajagana [O] kecewa [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17986,
         "task_elements": "aos",
-        "input": "ruangan lumayan ngeunaheun . [A] [S] [O]",
-        "target": "[A] ruangan [S] positive [O] lumayan ngeunaheun",
+        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [A] [S] [O]",
+        "target": "[A] nu ngajagana [S] negative [O] kecewa",
         "element_order": "aso"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17987,
         "task_elements": "aos",
-        "input": "ruangan lumayan ngeunaheun . [O] [A] [S]",
-        "target": "[O] lumayan ngeunaheun [A] ruangan [S] positive",
+        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [O] [A] [S]",
+        "target": "[O] kecewa [A] nu ngajagana [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17988,
         "task_elements": "aos",
-        "input": "ruangan lumayan ngeunaheun . [S] [A] [O]",
-        "target": "[S] positive [A] ruangan [O] lumayan ngeunaheun",
+        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [S] [A] [O]",
+        "target": "[S] negative [A] nu ngajagana [O] kecewa",
         "element_order": "sao"
     },
     {
         "sentence_id": 3597,
         "instance_id": 17989,
         "task_elements": "aos",
-        "input": "ruangan lumayan ngeunaheun . [O] [S] [A]",
-        "target": "[O] lumayan ngeunaheun [S] positive [A] ruangan",
+        "input": "kecewa ka nu ngajagana , da urang datangna geus peuting , tuluy aya kénéh pagawean balik deui ka hotél geus jam 11 peuting , da kabeurangan hudang jam 11 . beurang karék néangan dahar jam 12 , keur mandi kénéh ogé geus digedor-gedor ku nu ngajagana bari jeung beungeut haseum jeung teu ramah . pas urang ngomong keur siap-siap kénéh , bari galak manéhna ngomong ' ulah lila-lila ' , jeung éta jelema nungguan di hareupeun kamar . [O] [S] [A]",
+        "target": "[O] kecewa [S] negative [A] nu ngajagana",
         "element_order": "osa"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17990,
         "task_elements": "aos",
-        "input": "kamarna kotor . [A] [O] [S]",
-        "target": "[A] kamarna [O] kotor [S] negative",
+        "input": "cai keur mandi isuk-isuk euweuh , cenah ceuk pihak panginepan mah geus béak , jadwal urang jadi ngaret kusabab éta . pas dikonfirmasi kahiji , urang dipénta ngadagoan 15 menit , ngan angger kénéh euweuh . pas dikonfirmasi kadua , urang diinfokeun deui keur dipariksa ku pihak panginepan , ngan angger kénéh teu lancar caina ka kamar urang . [A] [O] [S]",
+        "target": "[A] cai [O] euweuh [S] negative",
         "element_order": "aos"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17991,
         "task_elements": "aos",
-        "input": "kamarna kotor . [A] [S] [O]",
-        "target": "[A] kamarna [S] negative [O] kotor",
+        "input": "cai keur mandi isuk-isuk euweuh , cenah ceuk pihak panginepan mah geus béak , jadwal urang jadi ngaret kusabab éta . pas dikonfirmasi kahiji , urang dipénta ngadagoan 15 menit , ngan angger kénéh euweuh . pas dikonfirmasi kadua , urang diinfokeun deui keur dipariksa ku pihak panginepan , ngan angger kénéh teu lancar caina ka kamar urang . [A] [S] [O]",
+        "target": "[A] cai [S] negative [O] euweuh",
         "element_order": "aso"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17992,
         "task_elements": "aos",
-        "input": "kamarna kotor . [O] [A] [S]",
-        "target": "[O] kotor [A] kamarna [S] negative",
+        "input": "cai keur mandi isuk-isuk euweuh , cenah ceuk pihak panginepan mah geus béak , jadwal urang jadi ngaret kusabab éta . pas dikonfirmasi kahiji , urang dipénta ngadagoan 15 menit , ngan angger kénéh euweuh . pas dikonfirmasi kadua , urang diinfokeun deui keur dipariksa ku pihak panginepan , ngan angger kénéh teu lancar caina ka kamar urang . [O] [A] [S]",
+        "target": "[O] euweuh [A] cai [S] negative",
         "element_order": "oas"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17993,
         "task_elements": "aos",
-        "input": "kamarna kotor . [S] [A] [O]",
-        "target": "[S] negative [A] kamarna [O] kotor",
+        "input": "cai keur mandi isuk-isuk euweuh , cenah ceuk pihak panginepan mah geus béak , jadwal urang jadi ngaret kusabab éta . pas dikonfirmasi kahiji , urang dipénta ngadagoan 15 menit , ngan angger kénéh euweuh . pas dikonfirmasi kadua , urang diinfokeun deui keur dipariksa ku pihak panginepan , ngan angger kénéh teu lancar caina ka kamar urang . [S] [A] [O]",
+        "target": "[S] negative [A] cai [O] euweuh",
         "element_order": "sao"
     },
     {
         "sentence_id": 3598,
         "instance_id": 17994,
         "task_elements": "aos",
-        "input": "kamarna kotor . [O] [S] [A]",
-        "target": "[O] kotor [S] negative [A] kamarna",
+        "input": "cai keur mandi isuk-isuk euweuh , cenah ceuk pihak panginepan mah geus béak , jadwal urang jadi ngaret kusabab éta . pas dikonfirmasi kahiji , urang dipénta ngadagoan 15 menit , ngan angger kénéh euweuh . pas dikonfirmasi kadua , urang diinfokeun deui keur dipariksa ku pihak panginepan , ngan angger kénéh teu lancar caina ka kamar urang . [O] [S] [A]",
+        "target": "[O] euweuh [S] negative [A] cai",
         "element_order": "osa"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17995,
         "task_elements": "aos",
-        "input": "kasurna teuas : ( . [A] [O] [S]",
-        "target": "[A] kasurna [O] teuas [S] negative",
+        "input": "ruangan lumayan ngeunaheun . [A] [O] [S]",
+        "target": "[A] ruangan [O] lumayan ngeunaheun [S] positive",
         "element_order": "aos"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17996,
         "task_elements": "aos",
-        "input": "kasurna teuas : ( . [A] [S] [O]",
-        "target": "[A] kasurna [S] negative [O] teuas",
+        "input": "ruangan lumayan ngeunaheun . [A] [S] [O]",
+        "target": "[A] ruangan [S] positive [O] lumayan ngeunaheun",
         "element_order": "aso"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17997,
         "task_elements": "aos",
-        "input": "kasurna teuas : ( . [O] [A] [S]",
-        "target": "[O] teuas [A] kasurna [S] negative",
+        "input": "ruangan lumayan ngeunaheun . [O] [A] [S]",
+        "target": "[O] lumayan ngeunaheun [A] ruangan [S] positive",
         "element_order": "oas"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17998,
         "task_elements": "aos",
-        "input": "kasurna teuas : ( . [S] [A] [O]",
-        "target": "[S] negative [A] kasurna [O] teuas",
+        "input": "ruangan lumayan ngeunaheun . [S] [A] [O]",
+        "target": "[S] positive [A] ruangan [O] lumayan ngeunaheun",
         "element_order": "sao"
     },
     {
         "sentence_id": 3599,
         "instance_id": 17999,
         "task_elements": "aos",
-        "input": "kasurna teuas : ( . [O] [S] [A]",
-        "target": "[O] teuas [S] negative [A] kasurna",
+        "input": "ruangan lumayan ngeunaheun . [O] [S] [A]",
+        "target": "[O] lumayan ngeunaheun [S] positive [A] ruangan",
         "element_order": "osa"
     },
     {
