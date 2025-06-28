@@ -34,7 +34,7 @@ do
 
     python run_create_dataset.py \
         --finetuned_model "$FINETUNED_MODEL" \
-        --dataset_path "hotel_dataset/counterfacts/hotel_aste_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual.csv" \
+        --dataset_path "hotel_dataset/filled_counterfacts/formatted_indo_counterfacts.csv" \
         --filtered_data_path "hotel_dataset/indo/seed_${SEED}/hotel_aste_model-Qwen2.5-0.0001_bs-16_epochs-20_counterfactual_filtered_AOS.csv" \
         --full_aos_path "hotel_dataset/indo/seed_${SEED}/hotel_aste_model-Qwen2.5-0.0001_bs-16_epochs-20_counterfactual_full_AOS.csv" \
         --sequence_variants_path "hotel_dataset/indo/seed_${SEED}/hotel_aste_model-Qwen2.5-0.0001_bs-16_epochs-20_counterfactual_AOS_sequence_variants.csv" \
