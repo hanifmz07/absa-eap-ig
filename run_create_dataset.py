@@ -8,7 +8,8 @@ from src.utils import (
     filter_correct_data,
     create_full_AOS_dataset,
     create_aos_sequence_variant,
-    build_eap_dataset
+    build_eap_dataset,
+    format_counterfactuals
 )
 
 def main(args):
@@ -29,6 +30,14 @@ def main(args):
     # === Step 1: Filter Correct Predictions ===
     print("Reading dataset and filtering correct predictions...")
     df = pd.read_csv(args.dataset_path)
+
+    if "original_pair" in df.columns:
+        format_counterfactuals(args.dataset_path)
+        folder = os.path.dirname(args.dataset_path)
+        filename = os.path.basename(args.dataset_path)
+        formated_path = os.path.join(folder, f"formatted_{filename}")
+        df = pd.read_csv(formated_path)
+
     os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
     filtered_df = filter_correct_data(
         model,
@@ -43,16 +52,23 @@ def main(args):
     print(f"Filtered data saved to {args.filtered_data_path} ({len(filtered_df)} rows)")
 
     # === Step 2: Create Full AOS Dataset ===
-    print("Creating full AOS dataset...")
-    os.makedirs(os.path.dirname(args.full_aos_path), exist_ok=True)
-    full_aos_df = create_full_AOS_dataset(args.filtered_data_path)
-    full_aos_df.to_csv(args.full_aos_path, index=False)
-    print(f"Full AOS dataset saved to {args.full_aos_path} ({len(full_aos_df)} rows)")
+    df_full = pd.read_csv(args.filtered_data_path)
+    full_aos_path = args.full_aos_path
+
+    if "counterfact4_replaced" not in df_full.columns:
+        print("Creating full AOS dataset...")
+        os.makedirs(os.path.dirname(args.full_aos_path), exist_ok=True)
+        full_aos_df = create_full_AOS_dataset(args.filtered_data_path)
+        full_aos_df.to_csv(args.full_aos_path, index=False)
+        print(f"Full AOS dataset saved to {args.full_aos_path} ({len(full_aos_df)} rows)")
+
+    else:
+        full_aos_path = args.filtered_data_path
 
     # === Step 3: Create AOS Sequence Variants ===
     print("Creating AOS sequence variants...")
     os.makedirs(os.path.dirname(args.sequence_variants_path), exist_ok=True)
-    sequence_df = create_aos_sequence_variant(args.full_aos_path)
+    sequence_df = create_aos_sequence_variant(full_aos_path)
     sequence_df.to_csv(args.sequence_variants_path, index=False)
     print(f"AOS sequence variants saved to {args.sequence_variants_path} ({len(sequence_df)} rows)")
 
@@ -64,7 +80,7 @@ def main(args):
         df=sequence_df,
         sentence_col="original_sentence",
         triplet_col="original_label_variant",
-        corrupted_col="counterfact3_aspect_replaced",
+        corrupted_col="counterfact4_replaced",
         corrupted_triplet_col="counterfact_label_variant",
         filer_same_length_counterfactuals=True,
         suffix="[A] [O] [S]"

@@ -775,8 +775,8 @@ def create_full_AOS_dataset (dataset_path):
             new_modified_texts.append("")
             new_modified_triplets.append("")
     
-    df["counterfact3_aspect_replaced"] = new_modified_texts
-    df["counterfact_triplet3_aspect_replaced"] = new_modified_triplets
+    df["counterfact4_replaced"] = new_modified_texts
+    df["counterfact_triplet4_replaced"] = new_modified_triplets
 
     return df
 
@@ -802,7 +802,7 @@ def create_aos_sequence_variant(dataset_path):
     
     for _, row in df.iterrows():
         orig_a, orig_o, orig_s = parse_triplet(row["original_triplet"])
-        cf3_a, cf3_o, cf3_s = parse_triplet(row["counterfact_triplet3_aspect_replaced"])
+        cf3_a, cf3_o, cf3_s = parse_triplet(row["counterfact_triplet4_replaced"])
         
         for order, orig_seq in create_sequences(orig_a, orig_o, orig_s).items():
             cf_seq = create_sequences(cf3_a, cf3_o, cf3_s)[order]
@@ -811,10 +811,56 @@ def create_aos_sequence_variant(dataset_path):
                 "original_sentence": row["original_sentence"],
                 "original_triplet": row["original_triplet"],
                 "original_label_variant": orig_seq,
-                "counterfact3_aspect_replaced": row["counterfact3_aspect_replaced"],
-                "counterfact_triplet3_aspect_replaced": row["counterfact_triplet3_aspect_replaced"],
+                "counterfact4_replaced": row["counterfact4_replaced"],
+                "counterfact_triplet4_replaced": row["counterfact_triplet4_replaced"],
                 "counterfact_label_variant": cf_seq,
                 "is_match": row["is_match"]
             })
     
     return pd.DataFrame(records_with_match)
+
+
+def format_counterfactuals(input_path):
+    """Format ABSA counterfactual CSV and save to same folder with 'formatted_' prefix."""
+
+    def extract_triplet_fixed(text):
+        try:
+            matches = list(re.finditer(r"\[([AOS])\]", text))
+            if len(matches) >= 6:
+                a_start = matches[3].end()
+                o_start = matches[4].end()
+                s_start = matches[5].end()
+                aspect = text[a_start:matches[4].start()].strip()
+                opinion = text[o_start:matches[5].start()].strip()
+                sentiment = text[s_start:].split()[0].strip()
+                return [(aspect, opinion, sentiment)]
+        except:
+            return None
+
+    df = pd.read_csv(input_path, encoding="utf-8", quoting=1)
+
+    df = df.dropna(subset=["corrupted_pair"])
+    df = df[df["corrupted_pair"].str.strip() != ""]
+
+    df["original_triplet"] = df["original_pair"].apply(extract_triplet_fixed)
+    df["counterfact_triplet4_replaced"] = df["corrupted_pair"].apply(extract_triplet_fixed)
+
+    df_clean = df.dropna(subset=["original_triplet", "counterfact_triplet4_replaced"])
+
+    df_clean["original_sentence"] = df_clean["original_pair"].str.split("[A]").str[0].str.strip()
+    df_clean["counterfact4_replaced"] = df_clean["corrupted_pair"].str.split("[A]").str[0].str.strip()
+
+    df_out = df_clean[[
+        "index",
+        "original_sentence",
+        "original_triplet",
+        "counterfact4_replaced",
+        "counterfact_triplet4_replaced"
+    ]]
+
+    folder = os.path.dirname(input_path)
+    filename = os.path.basename(input_path)
+    output_path = os.path.join(folder, f"formatted_{filename}")
+
+    df_out.to_csv(output_path, index=False)
+    print(f"Saved {len(df_out)} rows to {output_path}")
