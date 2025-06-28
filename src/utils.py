@@ -303,7 +303,7 @@ class ABSAAutoRegressiveDataset(Dataset):
             "tokens": tokens
         }
 
-def apply_active_edge_unfreezing(model, csv_path: str) -> None:
+def apply_active_edge_unfreezing(model, csv_path: str):
     """
     Apply selective unfreezing and gradient masking to a TransformerLens model
     based on active attention and MLP nodes from an edge CSV file.
@@ -387,6 +387,7 @@ def apply_active_edge_unfreezing(model, csv_path: str) -> None:
     for layer, heads in heads_per_layer.items():
         register_head_mask(model.blocks[layer].attn.W_O, heads)
 
+    return model
 
 
 def convert_triplet_string(triplet_str: str) -> tuple:

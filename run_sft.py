@@ -37,7 +37,7 @@ def main(args):
 
     # === Load Circuit CSV ===
     if not args.train_full_model:
-        apply_active_edge_unfreezing(model, args.circuit_csv_path)
+        model = apply_active_edge_unfreezing(model, args.circuit_csv_path)
 
     model.train()
 
