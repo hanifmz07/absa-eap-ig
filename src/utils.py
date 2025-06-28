@@ -633,17 +633,14 @@ def build_eap_dataset(
                     continue
 
             try:
-                original_triplet = ast.literal_eval(row[triplet_col])
-                corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
-
                 if not idx:
-                    a_clean, o_clean, s_clean = original_triplet[0]
-                    a_corr, o_corr, s_corr = corrupted_triplet[0]
-
-                    correct_label = f"[A] {a_clean} [O] {o_clean} [S] {s_clean}"
-                    incorrect_label = f"[A] {a_corr} [O] {o_corr} [S] {s_corr}"
+                    correct_label = row[triplet_col]
+                    incorrect_label = row[corrupted_triplet_col]
                 
                 else:
+                    original_triplet = ast.literal_eval(row[triplet_col])
+                    corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
+                    
                     correct_label = original_triplet[0][idx]
                     incorrect_label = corrupted_triplet[0][idx]
 

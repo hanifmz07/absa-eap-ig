@@ -20,9 +20,9 @@ do
     MODEL_PARENT_DIR="outputs/models/eap/indo/seed_${SEED}/aos_sequence_variants"
 
     # Get the latest full finetuned model directory with full training data
-    FINETUNED_MODEL=$(find "$MODEL_PARENT_DIR" -maxdepth 1 -type d \
-        ! -name "*topk*" ! -name "*_n*" \
-        | sort -r | head -n 1)
+    FINETUNED_MODEL=$(find "$MODEL_PARENT_DIR" -mindepth 1 -maxdepth 1 -type d \
+        ! -name "*topk*" ! -name "*_n[0-9]*" \
+        -exec test -f "{}/model_config.pkl" \; -print | sort -r | head -n 1)
 
     if [ -z "$FINETUNED_MODEL" ]; then
         echo "No valid model found for seed $SEED"

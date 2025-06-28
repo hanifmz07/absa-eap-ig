@@ -63,9 +63,9 @@ def main(args):
         model=model,
         df=sequence_df,
         sentence_col="original_sentence",
-        triplet_col="original_triplet",
+        triplet_col="original_label_variant",
         corrupted_col="counterfact3_aspect_replaced",
-        corrupted_triplet_col="counterfact_triplet3_aspect_replaced",
+        corrupted_triplet_col="counterfact_label_variant",
         filer_same_length_counterfactuals=True,
         suffix="[A] [O] [S]"
     )
