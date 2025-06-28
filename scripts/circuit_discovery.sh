@@ -21,7 +21,7 @@ do
 
     # Get the latest full finetuned model directory with full training data
     FINETUNED_MODEL=$(find "$MODEL_PARENT_DIR" -maxdepth 1 -type d \
-        ! -name "*topk*" ! -name "*_n*" \
+        ! -name "*topk*" ! -name "*_n[0-9]*" \
         | sort -r | head -n 1)
 
     if [ -z "$FINETUNED_MODEL" ]; then
