@@ -12,7 +12,7 @@
 SEEDS=(42 123 2024 31415 777)
 
 BASE_MODEL="Qwen/Qwen2.5-0.5B"
-DATA_PATH="hotel_dataset/indo/clean_train2500/hotel_aste_train_augmented_noreasoning.json"
+DATA_PATH="/home/ainik/research/ABSA_2/absa-eap-ig/hotel_dataset/sunda/clean_train2500/hotel_aste_train_augmented_noreasoning.json"
 
 for SEED in "${SEEDS[@]}"; do
   echo "======================"

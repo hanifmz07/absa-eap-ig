@@ -9,7 +9,7 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=your.email@example.com # Replace with your email
 
-TEST_JSON="hotel_dataset/indo/clean_train2500/hotel_aste_test_augmented.json"
+TEST_JSON="hotel_dataset/sunda/clean_train2500/hotel_aste_test_augmented.json"
 
 SEEDS=(42 123 2024 31415 777)
 
