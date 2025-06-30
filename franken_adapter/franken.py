@@ -1,5 +1,7 @@
 from typing import Optional, Literal
 import json
+import numpy as np
+import random
 import torch
 from src.utils import load_model, ABSAAutoRegressiveDataset, apply_active_edge_unfreezing
 from transformer_lens.train import train, HookedTransformerTrainConfig
@@ -9,36 +11,47 @@ from franken_adapter.utils import SundaEmbeddingDataset, load_sundanese_paragrap
 def instruction_tuning(
     model_name: str,
     dataset_path: str,
-    num_epochs: int = 10,
-    batch_size: int = 32,
-    lr: float = 5e-4,
+    num_epochs: int = 20,
+    batch_size: int = 16,
+    lr: float = 1e-4,
     device: Literal["cuda", "cpu", "mps"] = "cuda",
     save_path: Optional[str] = None,
     circuit_path: Optional[str] = None,
-    finetune_model: Optional[str] = None
-    ) -> HookedTransformer:
-    
+    finetune_model: Optional[str] = None,
+    seed: int = 42
+) -> HookedTransformer:
+    # === Set global seed ===
+    torch.manual_seed(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    if device == "cuda":
+        torch.cuda.manual_seed_all(seed)
+
+    # === Load model ===
     if finetune_model:
         print(f"Loading base model '{model_name}' with fine-tuned weights from: {finetune_model}")
     else:
         print(f"Loading model: {model_name}")
-        
     model = load_model(model_name, device=device, fine_tuned_model_path=finetune_model)
 
+    # === Load dataset ===
     print(f"Loading dataset from: {dataset_path}")
     with open(dataset_path) as f:
         absa_data = json.load(f)
-    dataset = ABSAAutoRegressiveDataset(absa_data, model.tokenizer)
+    dataset = ABSAAutoRegressiveDataset(absa_data, model.tokenizer, seed=seed)
 
+    # === Apply selective unfreezing if needed ===
     if circuit_path:
         print(f"Applying selective unfreezing from circuit file: {circuit_path}")
         apply_active_edge_unfreezing(model, circuit_path)
     else:
         print("No circuit path provided; using default parameter setup.")
 
+    # === Freeze embeddings ===
     print("Freezing embedding layer (W_E)")
     model.embed.W_E.requires_grad = False
 
+    # === Training config ===
     config = HookedTransformerTrainConfig(
         num_epochs=num_epochs,
         batch_size=batch_size,
@@ -54,6 +67,7 @@ def instruction_tuning(
     trained_model = train(model, config, dataset)
     print("Training completed.")
 
+    # === Save model ===
     if save_path:
         print(f"Saving model to: {save_path}")
         torch.save(trained_model.state_dict(), save_path)
@@ -183,7 +197,8 @@ def finetune_franken_adapter(
     lr: float = 5e-4,
     freeze_embedding: bool = True,
     circuit_path: Optional[str] = None,
-    save_path: Optional[str] = None
+    save_path: Optional[str] = None,
+    seed: int = 42
 ) -> HookedTransformer:
     """
     Fine-tunes a FrankenAdapter model on a new dataset (e.g., Sundanese ABSA).
@@ -198,10 +213,19 @@ def finetune_franken_adapter(
         lr (float): Learning rate.
         freeze_embedding (bool): Whether to freeze the embedding layer (`W_E`).
         save_path (Optional[str]): Optional path to save the fine-tuned model.
+        seed (int): Random seed for reproducibility.
     
     Returns:
         HookedTransformer: The fine-tuned FrankenAdapter model.
     """
+
+    # === Set global seed ===
+    torch.manual_seed(seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    if device == "cuda":
+        torch.cuda.manual_seed_all(seed)
+
     print("Loading FrankenAdapter model...")
     model = HookedTransformer.from_pretrained(base_model_name, device=device)
     state_dict = torch.load(franken_weights_path, map_location=device)
@@ -210,7 +234,7 @@ def finetune_franken_adapter(
     print(f"Loading dataset from {json_data_path}")
     with open(json_data_path) as f:
         data = json.load(f)
-    dataset = ABSAAutoRegressiveDataset(data, model.tokenizer)
+    dataset = ABSAAutoRegressiveDataset(data, model.tokenizer, seed=seed)
 
     if circuit_path:
         print(f"Applying selective unfreezing from circuit file: {circuit_path}")
