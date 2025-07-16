@@ -1,21 +1,13 @@
 #!/bin/bash
 
-# Define the log file names for clarity
-LOG_BASE_NAME="sft_full"
-LOG_DIR="logs"
-mkdir -p "$LOG_DIR"
-PID=$$
-STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).log"
-STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).err"
-
 # Specifiy cuda device if needed
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=5
 
 # Extract language parameters from the command line arguments
-# Usage: ./sft5.sh <language>
+# Usage: ./sft5.sh <language> <dataset_folder>
 LANGUAGE="$1"
 if [ -z "$LANGUAGE" ]; then
-    echo "Usage: $0 <language>"
+    echo "Error: No language specified."
     exit 1
 fi
 # Validate the language argument
@@ -24,6 +16,24 @@ if [[ "$LANGUAGE" != "indo" && "$LANGUAGE" != "eng" && "$LANGUAGE" != "sunda" ]]
     exit 1
 fi
 
+DATASET_FOLDER="$2"
+# Validate the dataset folder argument
+if [ -z "$DATASET_FOLDER" ]; then
+    echo "Error: Dataset folder must be specified. Name a folder located in the hotel_dataset/{lang} directory."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+# Seeds for the SFT process
+SEED=42
+
+# Define the log file names for clarity
+LOG_BASE_NAME="sft_full"
+LOG_DIR="logs"
+PID=$$
+STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/${PID}_$(date).log"
+STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/${PID}_$(date).err"
+# Create necessary directories for logs
+mkdir -p "${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}"
 
 # --- Step 1: Initialize Log Files ---
 # Clear previous logs and add a timestamp to mark the start of this run.
@@ -43,28 +53,22 @@ echo "========================================================" >> "$STDOUT_LOG"
 {
     echo "Running ABSA SFT"
 
-    SEEDS=(42)
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "Running full sft with seed: $SEED"
+    echo "--------------------------------------------------------"
 
-    for SEED in "${SEEDS[@]}"
-    do
-        echo ""
-        echo "--------------------------------------------------------"
-        echo "Running full sft with seed: $SEED"
-        echo "--------------------------------------------------------"
-
-        # The output of this python command will now be correctly
-        # redirected along with everything else in the loop.
-        python run_sft.py \
-            --train_json_path "hotel_dataset/${LANGUAGE}/hotel_aste_train_augmented_noreasoning.json" \
-            --model_name "Qwen/Qwen2.5-0.5B" \
-            --output_dir "outputs/models/eap/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants" \
-            --num_epochs 20 \
-            --batch_size 16 \
-            --lr 1e-4 \
-            --seed $SEED \
-            --train_full_model
-
-    done
+    # The output of this python command will now be correctly
+    # redirected along with everything else in the loop.
+    python run_sft.py \
+        --train_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_train_augmented_noreasoning.json" \
+        --model_name "Qwen/Qwen2.5-0.5B" \
+        --output_dir "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants" \
+        --num_epochs 20 \
+        --batch_size 16 \
+        --lr 1e-4 \
+        --seed $SEED \
+        --train_full_model
 
     echo ""
     echo "========================================================"

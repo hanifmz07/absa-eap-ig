@@ -16,9 +16,9 @@ SCRIPTS=(
 ACTIVATE_CMD="source enveap/bin/activate"
 
 # Check if exactly 1 argument provided (language).
-if [ "$#" -ne 1 ]; then
+if [ "$#" -ne 2 ]; then
     echo "Error: Incorrect number of arguments."
-    echo "Usage: $0 <language (indo, eng, sunda)>"
+    echo "Usage: $0 <language (indo, eng, sunda)> <dataset_folder>"
     exit 1 # Exit with a non-zero status to indicate an error
 fi
 
@@ -26,6 +26,13 @@ LANGUAGE="$1"
 # Validate the language argument
 if [[ "$LANGUAGE" != "indo" && "$LANGUAGE" != "eng" && "$LANGUAGE" != "sunda" ]]; then
     echo "Error: Invalid language specified. Use 'indo', 'eng', or 'sunda'."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+DATASET_FOLDER="$2"
+# Validate the dataset folder argument
+if [ -z "$DATASET_FOLDER" ]; then
+    echo "Error: Dataset folder must be specified. Name a folder located in the hotel_dataset/{lang} directory."
     exit 1 # Exit with a non-zero status to indicate an error
 fi
 
@@ -66,7 +73,7 @@ for i in "${!SCRIPTS[@]}"; do
     TARGET_PANE="$SESSION_NAME:0.$PANE_INDEX"
     
     # Construct the full command to be run in the pane
-    FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE}"
+    FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER}"
     
     echo "Setting up pane $PANE_INDEX to run: ${SCRIPT_NAME}"
     
