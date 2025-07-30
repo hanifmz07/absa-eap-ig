@@ -69,7 +69,7 @@ def main(args):
     print(f"Output directory: {output_dir}")
 
     if args.sample_size == None:
-        sample_size = 15000
+        sample_size = 12410 # Full dataset size with 300 tokens limit per instance
     else:
         sample_size = args.sample_size
     # === Start Training ===
