@@ -32,7 +32,8 @@ def main(args):
         model.tokenizer,
         shuffle=True,
         seed=args.seed,
-        sample_size=args.sample_size
+        sample_size=args.sample_size,
+        max_len=300
     )
 
     # === Load Circuit CSV ===

@@ -41,7 +41,7 @@ def main(args):
         # Generate outputs for the batch
         batch_outputs_text = model.generate(
             input=batch_prompts,
-            max_new_tokens=256,
+            max_new_tokens=300,
             stop_at_eos=True,
             do_sample=False,
             return_type="str",
