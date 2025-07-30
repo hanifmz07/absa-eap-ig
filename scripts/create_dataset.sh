@@ -9,7 +9,7 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=your.email@example.com
 
-SEEDS=(42 123 2024 31415 777)
+SEEDS=(9584 123 2024 31415 777)
 
 for SEED in "${SEEDS[@]}"
 do

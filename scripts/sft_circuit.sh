@@ -11,7 +11,7 @@
 
 echo "Running ABSA SFT with Circuit-Based Training"
 
-SEEDS=(42 123 2024 31415 777)
+SEEDS=(9584 123 2024 31415 777)
 TOPKS=(1000 2000 5000)
 
 for SEED in "${SEEDS[@]}"

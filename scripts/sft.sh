@@ -11,7 +11,7 @@
 
 echo "Running ABSA SFT"
 
-SEEDS=(42 123 2024 31415 777)
+SEEDS=(9584 123 2024 31415 777)
 
 for SEED in "${SEEDS[@]}"
 do

@@ -11,7 +11,7 @@
 
 echo "Starting evaluation loop..."
 
-SEEDS=(42 123 2024 31415 777)
+SEEDS=(9584 123 2024 31415 777)
 TEST_JSON="hotel_dataset/indo/hotel_aste_test_augmented.json"
 
 for SEED in "${SEEDS[@]}"
