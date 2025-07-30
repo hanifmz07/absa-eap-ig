@@ -7,6 +7,7 @@ from transformer_lens.pretrained.weight_conversions import convert_qwen2_weights
 from transformer_lens.HookedTransformerConfig import HookedTransformerConfig
 from torch.utils.data import Dataset, DataLoader
 from eap.graph import Graph
+from ast import literal_eval
 import random
 import pickle
 import os
@@ -469,7 +470,7 @@ def filter_correct_data(
     data: pd.DataFrame,
     sentence_col: str,
     label_col: str,
-    max_tokens: int = 50,
+    max_tokens: int = 100,
     filter_only_correct: bool = True,
     filter_mode: str = "AOS",
     save_path: Optional[str] = None
@@ -753,7 +754,7 @@ def edge_merging(graph_paths: List[str]) -> pd.DataFrame:
 
     return pd.DataFrame(data_dict)
 
-def create_full_AOS_dataset (dataset_path):
+def create_full_AOS_dataset(dataset_path):
 
     df = pd.read_csv(dataset_path)
     
@@ -786,11 +787,6 @@ def create_full_AOS_dataset (dataset_path):
 
     return df
 
-# Helper function to extract A, O, S from a stringified triplet
-def parse_triplet(triplet_str):
-    matches = re.findall(r"\('([^']+)', '([^']+)', '([^']+)'\)", triplet_str)
-    return matches[0] if matches else ("", "", "")
-
 # Function to construct sequence variants
 def create_sequences(a, o, s):
     return {
@@ -807,8 +803,8 @@ def create_aos_sequence_variant(dataset_path):
     records_with_match = []
     
     for _, row in df.iterrows():
-        orig_a, orig_o, orig_s = parse_triplet(row["original_triplet"])
-        cf3_a, cf3_o, cf3_s = parse_triplet(row["counterfact_triplet4_replaced"])
+        orig_a, orig_o, orig_s = literal_eval(row["original_triplet"])[0]
+        cf3_a, cf3_o, cf3_s = literal_eval(row["counterfact_triplet4_replaced"])[0]
         
         for order, orig_seq in create_sequences(orig_a, orig_o, orig_s).items():
             cf_seq = create_sequences(cf3_a, cf3_o, cf3_s)[order]
@@ -853,8 +849,8 @@ def format_counterfactuals(input_path):
 
     df_clean = df.dropna(subset=["original_triplet", "counterfact_triplet4_replaced"])
 
-    df_clean["original_sentence"] = df_clean["original_pair"].str.split("[A]").str[0].str.strip()
-    df_clean["counterfact4_replaced"] = df_clean["corrupted_pair"].str.split("[A]").str[0].str.strip()
+    df_clean["original_sentence"] = df_clean["original_pair"].apply(lambda x: x.split('[A]')[0].strip())
+    df_clean["counterfact4_replaced"] = df_clean["corrupted_pair"].apply(lambda x: x.split('[A]')[0].strip())
 
     df_out = df_clean[[
         "index",
