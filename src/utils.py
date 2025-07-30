@@ -274,7 +274,7 @@ def postprocess_absa_outputs(preds: List[str], labels: List[str], sentence_id: L
 
 
 class ABSAAutoRegressiveDataset(Dataset):
-    def __init__(self, data, tokenizer, max_len=128, shuffle=False, seed=42, sample_size=None):
+    def __init__(self, data, tokenizer, max_len=300, shuffle=False, seed=42, sample_size=None):
         if shuffle:
             random.seed(seed)
             random.shuffle(data)
@@ -290,7 +290,7 @@ class ABSAAutoRegressiveDataset(Dataset):
 
     def __getitem__(self, idx):
         sample = self.data[idx]
-        full_text = sample["input"].strip() + " " + sample["target"].strip()
+        full_text = sample["input"].strip() + " " + sample["target"].strip() + self.tokenizer.eos_token
         encoding = self.tokenizer(
             full_text,
             padding="max_length",
@@ -299,6 +299,11 @@ class ABSAAutoRegressiveDataset(Dataset):
             return_tensors="pt"
         )
         tokens = encoding["input_ids"].squeeze()
+
+        # Replace last token with eos if truncated
+        if tokens[-1] != self.tokenizer.eos_token_id and tokens[-1] != self.tokenizer.pad_token_id:
+            tokens = torch.cat([tokens[:-1], torch.tensor([self.tokenizer.eos_token_id])], dim=0)
+
         return {
             "tokens": tokens
         }
