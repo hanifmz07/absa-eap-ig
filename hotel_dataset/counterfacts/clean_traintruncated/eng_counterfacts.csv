@@ -45,7 +45,7 @@
 44,3253,the receptionist service is fast . [A] [O] [S] [A] receptionist service [O] fast [S] positive,the cleaning service lady is slow . [A] [O] [S] [A] cleaning service lady [O] slow [S] negative
 45,3307,the receptionist is friendly . [A] [O] [S] [A] receptionist [O] friendly [S] positive,the main room is horrible . [A] [O] [S] [A] main room [O] horrible [S] negative
 46,3323,it's a shame there's no breakfast at all . [A] [O] [S] [A] breakfast [O] no [S] negative,it's a good thing there's free dinner today . [A] [O] [S] [A] dinner [O] free [S] positive
-47,3355,breakfast was unsatisfactory . [A] [O] [S] [A] breakfast [O] unsatisfactory [S] negative,welcome drink was very appetizing . [A] [O] [S] [A] welcome drink [O] very appetizing [S] positive
+47,3355,breakfast was unsatisfactory . [A] [O] [S] [A] breakfast [O] unsatisfactory [S] negative,juice was very appetizing . [A] [O] [S] [A] juice [O] very appetizing [S] positive
 48,3377,"the hotel is comfortable . thank you , airy . [A] [O] [S] [A] hotel [O] comfortable [S] positive","the room is cramped . thank you , airy . [A] [O] [S] [A] room [O] cramped [S] negative"
 49,3384,the shower is broken . [A] [O] [S] [A] shower [O] broken [S] negative,the bathtub is nice . [A] [O] [S] [A] bathtub [O] nice [S] positive
 50,3409,i have stayed there twice and the service is satisfying . [A] [O] [S] [A] service [O] satisfying [S] positive,i have stayed there twice and the breakfast is horrible . [A] [O] [S] [A] breakfast [O] horrible [S] negative
@@ -79,7 +79,7 @@
 79,3866,"the room is not soundproof . so , even normal conversation from the next room can be heard . i stayed for 2 nights . [A] [O] [S] [A] room [O] not soundproof [S] negative",the wall is mostly soundproof . even loud conversation from the next room is hard to be heard . i stayed for 2 nights . [A] [O] [S] [A] wall [O] mostly soundproof [S] positive
 80,3914,the place is very nice . [A] [O] [S] [A] place [O] very nice [S] positive,the location is really bad . [A] [O] [S] [A] location [O] really bad [S] negative
 81,3926,friendly staff . [A] [O] [S] [A] staff [O] friendly [S] positive,cold team . [A] [O] [S] [A] team [O] cold [S] negative
-82,3934,the water isn't working . [A] [O] [S] [A] water [O] isn't working [S] negative,the remote works well . [A] [O] [S] [A] remote control [O] works very well [S] positive
+82,3934,the water isn't working . [A] [O] [S] [A] water [O] isn't working [S] negative,the remote works very well . [A] [O] [S] [A] remote [O] works very well [S] positive
 83,4021,the service was not friendly . [A] [O] [S] [A] service [O] not friendly [S] negative,the staff was very helpful . [A] [O] [S] [A] staff [O] very helpful [S] positive
 84,4029,the room wasn't clean enough . [A] [O] [S] [A] room [O] wasn't clean enough [S] negative,the area was spotless enough . [A] [O] [S] [A] area [O] was spotless enough [S] positive
 85,4062,the room is not soundproof . [A] [O] [S] [A] room [O] not soundproof [S] negative,the wall is mostly soundproof . [A] [O] [S] [A] wall [O] mostly soundproof [S] positive

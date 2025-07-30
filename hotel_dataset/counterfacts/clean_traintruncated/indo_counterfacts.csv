@@ -18,7 +18,7 @@
 16,2565,pelayanan baik . terimakasih . [A] [O] [S] [A] pelayanan [O] baik [S] positive,makanan keras . terimakasih . [A] [O] [S] [A] makanan [O] keras [S] negative
 17,2579,hotel sangat nyaman . [A] [O] [S] [A] hotel [O] sangat nyaman [S] positive,staff tidak ramah . [A] [O] [S] [A] staff [O] tidak ramah [S] negative
 19,2584,"lokasi strategis dekat alunalun malang , banyak tempat makan . [A] [O] [S] [A] lokasi [O] strategis [S] positive","ruangan kotor dekat alunalun malang , banyak tempat makan . [A] [O] [S] [A] ruangan [O] kotor [S] negative"
-20,2589,resepsionis friendly ke customernya . [A] [O] [S] [A] resepsionis [O] friendly [S] positive,pegawai hotel keras ke customernya . [A] [O] [S] [A] pegawai hotel [O] keras [S] negative
+20,2589,resepsionis friendly ke customernya . [A] [O] [S] [A] resepsionis [O] friendly [S] positive,pegawai restoran arab keras ke customernya . [A] [O] [S] [A] pegawai restoran arab [O] keras [S] negative
 21,2590,"enak tempatnya , dekat mesjid , tinggal jalan jika mau sholat . terus yang pasti . 7 garansi kepuasan terpenuhi . [A] [O] [S] [A] tempatnya [O] enak [S] positive","buruk pelayannya , dekat mesjid , tinggal jalan jika mau sholat . terus yang pasti . 7 garansi kepuasan terpenuhi . [A] [O] [S] [A] pelayannya [O] buruk [S] negative"
 22,2592,kamar kotor . [A] [O] [S] [A] kamar [O] kotor [S] negative,lokasi strategis . [A] [O] [S] [A] lokasi [O] strategis [S] positive
 23,2593,"lokasi bagus , dekat stasiun mangga besar . [A] [O] [S] [A] lokasi [O] bagus [S] positive","bangunan rusak , dekat stasiun mangga besar . [A] [O] [S] [A] bangunan [O] rusak [S] negative"
