@@ -1,0 +1,98 @@
+,index,original_pair,corrupted_pair
+0,2501,the service is quite good . [A] [O] [S] [A] service [O] quite good [S] positive,the food is quite bad . [A] [O] [S] [A] food [O] quite bad [S] negative
+1,2506,"the atmosphere is not comfortable . to stay , you have to deposit 300 , 000 , but it can be replaced with a ktp ( identity card ) . [A] [O] [S] [A] atmosphere [O] not comfortable [S] negative","the room is very cozy . to stay , you have to deposit 300 , 000 , but it can be replaced with a ktp ( identity card ) . [A] [O] [S] [A] room [O] very cozy [S] positive"
+2,2512,the food was unsatisfactory . [A] [O] [S] [A] food [O] unsatisfactory [S] negative,the room was nice and cool . [A] [O] [S] [A] room [O] nice and cool [S] positive
+3,2516,the place is comfortable for resting . [A] [O] [S] [A] place [O] comfortable [S] positive,the room is troubled for resting . [A] [O] [S] [A] room [O] troubled [S] negative
+4,2517,the room is clean . [A] [O] [S] [A] room [O] clean [S] positive,the floor is dirty . [A] [O] [S] [A] floor [O] dirty [S] negative
+5,2524,the price is affordable and it's close to the city center of bandung . [A] [O] [S] [A] price [O] affordable [S] positive,the cost is steep and it's close to the city center of bandung . [A] [O] [S] [A] cost [O] steep [S] negative
+6,2527,the room i got wasn't very clean . [A] [O] [S] [A] room [O] wasn't very clean [S] negative,the book i got wasn't easily predictable . [A] [O] [S] [A] book [O] wasn't easily predictable [S] positive
+7,2529,the hotel is less comfortable . [A] [O] [S] [A] hotel [O] less comfortable [S] negative,the room is very warm . [A] [O] [S] [A] room [O] very warm [S] positive
+8,2532,this place is okay . [A] [O] [S] [A] place [O] okay [S] positive,this store is bad . [A] [O] [S] [A] store [O] bad [S] negative
+9,2541,the service is okay . [A] [O] [S] [A] service [O] okay [S] positive,the quality is bad . [A] [O] [S] [A] quality [O] bad [S] negative
+10,2544,the bathroom was flooded . [A] [O] [S] [A] bathroom [O] flooded [S] negative,the kitchen was clean . [A] [O] [S] [A] kitchen [O] clean [S] positive
+11,2548,a luxurious hotel solution at a cheap price . [A] [O] [S] [A] price [O] cheap [S] positive,a luxurious hotel solution at a low service . [A] [O] [S] [A] service [O] low [S] negative
+12,2550,the place is comfortable . [A] [O] [S] [A] place [O] comfortable [S] positive,the space is uncomfortable . [A] [O] [S] [A] space [O] uncomfortable [S] negative
+13,2553,the room is nice . [A] [O] [S] [A] room [O] nice [S] positive,the space is small . [A] [O] [S] [A] space [O] small [S] negative
+14,2556,a comfortable place to stay . [A] [O] [S] [A] place [O] comfortable [S] positive,an unpleasant hotel to stay . [A] [O] [S] [A] hotel [O] unpleasant [S] negative
+15,2561,the bathroom is not clean enough . [A] [O] [S] [A] bathroom [O] not clean enough [S] negative,the hallway is really very clean . [A] [O] [S] [A] hallway [O] really very clean [S] positive
+16,2565,good service . thank you . [A] [O] [S] [A] service [O] good [S] positive,weak support . thank you . [A] [O] [S] [A] support [O] weak [S] negative
+17,2579,the hotel is very comfortable . [A] [O] [S] [A] hotel [O] very comfortable [S] positive,the inn is very cramped . [A] [O] [S] [A] inn [O] very cramped [S] negative
+19,2584,"the location is strategic , near malang square , lots of places to eat . [A] [O] [S] [A] location [O] strategic [S] positive","the office is noisy , near malang square , lots of places to eat . [A] [O] [S] [A] office [O] noisy [S] negative"
+20,2589,the receptionist is friendly to the customers . [A] [O] [S] [A] receptionist [O] friendly [S] positive,the security guy is rude to the customers . [A] [O] [S] [A] security guy [O] rude [S] negative
+21,2590,"the place is nice , near the mosque , just a walk away if you want to pray . and for sure , the 7 satisfaction guarantees are fulfilled . [A] [O] [S] [A] place [O] nice [S] positive","the location is isolated , near the mosque , just a walk away if you want to pray . and not sure , the 7 satisfaction guarantees are fulfilled . [A] [O] [S] [A] location [O] isolated [S] negative"
+22,2592,the room is dirty . [A] [O] [S] [A] room [O] dirty [S] negative,the hall is clean . [A] [O] [S] [A] hall [O] clean [S] positive
+23,2593,"good location , near mangga besar station . [A] [O] [S] [A] location [O] good [S] positive","dirty building , near mangga besar station . [A] [O] [S] [A] building [O] dirty [S] negative"
+24,2594,"a nice place for a stopover . close to the airport , you can order delivery . [A] [O] [S] [A] place [O] nice [S] positive","a noisy house for a stopover . close to the airport , you can order delivery . [A] [O] [S] [A] house [O] noisy [S] negative"
+25,2598,good service for 24 hours . [A] [O] [S] [A] service [O] good [S] positive,fair help for 24 hours . [A] [O] [S] [A] help [O] fair [S] negative
+26,2599,the mattress is hard : ( . [A] [O] [S] [A] mattress [O] hard [S] negative,the ac is cool : ) . [A] [O] [S] [A] ac [O] cool [S] positive
+27,2600,the staff is not friendly . [A] [O] [S] [A] staff [O] not friendly [S] negative,the service is very helpful . [A] [O] [S] [A] service [O] very helpful [S] positive
+28,2628,the breakfast menu is not complete . [A] [O] [S] [A] breakfast menu [O] not complete [S] negative,the lunch menu is very complete . [A] [O] [S] [A] lunch menu [O] very complete [S] positive
+29,2642,the receptionist was not friendly enough . [A] [O] [S] [A] receptionist [O] not friendly enough [S] negative,the living room was very alluring . [A] [O] [S] [A] living room [O] very alluring [S] positive
+30,2699,the wifi isn't working . [A] [O] [S] [A] wifi [O] isn't working [S] negative,the room looks very nice . [A] [O] [S] [A] room [O] looks very nice [S] positive
+31,2700,"the location is okay , near the city center . [A] [O] [S] [A] location [O] okay [S] positive","the place is bad , near the city center . [A] [O] [S] [A] place [O] bad [S] negative"
+32,2703,the room is very small . [A] [O] [S] [A] room [O] very small [S] negative,the space is very cozy . [A] [O] [S] [A] space [O] very cozy [S] positive
+33,2732,"overall , it is very satisfying . [A] [O] [S] [A] overall [O] very satisfying [S] positive","mostly , it is not satisfying . [A] [O] [S] [A] mostly [O] not satisfying [S] negative"
+34,2755,"for the stay yesterday , the bed was not clean enough . [A] [O] [S] [A] bed [O] not clean enough [S] negative","for the stay yesterday , the room was clean and fresh . [A] [O] [S] [A] room [O] clean and fresh [S] positive"
+35,2941,"there was only one towel , even though there were two of us . [A] [O] [S] [A] towel [O] only one [S] negative","there was a few bottles, even though there were two of us . [A] [O] [S] [A] bottles [O] a few [S] positive"
+36,2945,the wifi is not good . [A] [O] [S] [A] wifi [O] not good [S] negative,the internet is very reliable . [A] [O] [S] [A] internet [O] very reliable [S] positive
+37,2970,the bed wasn't comfortable . [A] [O] [S] [A] bed [O] wasn't comfortable [S] negative,the ac works very well . [A] [O] [S] [A] ac [O] works very well [S] positive
+38,2991,"good service . thank you , airy ! [A] [O] [S] [A] service [O] good [S] positive","bad food . thank you , airy ! [A] [O] [S] [A] food [O] bad [S] negative"
+39,3003,everything is complete . [A] [O] [S] [A] everything [O] complete [S] positive,overall is bad . [A] [O] [S] [A] overall [O] bad [S] negative
+40,3084,the room is very cramped . [A] [O] [S] [A] room [O] very cramped [S] negative,the space is very spacious . [A] [O] [S] [A] space [O] very spacious [S] positive
+41,3113,the room is spacious and close to balapan station . [A] [O] [S] [A] room [O] spacious [S] positive,the hotel is cramped and close to balapan station . [A] [O] [S] [A] hotel [O] cramped [S] negative
+42,3172,the sink is clogged . [A] [O] [S] [A] sink [O] clogged [S] negative,the food is made well . [A] [O] [S] [A] food [O] made well [S] positive
+43,3251,but mineral water was not provided in the room . [A] [O] [S] [A] mineral water [O] not provided [S] negative,but mineral drink was not missing in the room. [A] [O] [S] [A] mineral drink [O] not missing [S] positive
+44,3253,the receptionist service is fast . [A] [O] [S] [A] receptionist service [O] fast [S] positive,the cleaning service lady is slow . [A] [O] [S] [A] cleaning service lady [O] slow [S] negative
+45,3307,the receptionist is friendly . [A] [O] [S] [A] receptionist [O] friendly [S] positive,the main room is horrible . [A] [O] [S] [A] main room [O] horrible [S] negative
+46,3323,it's a shame there's no breakfast at all . [A] [O] [S] [A] breakfast [O] no [S] negative,it's a good thing there's free dinner today . [A] [O] [S] [A] dinner [O] free [S] positive
+47,3355,breakfast was unsatisfactory . [A] [O] [S] [A] breakfast [O] unsatisfactory [S] negative,welcome drink was very appetizing . [A] [O] [S] [A] welcome drink [O] very appetizing [S] positive
+48,3377,"the hotel is comfortable . thank you , airy . [A] [O] [S] [A] hotel [O] comfortable [S] positive","the room is cramped . thank you , airy . [A] [O] [S] [A] room [O] cramped [S] negative"
+49,3384,the shower is broken . [A] [O] [S] [A] shower [O] broken [S] negative,the bathtub is nice . [A] [O] [S] [A] bathtub [O] nice [S] positive
+50,3409,i have stayed there twice and the service is satisfying . [A] [O] [S] [A] service [O] satisfying [S] positive,i have stayed there twice and the breakfast is horrible . [A] [O] [S] [A] breakfast [O] horrible [S] negative
+51,3431,there was only 1 towel . [A] [O] [S] [A] towel [O] only 1 [S] negative,there was an appetizing drink . [A] [O] [S] [A] drink [O] an appetizing [S] positive
+52,3470,"the check-in process was slow , even though i wanted to rest . [A] [O] [S] [A] check-in process [O] slow [S] negative","the check-out process was efficient , even though i wanted to rest . [A] [O] [S] [A] check-out process [O] efficient [S] positive"
+53,3486,the bathroom is cramped . [A] [O] [S] [A] bathroom [O] cramped [S] negative,the kitchen is cozy. [A] [O] [S] [A] kitchen [O] cozy [S] positive
+54,3510,the ac is not cold enough . [A] [O] [S] [A] ac [O] not cold enough [S] negative,the fridge is cold and good . [A] [O] [S] [A] fridge [O] cold and good [S] positive
+55,3515,i always want to check in at this hotel because the service is very good . [A] [O] [S] [A] service [O] very good [S] positive,i always want to check in at this hotel because the staff is very bad . [A] [O] [S] [A] staff [O] very bad [S] negative
+57,3521,it's just that the room is too small . [A] [O] [S] [A] room [O] too small [S] negative,it's just that the service is very nice . [A] [O] [S] [A] service [O] very nice [S] positive
+58,3524,the ac in room 515 wasn't cold enough . [A] [O] [S] [A] ac [O] wasn't cold enough [S] negative,the bed in room 515 wasn't too bad . [A] [O] [S] [A] bed [O] wasn't too bad [S] positive
+59,3526,"alhamdulillah , the service is good . [A] [O] [S] [A] service [O] good [S] positive","alhamdulillah , the room is dirty . [A] [O] [S] [A] room [O] dirty [S] negative"
+60,3531,the parking area is quite spacious . [A] [O] [S] [A] parking area [O] quite spacious [S] positive,the parking spot is too small . [A] [O] [S] [A] parking spot [O] too small [S] negative
+61,3537,the ac is not cold . [A] [O] [S] [A] ac [O] not cold [S] negative,the blanket is quite warm . [A] [O] [S] [A] blanket [O] quite warm [S] positive
+62,3548,everything is okay . [A] [O] [S] [A] everything [O] okay [S] positive,all is bad . [A] [O] [S] [A] all [O] bad [S] negative
+63,3564,the service is not good . [A] [O] [S] [A] service [O] not good [S] negative,the staff is quite good . [A] [O] [S] [A] staff [O] quite good [S] positive
+64,3567,the room is too cramped . [A] [O] [S] [A] room [O] too cramped [S] negative,the lunch is very tasty . [A] [O] [S] [A] lunch [O] very tasty [S] positive
+65,3574,there are no snacks . [A] [O] [S] [A] snacks [O] no [S] negative,there are many drinks . [A] [O] [S] [A] drinks [O] many [S] positive
+66,3576,the service is lacking . [A] [O] [S] [A] service [O] lacking [S] negative,the staff is helpful . [A] [O] [S] [A] staff [O] helpful [S] positive
+67,3580,"the service is good , even to the point of being taken to the airport . [A] [O] [S] [A] service [O] good [S] positive","the transportation is poor , even to the point of being taken to the airport . [A] [O] [S] [A] transportation [O] poor [S] negative"
+68,3584,"the place is nice , near a restaurant . [A] [O] [S] [A] place [O] nice [S] positive","the space is crowded , near a restaurant . [A] [O] [S] [A] space [O] crowded [S] negative"
+69,3594,it's a shame the elevator isn't working . [A] [O] [S] [A] elevator [O] isn't working [S] negative,it's a shame the lamp not too bright . [A] [O] [S] [A] lamp [O] not too bright [S] negative
+70,3629,the water pressure is low . [A] [O] [S] [A] water pressure [O] low [S] negative,the pore stress is good . [A] [O] [S] [A] pore stress [O] good [S] positive
+71,3744,the service is fast . [A] [O] [S] [A] service [O] fast [S] positive,the device is slow . [A] [O] [S] [A] device [O] slow [S] negative
+72,3753,there is no soap in the room . [A] [O] [S] [A] soap [O] no [S] negative,there is some sap in the room . [A] [O] [S] [A] sap [O] some [S] positive
+73,3764,the wifi is not satisfactory : ) . [A] [O] [S] [A] wifi [O] not satisfactory [S] negative,the bars is quite good : ) . [A] [O] [S] [A] bars [O] quite good [S] positive
+74,3783,"i've stayed here 3 times , always a loyal customer . the place is comfortable . [A] [O] [S] [A] place [O] comfortable [S] positive","i've stayed here 3 times , not a loyal customer . the space is bad . [A] [O] [S] [A] space [O] bad [S] negative"
+75,3804,a very comfortable place to rest . [A] [O] [S] [A] place [O] very comfortable [S] positive,a very uncomfortable location to rest . [A] [O] [S] [A] location [O] very uncomfortable [S] negative
+76,3811,the hot shower isn't working . [A] [O] [S] [A] hot shower [O] isn't working [S] negative,the blue river is now working . [A] [O] [S] [A] blue river [O] is now working [S] positive
+77,3814,"the location is strategic , near blitar station and the town square . [A] [O] [S] [A] location [O] strategic [S] positive","the place is dirty, near blitar station and the town square . [A] [O] [S] [A] place [O] dirty [S] negative"
+78,3858,the bedsheets were not clean enough . [A] [O] [S] [A] bedsheets [O] not clean enough [S] negative,the bedcovers were clean and soft . [A] [O] [S] [A] bedcovers [O] clean and soft [S] positive
+79,3866,"the room is not soundproof . so , even normal conversation from the next room can be heard . i stayed for 2 nights . [A] [O] [S] [A] room [O] not soundproof [S] negative",the wall is mostly soundproof . even loud conversation from the next room is hard to be heard . i stayed for 2 nights . [A] [O] [S] [A] wall [O] mostly soundproof [S] positive
+80,3914,the place is very nice . [A] [O] [S] [A] place [O] very nice [S] positive,the location is really bad . [A] [O] [S] [A] location [O] really bad [S] negative
+81,3926,friendly staff . [A] [O] [S] [A] staff [O] friendly [S] positive,cold team . [A] [O] [S] [A] team [O] cold [S] negative
+82,3934,the water isn't working . [A] [O] [S] [A] water [O] isn't working [S] negative,the remote works well . [A] [O] [S] [A] remote control [O] works very well [S] positive
+83,4021,the service was not friendly . [A] [O] [S] [A] service [O] not friendly [S] negative,the staff was very helpful . [A] [O] [S] [A] staff [O] very helpful [S] positive
+84,4029,the room wasn't clean enough . [A] [O] [S] [A] room [O] wasn't clean enough [S] negative,the area was spotless enough . [A] [O] [S] [A] area [O] was spotless enough [S] positive
+85,4062,the room is not soundproof . [A] [O] [S] [A] room [O] not soundproof [S] negative,the wall is mostly soundproof . [A] [O] [S] [A] wall [O] mostly soundproof [S] positive
+86,4065,the breakfast was unappealing . [A] [O] [S] [A] breakfast [O] unappealing [S] negative,the course was a great experience . [A] [O] [S] [A] course [O] a great experience [S] positive
+87,4075,the breakfast menu was not very tasty . [A] [O] [S] [A] breakfast menu [O] not very tasty [S] negative,the lunch menu was not very bad . [A] [O] [S] [A] lunch menu [O] not very bad [S] positive
+88,4087,the bathroom is too cramped . [A] [O] [S] [A] bathroom [O] too cramped [S] negative,the kitchen is roomy . [A] [O] [S] [A] kitchen [O] roomy [S] positive
+89,4093,the parking area is spacious . [A] [O] [S] [A] parking area [O] spacious [S] positive,the eating area is cramped . [A] [O] [S] [A] eating area [O] cramped [S] negative
+90,4161,the breakfast menu is delicious . [A] [O] [S] [A] breakfast menu [O] delicious [S] positive,the lunch menu is terrible . [A] [O] [S] [A] lunch menu [O] terrible [S] negative
+91,4188,the ac in room number 10 is not cold . [A] [O] [S] [A] ac [O] not cold [S] negative,the fridge in room number 10 is very cold . [A] [O] [S] [A] fridge [O] very cold [S] positive
+92,4212,the hot water is unstable . [A] [O] [S] [A] hot water [O] unstable [S] negative,the cool breeze is stable . [A] [O] [S] [A] cool breeze [O] stable [S] positive
+93,4241,the place is in the city center and very quiet . [A] [O] [S] [A] place [O] very quiet [S] positive,the office is in the city center and so noisy . [A] [O] [S] [A] office [O] so noisy [S] negative
+94,4249,there is no tissue . [A] [O] [S] [A] tissue [O] no [S] negative,there are many snacks . [A] [O] [S] [A] snacks [O] many [S] positive
+95,4258,the breakfast was not tasty . [A] [O] [S] [A] breakfast [O] not tasty [S] negative,the dinner was very tasty . [A] [O] [S] [A] dinner [O] very tasty [S] positive
+96,4272,the ac is hot . [A] [O] [S] [A] ac [O] hot [S] negative,the fridge is cold . [A] [O] [S] [A] fridge [O] cold [S] positive
+97,4391,"the receptionist was very unfriendly . check-in time was supposed to be at 2 pm , but they said we could only check in at 3 pm . [A] [O] [S] [A] receptionist [O] very unfriendly [S] negative","the house keeper was very amicable . check-in time was supposed to be at 2 pm , but they said we could do check in at 1 pm . [A] [O] [S] [A] house keeper [O] very amicable [S] positive"
+98,4442,the wifi is not fast enough . [A] [O] [S] [A] wifi [O] not fast enough [S] negative,the life is not slow enough. [A] [O] [S] [A] life [O] not slow enough [S] positive

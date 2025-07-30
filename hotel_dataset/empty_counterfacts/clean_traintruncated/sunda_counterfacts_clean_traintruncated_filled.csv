@@ -1,0 +1,100 @@
+index,original_pair,corrupted_pair,notes,difficult_words,valid
+2501,palayanan lumayan alus . [A] [O] [S] [A] palayanan [O] lumayan alus [S] positive,pananyana goreng pisan . [A] [O] [S] [A] pananyana [O] goreng pisan [S] negative,,,True
+2506,suasanana kurang ngeunaheun . lamun ngendong kudu deposit 300 rébu . ngan bisa diganti ku ktp . [A] [O] [S] [A] suasanana [O] kurang ngeunaheun [S] negative,,,,False
+2512,dahareun kurang muaskeun . [A] [O] [S] [A] dahareun [O] kurang muaskeun [S] negative,,"mismatch due to space prefix, couldn't find the counterfact yet",dahareun,False
+2516,tempatna mah ngeunaheun keur istirahat . [A] [O] [S] [A] tempatna [O] ngeunaheun [S] positive,,,,False
+2517,kamarna beresih . [A] [O] [S] [A] kamarna [O] beresih [S] positive,daharna rujit . [A] [O] [S] [A] daharna [O] rujit [S] negative,,,False
+2524,hargana kajangkau jeung deukeut ka tengah kota bandung . [A] [O] [S] [A] hargana [O] kajangkau [S] positive,panon na marahal pisan jeung deukeut ka tengah kota bandung . [A] [O] [S] [A] panon na [O] marahal pisan [S] negative,,,True
+2527,kamar nu katarima téh teu pati beresih . [A] [O] [S] [A] kamar [O] teu pati beresih [S] negative,,,,False
+2529,hotél kurang ngeunaheun . [A] [O] [S] [A] hotél [O] kurang ngeunaheun [S] negative,irung ngeunaheun pisan . [A] [O] [S] [A] irung [O] ngeunaheun pisan [S] positive,,,True
+2532,ieu tempatna oke . [A] [O] [S] [A] tempatna [O] oke [S] positive,ieu patlotna butut . [A] [O] [S] [A] patlotna [O] butut [S] negative,,,True
+2541,palayanan oke . [A] [O] [S] [A] palayanan [O] oke [S] positive,sawahna goreng . [A] [O] [S] [A] sawahna [O] goreng [S] negative,sawahna' and ' sawahna' have consist of different tokens but the length is the same,,True
+2544,kamar mandi nguyumbang . [A] [O] [S] [A] kamar mandi [O] nguyumbang [S] negative,,,,False
+2548,solusi hotél méwah harga murah . [A] [O] [S] [A] harga [O] murah [S] positive,,,,False
+2550,tempatna mah ngeunaheun . [A] [O] [S] [A] tempatna [O] ngeunaheun [S] positive,inumanna mah geuleuh pisan . [A] [O] [S] [A] inumanna [O] geuleuh pisan [S] negative,,,True
+2553,kamar alus . [A] [O] [S] [A] kamar [O] alus [S] positive,gelas butut . [A] [O] [S] [A] gelas [O] butut [S] negative,,,True
+2556,tempat ngéndong anu ngeunaheun . [A] [O] [S] [A] tempat [O] ngeunaheun [S] positive,caina ngéndong anu teu baretah . [A] [O] [S] [A] caina [O] teu baretah [S] negative,,,True
+2561,kamar mandi kurang beresih . [A] [O] [S] [A] kamar mandi [O] kurang beresih [S] negative,panon poé beresih pisan . [A] [O] [S] [A] panon poé [O] beresih pisan [S] positive,,,True
+2565,palayanan alus . nuhun . [A] [O] [S] [A] palayanan [O] alus [S] positive,lemarina goreng . nuhun . [A] [O] [S] [A] lemarina [O] goreng [S] negative,,,True
+2579,hotelna ngeunaheun pisan . [A] [O] [S] [A] hotelna [O] ngeunaheun pisan [S] positive,uyah teu ngeunaheun . [A] [O] [S] [A] uyah [O] teu ngeunaheun [S] negative,,,True
+2580,alus pisan sakabehna . [A] [O] [S] [A] sakabehna [O] alus pisan [S] positive,,,,False
+2584,"lokasina strategis deukeut alun-alun malang , loba tempat dahar . [A] [O] [S] [A] lokasina [O] strategis [S] positive",,,,False
+2589,résepsionisna ramah ka palangganna . [A] [O] [S] [A] résepsionisna [O] ramah [S] positive,,,,False
+2590,"ngeunah tempatna , deukeut masjid , tinggal leumpang lamun rék solat . tuluy nu pasti , 7 garansi kapuasan kacumponan . [A] [O] [S] [A] tempatna [O] ngeunah [S] positive",,,,False
+2592,kamarna kotor . [A] [O] [S] [A] kamarna [O] kotor [S] negative,daharna saé . [A] [O] [S] [A] daharna [O] saé [S] positive,,,True
+2593,"lokasina alus , deukeut stasion mangga besar . [A] [O] [S] [A] lokasina [O] alus [S] positive",,,,False
+2594,"ieu tempat ngeunah keur persinggahan . deukeut ka bandara , bisa mesen dianterkeun . [A] [O] [S] [A] tempat [O] ngeunah [S] positive","ieu gula teu betah keur persinggahan . deukeut ka bandara , bisa mesen dianterkeun . [A] [O] [S] [A] gula [O] teu betah [S] negative",,,True
+2598,palayanan mah alus salila 24 jam . [A] [O] [S] [A] palayanan [O] alus [S] positive,lapang bal mah goreng salila 24 jam . [A] [O] [S] [A] lapang bal [O] goreng [S] negative,,,True
+2599,kasurna teuas : ( . [A] [O] [S] [A] kasurna [O] teuas [S] negative,,,,False
+2600,nu ngajagana kurang ramah . [A] [O] [S] [A] nu ngajagana [O] kurang ramah [S] negative,pamésér na sopan pisan . [A] [O] [S] [A] pamésér na [O] sopan pisan [S] positive,,,True
+2628,ménu sarapan téh kurang lengkep . [A] [O] [S] [A] ménu sarapan [O] kurang lengkep [S] negative,palayanan na téh lengkep pisan . [A] [O] [S] [A] palayanan na [O] lengkep pisan [S] positive,,,True
+2642,résepsionis kurang ramah . [A] [O] [S] [A] résepsionis [O] kurang ramah [S] negative,pagawéanana alus pisan . [A] [O] [S] [A] pagawéanana [O] alus pisan [S] negative,,,True
+2699,wifi-na teu hurung euy . [A] [O] [S] [A] wifi-na [O] teu hurung [S] negative,gelas caang pisan euy . [A] [O] [S] [A] gelas [O] caang pisan [S] positive,,,True
+2700,lokasina oké . deukeut jeung tengah kota . [A] [O] [S] [A] lokasina [O] oké [S] positive,,,,False
+2703,kamarna leutik pisan . [A] [O] [S] [A] kamarna [O] leutik pisan [S] negative,,,,False
+2732,sakabehna mah muaskeun pisan . [A] [O] [S] [A] sakabehna [O] muaskeun pisan [S] positive,,,,False
+2755,"keur ngendong nu kamari mah , kasurna kurang beresih . [A] [O] [S] [A] kasurna [O] kurang beresih [S] negative",,,,False
+2941,"andukna ngan hiji , padahal urang duaan . [A] [O] [S] [A] andukna [O] ngan hiji [S] negative",,,,False
+2945,wifi kurang alus . [A] [O] [S] [A] wifi [O] kurang alus [S] negative,,,,False
+2970,tempat saré kurang ngeunaheun . [A] [O] [S] [A] tempat saré [O] kurang ngeunaheun [S] negative,,,,False
+2991,palayanan alus . nuhun airy ! [A] [O] [S] [A] palayanan [O] alus [S] positive,,,,False
+3003,kabeh lengkep . [A] [O] [S] [A] kabeh [O] lengkep [S] positive,,,,False
+3084,kamarna heurin pisan . [A] [O] [S] [A] kamarna [O] heurin pisan [S] negative,,,,False
+3113,kamarna lega deukeut stasion balapan . [A] [O] [S] [A] kamarna [O] lega [S] positive,,,,False
+3172,wastafelna mengpet . [A] [O] [S] [A] wastafelna [O] mengpet [S] negative,,,,False
+3251,ngan teu disadiakeun cai mineral di jero kamar . [A] [O] [S] [A] cai mineral [O] teu disadiakeun [S] negative,,,,False
+3253,palayanan résepsionis gancang . [A] [O] [S] [A] palayanan résepsionis [O] gancang [S] positive,,,,False
+3307,résepsionisna ramah . [A] [O] [S] [A] résepsionisna [O] ramah [S] positive,,,,False
+3323,hanjakal pisan euweuh sarapan nanaon . [A] [O] [S] [A] sarapan [O] euweuh [S] negative,,,,False
+3355,keur sarapan mah kurang muaskeun . [A] [O] [S] [A] sarapan [O] kurang muaskeun [S] negative,,,,False
+3377,hotel na ngeunaheun . nuhun airy . [A] [O] [S] [A] hotel [O] ngeunaheun [S] positive,,,,False
+3384,pancuranna ruksak . [A] [O] [S] [A] pancuranna [O] ruksak [S] negative,,,,False
+3409,"geus 2 kali ngendong di dinya , palayananna ogé muaskeun . [A] [O] [S] [A] palayananna [O] muaskeun [S] positive",,,,False
+3431,anduk ngan hiji . [A] [O] [S] [A] anduk [O] ngan hiji [S] negative,,,,False
+3470,"prosés asupna lila , padahal geus hayang reureuh . [A] [O] [S] [A] prosés asupna [O] lila [S] negative",,,,False
+3486,kamar mandi heurin . [A] [O] [S] [A] kamar mandi [O] heurin [S] negative,,,,False
+3510,ac-na kurang tiis . [A] [O] [S] [A] ac-na [O] kurang tiis [S] negative,béas tiis pisan . [A] [O] [S] [A] béas [O] tiis pisan [S] positive,,,False
+3515,"unggal rék asup pasti di hotél ieu , da palayananna alus pisan . [A] [O] [S] [A] palayananna [O] alus pisan [S] positive",,,,False
+3516,alus pisan palayananna . [A] [O] [S] [A] palayananna [O] alus pisan [S] positive,,,,False
+3521,ngan ukur ruangan téh heurin teuing . [A] [O] [S] [A] ruangan [O] heurin teuing [S] negative,,,,False
+3524,ac-na karasa kurang tiis di kamar 515 . [A] [O] [S] [A] ac-na [O] kurang tiis [S] negative,,,,False
+3526,"alhamdulillah , palayananna alus . [A] [O] [S] [A] palayananna [O] alus [S] positive",,,,False
+3531,parkiran lumayan lega . [A] [O] [S] [A] parkiran [O] lumayan lega [S] positive,,,,False
+3537,ac-na teu tiis . [A] [O] [S] [A] ac-na [O] teu tiis [S] negative,,,,False
+3548,sakabéh gé oke . [A] [O] [S] [A] sakabéh [O] oke [S] positive,,,,False
+3564,palayanan téh kurang alus . [A] [O] [S] [A] palayanan [O] kurang alus [S] negative,,,,False
+3567,kamar heurin teuing . [A] [O] [S] [A] kamar [O] heurin teuing [S] negative,,,,False
+3574,euweuh cemilan . [A] [O] [S] [A] cemilan [O] euweuh [S] negative,,,,False
+3576,palayananna kurang . [A] [O] [S] [A] palayananna [O] kurang [S] negative,,,,False
+3580,palayananna alus . nepi ka dianteurkeun ogé ka bandara . [A] [O] [S] [A] palayananna [O] alus [S] positive,,,,False
+3584,"alus tempatna mah , deukeut ka tempat dahar . [A] [O] [S] [A] tempatna [O] alus [S] positive",,,,False
+3594,hanjakal lift na teu hurung . [A] [O] [S] [A] lift [O] teu hurung [S] negative,,,,False
+3629,caina kurang gedé . [A] [O] [S] [A] caina [O] kurang gedé [S] negative,akina deres pisan . [A] [O] [S] [A] akina [O] deres pisan [S] positive,,,False
+3744,palayan gancang . [A] [O] [S] [A] palayan [O] gancang [S] positive,pacul lélét . [A] [O] [S] [A] pacul [O] lélét [S] negative,,,False
+3753,euweuh sabun di jero kamar . [A] [O] [S] [A] sabun [O] euweuh [S] negative,aya loba poé di jero kamar . [A] [O] [S] [A] poé [O] aya loba [S] positive,,,False
+3764,wifina kurang muaskeun euy : ) . [A] [O] [S] [A] wifina [O] kurang muaskeun [S] negative,patlotna gancang jeung stabil euy : ) . [A] [O] [S] [A] patlotna [O] gancang jeung stabil [S] positive,,,False
+3783,"geus tilu kali ngendong di dieu , sok jadi langganan . tempatna mah ngeunaheun da . [A] [O] [S] [A] tempatna [O] ngeunaheun [S] positive","geus tilu kali ngendong di dieu , sok jadi langganan . curugna mah ngeunaheun da . [A] [O] [S] [A] curugna [O] ngeunaheun [S] negative",,,False
+3804,tempat keur istirahat anu ngeunaheun pisan . [A] [O] [S] [A] tempat [O] ngeunaheun pisan [S] positive,cilok keur istirahat anu pikaboseneun pisan . [A] [O] [S] [A] cilok [O] pikaboseneun pisan [S] negative,,,False
+3811,pancuran cai panas teu hurung . [A] [O] [S] [A] pancuran cai panas [O] teu hurung [S] negative,langlayangan beureumna tara béak . [A] [O] [S] [A] langlayangan beureumna [O] tara béak [S] positive,,,False
+3814,lokasina strategis deukeut stasiun blitar jeung alun-alun . [A] [O] [S] [A] lokasina [O] strategis [S] positive,,,,False
+3858,seprena kurang beresih . [A] [O] [S] [A] seprena [O] kurang beresih [S] negative,patani beresih pisan . [A] [O] [S] [A] patani [O] beresih pisan [S] positive,,,False
+3866,kamarna téh teu kedap sora . jadi kamar gigir ngobrol biasa ogé kadéngé . dua peuting urang ngendong . [A] [O] [S] [A] kamarna [O] teu kedap sora [S] negative,,,,False
+3914,ieu tempat ngeunaheun pisan . [A] [O] [S] [A] tempat [O] ngeunaheun pisan [S] positive,,,,False
+3926,patugasna ramah . [A] [O] [S] [A] patugasna [O] ramah [S] positive,,,,False
+3934,cai teu hurung . [A] [O] [S] [A] cai [O] teu hurung [S] negative,,,,False
+4021,palayanna kurang ramah . [A] [O] [S] [A] palayanna [O] kurang ramah [S] negative,,,,False
+4029,kamarna kurang beresih . [A] [O] [S] [A] kamarna [O] kurang beresih [S] negative,waktos beresih euy . [A] [O] [S] [A] waktos [O] beresih euy [S] positive,,,False
+4062,kamar na teu kedap sora . [A] [O] [S] [A] kamar [O] teu kedap sora [S] negative,irung na rada kedap sora . [A] [O] [S] [A] irung [O] rada kedap sora [S] positive,,,False
+4065,sarapan nu kurang pikaresepeun . [A] [O] [S] [A] sarapan [O] kurang pikaresepeun [S] negative,,,,False
+4075,ménu sarapan kurang ngeunah . [A] [O] [S] [A] ménu sarapan [O] kurang ngeunah [S] negative,kaahlianna ngeunah pisan . [A] [O] [S] [A] kaahlianna [O] ngeunah pisan [S] positive,,,False
+4087,kamar mandi heurin teuing . [A] [O] [S] [A] kamar mandi [O] heurin teuing [S] negative,angklungna lega pisan da . [A] [O] [S] [A] angklungna [O] lega pisan da [S] positive,,,False
+4093,parkiran lega . [A] [O] [S] [A] parkiran [O] lega [S] positive,buku butut . [A] [O] [S] [A] buku [O] butut [S] negative,,,False
+4161,ménu sarapanna ngeunah . [A] [O] [S] [A] ménu sarapanna [O] ngeunah [S] positive,kawani urang asin teuing . [A] [O] [S] [A] kawani urang [O] asin teuing [S] negative,,,False
+4188,ac di kamar nomer 10 téh teu tiis . [A] [O] [S] [A] ac [O] teu tiis [S] negative,adi di kamar nomer 10 téh tiis pisan . [A] [O] [S] [A] adi [O] tiis pisan [S] positive,,,False
+4212,cai panasna teu stabil . [A] [O] [S] [A] cai panasna [O] teu stabil [S] negative,peuyeumna stabil pisan . [A] [O] [S] [A] peuyeumna [O] stabil pisan [S] positive,,,False
+4241,tempatna di tengah kota jeung tiiseun pisan . [A] [O] [S] [A] tempatna [O] tiiseun pisan [S] positive,,,,False
+4249,euweuh tisu . [A] [O] [S] [A] tisu [O] euweuh [S] negative,,,,False
+4258,sarapanna kurang ngeunah . [A] [O] [S] [A] sarapanna [O] kurang ngeunah [S] negative,lajuna raos pisan euy . [A] [O] [S] [A] lajuna [O] raos pisan euy [S] positive,,,False
+4272,ac-na panas . [A] [O] [S] [A] ac-na [O] panas [S] negative,oray tiis . [A] [O] [S] [A] oray [O] tiis [S] positive,,,False
+4391,"résepsionisna teu ramah pisan . jadwalna asup jam 2 beurang , tapi cenah kakara bisa asup jam 3 soré . [A] [O] [S] [A] résepsionisna [O] teu ramah pisan [S] negative",,,,False
+4442,wifi kurang gancang . [A] [O] [S] [A] wifi [O] kurang gancang [S] negative,cai gancang pisan . [A] [O] [S] [A] cai [O] gancang pisan [S] positive,,,False
