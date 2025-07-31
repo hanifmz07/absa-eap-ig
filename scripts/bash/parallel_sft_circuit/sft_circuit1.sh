@@ -1,60 +1,85 @@
 #!/bin/bash
 
-# Define the log file names for clarity
-LOG_BASE_NAME="sft_circuit"
-LOG_DIR="logs"
-mkdir -p "$LOG_DIR"
-PID=$$
-STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).log"
-STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).err"
-
 # Specifiy cuda device if needed
 export CUDA_VISIBLE_DEVICES=0
 
+# Extract language parameters from the command line arguments
+# Usage: ./sft_circuit1.sh <language> <dataset_folder>
+LANGUAGE="$1"
+if [ -z "$LANGUAGE" ]; then
+    echo "Error: No language specified."
+    exit 1
+fi
+# Validate the language argument
+if [[ "$LANGUAGE" != "indo" && "$LANGUAGE" != "eng" && "$LANGUAGE" != "sunda" ]]; then
+    echo "Error: Invalid language specified. Use 'indo', 'eng', or 'sunda'."
+    exit 1
+fi
+
+DATASET_FOLDER="$2"
+# Validate the dataset folder argument
+if [ -z "$DATASET_FOLDER" ]; then
+    echo "Error: Dataset folder must be specified. Name a folder located in the hotel_dataset/{lang} directory."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+TOPK_CIRCUIT="$3"
+# Validate the CIRCUIT_CSV_PATH argument if TOPK_CIRCUIT is
+if [ -z "$TOPK_CIRCUIT" ]; then
+    echo "Error: CIRCUIT_CSV_PATH must be specified for sft_circuit.sh."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+# Seeds for the SFT process
+SEED=9584
+
+# Define the log file names for clarity
+LOG_BASE_NAME="sft_circuit"
+LOG_DIR="logs"
+PID=$$
+STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/topk_${TOPK_CIRCUIT}/${PID}_$(date).log"
+STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/topk_${TOPK_CIRCUIT}/${PID}_$(date).err"
+# Create necessary directories for logs
+mkdir -p "${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/topk_${TOPK_CIRCUIT}"
+
+# --- Step 1: Initialize Log Files ---
+# Clear previous logs and add a timestamp to mark the start of this run.
+# The '>' operator truncates the file to zero before writing.
 echo "========================================================" > "$STDOUT_LOG"
-echo "Starting SFT Circuit script run at: $(date)" >> "$STDOUT_LOG"
+echo "Starting Targeted SFT script run at: $(date)" >> "$STDOUT_LOG"
 echo "========================================================" >> "$STDOUT_LOG"
 
+# We do the same for the error log, in case of any setup errors.
 >"$STDERR_LOG"
 
+# --- Step 2: Group the entire process and apply redirection ---
+# The curly braces { ... } group all commands inside.
+# The redirection at the end applies to everything within the braces,
+# including all the 'echo' statements and every python run.
+# We use 'tee -a' to append to our initialized logs.
 {
-  SEEDS=(42)
-  SAMPLE_SIZES=(100 500 1000 5000 7500 10000 15000)
+    echo "Running ABSA Targeted SFT"
 
-  for SEED in "${SEEDS[@]}"
-  do
-    for SAMPLE_SIZE in "${SAMPLE_SIZES[@]}"
-    do
-      echo "Running with sample size: $SAMPLE_SIZE and seed: $SEED"
+    echo ""
+    echo "--------------------------------------------------------"
+    echo "Running targeted sft with seed: $SEED with topk: $TOPK_CIRCUIT"
+    echo "--------------------------------------------------------"
 
-      # Only run train_full_model if sample_size is not 15000
-      if [ "$SAMPLE_SIZE" -ne 15000 ]; then
-        python run_sft.py \
-          --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
-          --model_name "Qwen/Qwen2.5-0.5B" \
-          --output_dir "outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants" \
-          --num_epochs 20 \
-          --batch_size 16 \
-          --lr 1e-4 \
-          --seed $SEED \
-          --train_full_model \
-          --sample_size $SAMPLE_SIZE
-      fi
+    # The output of this python command will now be correctly
+    # redirected along with everything else in the loop.
+    python run_sft.py \
+        --train_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_train_augmented_noreasoning.json" \
+        --model_name "Qwen/Qwen2.5-0.5B" \
+        --output_dir "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/topk_${TOPK_CIRCUIT}" \
+        --num_epochs 20 \
+        --batch_size 16 \
+        --lr 1e-4 \
+        --seed $SEED \
+        --circuit_csv_path "outputs/multitokens/${DATASET_FOLDER}/${LANGUAGE}/seed_$SEED/aos_circuit_topk-${TOPK_CIRCUIT}.csv" \
 
-      # Run with circuit-based training
-      for TOPK in 1000 2000 5000
-      do
-        python run_sft.py \
-          --train_json_path "hotel_dataset/indo/hotel_aste_train_augmented_noreasoning.json" \
-          --model_name "Qwen/Qwen2.5-0.5B" \
-          --output_dir "outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants" \
-          --num_epochs 20 \
-          --batch_size 16 \
-          --lr 1e-4 \
-          --seed $SEED \
-          --circuit_csv_path ""outputs/multitokens/seed_$SEED"/aos_circuit_topk-${TOPK}.csv" \
-          --sample_size $SAMPLE_SIZE
-      done
-    done
-  done
+    echo ""
+    echo "========================================================"
+    echo "All seeds completed at: $(date)"
+    echo "========================================================"
+
 } 2> >(tee "$STDERR_LOG") | tee "$STDOUT_LOG"

@@ -2,25 +2,25 @@
 
 # --- Configuration ---
 # The name for our tmux session
-SESSION_NAME="sft_runners"
+SESSION_NAME="sft_circuit_runners"
 
 # An array holding the names of the scripts to run (change the folder of the parallel scripts as needed)
 SCRIPTS=(
-    "scripts/bash/parallel_sft/sft1.sh"
-    "scripts/bash/parallel_sft/sft2.sh"
-    "scripts/bash/parallel_sft/sft3.sh"
-    "scripts/bash/parallel_sft/sft4.sh"
-    "scripts/bash/parallel_sft/sft5.sh"
+    "scripts/bash/parallel_sft_circuit/sft_circuit1.sh"
+    "scripts/bash/parallel_sft_circuit/sft_circuit2.sh"
+    "scripts/bash/parallel_sft_circuit/sft_circuit3.sh"
+    "scripts/bash/parallel_sft_circuit/sft_circuit4.sh"
+    "scripts/bash/parallel_sft_circuit/sft_circuit5.sh"
 )
 # The command to activate the virtual environment
 ACTIVATE_CMD="source enveap/bin/activate"
 
-# Check if exactly 1 argument provided (language).
-if [ "$#" -ne 2 ]; then
-    echo "Error: Incorrect number of arguments."
-    echo "Usage: $0 <language (indo, eng, sunda)> <dataset_folder>"
-    exit 1 # Exit with a non-zero status to indicate an error
-fi
+# # Check if exactly 1 argument provided (language).
+# if [ "$#" -ne 2 ]; then
+#     echo "Error: Incorrect number of arguments."
+#     echo "Usage: $0 <language (indo, eng, sunda)> <dataset_folder>"
+#     exit 1 # Exit with a non-zero status to indicate an error
+# fi
 
 LANGUAGE="$1"
 # Validate the language argument
@@ -34,6 +34,17 @@ DATASET_FOLDER="$2"
 if [ -z "$DATASET_FOLDER" ]; then
     echo "Error: Dataset folder must be specified. Name a folder located in the hotel_dataset/{lang} directory."
     exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+# If the first script contains 'sft_circuit.sh', we need to ensure it has the third argument TOPK_CIRCUIT
+SFT_CIRCUIT_BOOL=false
+if [[ "${SCRIPTS[0]}" == *"sft_circuit"* ]]; then
+    TOPK_CIRCUIT="$3"
+    if [ -z "$TOPK_CIRCUIT" ]; then
+        echo "Error: TOPK_CIRCUIT must be specified for sft_circuit.sh."
+        exit 1 # Exit with a non-zero status to indicate an error
+    fi
+    SFT_CIRCUIT_BOOL=true
 fi
 
 # --- Script Logic ---
@@ -72,9 +83,14 @@ for i in "${!SCRIPTS[@]}"; do
     SCRIPT_NAME=${SCRIPTS[$i]}
     TARGET_PANE="$SESSION_NAME:0.$PANE_INDEX"
     
-    # Construct the full command to be run in the pane
-    FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER}"
-    
+    # Construct the full command to be run in the pane (check for SFT_CIRCUIT_BOOL)
+    echo $SFT_CIRCUIT_BOOL
+    if [ "$SFT_CIRCUIT_BOOL" = true ]; then
+        FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER} ${TOPK_CIRCUIT}"
+    else
+        FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER}"
+    fi
+
     echo "Setting up pane $PANE_INDEX to run: ${SCRIPT_NAME}"
     
     # Send the commands to the pane.

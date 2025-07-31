@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specifiy cuda device if needed
-export CUDA_VISIBLE_DEVICES=5
+export CUDA_VISIBLE_DEVICES=0
 
 # Extract language parameters from the command line arguments
 # Usage: ./sft5.sh <language> <dataset_folder>
@@ -24,7 +24,7 @@ if [ -z "$DATASET_FOLDER" ]; then
 fi
 
 # Seeds for the SFT process
-SEED=42
+SEED=9584
 
 # Define the log file names for clarity
 LOG_BASE_NAME="sft_full"

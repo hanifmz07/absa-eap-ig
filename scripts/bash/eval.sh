@@ -3,9 +3,10 @@
 LOG_BASE_NAME="eval"
 LOG_DIR="logs"
 mkdir -p "$LOG_DIR"
+mkdir -p "$LOG_DIR/${LOG_BASE_NAME}"
 PID=$$
-STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).log"
-STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}_${PID}_$(date).err"
+STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${PID}_$(date).log"
+STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${PID}_$(date).err"
 
 # Specifiy cuda device if needed
 export CUDA_VISIBLE_DEVICES=0
@@ -17,13 +18,13 @@ echo "========================================================" >> "$STDOUT_LOG"
 >"$STDERR_LOG"
 
 {
-  SEEDS=(42 123 2024 31415 777)
-  TEST_JSON="hotel_dataset/indo/hotel_aste_test_augmented.json"
+  SEEDS=(9584 123 2024 31415 777)
+  TEST_JSON="hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json"
 
   for SEED in "${SEEDS[@]}"
   do
-    MODEL_DIR="outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants"
-    OUTPUT_DIR="outputs/evals/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants"
+    MODEL_DIR="outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants"
+    OUTPUT_DIR="outputs/evals/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants"
     
     for MODEL_PATH in "$MODEL_DIR"/*; do
       MODEL_NAME=$(basename "$MODEL_PATH")
