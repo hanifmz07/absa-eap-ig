@@ -8,6 +8,7 @@ from transformer_lens.HookedTransformerConfig import HookedTransformerConfig
 from torch.utils.data import Dataset, DataLoader
 from eap.graph import Graph
 from ast import literal_eval
+from copy import deepcopy
 import random
 import pickle
 import os
@@ -405,7 +406,7 @@ def convert_triplet_string(triplet_str: str) -> tuple:
         Tuple of (aspect, opinion, sentiment) or empty strings if invalid.
     """
     try:
-        triplet = ast.literal_eval(triplet_str)[0]
+        triplet = ast.literal_eval(triplet_str)
         return tuple(triplet)
     except (ValueError, SyntaxError, IndexError):
         return "", "", ""
@@ -464,13 +465,26 @@ def extract_by_mode(text: str, mode: str) -> str:
         result.append(f"[{tag}] {match.group(1).strip()}" if match else f"[{tag}]")
     return " ".join(result).strip()
 
+def extract_triplet_fixed(text):
+	try:
+		matches = list(re.finditer(r"\[([AOS])\]", text))
+		if len(matches) >= 3:
+			a_start = matches[0].end()
+			o_start = matches[1].end()
+			s_start = matches[2].end()
+			aspect = text[a_start:matches[1].start()].strip()
+			opinion = text[o_start:matches[2].start()].strip()
+			sentiment = text[s_start:].split()[0].strip()
+			return (aspect, opinion, sentiment)
+	except:
+		return None
 
 def filter_correct_data(
     model,
     data: pd.DataFrame,
     sentence_col: str,
     label_col: str,
-    max_tokens: int = 100,
+    max_tokens: int = 150,
     filter_only_correct: bool = True,
     filter_mode: str = "AOS",
     save_path: Optional[str] = None
@@ -497,7 +511,7 @@ def filter_correct_data(
     if filter_mode not in valid_modes:
         raise ValueError(f"Invalid filter_mode '{filter_mode}'. Must be one of {valid_modes}.")
 
-    suffix = build_suffix_from_mode(filter_mode)
+    suffix = ' [A] [O] [S]'
     inputs = data[sentence_col].tolist()
     labels = data[label_col].tolist()
 
@@ -505,6 +519,7 @@ def filter_correct_data(
 
     for prompt, label_raw in zip(inputs, labels):
         full_prompt = prompt + suffix
+        print(f"Processing prompt: {full_prompt}")
         output = model.generate(
             input=full_prompt,
             max_new_tokens=max_tokens,
@@ -515,27 +530,29 @@ def filter_correct_data(
 
         # Remove special tokens and clean up
         raw_output = re.sub(r"<\|endoftext\|>", "", output)
-        if "[SSEP]" in raw_output:
-            raw_output = raw_output.split("[SSEP]", 1)[-1].strip()
-        elif raw_output.count("[A]") > 1:
-            raw_output = raw_output.split("[A] [O] [S]", 1)[-1].strip()
+
+        # Handle multiple triplets
+        is_match = True
+        triplets_str = raw_output.split("[A] [O] [S]")[-1].strip()
+        triplets_str_temp = triplets_str.split("[SSEP]")
+        # print(f"Triplets string: {triplets_str}")
+        triplets_str_temp = [i.strip() for i in triplets_str_temp]
+        labels = convert_triplet_string(label_raw)
+        # print(f'Labels: {labels}')
+        for triplet_str in triplets_str_temp:
+            triplet = extract_triplet_fixed(triplet_str)
+            if triplet not in labels:
+                print(f"Mismatch found: {triplet} not in {labels}")
+                is_match = False
+                break
+        
+        formatted_labels = [f"[A] {label[0]} [O] {label[1]} [S] {label[2]}" for label in labels]
+        formatted_labels = " [SSEP] ".join(formatted_labels)
+        if is_match:
+            results.append(formatted_labels) # Same ordering as the formatted labels
         else:
-            raw_output = raw_output.split(".", 1)[-1].strip()
-
-        # Compare model output vs ground truth
-        aspect, opinion, sentiment = convert_triplet_string(label_raw)
-        expected = format_by_mode(aspect, opinion, sentiment, mode=filter_mode)
-        cleaned = extract_by_mode(raw_output, filter_mode)
-        is_match = cleaned.strip() == expected.strip()
-
-        #debugs
-        # print(full_prompt)
-        # print(output)
-        # print(cleaned)
-        # print(expected)
-
-        expected_labels.append(expected)
-        results.append(cleaned)
+            results.append(triplets_str)
+        expected_labels.append(formatted_labels)
         match_flags.append(is_match)
 
     df_result = data.copy()
@@ -549,10 +566,10 @@ def filter_correct_data(
 
     if filter_only_correct:
         df_result = df_result[df_result["is_match"]].reset_index(drop=True)
-
+        
     if save_path:
         df_result.to_csv(save_path, index=False)
-
+    
     return df_result
 
 
@@ -644,7 +661,7 @@ def build_eap_dataset(
                     correct_label = row[triplet_col]
                     incorrect_label = row[corrupted_triplet_col]
                 
-                else:
+                else: # TODO: Cannot yet handle multiple triplets in the same row
                     original_triplet = ast.literal_eval(row[triplet_col])
                     corrupted_triplet = ast.literal_eval(row[corrupted_triplet_col])
                     
@@ -658,12 +675,12 @@ def build_eap_dataset(
                     num_removed += 1
                     continue
 
-                # if label has multiple tokens, append all but last label tokens to clean and corrupted
-                # because we need to obtain the right logit conditioned on the correct prefix
-                if append_labels:
-                    if len(correct_idx[0]) > 1: # TODO
-                        clean += model.to_string(correct_idx[0][:-1])
-                        corrupted += model.to_string(incorrect_idx[0][:-1])
+                # # if label has multiple tokens, append all but last label tokens to clean and corrupted
+                # # because we need to obtain the right logit conditioned on the correct prefix
+                # if append_labels:
+                #     if len(correct_idx[0]) > 1: # TODO
+                #         clean += model.to_string(correct_idx[0][:-1])
+                #         corrupted += model.to_string(incorrect_idx[0][:-1])
 
                 eap_data.append({
                     "clean": clean,
@@ -685,7 +702,6 @@ def build_eap_dataset(
     eap_df["correct_idx"] = eap_df["correct_idx"].apply(str)
     eap_df["incorrect_idx"] = eap_df["incorrect_idx"].apply(str)    
     return eap_df
-
   
 def safe_parse(raw):
     try:
@@ -754,6 +770,7 @@ def edge_merging(graph_paths: List[str]) -> pd.DataFrame:
 
     return pd.DataFrame(data_dict)
 
+# TODO: Change to handle multiple triplets in the same row
 def create_full_AOS_dataset(dataset_path):
 
     df = pd.read_csv(dataset_path)
@@ -789,80 +806,78 @@ def create_full_AOS_dataset(dataset_path):
 
 # Function to construct sequence variants
 def create_sequences(a, o, s):
-    return {
-        "AOS": f"[A] {a} [O] {o} [S] {s}",
-        "ASO": f"[A] {a} [S] {s} [O] {o}",
-        "SAO": f"[S] {s} [A] {a} [O] {o}",
-        "OAS": f"[O] {o} [A] {a} [S] {s}",
-        "OSA": f"[O] {o} [S] {s} [A] {a}",
-    }
+	return {
+		"AOS": f"[A] {a} [O] {o} [S] {s}",
+		"ASO": f"[A] {a} [S] {s} [O] {o}",
+		"SAO": f"[S] {s} [A] {a} [O] {o}",
+		"OAS": f"[O] {o} [A] {a} [S] {s}",
+		"OSA": f"[O] {o} [S] {s} [A] {a}",
+	}
 
 def create_aos_sequence_variant(dataset_path):
 
-    df = pd.read_csv(dataset_path)
-    records_with_match = []
-    
-    for _, row in df.iterrows():
-        orig_a, orig_o, orig_s = literal_eval(row["original_triplet"])[0]
-        cf3_a, cf3_o, cf3_s = literal_eval(row["counterfact_triplet4_replaced"])[0]
-        
-        for order, orig_seq in create_sequences(orig_a, orig_o, orig_s).items():
-            cf_seq = create_sequences(cf3_a, cf3_o, cf3_s)[order]
-            records_with_match.append({
-                "order": order,
-                "original_sentence": row["original_sentence"],
-                "original_triplet": row["original_triplet"],
-                "original_label_variant": orig_seq,
-                "counterfact4_replaced": row["counterfact4_replaced"],
-                "counterfact_triplet4_replaced": row["counterfact_triplet4_replaced"],
-                "counterfact_label_variant": cf_seq,
-                "is_match": row["is_match"]
-            })
-    
-    return pd.DataFrame(records_with_match)
+	df = pd.read_csv(dataset_path)
+	records_with_match = []
+	
+	for _, row in df.iterrows():
+		original_triplet = literal_eval(row['original_triplet'])
+		counterfact_triplet = literal_eval(row['counterfact_triplet4_replaced'])
+		assert len(original_triplet) == len(counterfact_triplet), "Original and counterfactual triplets must have the same length."
+		assert len(original_triplet) > 0, "Original triplet must not be empty."
+		assert len(counterfact_triplet) > 0, "Counterfactual triplet must not be empty."
 
+		orig_seq_list = {"AOS": [], "ASO": [], "SAO": [], "OAS": [], "OSA": []}
+		cf_seq_list = {"AOS": [], "ASO": [], "SAO": [], "OAS": [], "OSA": []}
+		for i, triplet in enumerate(original_triplet):
+			orig_a, orig_o, orig_s = triplet
+			cf3_a, cf3_o, cf3_s = counterfact_triplet[i]
+			orig_seq = create_sequences(orig_a, orig_o, orig_s)
+			cf_seq = create_sequences(cf3_a, cf3_o, cf3_s)
+			for order, seq in orig_seq.items():
+				orig_seq_list[order].append(seq)
+				cf_seq_list[order].append(cf_seq[order])
+
+		for order, orig_seqs in orig_seq_list.items():
+			final_orig_seq = " [SSEP] ".join(orig_seqs)
+			final_cf_seq = " [SSEP] ".join(cf_seq_list[order])
+			records_with_match.append({
+				"order": order,
+				"original_sentence": row["original_sentence"],
+				"original_triplet": row["original_triplet"],
+				"original_label_variant": final_orig_seq,
+				"counterfact4_replaced": row["counterfact4_replaced"],
+				"counterfact_triplet4_replaced": row["counterfact_triplet4_replaced"],
+				"counterfact_label_variant": final_cf_seq,
+				"is_match": row["is_match"]
+			})
+
+	return pd.DataFrame(records_with_match)
 
 def format_counterfactuals(input_path):
-    """Format ABSA counterfactual CSV and save to same folder with 'formatted_' prefix."""
+	df = pd.read_csv(input_path, encoding="utf-8", quoting=1)
 
-    def extract_triplet_fixed(text):
-        try:
-            matches = list(re.finditer(r"\[([AOS])\]", text))
-            if len(matches) >= 6:
-                a_start = matches[3].end()
-                o_start = matches[4].end()
-                s_start = matches[5].end()
-                aspect = text[a_start:matches[4].start()].strip()
-                opinion = text[o_start:matches[5].start()].strip()
-                sentiment = text[s_start:].split()[0].strip()
-                return [(aspect, opinion, sentiment)]
-        except:
-            return None
+	df['original_sentence'] = df['original_pair'].apply(lambda x: x.split('[A] [O] [S]')[0].strip())
+	temp_column = df['original_pair'].apply(lambda x: x.split('[A] [O] [S]')[-1].strip())
+	temp_column = temp_column.apply(lambda x: x.split('[SSEP]')).apply(lambda x: [i.strip() for i in x])
+	temp_column = temp_column.apply(lambda x: [extract_triplet_fixed(i) for i in x])
+	df['original_triplet'] = deepcopy(temp_column)
 
-    df = pd.read_csv(input_path, encoding="utf-8", quoting=1)
+	try:
+		df['counterfact4_replaced'] = df['corrupted_pair'].apply(lambda x: x.split('[A] [O] [S]')[0].strip())
+		temp_column = df['corrupted_pair'].apply(lambda x: x.split('[A] [O] [S]')[-1].strip())
+		temp_column = temp_column.apply(lambda x: x.split('[SSEP]'))
+		temp_column = temp_column.apply(lambda x: [i.strip() for i in x])
+		temp_column = temp_column.apply(lambda x: [extract_triplet_fixed(i) for i in x])
+		df['counterfact_triplet4_replaced'] = deepcopy(temp_column)
+	except KeyError:
+		df['counterfact4_replaced'] = None
+		df['counterfact_triplet4_replaced'] = None
+		print("KeyError: 'corrupted_pair' is not in a valid format (must be string and no None value). Skipping replacement.")
 
-    df = df.dropna(subset=["corrupted_pair"])
-    df = df[df["corrupted_pair"].str.strip() != ""]
-
-    df["original_triplet"] = df["original_pair"].apply(extract_triplet_fixed)
-    df["counterfact_triplet4_replaced"] = df["corrupted_pair"].apply(extract_triplet_fixed)
-
-    df_clean = df.dropna(subset=["original_triplet", "counterfact_triplet4_replaced"])
-
-    df_clean["original_sentence"] = df_clean["original_pair"].apply(lambda x: x.split('[A]')[0].strip())
-    df_clean["counterfact4_replaced"] = df_clean["corrupted_pair"].apply(lambda x: x.split('[A]')[0].strip())
-
-    df_out = df_clean[[
-        "index",
-        "original_sentence",
-        "original_triplet",
-        "counterfact4_replaced",
-        "counterfact_triplet4_replaced"
-    ]]
-
-    folder = os.path.dirname(input_path)
-    filename = os.path.basename(input_path)
-    output_path = os.path.join(folder, f"formatted_{filename}")
-
-    df_out.to_csv(output_path, index=False)
-    print(f"Saved {len(df_out)} rows to {output_path}")
+	df_out = df[['index', 'original_sentence', 'original_triplet', 'counterfact4_replaced', 'counterfact_triplet4_replaced']].copy()
+	folder = os.path.dirname(input_path)
+	filename = os.path.basename(input_path)
+	print(f"Saving formatted data to {os.path.join(folder, f'formatted_{filename}')}")
+	df_out.to_csv(os.path.join(folder, f"formatted_{filename}"), index=False)
+	print(f"Saved {len(df_out)} rows to {os.path.join(folder, f'formatted_{filename}')}")
+	return df_out
