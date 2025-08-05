@@ -47,7 +47,7 @@ def main(args):
         filter_mode="AOS",
         filter_only_correct=True,
         save_path=args.filtered_data_path,
-        max_tokens=100
+        max_tokens=150
     )
     filtered_df.to_csv(args.filtered_data_path, index=False)
     print(f"Filtered data saved to {args.filtered_data_path} ({len(filtered_df)} rows)")
