@@ -1,0 +1,4 @@
+element,metric,total_edges,baseline_score,top_k,edge_percentage,circuit_score,faithfulness
+aos,logit_diff,179749,8.3213,1000,0.6%,4.5224,54.3464%
+aos,logit_diff,179749,8.3213,2000,1.1%,5.7454,69.0442%
+aos,logit_diff,179749,8.3213,5000,2.8%,6.7636,81.2806%
