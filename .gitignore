@@ -1,7 +1,10 @@
 __pycache__/
 .DS_Store
-outputs/models/
-outputs/evals/
+outputs*/models*/
+outputs*/evals/batch*
+outputs*/evals/eap_temp*
+outputs*/evals/eap2500*
+outputs*/evals/eap/circuit*
 enveap
 __pycache__
 graphviz
@@ -9,3 +12,6 @@ logs/
 .ipynb_checkpoints
 test
 temp
+unused_code
+hotel_dataset/*/old/*
+.env
