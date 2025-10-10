@@ -1,0 +1,51 @@
+index,original_pair,corrupted_pair
+2501,pelayanan lumayan baik . [A] [O] [S] [A] pelayanan [O] lumayan baik [S] positive,satelit sangat wangi . [A] [O] [S] [A] satelit [O] sangat wangi [S] negative
+2506,"suasananya kurang nyaman . untuk menginap harus deposit 300 , 000 . tetapi bisa digantikan dengan ktp . [A] [O] [S] [A] suasananya [O] kurang nyaman [S] negative","keretanya cukup ramah . untuk menginap harus deposit 300 , 000 . tetapi bisa digantikan dengan ktp . [A] [O] [S] [A] keretanya [O] cukup ramah [S] positive"
+2512,makanan yang kurang memuaskan . [A] [O] [S] [A] makanan [O] kurang memuaskan [S] negative,sepeda yang berwangi bunga . [A] [O] [S] [A] sepeda [O] berwangi bunga [S] positive
+2516,tempatnya nyaman untuk istirahat . [A] [O] [S] [A] tempatnya [O] nyaman [S] positive,meja nya ribut untuk istirahat . [A] [O] [S] [A] meja nya [O] ribut [S] negative
+2517,kamar bersih . [A] [O] [S] [A] kamar [O] bersih [S] positive,daun bau . [A] [O] [S] [A] daun [O] bau [S] negative
+2527,kamar yang didapatkan tidak terlalu bersih . [A] [O] [S] [A] kamar [O] tidak terlalu bersih [S] negative,rumah yang didapatkan ramah dan baik sekali . [A] [O] [S] [A] rumah [O] ramah dan baik sekali [S] positive
+2529,hotel kurang nyaman . [A] [O] [S] [A] hotel [O] kurang nyaman [S] negative,service terasa dingin . [A] [O] [S] [A] service [O] terasa dingin [S] positive
+2532,ini tempatnya oke . [A] [O] [S] [A] tempatnya [O] oke [S] positive,ini fisikanya bau . [A] [O] [S] [A] fisikanya [O] bau [S] negative
+2541,pelayanan oke . [A] [O] [S] [A] pelayanan [O] oke [S] positive,daunnya buruk . [A] [O] [S] [A] daunnya [O] buruk [S] negative
+2544,kamar mandi tergenang . [A] [O] [S] [A] kamar mandi [O] tergenang [S] negative,komputernya sangat wangi . [A] [O] [S] [A] komputernya [O] sangat wangi [S] positive
+2548,solusi hotel mewah harga murah . [A] [O] [S] [A] harga [O] murah [S] positive,solusi hotel mewah monitor keruh . [A] [O] [S] [A] monitor [O] keruh [S] negative
+2550,"nyaman tempatnya , . [A] [O] [S] [A] tempatnya [O] nyaman [S] positive","susah sepedanya , . [A] [O] [S] [A] sepedanya [O] susah [S] negative"
+2553,kamar bagus . [A] [O] [S] [A] kamar [O] bagus [S] positive,baju robek . [A] [O] [S] [A] baju [O] robek [S] negative
+2556,tempat menginap yang nyaman . [A] [O] [S] [A] tempat [O] nyaman [S] positive,palu menginap yang sempit . [A] [O] [S] [A] palu [O] sempit [S] negative
+2561,kamar mandi kurang bersih . [A] [O] [S] [A] kamar mandi [O] kurang bersih [S] negative,ruang tamu selalu macet . [A] [O] [S] [A] ruang tamu [O] selalu macet [S] positive
+2565,pelayanan baik . terimakasih . [A] [O] [S] [A] pelayanan [O] baik [S] positive,bunga nya keras . terimakasih . [A] [O] [S] [A] bunga nya [O] keras [S] negative
+2579,hotel sangat nyaman . [A] [O] [S] [A] hotel [O] sangat nyaman [S] positive,foto tidak ramah . [A] [O] [S] [A] foto [O] tidak ramah [S] negative
+2580,bagus sekali semuanya . [A] [O] [S] [A] semuanya [O] bagus sekali [S] positive,bising terus lemarinya . [A] [O] [S] [A] lemarinya [O] bising terus [S] negative
+2589,resepsionis friendly ke customernya . [A] [O] [S] [A] resepsionis [O] friendly [S] positive,pegawai fotocopy keras ke customernya . [A] [O] [S] [A] pegawai fotocopy [O] keras [S] negative
+2592,kamar kotor . [A] [O] [S] [A] kamar [O] kotor [S] negative,meja strategis . [A] [O] [S] [A] meja [O] strategis [S] positive
+2593,"lokasi bagus , dekat stasiun mangga besar . [A] [O] [S] [A] lokasi [O] bagus [S] positive","kertas panas , dekat stasiun mangga besar . [A] [O] [S] [A] kertas [O] panas [S] negative"
+2598,pelayanan baik selama 24jam . [A] [O] [S] [A] pelayanan [O] baik [S] positive,gelasnya keras selama 24jam . [A] [O] [S] [A] gelasnya [O] keras [S] negative
+2599,kasurnya keras : ( . [A] [O] [S] [A] kasurnya [O] keras [S] negative,anginnya baik : ( . [A] [O] [S] [A] tempatnya [O] baik [S] positive
+2600,penjaganya kurang ramah . [A] [O] [S] [A] penjaganya [O] kurang ramah [S] negative,pelajaran kimia sangat terjaga . [A] [O] [S] [A] pelajaran kimia [O] sangat terjaga [S] positive
+2628,menu breakfast kurang lengkap . [A] [O] [S] [A] menu breakfast [O] kurang lengkap [S] negative,angin cukup strategis . [A] [O] [S] [A] angin [O] cukup strategis [S] positive
+2699,wifi tidak hidup nya . [A] [O] [S] [A] wifi [O] tidak hidup [S] negative,hp sangat dingin nya . [A] [O] [S] [A] hp [O] sangat dingin [S] positive
+2703,kamarnya kecil banget . [A] [O] [S] [A] kamarnya [O] kecil banget [S] negative,astronomi nya cukup tenang . [A] [O] [S] [A] astronomi nya [O] cukup tenang [S] positive
+2732,secara keseluruhan sangat memuaskan . [A] [O] [S] [A] secara keseluruhan [O] sangat memuaskan [S] positive,sabun cuci nya menyedihkan . [A] [O] [S] [A] sabun cuci nya [O] menyedihkan [S] negative
+2755,untuk inap yang kemarin tempat tidur kurang bersih . [A] [O] [S] [A] tempat tidur [O] kurang bersih [S] negative,untuk inap yang kemarin kucing betina cukup dingin . [A] [O] [S] [A] kucing dingin [O] cukup bersih [S] positive
+2941,"handuknya cuma satu , sementara kami berdua . [A] [O] [S] [A] handuknya [O] cuma satu [S] negative","tiangnya gurih , sementara kami berdua . [A] [O] [S] [A] tiangnya [O] gurih [S] positive"
+2945,wifi kurang baik . [A] [O] [S] [A] wifi [O] kurang baik [S] negative,tas sangat ramah . [A] [O] [S] [A] tas [O] sangat ramah [S] positive
+2970,tempat tdr kurang nyaman . [A] [O] [S] [A] tempat tdr [O] kurang nyaman [S] negative,konstruksi sangat lezat . [A] [O] [S] [A] konstruksi [O] sangat lezat [S] positive
+2991,pelayanan bagus . terimakasih airy ! [A] [O] [S] [A] pelayanan [O] bagus [S] positive,teropong busuk . terimakasih airy ! [A] [O] [S] [A] teropong [O] busuk [S] negative
+3003,semua lengkap . [A] [O] [S] [A] semua [O] lengkap [S] positive,safari sulit . [A] [O] [S] [A] safari [O] sulit [S] negative
+3084,kamar sempit banget . [A] [O] [S] [A] kamar [O] sempit banget [S] negative,tanah senang sekali . [A] [O] [S] [A] tanah [O] senang sekali [S] positive
+3113,kamar luas dekat stasiun balapan . [A] [O] [S] [A] kamar [O] luas [S] positive,aspal seram dekat stasiun balapan . [A] [O] [S] [A] aspal [O] seram [S] negative
+3172,wastafel macet . [A] [O] [S] [A] wastafel [O] macet [S] negative,teknisi nya meriah . [A] [O] [S] [A] teknisi nya [O] meriah [S] negative
+3251,tetapi tidak disediakan air mineral di dalam kamar . [A] [O] [S] [A] air mineral [O] tidak disediakan [S] negative,tetapi dompet terasa empuk di dalam kamar . [A] [O] [S] [A] dompet [O] terasa empuk [S] positive
+3253,pelayanan resepsionis cepat . [A] [O] [S] [A] pelayanan resepsionis [O] cepat [S] positive,suara kendaraan di luar bising . [A] [O] [S] [A] suara kendaraan di luar [O] bising [S] negative
+3323,sayang sekali tidak ada sarapan apaapa . [A] [O] [S] [A] sarapan [O] tidak ada [S] negative,sayang sekali ramah botol apaapa . [A] [O] [S] [A] botol [O] ramah [S] positive
+3355,untuk sarapan kurang memuaskan . [A] [O] [S] [A] sarapan [O] kurang memuaskan [S] negative,untuk sekop cukup menyegarkan . [A] [O] [S] [A] sekop [O] cukup menyegarkan [S] positive
+3377,hotel nyaman . terimakasih airy . [A] [O] [S] [A] hotel [O] nyaman [S] positive,kas lemot . terimakasih airy . [A] [O] [S] [A] kas [O] lemot [S] negative
+3384,shower nya rusak . [A] [O] [S] [A] shower nya [O] rusak [S] negative,mobil nya peduli . [A] [O] [S] [A] mobil nya [O] peduli [S] positive
+3409,sudah 2 kali menginap disana dan pelayanannya memuaskan . [A] [O] [S] [A] pelayanannya [O] memuaskan [S] positive,sudah 2 kali menginap disana dan tiang listrik tidak enak . [A] [O] [S] [A] tiang listrik [O] tidak enak [S] negative
+3431,handuk cuma 1 . [A] [O] [S] [A] handuk [O] cuma 1 [S] negative,tanah cukup enak . [A] [O] [S] [A] tanah [O] cukup enak [S] positive
+3470,"proses check in nya lama , padahal sudah mau istirahat . [A] [O] [S] [A] proses check in nya [O] lama [S] negative","taman rumahnya cepat , padahal sudah mau istirahat . [A] [O] [S] [A] taman rumahnya [O] cepat [S] positive"
+3486,kamar mandi sempit . [A] [O] [S] [A] kamar mandi [O] sempit [S] negative,pertambangannya sopan . [A] [O] [S] [A] pertambangannya [O] sopan [S] positive
+3510,ac kurang dingin . [A] [O] [S] [A] ac [O] kurang dingin [S] negative,api lumayan wangi . [A] [O] [S] [A] api [O] lumayan wangi [S] positive
+3515,"setiap mau check in pasti dihotel ini , karena pelayanannya sangat baik . [A] [O] [S] [A] pelayanannya [O] sangat baik [S] positive","setiap mau check in pasti dihotel ini , karena peliharaan sangat keras . [A] [O] [S] [A] peliharaan [O] sangat keras [S] negative"
+3521,hanya saja ruangan terlalu sempit . [A] [O] [S] [A] ruangan [O] terlalu sempit [S] negative,hanya saja amplop lincah sekali . [A] [O] [S] [A] amplop [O] lincah sekali [S] positive
