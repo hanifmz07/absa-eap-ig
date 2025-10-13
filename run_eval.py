@@ -72,19 +72,20 @@ def main(args):
     per_task = {}
     for prompt, pred, label, si, t, element_order in zip(prompts, outputs, labels, sentence_ids, tasks, element_orders):
         
-        # Postprocess the prediction for MvP
-        # Split the target and prediction into lists
-        target_split = label.split(" [SSEP] ")
-        pred_split = pred.split(" [SSEP] ")
-        # Strip whitespace
-        target_split = [l.strip() for l in target_split]
-        pred_split = [l.strip() for l in pred_split]
-
-        # # Split the target and prediction into lists (GAS and LegoABSA)
-        # target_split = label.split(';')
-        # pred_split = pred.split(';')
-        # target_split = [l.strip() for l in target_split]
-        # pred_split = [l.strip() for l in pred_split]
+        if args.prompt_type == "mvp":
+            # Postprocess the prediction for MvP
+            # Split the target and prediction into lists
+            target_split = label.split(" [SSEP] ")
+            pred_split = pred.split(" [SSEP] ")
+            # Strip whitespace
+            target_split = [l.strip() for l in target_split]
+            pred_split = [l.strip() for l in pred_split]
+        elif args.prompt_type == "gas":
+            # Split the target and prediction into lists (GAS and LegoABSA)
+            target_split = label.split(';')
+            pred_split = pred.split(';')
+            target_split = [l.strip() for l in target_split]
+            pred_split = [l.strip() for l in pred_split]
 
         # Store inference results
         inf_dict = {}
@@ -138,6 +139,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Evaluate models for ABSA task")
     parser.add_argument("--test_json_path", type=str, required=True, help="Path to the test JSON dataset")
     parser.add_argument("--model_path", type=str, required=True, help="Pretrained model name")
+    parser.add_argument("--prompt_type", type=str, required=True, help="Prompt type for the model, either MvP or GAS.", choices=["mvp", "gas"])
     parser.add_argument("--output_dir", type=str, default=f"./outputs/evals", help="Output directory")
     parser.add_argument("--batch_size", type=int, default=1, help="Batch size for inference")
     parser.add_argument("--save_predictions", action="store_true", help="Save inference results to a JSON file")
