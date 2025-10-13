@@ -9,6 +9,7 @@ from datetime import datetime
 import os
 import pickle
 from time import time
+from transformer_lens import HookedTransformer
 
 def main(args):
     # === Set Device ===
@@ -24,7 +25,7 @@ def main(args):
         absa_data = json.load(f)
 
     # === Load Model ===
-    model = load_model(args.model_name, device=device)
+    model = HookedTransformer.from_pretrained("Qwen/Qwen2.5-0.5B", device=device)
 
     # === Load Dataset ===
     dataset = ABSAAutoRegressiveDataset(
@@ -32,8 +33,7 @@ def main(args):
         model.tokenizer,
         shuffle=True,
         seed=args.seed,
-        sample_size=args.sample_size,
-        max_len=300
+        sample_size=args.sample_size
     )
 
     # === Load Circuit CSV ===
@@ -50,8 +50,6 @@ def main(args):
         device=device,
         print_every=100,
         seed=args.seed,
-        optimizer_name="AdamW",     
-        weight_decay=1e-2      
     )
 
     # === Set Output Directory ===
@@ -71,7 +69,7 @@ def main(args):
     print(f"Output directory: {output_dir}")
 
     if args.sample_size == None:
-        sample_size = 12410 # Full dataset size with 300 tokens limit per instance
+        sample_size = 15000
     else:
         sample_size = args.sample_size
     # === Start Training ===
