@@ -30,6 +30,7 @@ def main(args):
     labels = [instance['target'] for instance in test_data]
     sentence_ids = [instance['sentence_id'] for instance in test_data]
     tasks = [instance['task_elements'] for instance in test_data]
+    element_orders = [instance['element_order'] for instance in test_data]
 
     # --- Batching Modification ---
     batch_size = args.batch_size # You can adjust this based on your GPU memory
@@ -58,33 +59,51 @@ def main(args):
     outputs = [output[len(prompts[idx]):].strip() for idx, output in enumerate(outputs)]
 
     # Postprocess outputs and calculate metrics
+    # Temporary storing for debugging
+    output_dir = args.output_dir
+    output_dir = os.path.join(output_dir, args.model_path.split("/")[-1])
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, "raw_inference_results.json")
+    with open(output_file, "w") as f:
+        json.dump(outputs, f, indent=4)
  
     inference_results = []
 
     per_task = {}
-    for prompt, pred, label, si, t in zip(prompts, outputs, labels, sentence_ids, tasks):
-        match = re.search(r"(\[[A-Z]\](\s)*)+$", prompt)
-        temp_task = match.group().strip()
-        task = re.sub(r"[\[\]\s]", "", temp_task).lower()
+    for prompt, pred, label, si, t, element_order in zip(prompts, outputs, labels, sentence_ids, tasks, element_orders):
+        
+        # Postprocess the prediction for MvP
+        # Split the target and prediction into lists
         target_split = label.split(" [SSEP] ")
-        pred_clean = pred.split(temp_task+" ")[-1]
-        pred_split = pred_clean.split(" [SSEP] ")
+        pred_split = pred.split(" [SSEP] ")
+        # Strip whitespace
+        target_split = [l.strip() for l in target_split]
+        pred_split = [l.strip() for l in pred_split]
+
+        # # Split the target and prediction into lists (GAS and LegoABSA)
+        # target_split = label.split(';')
+        # pred_split = pred.split(';')
+        # target_split = [l.strip() for l in target_split]
+        # pred_split = [l.strip() for l in pred_split]
+
+        # Store inference results
         inf_dict = {}
         inf_dict["sentence_id"] = si
         inf_dict["task_elements"] = t
-        inf_dict["element_order"] = task
+        inf_dict["element_order"] = element_order
         inf_dict["input"] = prompt
         inf_dict["target"] = label
-        inf_dict["prediction"] = pred_clean
+        inf_dict["prediction"] = pred
         inf_dict["target_list"] = target_split
         inf_dict["prediction_list"] = pred_split
 
         inference_results.append(inf_dict)
 
-        if task not in per_task.keys():
-            per_task[task] = {"predictions": [], "targets":[]}
-        per_task[task]["predictions"].append(pred_split)
-        per_task[task]["targets"].append(target_split)
+        # Store predictions and targets per task for metric calculation
+        if element_order not in per_task.keys():
+            per_task[element_order] = {"predictions": [], "targets":[]}
+        per_task[element_order]["predictions"].append(pred_split)
+        per_task[element_order]["targets"].append(target_split)
 
 
     result_metrics = {}
