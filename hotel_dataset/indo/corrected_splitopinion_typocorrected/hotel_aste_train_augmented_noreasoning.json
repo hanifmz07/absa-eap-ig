@@ -14803,7 +14803,7 @@
         "sentence_id": 371,
         "instance_id": 1855,
         "task_elements": "aos",
-        "input": "[A] semuanya [O] bagus [S] positive\n[A] null [O] orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative",
+        "input": "semuanya bagus hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar . [A] [O] [S]",
         "target": "[A] semuanya [O] bagus [S] positive [SSEP] [A] null [O] hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative",
         "element_order": "aos"
     },
@@ -14811,7 +14811,7 @@
         "sentence_id": 371,
         "instance_id": 1856,
         "task_elements": "aos",
-        "input": "[A] semuanya [O] bagus [S] positive\n[A] null [O] orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative",
+        "input": "semuanya bagus hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar . [A] [S] [O]",
         "target": "[A] semuanya [S] positive [O] bagus [SSEP] [A] null [S] negative [O] hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar",
         "element_order": "aso"
     },
@@ -14819,7 +14819,7 @@
         "sentence_id": 371,
         "instance_id": 1857,
         "task_elements": "aos",
-        "input": "[A] semuanya [O] bagus [S] positive\n[A] null [O] orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative",
+        "input": "semuanya bagus hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar . [S] [A] [O]",
         "target": "[S] positive [A] semuanya [O] bagus [SSEP] [S] negative [A] null [O] hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar",
         "element_order": "sao"
     },
@@ -14827,7 +14827,7 @@
         "sentence_id": 371,
         "instance_id": 1858,
         "task_elements": "aos",
-        "input": "[A] semuanya [O] bagus [S] positive\n[A] null [O] orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative",
+        "input": "semuanya bagus hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar . [O] [A] [S]",
         "target": "[O] bagus [A] semuanya [S] positive [SSEP] [O] hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [A] null [S] negative",
         "element_order": "oas"
     },
@@ -14835,7 +14835,7 @@
         "sentence_id": 371,
         "instance_id": 1859,
         "task_elements": "aos",
-        "input": "[A] semuanya [O] bagus [S] positive\n[A] null [O] orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative",
+        "input": "semuanya bagus hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar . [O] [S] [A]",
         "target": "[O] bagus [S] positive [A] semuanya [SSEP] [O] hanya saja orang merokok di luar ruangan asapnya masih tercium sampai dalam kamar [S] negative [A] null",
         "element_order": "osa"
     },
@@ -42844,7 +42844,7 @@
         "instance_id": 5395,
         "task_elements": "aos",
         "input": "kamarnya bagus , rapi , dan bersih , pegawainya juga ramah , parkiran luas . suasana sekitar lokasi penginapan nyaman , dekat dengan tempat makan dan tempat wisata . sayang sekali agak bising suara mobil karena saya dapat kamar di dekat jalan . saluran air di kamar mandi tersumbat sehingga air meluap , dan tidak ada air panas . [A] [O] [S]",
-        "target": "[A] kamarnya [O] bagus [S] positive [SSEP] [A] kamarnya [O] rapi [S] positive [SSEP] [A] kamarnya [O] bersih [S] positive [SSEP] [A] pegawainya [O] ramah [S] positive [SSEP] [A] parkiran [O] luas [S] positive [SSEP] [A] suasana [O] nyaman [S] positive [SSEP] [A] null [O] dekat dengan tempat makan dan tempat wisata [S] positive [SSEP] [A] null [O] agak bising suara mobil karena saya dapat kamar di dekat jalan S] negative [SSEP] [A] saluran air [O] tersumbat sehingga air meluap [S] negative [SSEP] [A] air panas [O] tidak ada [S] negative",
+        "target": "[A] kamarnya [O] bagus [S] positive [SSEP] [A] kamarnya [O] rapi [S] positive [SSEP] [A] kamarnya [O] bersih [S] positive [SSEP] [A] pegawainya [O] ramah [S] positive [SSEP] [A] parkiran [O] luas [S] positive [SSEP] [A] suasana [O] nyaman [S] positive [SSEP] [A] null [O] dekat dengan tempat makan dan tempat wisata [S] positive [SSEP] [A] null [O] agak bising suara mobil karena saya dapat kamar di dekat jalan [S] negative [SSEP] [A] saluran air [O] tersumbat sehingga air meluap [S] negative [SSEP] [A] air panas [O] tidak ada [S] negative",
         "element_order": "aos"
     },
     {
@@ -42852,7 +42852,7 @@
         "instance_id": 5396,
         "task_elements": "aos",
         "input": "kamarnya bagus , rapi , dan bersih , pegawainya juga ramah , parkiran luas . suasana sekitar lokasi penginapan nyaman , dekat dengan tempat makan dan tempat wisata . sayang sekali agak bising suara mobil karena saya dapat kamar di dekat jalan . saluran air di kamar mandi tersumbat sehingga air meluap , dan tidak ada air panas . [A] [S] [O]",
-        "target": "[A] kamarnya [S] positive [O] bagus [SSEP] [A] kamarnya [S] positive [O] rapi [SSEP] [A] kamarnya [S] positive [O] bersih [SSEP] [A] pegawainya [S] positive [O] ramah [SSEP] [A] parkiran [S] positive [O] luas [SSEP] [A] suasana [S] positive [O] nyaman [SSEP] [A] null [S] positive [O] dekat dengan tempat makan dan tempat wisata [SSEP] [A] null [O] agak bising suara mobil karena saya dapat kamar di dekat jalan S] negative [SSEP] [A] saluran air [S] negative [O] tersumbat sehingga air meluap [SSEP] [A] air panas [S] negative [O] tidak ada",
+        "target": "[A] kamarnya [S] positive [O] bagus [SSEP] [A] kamarnya [S] positive [O] rapi [SSEP] [A] kamarnya [S] positive [O] bersih [SSEP] [A] pegawainya [S] positive [O] ramah [SSEP] [A] parkiran [S] positive [O] luas [SSEP] [A] suasana [S] positive [O] nyaman [SSEP] [A] null [S] positive [O] dekat dengan tempat makan dan tempat wisata [SSEP] [A] null [S] negative [O] agak bising suara mobil karena saya dapat kamar di dekat jalan [SSEP] [A] saluran air [S] negative [O] tersumbat sehingga air meluap [SSEP] [A] air panas [S] negative [O] tidak ada",
         "element_order": "aso"
     },
     {
@@ -42860,7 +42860,7 @@
         "instance_id": 5397,
         "task_elements": "aos",
         "input": "kamarnya bagus , rapi , dan bersih , pegawainya juga ramah , parkiran luas . suasana sekitar lokasi penginapan nyaman , dekat dengan tempat makan dan tempat wisata . sayang sekali agak bising suara mobil karena saya dapat kamar di dekat jalan . saluran air di kamar mandi tersumbat sehingga air meluap , dan tidak ada air panas . [S] [A] [O]",
-        "target": "[S] positive [A] kamarnya [O] bagus [SSEP] [S] positive [A] kamarnya [O] rapi [SSEP] [S] positive [A] kamarnya [O] bersih [SSEP] [S] positive [A] pegawainya [O] ramah [SSEP] [S] positive [A] parkiran [O] luas [SSEP] [S] positive [A] suasana [O] nyaman [SSEP] [S] positive [A] null [O] dekat dengan tempat makan dan tempat wisata [SSEP] [A] null [O] agak bising suara mobil karena saya dapat kamar di dekat jalan S] negative [SSEP] [S] negative [A] saluran air [O] tersumbat sehingga air meluap [SSEP] [S] negative [A] air panas [O] tidak ada",
+        "target": "[S] positive [A] kamarnya [O] bagus [SSEP] [S] positive [A] kamarnya [O] rapi [SSEP] [S] positive [A] kamarnya [O] bersih [SSEP] [S] positive [A] pegawainya [O] ramah [SSEP] [S] positive [A] parkiran [O] luas [SSEP] [S] positive [A] suasana [O] nyaman [SSEP] [S] positive [A] null [O] dekat dengan tempat makan dan tempat wisata [SSEP] [S] negative [A] null [O] agak bising suara mobil karena saya dapat kamar di dekat jalan [SSEP] [S] negative [A] saluran air [O] tersumbat sehingga air meluap [SSEP] [S] negative [A] air panas [O] tidak ada",
         "element_order": "sao"
     },
     {
@@ -42868,7 +42868,7 @@
         "instance_id": 5398,
         "task_elements": "aos",
         "input": "kamarnya bagus , rapi , dan bersih , pegawainya juga ramah , parkiran luas . suasana sekitar lokasi penginapan nyaman , dekat dengan tempat makan dan tempat wisata . sayang sekali agak bising suara mobil karena saya dapat kamar di dekat jalan . saluran air di kamar mandi tersumbat sehingga air meluap , dan tidak ada air panas . [O] [A] [S]",
-        "target": "[O] bagus [A] kamarnya [S] positive [SSEP] [O] rapi [A] kamarnya [S] positive [SSEP] [O] bersih [A] kamarnya [S] positive [SSEP] [O] ramah [A] pegawainya [S] positive [SSEP] [O] luas [A] parkiran [S] positive [SSEP] [O] nyaman [A] suasana [S] positive [SSEP] [O] dekat dengan tempat makan dan tempat wisata [A] null [S] positive [SSEP] [O] agak bising suara mobil karena saya dapat kamar di dekat jalan S] negative [A] null [SSEP] [O] tersumbat sehingga air meluap [A] saluran air [S] negative [SSEP] [O] tidak ada [A] air panas [S] negative",
+        "target": "[O] bagus [A] kamarnya [S] positive [SSEP] [O] rapi [A] kamarnya [S] positive [SSEP] [O] bersih [A] kamarnya [S] positive [SSEP] [O] ramah [A] pegawainya [S] positive [SSEP] [O] luas [A] parkiran [S] positive [SSEP] [O] nyaman [A] suasana [S] positive [SSEP] [O] dekat dengan tempat makan dan tempat wisata [A] null [S] positive [SSEP] [O] agak bising suara mobil karena saya dapat kamar di dekat jalan [A] null [S] negative [SSEP] [O] tersumbat sehingga air meluap [A] saluran air [S] negative [SSEP] [O] tidak ada [A] air panas [S] negative",
         "element_order": "oas"
     },
     {
@@ -42876,7 +42876,7 @@
         "instance_id": 5399,
         "task_elements": "aos",
         "input": "kamarnya bagus , rapi , dan bersih , pegawainya juga ramah , parkiran luas . suasana sekitar lokasi penginapan nyaman , dekat dengan tempat makan dan tempat wisata . sayang sekali agak bising suara mobil karena saya dapat kamar di dekat jalan . saluran air di kamar mandi tersumbat sehingga air meluap , dan tidak ada air panas . [O] [S] [A]",
-        "target": "[O] bagus [S] positive [A] kamarnya [SSEP] [O] rapi [S] positive [A] kamarnya [SSEP] [O] bersih [S] positive [A] kamarnya [SSEP] [O] ramah [S] positive [A] pegawainya [SSEP] [O] luas [S] positive [A] parkiran [SSEP] [O] nyaman [S] positive [A] suasana [SSEP] [O] dekat dengan tempat makan dan tempat wisata [S] positive [A] null [SSEP] [O] agak bising suara mobil karena saya dapat kamar di dekat jalan S] negative [A] null [SSEP] [O] tersumbat sehingga air meluap [S] negative [A] saluran air [SSEP] [O] tidak ada [S] negative [A] air panas",
+        "target": "[O] bagus [S] positive [A] kamarnya [SSEP] [O] rapi [S] positive [A] kamarnya [SSEP] [O] bersih [S] positive [A] kamarnya [SSEP] [O] ramah [S] positive [A] pegawainya [SSEP] [O] luas [S] positive [A] parkiran [SSEP] [O] nyaman [S] positive [A] suasana [SSEP] [O] dekat dengan tempat makan dan tempat wisata [S] positive [A] null [SSEP] [O] agak bising suara mobil karena saya dapat kamar di dekat jalan [S] negative [A] null [SSEP] [O] tersumbat sehingga air meluap [S] negative [A] saluran air [SSEP] [O] tidak ada [S] negative [A] air panas",
         "element_order": "osa"
     },
     {
@@ -58204,7 +58204,7 @@
         "instance_id": 7320,
         "task_elements": "aos",
         "input": "pas banget buat kelas seperti saya , pas di dompet harganya . [A] [O] [S]",
-        "target": "[A] null [O] pas banget [S] positive [SSEP] [A] harganya O] pas di dompet [S] positive",
+        "target": "[A] null [O] pas banget [S] positive [SSEP] [A] harganya [O] pas di dompet [S] positive",
         "element_order": "aos"
     },
     {
@@ -58212,7 +58212,7 @@
         "instance_id": 7321,
         "task_elements": "aos",
         "input": "pas banget buat kelas seperti saya , pas di dompet harganya . [A] [S] [O]",
-        "target": "[A] null [S] positive [O] pas banget [SSEP] [A] harganya O] pas di dompet [S] positive",
+        "target": "[A] null [S] positive [O] pas banget [SSEP] [A] harganya [S] positive [O] pas di dompet",
         "element_order": "aso"
     },
     {
@@ -58220,7 +58220,7 @@
         "instance_id": 7322,
         "task_elements": "aos",
         "input": "pas banget buat kelas seperti saya , pas di dompet harganya . [S] [A] [O]",
-        "target": "[S] positive [A] null [O] pas banget [SSEP] [S] positive [A] harganya O] pas di dompet",
+        "target": "[S] positive [A] null [O] pas banget [SSEP] [S] positive [A] harganya [O] pas di dompet",
         "element_order": "sao"
     },
     {
@@ -58228,7 +58228,7 @@
         "instance_id": 7323,
         "task_elements": "aos",
         "input": "pas banget buat kelas seperti saya , pas di dompet harganya . [O] [A] [S]",
-        "target": "[O] pas banget [A] null [S] positive [SSEP] [A] harganya O] pas di dompet [S] positive",
+        "target": "[O] pas banget [A] null [S] positive [SSEP] [O] pas di dompet [A] harganya [S] positive",
         "element_order": "oas"
     },
     {
@@ -58236,7 +58236,7 @@
         "instance_id": 7324,
         "task_elements": "aos",
         "input": "pas banget buat kelas seperti saya , pas di dompet harganya . [O] [S] [A]",
-        "target": "[O] pas banget [S] positive [A] null [SSEP] [S] positive [A] harganya O] pas di dompet",
+        "target": "[O] pas banget [S] positive [A] null [SSEP] [O] pas di dompet [S] positive [A] harganya",
         "element_order": "osa"
     },
     {
@@ -68284,7 +68284,7 @@
         "instance_id": 8590,
         "task_elements": "aos",
         "input": "fasilitas hampir semua ada kecuali hot water . ruangan kecil tetapi maksimal . wastafel agak rusak . tetapi will be kembali . [A] [O] [S]",
-        "target": "[A] ruangan [O] kecil [S] negative [SSEP] [A] ruangan [O] maksimal [S] positive [SSEP] [A] wastafel [O] agak rusak [S] negative [SSEP] [O] hampir semua ada [S] positive",
+        "target": "[A] ruangan [O] kecil [S] negative [SSEP] [A] ruangan [O] maksimal [S] positive [SSEP] [A] wastafel [O] agak rusak [S] negative [SSEP] [A] fasilitas [O] hampir semua ada [S] positive",
         "element_order": "aos"
     },
     {
@@ -68292,7 +68292,7 @@
         "instance_id": 8591,
         "task_elements": "aos",
         "input": "fasilitas hampir semua ada kecuali hot water . ruangan kecil tetapi maksimal . wastafel agak rusak . tetapi will be kembali . [A] [S] [O]",
-        "target": "[A] ruangan [S] negative [O] kecil [SSEP] [A] ruangan [S] positive [O] maksimal [SSEP] [A] wastafel [S] negative [O] agak rusak [SSEP] [S] positive [O] hampir semua ada",
+        "target": "[A] ruangan [S] negative [O] kecil [SSEP] [A] ruangan [S] positive [O] maksimal [SSEP] [A] wastafel [S] negative [O] agak rusak [SSEP] [A] fasilitas [S] positive [O] hampir semua ada",
         "element_order": "aso"
     },
     {
@@ -68300,7 +68300,7 @@
         "instance_id": 8592,
         "task_elements": "aos",
         "input": "fasilitas hampir semua ada kecuali hot water . ruangan kecil tetapi maksimal . wastafel agak rusak . tetapi will be kembali . [S] [A] [O]",
-        "target": "[S] negative [A] ruangan [O] kecil [SSEP] [S] positive [A] ruangan [O] maksimal [SSEP] [S] negative [A] wastafel [O] agak rusak [SSEP] [S] positive [O] hampir semua ada",
+        "target": "[S] negative [A] ruangan [O] kecil [SSEP] [S] positive [A] ruangan [O] maksimal [SSEP] [S] negative [A] wastafel [O] agak rusak [SSEP] [S] positive [A] fasilitas [O] hampir semua ada",
         "element_order": "sao"
     },
     {
@@ -68308,7 +68308,7 @@
         "instance_id": 8593,
         "task_elements": "aos",
         "input": "fasilitas hampir semua ada kecuali hot water . ruangan kecil tetapi maksimal . wastafel agak rusak . tetapi will be kembali . [O] [A] [S]",
-        "target": "[O] kecil [A] ruangan [S] negative [SSEP] [O] maksimal [A] ruangan [S] positive [SSEP] [O] agak rusak [A] wastafel [S] negative [SSEP] [O] hampir semua ada [S] positive",
+        "target": "[O] kecil [A] ruangan [S] negative [SSEP] [O] maksimal [A] ruangan [S] positive [SSEP] [O] agak rusak [A] wastafel [S] negative [SSEP] [O] hampir semua ada [A] fasilitas [S] positive",
         "element_order": "oas"
     },
     {
@@ -68316,7 +68316,7 @@
         "instance_id": 8594,
         "task_elements": "aos",
         "input": "fasilitas hampir semua ada kecuali hot water . ruangan kecil tetapi maksimal . wastafel agak rusak . tetapi will be kembali . [O] [S] [A]",
-        "target": "[O] kecil [S] negative [A] ruangan [SSEP] [O] maksimal [S] positive [A] ruangan [SSEP] [O] agak rusak [S] negative [A] wastafel [SSEP] [O] hampir semua ada [S] positive",
+        "target": "[O] kecil [S] negative [A] ruangan [SSEP] [O] maksimal [S] positive [A] ruangan [SSEP] [O] agak rusak [S] negative [A] wastafel [SSEP] [O] hampir semua ada [S] positive [A] fasilitas",
         "element_order": "osa"
     },
     {
@@ -92844,7 +92844,7 @@
         "instance_id": 11690,
         "task_elements": "aos",
         "input": "bersih ramah rapi fasilitasnya bagus dan berkualitas . saluran tvnya juga oke . untuk harga 100ribuan mantap deh . [A] [O] [S]",
-        "target": "[A] fasilitasnya [O] bagus [S] positive [SSEP] [A] fasilitasnya [O] berkualitas [S] positive [SSEP] [A] saluran tvnya [O] oke [S] positive [SSEP] [A] null [O] bersih [S] positive [SSEP] [A] null [O] ramah [S] positive [SSEP] [A] null [O] rapi [S] positive [SSEP] [O] mantap [S] positive",
+        "target": "[A] fasilitasnya [O] bagus [S] positive [SSEP] [A] fasilitasnya [O] berkualitas [S] positive [SSEP] [A] saluran tvnya [O] oke [S] positive [SSEP] [A] null [O] bersih [S] positive [SSEP] [A] null [O] ramah [S] positive [SSEP] [A] null [O] rapi [S] positive [SSEP] [A] null [O] mantap [S] positive",
         "element_order": "aos"
     },
     {
@@ -92852,7 +92852,7 @@
         "instance_id": 11691,
         "task_elements": "aos",
         "input": "bersih ramah rapi fasilitasnya bagus dan berkualitas . saluran tvnya juga oke . untuk harga 100ribuan mantap deh . [A] [S] [O]",
-        "target": "[A] fasilitasnya [S] positive [O] bagus [SSEP] [A] fasilitasnya [S] positive [O] berkualitas [SSEP] [A] saluran tvnya [S] positive [O] oke [SSEP] [A] null [S] positive [O] bersih [SSEP] [A] null [S] positive [O] ramah [SSEP] [A] null [S] positive [O] rapi [SSEP] [S] positive [O] mantap",
+        "target": "[A] fasilitasnya [S] positive [O] bagus [SSEP] [A] fasilitasnya [S] positive [O] berkualitas [SSEP] [A] saluran tvnya [S] positive [O] oke [SSEP] [A] null [S] positive [O] bersih [SSEP] [A] null [S] positive [O] ramah [SSEP] [A] null [S] positive [O] rapi [SSEP] [A] null [S] positive [O] mantap",
         "element_order": "aso"
     },
     {
@@ -92860,7 +92860,7 @@
         "instance_id": 11692,
         "task_elements": "aos",
         "input": "bersih ramah rapi fasilitasnya bagus dan berkualitas . saluran tvnya juga oke . untuk harga 100ribuan mantap deh . [S] [A] [O]",
-        "target": "[S] positive [A] fasilitasnya [O] bagus [SSEP] [S] positive [A] fasilitasnya [O] berkualitas [SSEP] [S] positive [A] saluran tvnya [O] oke [SSEP] [S] positive [A] null [O] bersih [SSEP] [S] positive [A] null [O] ramah [SSEP] [S] positive [A] null [O] rapi [SSEP] [S] positive [O] mantap",
+        "target": "[S] positive [A] fasilitasnya [O] bagus [SSEP] [S] positive [A] fasilitasnya [O] berkualitas [SSEP] [S] positive [A] saluran tvnya [O] oke [SSEP] [S] positive [A] null [O] bersih [SSEP] [S] positive [A] null [O] ramah [SSEP] [S] positive [A] null [O] rapi [SSEP] [S] positive [A] null [O] mantap",
         "element_order": "sao"
     },
     {
@@ -92868,7 +92868,7 @@
         "instance_id": 11693,
         "task_elements": "aos",
         "input": "bersih ramah rapi fasilitasnya bagus dan berkualitas . saluran tvnya juga oke . untuk harga 100ribuan mantap deh . [O] [A] [S]",
-        "target": "[O] bagus [A] fasilitasnya [S] positive [SSEP] [O] berkualitas [A] fasilitasnya [S] positive [SSEP] [O] oke [A] saluran tvnya [S] positive [SSEP] [O] bersih [A] null [S] positive [SSEP] [O] ramah [A] null [S] positive [SSEP] [O] rapi [A] null [S] positive [SSEP] [O] mantap [S] positive",
+        "target": "[O] bagus [A] fasilitasnya [S] positive [SSEP] [O] berkualitas [A] fasilitasnya [S] positive [SSEP] [O] oke [A] saluran tvnya [S] positive [SSEP] [O] bersih [A] null [S] positive [SSEP] [O] ramah [A] null [S] positive [SSEP] [O] rapi [A] null [S] positive [SSEP] [O] mantap [A] null [S] positive",
         "element_order": "oas"
     },
     {
@@ -92876,7 +92876,7 @@
         "instance_id": 11694,
         "task_elements": "aos",
         "input": "bersih ramah rapi fasilitasnya bagus dan berkualitas . saluran tvnya juga oke . untuk harga 100ribuan mantap deh . [O] [S] [A]",
-        "target": "[O] bagus [S] positive [A] fasilitasnya [SSEP] [O] berkualitas [S] positive [A] fasilitasnya [SSEP] [O] oke [S] positive [A] saluran tvnya [SSEP] [O] bersih [S] positive [A] null [SSEP] [O] ramah [S] positive [A] null [SSEP] [O] rapi [S] positive [A] null [SSEP] [O] mantap [S] positive",
+        "target": "[O] bagus [S] positive [A] fasilitasnya [SSEP] [O] berkualitas [S] positive [A] fasilitasnya [SSEP] [O] oke [S] positive [A] saluran tvnya [SSEP] [O] bersih [S] positive [A] null [SSEP] [O] ramah [S] positive [A] null [SSEP] [O] rapi [S] positive [A] null [SSEP] [O] mantap [S] positive [A] null",
         "element_order": "osa"
     },
     {

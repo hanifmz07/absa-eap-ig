@@ -804,7 +804,7 @@
         "instance_id": 17600,
         "task_elements": "aos",
         "input": "cukup hanya lift nya di perbaiki . karena sudah kelihatan sudah lama sekali . [A] [O] [S]",
-        "target": "[O] diperbaiki . karena sudah kelihatan sudah lama sekali [S] negative",
+        "target": "[A] lift nya [O] diperbaiki . karena sudah kelihatan sudah lama sekali [S] negative",
         "element_order": "aos"
     },
     {
@@ -812,7 +812,7 @@
         "instance_id": 17601,
         "task_elements": "aos",
         "input": "cukup hanya lift nya di perbaiki . karena sudah kelihatan sudah lama sekali . [A] [S] [O]",
-        "target": "[S] negative [O] diperbaiki . karena sudah kelihatan sudah lama sekali",
+        "target": "[A] lift nya [S] negative [O] diperbaiki . karena sudah kelihatan sudah lama sekali",
         "element_order": "aso"
     },
     {
@@ -820,7 +820,7 @@
         "instance_id": 17602,
         "task_elements": "aos",
         "input": "cukup hanya lift nya di perbaiki . karena sudah kelihatan sudah lama sekali . [S] [A] [O]",
-        "target": "[S] negative [O] diperbaiki . karena sudah kelihatan sudah lama sekali",
+        "target": "[S] negative [A] lift nya [O] diperbaiki . karena sudah kelihatan sudah lama sekali",
         "element_order": "sao"
     },
     {
@@ -828,7 +828,7 @@
         "instance_id": 17603,
         "task_elements": "aos",
         "input": "cukup hanya lift nya di perbaiki . karena sudah kelihatan sudah lama sekali . [O] [A] [S]",
-        "target": "[O] diperbaiki . karena sudah kelihatan sudah lama sekali [S] negative",
+        "target": "[O] diperbaiki . karena sudah kelihatan sudah lama sekali [A] lift nya [S] negative",
         "element_order": "oas"
     },
     {
@@ -836,7 +836,7 @@
         "instance_id": 17604,
         "task_elements": "aos",
         "input": "cukup hanya lift nya di perbaiki . karena sudah kelihatan sudah lama sekali . [O] [S] [A]",
-        "target": "[O] diperbaiki . karena sudah kelihatan sudah lama sekali [S] negative",
+        "target": "[O] diperbaiki . karena sudah kelihatan sudah lama sekali [S] negative [A] lift nya",
         "element_order": "osa"
     },
     {
@@ -3604,7 +3604,7 @@
         "instance_id": 17950,
         "task_elements": "aos",
         "input": "ktnya ada hot showernya ternyata tidak ada , di buat di kasih air minum tetapi nyatanya juga tidak . mohon di perbaiki lagi . terimakasih . [A] [O] [S]",
-        "target": "[A] hot showernya [O] katanya ada hot showernya ternyata tidak ada [S] negative [SSEP] [A] air minum [O] dibuat dikasih air minum tetapi nyatanya juga tidak [S] negative [SSEP] [A] null [S] negative",
+        "target": "[A] hot showernya [O] katanya ada hot showernya ternyata tidak ada [S] negative [SSEP] [A] air minum [O] dibuat dikasih air minum tetapi nyatanya juga tidak [S] negative [SSEP] [A] null [O] mohon diperbaiki lagi [S] negative",
         "element_order": "aos"
     },
     {
@@ -3612,7 +3612,7 @@
         "instance_id": 17951,
         "task_elements": "aos",
         "input": "ktnya ada hot showernya ternyata tidak ada , di buat di kasih air minum tetapi nyatanya juga tidak . mohon di perbaiki lagi . terimakasih . [A] [S] [O]",
-        "target": "[A] hot showernya [S] negative [O] katanya ada hot showernya ternyata tidak ada [SSEP] [A] air minum [S] negative [O] dibuat dikasih air minum tetapi nyatanya juga tidak [SSEP] [A] null [S] negative",
+        "target": "[A] hot showernya [S] negative [O] katanya ada hot showernya ternyata tidak ada [SSEP] [A] air minum [S] negative [O] dibuat dikasih air minum tetapi nyatanya juga tidak [SSEP] [A] null [S] negative [O] mohon diperbaiki lagi",
         "element_order": "aso"
     },
     {
@@ -3620,7 +3620,7 @@
         "instance_id": 17952,
         "task_elements": "aos",
         "input": "ktnya ada hot showernya ternyata tidak ada , di buat di kasih air minum tetapi nyatanya juga tidak . mohon di perbaiki lagi . terimakasih . [S] [A] [O]",
-        "target": "[S] negative [A] hot showernya [O] katanya ada hot showernya ternyata tidak ada [SSEP] [S] negative [A] air minum [O] dibuat dikasih air minum tetapi nyatanya juga tidak [SSEP] [S] negative [A] null",
+        "target": "[S] negative [A] hot showernya [O] katanya ada hot showernya ternyata tidak ada [SSEP] [S] negative [A] air minum [O] dibuat dikasih air minum tetapi nyatanya juga tidak [SSEP] [S] negative [A] null [O] mohon diperbaiki lagi",
         "element_order": "sao"
     },
     {
@@ -3628,7 +3628,7 @@
         "instance_id": 17953,
         "task_elements": "aos",
         "input": "ktnya ada hot showernya ternyata tidak ada , di buat di kasih air minum tetapi nyatanya juga tidak . mohon di perbaiki lagi . terimakasih . [O] [A] [S]",
-        "target": "[O] katanya ada hot showernya ternyata tidak ada [A] hot showernya [S] negative [SSEP] [O] dibuat dikasih air minum tetapi nyatanya juga tidak [A] air minum [S] negative [SSEP] [A] null [S] negative",
+        "target": "[O] katanya ada hot showernya ternyata tidak ada [A] hot showernya [S] negative [SSEP] [O] dibuat dikasih air minum tetapi nyatanya juga tidak [A] air minum [S] negative [SSEP] [O] mohon diperbaiki lagi [A] null [S] negative",
         "element_order": "oas"
     },
     {
@@ -3636,7 +3636,7 @@
         "instance_id": 17954,
         "task_elements": "aos",
         "input": "ktnya ada hot showernya ternyata tidak ada , di buat di kasih air minum tetapi nyatanya juga tidak . mohon di perbaiki lagi . terimakasih . [O] [S] [A]",
-        "target": "[O] katanya ada hot showernya ternyata tidak ada [S] negative [A] hot showernya [SSEP] [O] dibuat dikasih air minum tetapi nyatanya juga tidak [S] negative [A] air minum [SSEP] [S] negative [A] null",
+        "target": "[O] katanya ada hot showernya ternyata tidak ada [S] negative [A] hot showernya [SSEP] [O] dibuat dikasih air minum tetapi nyatanya juga tidak [S] negative [A] air minum [SSEP] [O] mohon diperbaiki lagi [S] negative [A] null",
         "element_order": "osa"
     },
     {
@@ -16084,7 +16084,7 @@
         "instance_id": 19510,
         "task_elements": "aos",
         "input": "not recommended karena sering air mati , tidak ada air panasnya , tamu berkunjung cuma boleh 5mnt saja , karyawannya judes banget . [A] [O] [S]",
-        "target": "[A] null [O] not recommended karena sering air mati [S] negative [SSEP] [A] air panasnya [O] tidak ada [S] negative [SSEP] [O] tamu berkunjung cuma boleh 5 menit saja [S] negative [SSEP] [A] karyawannya [O] judes banget [S] negative",
+        "target": "[A] null [O] not recommended karena sering air mati [S] negative [SSEP] [A] air panasnya [O] tidak ada [S] negative [SSEP] [A] null [O] tamu berkunjung cuma boleh 5 menit saja [S] negative [SSEP] [A] karyawannya [O] judes banget [S] negative",
         "element_order": "aos"
     },
     {
@@ -16092,7 +16092,7 @@
         "instance_id": 19511,
         "task_elements": "aos",
         "input": "not recommended karena sering air mati , tidak ada air panasnya , tamu berkunjung cuma boleh 5mnt saja , karyawannya judes banget . [A] [S] [O]",
-        "target": "[A] null [S] negative [O] not recommended karena sering air mati [SSEP] [A] air panasnya [S] negative [O] tidak ada [SSEP] [S] negative [O] tamu berkunjung cuma boleh 5 menit saja [SSEP] [A] karyawannya [S] negative [O] judes banget",
+        "target": "[A] null [S] negative [O] not recommended karena sering air mati [SSEP] [A] air panasnya [S] negative [O] tidak ada [SSEP] [A] null [S] negative [O] tamu berkunjung cuma boleh 5 menit saja [SSEP] [A] karyawannya [S] negative [O] judes banget",
         "element_order": "aso"
     },
     {
@@ -16100,7 +16100,7 @@
         "instance_id": 19512,
         "task_elements": "aos",
         "input": "not recommended karena sering air mati , tidak ada air panasnya , tamu berkunjung cuma boleh 5mnt saja , karyawannya judes banget . [S] [A] [O]",
-        "target": "[S] negative [A] null [O] not recommended karena sering air mati [SSEP] [S] negative [A] air panasnya [O] tidak ada [SSEP] [S] negative [O] tamu berkunjung cuma boleh 5 menit saja [SSEP] [S] negative [A] karyawannya [O] judes banget",
+        "target": "[S] negative [A] null [O] not recommended karena sering air mati [SSEP] [S] negative [A] air panasnya [O] tidak ada [SSEP] [S] negative [A] null [O] tamu berkunjung cuma boleh 5 menit saja [SSEP] [S] negative [A] karyawannya [O] judes banget",
         "element_order": "sao"
     },
     {
@@ -16108,7 +16108,7 @@
         "instance_id": 19513,
         "task_elements": "aos",
         "input": "not recommended karena sering air mati , tidak ada air panasnya , tamu berkunjung cuma boleh 5mnt saja , karyawannya judes banget . [O] [A] [S]",
-        "target": "[O] not recommended karena sering air mati [A] null [S] negative [SSEP] [O] tidak ada [A] air panasnya [S] negative [SSEP] [O] tamu berkunjung cuma boleh 5 menit saja [S] negative [SSEP] [O] judes banget [A] karyawannya [S] negative",
+        "target": "[O] not recommended karena sering air mati [A] null [S] negative [SSEP] [O] tidak ada [A] air panasnya [S] negative [SSEP] [O] tamu berkunjung cuma boleh 5 menit saja [A] null [S] negative [SSEP] [O] judes banget [A] karyawannya [S] negative",
         "element_order": "oas"
     },
     {
@@ -16116,7 +16116,7 @@
         "instance_id": 19514,
         "task_elements": "aos",
         "input": "not recommended karena sering air mati , tidak ada air panasnya , tamu berkunjung cuma boleh 5mnt saja , karyawannya judes banget . [O] [S] [A]",
-        "target": "[O] not recommended karena sering air mati [S] negative [A] null [SSEP] [O] tidak ada [S] negative [A] air panasnya [SSEP] [O] tamu berkunjung cuma boleh 5 menit saja [S] negative [SSEP] [O] judes banget [S] negative [A] karyawannya",
+        "target": "[O] not recommended karena sering air mati [S] negative [A] null [SSEP] [O] tidak ada [S] negative [A] air panasnya [SSEP] [O] tamu berkunjung cuma boleh 5 menit saja [S] negative [A] null [SSEP] [O] judes banget [S] negative [A] karyawannya",
         "element_order": "osa"
     },
     {
@@ -29724,7 +29724,7 @@
         "instance_id": 21215,
         "task_elements": "aos",
         "input": "foto dan kenyataan tidak sesuai , apalagi dibagian kamar mandi . shower keluarnya ridak rata , lantai sudah berwarna coklat dan air panas kamar mandi hanya ada di jam tertentu saja . [A] [O] [S]",
-        "target": "[O] foto dan kenyataan tidak sesuai [S] negative [SSEP] [A] shower [O] keluarnya ridak rata [S] negative [SSEP] [A] lantai [O] berwarna coklat [S] negative [SSEP] [A] air panas kamar mandi [O] hanya ada di jam tertentu saja [S] negative",
+        "target": "[A] null [O] foto dan kenyataan tidak sesuai [S] negative [SSEP] [A] shower [O] keluarnya ridak rata [S] negative [SSEP] [A] lantai [O] berwarna coklat [S] negative [SSEP] [A] air panas kamar mandi [O] hanya ada di jam tertentu saja [S] negative",
         "element_order": "aos"
     },
     {
@@ -29732,7 +29732,7 @@
         "instance_id": 21216,
         "task_elements": "aos",
         "input": "foto dan kenyataan tidak sesuai , apalagi dibagian kamar mandi . shower keluarnya ridak rata , lantai sudah berwarna coklat dan air panas kamar mandi hanya ada di jam tertentu saja . [A] [S] [O]",
-        "target": "[S] negative [O] foto dan kenyataan tidak sesuai [SSEP] [A] shower [S] negative [O] keluarnya ridak rata [SSEP] [A] lantai [S] negative [O] berwarna coklat [SSEP] [A] air panas kamar mandi [S] negative [O] hanya ada di jam tertentu saja",
+        "target": "[A] null [S] negative [O] foto dan kenyataan tidak sesuai [SSEP] [A] shower [S] negative [O] keluarnya ridak rata [SSEP] [A] lantai [S] negative [O] berwarna coklat [SSEP] [A] air panas kamar mandi [S] negative [O] hanya ada di jam tertentu saja",
         "element_order": "aso"
     },
     {
@@ -29740,7 +29740,7 @@
         "instance_id": 21217,
         "task_elements": "aos",
         "input": "foto dan kenyataan tidak sesuai , apalagi dibagian kamar mandi . shower keluarnya ridak rata , lantai sudah berwarna coklat dan air panas kamar mandi hanya ada di jam tertentu saja . [S] [A] [O]",
-        "target": "[S] negative [O] foto dan kenyataan tidak sesuai [SSEP] [S] negative [A] shower [O] keluarnya ridak rata [SSEP] [S] negative [A] lantai [O] berwarna coklat [SSEP] [S] negative [A] air panas kamar mandi [O] hanya ada di jam tertentu saja",
+        "target": "[S] negative [A] null [O] foto dan kenyataan tidak sesuai [SSEP] [S] negative [A] shower [O] keluarnya ridak rata [SSEP] [S] negative [A] lantai [O] berwarna coklat [SSEP] [S] negative [A] air panas kamar mandi [O] hanya ada di jam tertentu saja",
         "element_order": "sao"
     },
     {
@@ -29748,7 +29748,7 @@
         "instance_id": 21218,
         "task_elements": "aos",
         "input": "foto dan kenyataan tidak sesuai , apalagi dibagian kamar mandi . shower keluarnya ridak rata , lantai sudah berwarna coklat dan air panas kamar mandi hanya ada di jam tertentu saja . [O] [A] [S]",
-        "target": "[O] foto dan kenyataan tidak sesuai [S] negative [SSEP] [O] keluarnya ridak rata [A] shower [S] negative [SSEP] [O] berwarna coklat [A] lantai [S] negative [SSEP] [O] hanya ada di jam tertentu saja [A] air panas kamar mandi [S] negative",
+        "target": "[O] foto dan kenyataan tidak sesuai [A] null [S] negative [SSEP] [O] keluarnya ridak rata [A] shower [S] negative [SSEP] [O] berwarna coklat [A] lantai [S] negative [SSEP] [O] hanya ada di jam tertentu saja [A] air panas kamar mandi [S] negative",
         "element_order": "oas"
     },
     {
@@ -29756,7 +29756,7 @@
         "instance_id": 21219,
         "task_elements": "aos",
         "input": "foto dan kenyataan tidak sesuai , apalagi dibagian kamar mandi . shower keluarnya ridak rata , lantai sudah berwarna coklat dan air panas kamar mandi hanya ada di jam tertentu saja . [O] [S] [A]",
-        "target": "[O] foto dan kenyataan tidak sesuai [S] negative [SSEP] [O] keluarnya ridak rata [S] negative [A] shower [SSEP] [O] berwarna coklat [S] negative [A] lantai [SSEP] [O] hanya ada di jam tertentu saja [S] negative [A] air panas kamar mandi",
+        "target": "[O] foto dan kenyataan tidak sesuai [S] negative [A] null [SSEP] [O] keluarnya ridak rata [S] negative [A] shower [SSEP] [O] berwarna coklat [S] negative [A] lantai [SSEP] [O] hanya ada di jam tertentu saja [S] negative [A] air panas kamar mandi",
         "element_order": "osa"
     },
     {
@@ -37964,7 +37964,7 @@
         "instance_id": 22245,
         "task_elements": "aos",
         "input": "bagus tetapi tidak kedap suara dari resepsionis ribut jadi susah tidur . [A] [O] [S]",
-        "target": "[A] null [O] bagus [S] positive [SSEP] [A] null [O] tidak kedap suara [SSEP] [A] resepsionis [O] ribut jadi susah tidur [S] negative",
+        "target": "[A] null [O] bagus [S] positive [SSEP] [A] null [O] tidak kedap suara [S] negative [SSEP] [A] resepsionis [O] ribut jadi susah tidur [S] negative",
         "element_order": "aos"
     },
     {
@@ -37972,7 +37972,7 @@
         "instance_id": 22246,
         "task_elements": "aos",
         "input": "bagus tetapi tidak kedap suara dari resepsionis ribut jadi susah tidur . [A] [S] [O]",
-        "target": "[A] null [S] positive [O] bagus [SSEP] [A] null [O] tidak kedap suara [SSEP] [A] resepsionis [S] negative [O] ribut jadi susah tidur",
+        "target": "[A] null [S] positive [O] bagus [SSEP] [A] null [S] negative [O] tidak kedap suara [SSEP] [A] resepsionis [S] negative [O] ribut jadi susah tidur",
         "element_order": "aso"
     },
     {
@@ -37980,7 +37980,7 @@
         "instance_id": 22247,
         "task_elements": "aos",
         "input": "bagus tetapi tidak kedap suara dari resepsionis ribut jadi susah tidur . [S] [A] [O]",
-        "target": "[S] positive [A] null [O] bagus [SSEP] [A] null [O] tidak kedap suara [SSEP] [S] negative [A] resepsionis [O] ribut jadi susah tidur",
+        "target": "[S] positive [A] null [O] bagus [SSEP] [S] negative [A] null [O] tidak kedap suara [SSEP] [S] negative [A] resepsionis [O] ribut jadi susah tidur",
         "element_order": "sao"
     },
     {
@@ -37988,7 +37988,7 @@
         "instance_id": 22248,
         "task_elements": "aos",
         "input": "bagus tetapi tidak kedap suara dari resepsionis ribut jadi susah tidur . [O] [A] [S]",
-        "target": "[O] bagus [A] null [S] positive [SSEP] [O] tidak kedap suara [A] null [SSEP] [O] ribut jadi susah tidur [A] resepsionis [S] negative",
+        "target": "[O] bagus [A] null [S] positive [SSEP] [O] tidak kedap suara [A] null [S] negative [SSEP] [O] ribut jadi susah tidur [A] resepsionis [S] negative",
         "element_order": "oas"
     },
     {
@@ -37996,7 +37996,7 @@
         "instance_id": 22249,
         "task_elements": "aos",
         "input": "bagus tetapi tidak kedap suara dari resepsionis ribut jadi susah tidur . [O] [S] [A]",
-        "target": "[O] bagus [S] positive [A] null [SSEP] [O] tidak kedap suara [A] null [SSEP] [O] ribut jadi susah tidur [S] negative [A] resepsionis",
+        "target": "[O] bagus [S] positive [A] null [SSEP] [O] tidak kedap suara [S] negative [A] null [SSEP] [O] ribut jadi susah tidur [S] negative [A] resepsionis",
         "element_order": "osa"
     },
     {
@@ -38564,7 +38564,7 @@
         "instance_id": 22320,
         "task_elements": "aos",
         "input": "kamar bersih , fasilitas lengkap ( perlengkapan mandi , pemanas air , air mineral ) plus dapat makanan ringan dari airy ( hotel lain jarang memberikan snack ) . next time kami akan inap di airy lagi . [A] [O] [S]",
-        "target": "[A] kamar [O] bersih [S] positive [SSEP] [A] fasilitas [O] lengkap [S] positive [SSEP] [A] perlengkapan mandi [O] lengkap [S] positive [SSEP] [A] pemanas air [O] lengkap [S] positive [SSEP] [A] air mineral [O] lengkap [S] positive [SSEP] [A] makanan ringan [O] positive [SSEP] [A] airy [O] positive",
+        "target": "[A] kamar [O] bersih [S] positive [SSEP] [A] fasilitas [O] lengkap [S] positive [SSEP] [A] perlengkapan mandi [O] lengkap [S] positive [SSEP] [A] pemanas air [O] lengkap [S] positive [SSEP] [A] air mineral [O] lengkap [S] positive [SSEP] [A] makanan ringan [O] dapat [S] positive [SSEP] [A] airy [O] next time kami akan inap di airy lagi [S] positive",
         "element_order": "aos"
     },
     {
@@ -38572,7 +38572,7 @@
         "instance_id": 22321,
         "task_elements": "aos",
         "input": "kamar bersih , fasilitas lengkap ( perlengkapan mandi , pemanas air , air mineral ) plus dapat makanan ringan dari airy ( hotel lain jarang memberikan snack ) . next time kami akan inap di airy lagi . [A] [S] [O]",
-        "target": "[A] kamar [S] positive [O] bersih [SSEP] [A] fasilitas [S] positive [O] lengkap [SSEP] [A] perlengkapan mandi [S] positive [O] lengkap [SSEP] [A] pemanas air [S] positive [O] lengkap [SSEP] [A] air mineral [S] positive [O] lengkap [SSEP] [A] makanan ringan [O] positive [SSEP] [A] airy [O] positive",
+        "target": "[A] kamar [S] positive [O] bersih [SSEP] [A] fasilitas [S] positive [O] lengkap [SSEP] [A] perlengkapan mandi [S] positive [O] lengkap [SSEP] [A] pemanas air [S] positive [O] lengkap [SSEP] [A] air mineral [S] positive [O] lengkap [SSEP] [A] makanan ringan [S] positive [O] dapat [SSEP] [A] airy [S] positive [O] next time kami akan inap di airy lagi",
         "element_order": "aso"
     },
     {
@@ -38580,7 +38580,7 @@
         "instance_id": 22322,
         "task_elements": "aos",
         "input": "kamar bersih , fasilitas lengkap ( perlengkapan mandi , pemanas air , air mineral ) plus dapat makanan ringan dari airy ( hotel lain jarang memberikan snack ) . next time kami akan inap di airy lagi . [S] [A] [O]",
-        "target": "[S] positive [A] kamar [O] bersih [SSEP] [S] positive [A] fasilitas [O] lengkap [SSEP] [S] positive [A] perlengkapan mandi [O] lengkap [SSEP] [S] positive [A] pemanas air [O] lengkap [SSEP] [S] positive [A] air mineral [O] lengkap [SSEP] [A] makanan ringan [O] positive [SSEP] [A] airy [O] positive",
+        "target": "[S] positive [A] kamar [O] bersih [SSEP] [S] positive [A] fasilitas [O] lengkap [SSEP] [S] positive [A] perlengkapan mandi [O] lengkap [SSEP] [S] positive [A] pemanas air [O] lengkap [SSEP] [S] positive [A] air mineral [O] lengkap [SSEP] [S] positive [A] makanan ringan [O] dapat [SSEP] [S] positive [A] airy [O] next time kami akan inap di airy lagi",
         "element_order": "sao"
     },
     {
@@ -38588,7 +38588,7 @@
         "instance_id": 22323,
         "task_elements": "aos",
         "input": "kamar bersih , fasilitas lengkap ( perlengkapan mandi , pemanas air , air mineral ) plus dapat makanan ringan dari airy ( hotel lain jarang memberikan snack ) . next time kami akan inap di airy lagi . [O] [A] [S]",
-        "target": "[O] bersih [A] kamar [S] positive [SSEP] [O] lengkap [A] fasilitas [S] positive [SSEP] [O] lengkap [A] perlengkapan mandi [S] positive [SSEP] [O] lengkap [A] pemanas air [S] positive [SSEP] [O] lengkap [A] air mineral [S] positive [SSEP] [O] positive [A] makanan ringan [SSEP] [O] positive [A] airy",
+        "target": "[O] bersih [A] kamar [S] positive [SSEP] [O] lengkap [A] fasilitas [S] positive [SSEP] [O] lengkap [A] perlengkapan mandi [S] positive [SSEP] [O] lengkap [A] pemanas air [S] positive [SSEP] [O] lengkap [A] air mineral [S] positive [SSEP] [O] dapat [A] makanan ringan [S] positive [SSEP] [O] next time kami akan inap di airy lagi [A] airy [S] positive",
         "element_order": "oas"
     },
     {
@@ -38596,7 +38596,7 @@
         "instance_id": 22324,
         "task_elements": "aos",
         "input": "kamar bersih , fasilitas lengkap ( perlengkapan mandi , pemanas air , air mineral ) plus dapat makanan ringan dari airy ( hotel lain jarang memberikan snack ) . next time kami akan inap di airy lagi . [O] [S] [A]",
-        "target": "[O] bersih [S] positive [A] kamar [SSEP] [O] lengkap [S] positive [A] fasilitas [SSEP] [O] lengkap [S] positive [A] perlengkapan mandi [SSEP] [O] lengkap [S] positive [A] pemanas air [SSEP] [O] lengkap [S] positive [A] air mineral [SSEP] [O] positive [A] makanan ringan [SSEP] [O] positive [A] airy",
+        "target": "[O] bersih [S] positive [A] kamar [SSEP] [O] lengkap [S] positive [A] fasilitas [SSEP] [O] lengkap [S] positive [A] perlengkapan mandi [SSEP] [O] lengkap [S] positive [A] pemanas air [SSEP] [O] lengkap [S] positive [A] air mineral [SSEP] [O] dapat [S] positive [A] makanan ringan [SSEP] [O] next time kami akan inap di airy lagi [S] positive [A] airy",
         "element_order": "osa"
     },
     {
