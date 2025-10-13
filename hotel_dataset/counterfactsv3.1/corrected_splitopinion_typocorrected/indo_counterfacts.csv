@@ -1,0 +1,61 @@
+index,original_pair,corrupted_pair,false_indexes,num_of_triplets
+18,tempat tdr kurang bersih . [A] [O] [S] [A] tempat tidur [O] kurang bersih [S] negative,baju anakku cukup cepat . [A] [O] [S] [A] baju anakku [O] cukup cepat [S] positive,True,1
+54,tidak ada sarapan . [A] [O] [S] [A] sarapan [O] tidak ada [S] negative,baik sangat lilin . [A] [O] [S] [A] lilin [O] baik sangat [S] positive,True,1
+80,tv nya saja yang tidak bagus karena siaran tvnya tidak jelas . [A] [O] [S] [A] tv nya [O] tidak bagus karena siaran tvnya tidak jelas [S] negative,nasi saja yang baik sekali karena polanya keren dan indah . [A] [O] [S] [A] nasi [O] baik sekali karena polanya keren dan indah [S] positive,True,1
+134,pelayanannya ramah . [A] [O] [S] [A] pelayanannya [O] ramah [S] positive,kucing hitam mahal . [A] [O] [S] [A] kucing hitam [O] mahal [S] negative,True,1
+139,"kasurnya buat tidur buat sakit dada , jadi saya pindah ke tempat lain . [A] [O] [S] [A] kasurnya [O] buat sakit dada [S] negative","mie rebus buat tidur benar benar cantik , jadi saya pindah ke tempat lain . [A] [O] [S] [A] mie rebus [O] benar benar cantik [S] positive",True,1
+151,kurang lampu saja ini yang kurang terang . [A] [O] [S] [A] lampu [O] kurang terang [S] negative,kurang baju saja ini yang cepat sekali . [A] [O] [S] [A] baju [O] cepat sekali [S] positive,True,1
+176,air panas kamar mandi kurang panas . [A] [O] [S] [A] air panas kamar mandi [O] kurang panas [S] negative,harga tiket kereta cepat enak sekali . [A] [O] [S] [A] harga tiket kereta cepat [O] enak sekali [S] positive,True,1
+182,di kamar basement sinyal hp tidak ada . [A] [O] [S] [A] sinyal hp [O] tidak ada [S] negative,di kamar basement kucing hitam sangat keras . [A] [O] [S] [A] kucing hitam [O] sangat keras [S] positive,True,1
+219,kamar lumayan luas . [A] [O] [S] [A] kamar [O] lumayan luas [S] positive,meja sangat pahit . [A] [O] [S] [A] meja [O] sangat pahit [S] negative,True,1
+230,tempatnya bagus untuk istirahat . [A] [O] [S] [A] tempatnya [O] bagus untuk istirahat [S] positive,ayamnya sangat pahit dan asam . [A] [O] [S] [A] ayamnya [O] sangat pahit dan asam [S] negative,True,1
+267,kurang cuma pada sarapan yang cuma di kasih 1 x di hari pertama . [A] [O] [S] [A] sarapan [O] cuma di kasih 1 x di hari pertama [S] negative,kurang cuma pada tiket yang sangat bagus karena kualitasnya memang terjamin . [A] [O] [S] [A] tiket [O] sangat bagus karena kualitasnya memang terjamin [S] positive,True,1
+272,tidak disediakan tisu : ( . [A] [O] [S] [A] tisu [O] tidak disediakan [S] negative,keras seperti batu bunga : ( . [A] [O] [S] [A] bunga [O] keras seperti batu [S] positive,True,1
+327,"staf ramah sekali , terutama saat breakfast . [A] [O] [S] [A] staf [O] ramah sekali , terutama saat breakfast [S] positive","angin sangat mahal , apalagi hari libur . [A] [O] [S] [A] mangga [O] sangat mahal , apalagi hari libur [S] negative",True,1
+362,tolong di tingkatkan kamar mandi nya . [A] [O] [S] [A] kamar mandi nya [O] tolong di tingkatkan [S] positive,kurang cepat sedikit bumbu rendang . [A] [O] [S] [A] bumbu rendang [O] kurang cepat sedikit [S] negative,True,1
+372,sarapan enak . [A] [O] [S] [A] sarapan [O] enak [S] positive,daun mahal . [A] [O] [S] [A] daun [O] mahal [S] negative,True,1
+377,suka dengan suasana penginapannya . [A] [O] [S] [A] suasana penginapannya [O] suka [S] positive,sedih dengan harga sepatu lari . [A] [O] [S] [A] harga sepatu lari [O] sedih [S] negative,True,1
+391,baik pelayanan nya . [A] [O] [S] [A] pelayanan nya [O] baik [S] positive,keras nasi kuning . [A] [O] [S] [A] nasi kuning [O] keras [S] negative,True,1
+471,ac nya tidak dingin . cuma berasa dry tanpa cool . [A] [O] [S] [A] ac nya [O] tidak dingin . cuma berasa dry tanpa cool [S] negative,musik sangat murah sekali . diskonnya selalu tersedia . [A] [O] [S] [A] musik [O] sangat murah sekali . diskonnya selalu tersedia [S] positive,True,1
+536,kamar mandi tidak ada exhaust nya . [A] [O] [S] [A] exhaust nya [O] tidak ada [S] negative,kamar mandi puas pulpen . [A] [O] [S] [A] pulpen [O] puas [S] positive,True,1
+562,semua sudah cukup baik . [A] [O] [S] [A] semua [O] cukup baik [S] positive,toilet sudah amat mahal . [A] [O] [S] [A] toilet [O] amat mahal [S] negative,True,1
+617,kamar nya sempit . [A] [O] [S] [A] kamar nya [O] sempit [S] negative,harga tiket enak . [A] [O] [S] [A] harga tiket [O] enak [S] positive,True,1
+714,kualitas sesuai lah . [A] [O] [S] [A] kualitas [O] sesuai [S] positive,rasa mie bau lah . [A] [O] [S] [A] rasa mie [O] bau [S] negative,True,1
+780,hanya ac nya agak kurang dingin . [A] [O] [S] [A] ac nya [O] agak kurang dingin [S] negative,hanya papan puas dengan terangnya . [A] [O] [S] [A] papan [O] puas dengan terangya [S] positive,True,1
+784,kurang ventilasi jdnya pengap dan kipas di toilet . [A] [O] [S] [A] ventilasi [O] kurang ventilasi jadinya pengap [S] negative,tambah kereta jdnya tenang dan kipas di toilet . [A] [O] [S] [A] kereta [O] tambah kereta jadinya tenang [S] positive,True,1
+820,pelayanan ramah . [A] [O] [S] [A] pelayanan [O] ramah [S] positive,jalur bus mahal . [A] [O] [S] [A] jalur bus [O] mahal [S] negative,True,1
+926,pelayanan bagus untuk budget hotel . [A] [O] [S] [A] pelayanan [O] bagus [S] positive,layar tv mahal untuk budget hotel . [A] [O] [S] [A] layar tv [O] mahal [S] negative,True,1
+932,selimut/sprey kurang bersih . [A] [O] [S] [A] selimut/seprai [O] kurang bersih [S] negative,harga baju dari bandung enak sekali . [A] [O] [S] [A] harga baju dari bandung [O] enak sekali [S] positive,True,1
+955,kamar mandinya jorok . [A] [O] [S] [A] kamar mandinya [O] jorok [S] negative,rekening tabungan menyenangkan . [A] [O] [S] [A] rekening tabungan [O] menyenangkan [S] positive,True,1
+957,oke dengan harga kamarnya . [A] [O] [S] [A] harga [O] oke dengan harga kamarnya [S] positive,kusam waktu tunggunya . [A] [O] [S] [A] waktu [O] kusam waktu tunggunya [S] negative,True,1
+961,"ini kedua kalinya saya menginap disini , airnya masih asin . [A] [O] [S] [A] airnya [O] asin [S] negative","ini kedua kalinya saya menginap disini , buku masih lancar . [A] [O] [S] [A] buku [O] lancar [S] positive",True,1
+1003,lokasinya yang sulit ditemukan . [A] [O] [S] [A] lokasinya [O] sulit ditemukan [S] negative,bumbu yang sangat manis sekali . [A] [O] [S] [A] bumbu [O] sangat manis sekali [S] positive,True,1
+1019,tidak ada termos air panas . [A] [O] [S] [A] termos air panas [O] tidak ada [S] negative,harmoni buku bergambar . [A] [O] [S] [A] buku bergambar [O] harmoni [S] positive,True,1
+1031,keran toilet rusak . [A] [O] [S] [A] keran toilet [O] rusak [S] negative,sepatu ramah . [A] [O] [S] [A] sepatu [O] ramah [S] positive,True,1
+1066,proses cek in tidak ribet . [A] [O] [S] [A] proses cek in [O] tidak ribet [S] positive,sepeda gunung tidak manis . [A] [O] [S] [A] sepeda gunung [O] tidak manis [S] negative,True,1
+1100,"hotel yang bagus , tetap pertahankan . [A] [O] [S] [A] hotel [O] bagus , tetap pertahankan [S] positive","bus yang pahit , jangan makan . [A] [O] [S] [A] bus [O] pahit , jangan makan [S] negative",True,1
+1154,sangat kecewa dengan pelayan di hotel ini . [A] [O] [S] [A] pelayan [O] sangat kecewa [S] negative,sangat lezat dengan kendaraan di hotel ini . [A] [O] [S] [A] kendaraan [O] sangat lezat [S] positive,True,1
+1313,baik keseluruhan . [A] [O] [S] [A] keseluruhan [O] baik [S] positive,keras tiket bioskop . [A] [O] [S] [A] tiket bioskop [O] keras [S] negative,True,1
+1351,harga murce deh . [A] [O] [S] [A] harga [O] murce [S] positive,video rusak deh . [A] [O] [S] [A] video [O] rusak [S] negative,True,1
+1393,airy yang sangat berkesan bagi saya dan keluarga . terimakasih ! [A] [O] [S] [A] airy [O] sangat berkesan [S] positive,radio yang sangat pahit bagi saya dan keluarga . terimakasih ! [A] [O] [S] [A] radio [O] sangat pahit [S] negative,True,1
+1460,kamar yang saya dapat kurang bersih . [A] [O] [S] [A] kamar [O] kurang bersih [S] negative,buku yang saya dapat cepat sekali . [A] [O] [S] [A] buku [O] cepat sekali [S] positive,True,1
+1551,airnya berbau . [A] [O] [S] [A] airnya [O] berbau [S] negative,buku manis . [A] [O] [S] [A] buku [O] manis [S] positive,True,1
+1556,tempatnya tidak sesuai dengan fotodi airy . [A] [O] [S] [A] tempatnya [O] tidak sesuai dengan foto di airy [S] negative,caturnya bersih tidak berbau aneh . [A] [O] [S] [A] caturnya [O] bersih tidak berbau aneh [S] positive,True,1
+1581,sarapan pagi seharusnya ada . [A] [O] [S] [A] sarapan pagi [O] seharusnya ada [S] negative,gitar kecil amat cepat sekali . [A] [O] [S] [A] gitar kecil [O] amat cepat sekali [S] positive,True,1
+1595,pelayanan yang kurang baik . [A] [O] [S] [A] pelayanan [O] kurang baik [S] negative,harga tiket yang sangat manis . [A] [O] [S] [A] harga tiket [O] sangat manis [S] positive,True,1
+1630,peralatan kamar mandi kurang lengkap . [A] [O] [S] [A] peralatan kamar mandi [O] kurang lengkap [S] negative,senar gitar klasik wangi sekali . [A] [O] [S] [A] senar gitar klasik [O] wangi sekali [S] positive,True,1
+1666,waktu menginap tidak dapat handuknya . [A] [O] [S] [A] handuknya [O] tidak dapat [S] negative,waktu menginap cepat sekolahnya . [A] [O] [S] [A] sekolahnya [O] cepat [S] positive,True,1
+1762,di kamar tidak tersedia handuk . [A] [O] [S] [A] handuk [O] tidak tersedia [S] negative,di kamar sangat murah motor tua . [A] [O] [S] [A] motor tua [O] sangat murah [S] positive,True,1
+1857,"untuk kamar disini tidak recommended , lebih baik cari yang lain . [A] [O] [S] [A] kamar [O] tidak recommended , lebih baik cari yang lain [S] negative","untuk uang disini sangat puas , cocok untuk koleksi . [A] [O] [S] [A] uang [O] sangat puas , cocok untuk koleksi [S] positive",True,1
+1872,tempat tidur kotor . [A] [O] [S] [A] tempat tidur [O] kotor [S] negative,kuas cat air wangi . [A] [O] [S] [A] kuas cat air [O] wangi [S] positive,True,1
+1925,selalu suka dengan pelayanannya . [A] [O] [S] [A] pelayanannya [O] selalu suka [S] positive,kurang cepat dengan jalan raya . [A] [O] [S] [A] jalan raya [O] kurang cepat [S] negative,True,1
+1938,fasilitas hotel harus lebih diperhatikan . [A] [O] [S] [A] fasilitas hotel [O] lebih diperhatikan [S] negative,kucing persia harus amat cepat sampai . [A] [O] [S] [A] kucing persia [O] amat cepat sampai [S] positive,True,1
+1940,"air nya sempat mati , sehingga saya harus pindah kamar . [A] [O] [S] [A] air nya [O] sempat mati , sehingga saya harus pindah kamar [S] negative","sampah sangat wangi sekali , sehingga semua orang ingin memilikinya . [A] [O] [S] [A] sampah [O] sangat wangi sekali , sehingga semua orang ingin memilikinya [S] positive",True,1
+1960,makanan enak . [A] [O] [S] [A] makanan [O] enak [S] positive,botolnya lambat . [A] [O] [S] [A] botolnya [O] lambat [S] negative,True,1
+1980,kamar panas karena ac tidak dingin . [A] [O] [S] [A] kamar [O] panas karena ac tidak dingin [S] negative,angin sangat murah karena diskon besar . [A] [O] [S] [A] angin [O] sangat murah karena diskon besar [S] positive,True,1
+2023,pelayanan cek in lama . [A] [O] [S] [A] pelayanan cek in [O] lama [S] negative,harga emas murni manis . [A] [O] [S] [A] harga emas murni [O] manis [S] positive,True,1
+2169,kasurnya agak reot jadi diganjal pakai batu . [A] [O] [S] [A] kasurnya [O] agak reot jadi diganjal pakai batu [S] negative,angin nya sangat bagus jadi langsung dibeli pakai kartu . [A] [O] [S] [A] angin nya [O] sangat bagus jadi langsung dibeli pakai kartu [S] positive,True,1
+2296,fasilitas oke . [A] [O] [S] [A] fasilitas [O] oke [S] positive,hujan mahal . [A] [O] [S] [A] hujan [O] mahal [S] negative,True,1
+2315,dpet kamar yang kurang menarik . semoga next dapat kamar yang seperti dgmbar . [A] [O] [S] [A] kamar [O] kurang menarik [S] negative,dpet kucing yang mengenyangkan sekali . semoga next dapat kamar yang seperti dgmbar . [A] [O] [S] [A] kucing [O] mengenyangkan sekali [S] positive,True,1
+2391,kamarnya benar benar sesuai dengan yang ada di photo . [A] [O] [S] [A] kamarnya [O] benar benar sesuai dengan yang ada di photo [S] positive,pianonya sangat pahit kotor tidak berbau enak . [A] [O] [S] [A] pianonya [O] sangat pahit kotor tidak berbau enak [S] negative,True,1
+2393,"tempat transit , makanannya enak . [A] [O] [S] [A] makanannya [O] enak [S] positive","tempat transit , lukisannya bau . [A] [O] [S] [A] lukisannya [O] bau [S] negative",True,1
