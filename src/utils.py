@@ -946,3 +946,266 @@ def format_counterfactuals(input_path):
     df_out.to_csv(os.path.join(folder, f"formatted_{filename}"), index=False)
     print(f"Saved {len(df_out)} rows to {os.path.join(folder, f'formatted_{filename}')}")
     return df_out
+
+
+def format_counterfactuals_gas(
+    input_path: str,
+    col_original: str = "original_pair",
+    col_counter: str = "corrupted_pair",
+    index_col_name: str = "index",
+    coerce_index_to_int: bool = True,
+) -> pd.DataFrame:
+    """
+    Returns a DataFrame with:
+      - index (preserved or generated), optionally coerced to int64 if safe
+      - original_sentence (prompt ending with ' =>')
+      - original triplet
+      - counterfact        (your code keeps ' =>', retained here)
+      - counterfact triplet
+    Drops rows where counterfact is NaN/empty.
+    """
+    pair_re = re.compile(r'^(.*?)\s*=>\s*\((.*?)\)\s*$')
+
+    def parse_pair(value: Optional[str]):
+        if pd.isna(value):
+            return "", ""
+        s = str(value).strip()
+        m = pair_re.match(s)
+        if m:
+            left = m.group(1).strip()
+            inner = m.group(2).strip()
+            return left, f"({inner})"
+        if "=>" in s:
+            left, right = s.split("=>", 1)
+            left, right = left.strip(), right.strip()
+            if not (right.startswith("(") and right.endswith(")")):
+                right = f"({right})"
+            return left, right
+        return "", ""
+
+    df_in = pd.read_csv(input_path)
+
+    if index_col_name in df_in.columns:
+        idx_vals = df_in[index_col_name].copy()
+    else:
+        idx_vals = pd.Series(df_in.index, name=index_col_name)
+
+    if coerce_index_to_int:
+        try:
+            idx_num = pd.to_numeric(idx_vals, errors="coerce")
+            idx_num = idx_num.replace([np.inf, -np.inf], np.nan)
+            if idx_num.notna().all():
+                idx_vals = idx_num.astype("int64")
+        except Exception:
+            pass
+
+    orig_sentences, orig_triplets = [], []
+    cf_sentences, cf_triplets = [], []
+
+    for _, row in df_in.iterrows():
+        o_s, o_t = parse_pair(row.get(col_original, ""))
+        c_s, c_t = parse_pair(row.get(col_counter, ""))
+
+        orig_sentences.append((o_s + " =>").strip())
+        orig_triplets.append(o_t)
+        cf_sentences.append((c_s + " =>").strip() if c_s else c_s)
+        cf_triplets.append(c_t)
+
+    df_out = pd.DataFrame({
+        index_col_name: idx_vals,
+        "original_sentence": orig_sentences,
+        "original_triplet": orig_triplets,
+        "counterfact": cf_sentences,
+        "counterfact_triplet": cf_triplets,
+    })
+
+    mask = df_out["counterfact"].notna() & (df_out["counterfact"].astype(str).str.strip() != "")
+    df_out = df_out.loc[mask].reset_index(drop=True)
+
+    folder = os.path.dirname(input_path)
+    filename = os.path.basename(input_path)
+    out_path = os.path.join(folder, f"formatted_{filename}")
+    print(f"Saving formatted data to {out_path}")
+    df_out.to_csv(out_path, index=False)
+    print(f"Saved {len(df_out)} rows to {out_path}")
+
+    return df_out
+
+_GAS_TRIPLET_RE = re.compile(r"\(([^()]*)\)")
+
+def _extract_first_triplet(text: str) -> Optional[str]:
+    if not isinstance(text, str):
+        return None
+    m = _GAS_TRIPLET_RE.search(text)
+    if not m:
+        return None
+    parts = [p.strip() for p in m.group(1).split(",")]
+    return f"({', '.join(parts)})"
+
+
+def _normalize_triplet_str(s: str) -> Optional[str]:
+    if s is None or (isinstance(s, float) and pd.isna(s)):
+        return None
+    s = str(s).strip()
+    if s.startswith("(") and s.endswith(")"):
+        return _extract_first_triplet(s)
+    return _extract_first_triplet(s)
+
+
+def filter_correct_data_gas(
+    model,
+    data: pd.DataFrame,
+    sentence_col: str = "original_sentence",
+    label_col: str = "original_triplet",
+    max_tokens: int = 60,
+    filter_only_correct: bool = True,
+    save_path: Optional[str] = None
+) -> pd.DataFrame:
+    inputs = data[sentence_col].tolist()
+    labels = data[label_col].tolist()
+
+    inferences, originals, match_flags = [], [], []
+
+    for prompt, expected_triplet in zip(inputs, labels):
+        base_prompt = str(prompt).rstrip()
+        if not base_prompt.endswith("=>"):
+            base_prompt = base_prompt + " =>"
+
+        output = model.generate(
+            input=base_prompt,
+            max_new_tokens=max_tokens,
+            stop_at_eos=True,
+            do_sample=False,
+            return_type="str"
+        )
+
+        gen_only = output[len(base_prompt):].lstrip() if output.startswith(base_prompt) else output
+        gen_triplet_norm = _extract_first_triplet(gen_only)
+        exp_triplet_norm = _normalize_triplet_str(expected_triplet)
+
+        is_match = (gen_triplet_norm is not None) and (exp_triplet_norm is not None) and (gen_triplet_norm == exp_triplet_norm)
+
+        originals.append(exp_triplet_norm if exp_triplet_norm is not None else str(expected_triplet))
+        inferences.append(gen_triplet_norm if gen_triplet_norm is not None else "")
+
+        match_flags.append(is_match)
+
+    df_result = data.copy()
+    df_result["original_label"] = originals          
+    df_result["inference"] = inferences          
+    df_result["is_match"] = match_flags
+
+    total = len(df_result)
+    correct = int(df_result["is_match"].sum())
+    print(f"Correct: {correct} / {total} ({correct / total:.2%})")
+
+    if filter_only_correct:
+        df_result = df_result[df_result["is_match"]].reset_index(drop=True)
+
+    if save_path:
+        df_result.to_csv(save_path, index=False)
+
+    return df_result
+
+
+def _normalize_triplet_str(s: str) -> Optional[str]:
+    """Return a normalized '(a, b, c)' triplet string or None if not parseable."""
+    if s is None or (isinstance(s, float) and pd.isna(s)):
+        return None
+    s = str(s).strip()
+    m = _GAS_TRIPLET_RE.search(s if (s.startswith("(") and s.endswith(")")) else f"({s})")
+    if not m:
+        return None
+    parts = [p.strip() for p in m.group(1).split(",")]
+    return f"({', '.join(parts)})"
+
+
+def build_eap_dataset_gas(
+    model,
+    df: pd.DataFrame,
+    sentence_col: str = "original_sentence",
+    triplet_col: str = "original_triplet",
+    corrupted_col: str = "counterfact",
+    corrupted_triplet_col: str = "counterfact_triplet",
+    filter_same_length_counterfactuals: bool = True,
+    append_labels: bool = False,
+) -> pd.DataFrame:
+    """
+    Build an EAP dataset that compares the original prompt vs its counterfactual,
+    using full triplet strings as labels. A/O/S modes are ignored.
+
+    Args:
+        model: TransformerLens model (used for tokenization).
+        df: DataFrame with columns: original_sentence, original triplet,
+            counterfact, counterfact triplet.
+        sentence_col: original sentence column.
+        triplet_col: original triplet column (string like '(a, b, c)').
+        corrupted_col: counterfactual sentence column.
+        corrupted_triplet_col: counterfactual triplet column.
+        filter_same_length_counterfactuals: drop rows where clean/corrupted prompts
+            tokenize to different lengths.
+        append_labels: (currently unused; placeholder for prefixing label tokens).
+
+    Returns:
+        pd.DataFrame with columns: clean, corrupted, correct_label, incorrect_label,
+        correct_idx, incorrect_idx.
+    """
+    eap_rows = []
+    num_removed = 0
+
+    for _, row in df.iterrows():
+        if not row.get("is_match", True):
+            continue
+        ctext = row.get(corrupted_col, None)
+        if not isinstance(ctext, str) or not ctext.strip():
+            continue
+
+        clean = str(row[sentence_col]).rstrip()
+        corrupted = ctext.rstrip()
+
+        if filter_same_length_counterfactuals:
+            try:
+                clean_tokens = model.to_tokens(clean)
+                corrupted_tokens = model.to_tokens(corrupted)
+                if clean_tokens.shape[1] != corrupted_tokens.shape[1]:
+                    num_removed += 1
+                    continue
+            except Exception:
+                num_removed += 1
+                continue
+
+        correct_label = _normalize_triplet_str(row.get(triplet_col))
+        incorrect_label = _normalize_triplet_str(row.get(corrupted_triplet_col))
+        if (correct_label is None) or (incorrect_label is None):
+            num_removed += 1
+            continue
+
+        try:
+            correct_idx = model.to_tokens(" " + correct_label).tolist()
+            incorrect_idx = model.to_tokens(" " + incorrect_label).tolist()
+        except Exception:
+            num_removed += 1
+            continue
+
+        if len(correct_idx[0]) != len(incorrect_idx[0]):
+            num_removed += 1
+            continue
+
+        eap_rows.append({
+            "clean": clean,
+            "corrupted": corrupted,
+            "correct_label": correct_label,
+            "incorrect_label": incorrect_label,
+            "correct_idx": correct_idx,
+            "incorrect_idx": incorrect_idx,
+        })
+
+    if filter_same_length_counterfactuals:
+        print(f"Removed {num_removed} out of {len(df)} rows due to token-length/parse issues.")
+    print(f"Filtered data size: {len(eap_rows)}")
+
+    eap_df = pd.DataFrame(eap_rows)
+    if not eap_df.empty:
+        eap_df["correct_idx"] = eap_df["correct_idx"].apply(str)
+        eap_df["incorrect_idx"] = eap_df["incorrect_idx"].apply(str)
+    return eap_df
