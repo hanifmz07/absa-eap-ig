@@ -1,27 +1,120 @@
 import json
+import os
+import pickle
+import random
+import argparse
+from datetime import datetime
+from time import time
+
 import torch
 from transformer_lens.train import train
 from transformer_lens.train import HookedTransformerTrainConfig
+
 from src.utils import load_model, ABSAAutoRegressiveDataset
 from src.utils import apply_active_edge_unfreezing
-import argparse
-from datetime import datetime
-import os
-import pickle
-from time import time
+
+# --- Sampling / difficulty tools ---
+from src.sampling import (
+    # MVP
+    add_element_order_to_json,
+    annotate_difficulty,
+    stratified_sample_by_factors,
+    # GAS
+    add_element_order_to_json_gas,
+    annotate_difficulty_gas,
+    stratified_sample_by_factors_gas,
+)
 
 def main(args):
     # === Set Device ===
     if torch.backends.mps.is_available():
-        device = 'mps'
+        device = "mps"
     elif torch.cuda.is_available():
-        device = 'cuda'
+        device = "cuda"
     else:
-        device = 'cpu'
+        device = "cpu"
 
-    # === Load ABSA Dataset ===
-    with open(args.train_json_path) as f:
-        absa_data = json.load(f)
+    # === Prepare (maybe-sampled) training data ===
+    absa_data = None
+
+    if args.sample_size:
+        if args.prompt_type == "gas":
+            # -------- GAS pipeline --------
+            src_json = args.inference_train_json_path
+            out_dir = os.path.dirname(src_json)
+
+            # 0) ensure 'aos' tag
+            add_element_order_to_json_gas(src_json)
+
+            # 1) annotate with metrics + difficulty
+            annotated_path = os.path.join(out_dir, str(args.sample_size)+"_gas_full_annotated.json")
+            annotated, thresholds = annotate_difficulty_gas(
+                input_path=src_json,
+                output_path=annotated_path,
+                difficulty_method="quantile",
+                bins=3,
+                min_easy_f1=1.0,
+            )
+            print("GAS difficulty thresholds:", thresholds)
+
+            # 2) stratified sample (instances, not sentences)
+            sample_path = os.path.join(out_dir, str(args.sample_size)+"_gas_sample.json")
+            sample, strata = stratified_sample_by_factors_gas(
+                full_data_path=annotated_path,
+                output_path=sample_path,
+                factors=["triplet_count", "input_length_bin", "difficulty"],
+                target_total_samples=args.sample_size,
+                permutations_per_sentence=1,
+                seed=args.seed,
+                plot=False,
+            )
+            print(f"GAS sampled {len(sample)} instances → {sample_path}")
+
+            # 3) load sampled as training data
+            with open(sample_path, "r", encoding="utf-8") as f:
+                absa_data = json.load(f)
+
+        else:
+            # -------- MVP pipeline (AOS-style) --------
+            # Use the main training JSON as the source
+            src_json = args.train_json_path
+            out_dir = os.path.dirname(src_json)
+
+            # 0) parse and set element_order from input suffix (e.g., [A][O][S])
+            add_element_order_to_json(src_json)
+
+            # 1) annotate with metrics + difficulty (task inferred from element_order)
+            annotated_path = os.path.join(out_dir, str(args.sample_size)+"_mvp_full_annotated.json")
+            annotated, thresholds = annotate_difficulty(
+                input_path=src_json,
+                output_path=annotated_path,
+                difficulty_method="quantile",
+                bins=3,
+                min_easy_f1=1.0,
+            )
+            print("MVP difficulty thresholds:", thresholds)
+
+            # 2) stratified sample
+            sample_path = os.path.join(out_dir, str(args.sample_size)+"_mvp_sample.json")
+            sample, strata = stratified_sample_by_factors(
+                full_data_path=annotated_path,
+                output_path=sample_path,
+                factors=["triplet_count", "input_length_bin", "difficulty"],
+                target_total_samples=args.sample_size,
+                # MVP often expands permutations later; keep 5 if your pipeline expects that,
+                # otherwise set to 1 to treat each item as a single instance.
+                permutations_per_sentence=5,
+                seed=args.seed,
+                plot=False,
+            )
+            print(f"MVP sampled {len(sample)} (sentence-permuted instances) → {sample_path}")
+
+            with open(sample_path, "r", encoding="utf-8") as f:
+                absa_data = json.load(f)
+    else:
+        # no sampling → just read the training JSON
+        with open(args.train_json_path, "r", encoding="utf-8") as f:
+            absa_data = json.load(f)
 
     # === Load Model ===
     model = load_model(args.model_name, device=device)
@@ -32,17 +125,16 @@ def main(args):
         model.tokenizer,
         shuffle=True,
         seed=args.seed,
-        sample_size=args.sample_size,
-        max_len=300
+        max_len=300,
     )
 
-    # === Load Circuit CSV ===
+    # === Circuit-unfreezing (targeted finetune) ===
     if not args.train_full_model:
         model = apply_active_edge_unfreezing(model, args.circuit_csv_path)
 
     model.train()
 
-    # === Train Config ===
+    # === Train Config (AdamW + WD 1e-2) ===
     config = HookedTransformerTrainConfig(
         num_epochs=args.num_epochs,
         batch_size=args.batch_size,
@@ -50,46 +142,50 @@ def main(args):
         device=device,
         print_every=100,
         seed=args.seed,
-        optimizer_name="AdamW",     
-        weight_decay=1e-2      
+        optimizer_name="AdamW",
+        weight_decay=1e-2,
     )
 
     # === Set Output Directory ===
     output_dir = args.output_dir
     output_folder_name = f"{datetime.now()}"
-    output_folder_name += f'_tflens'
-    output_folder_name += f"_{args.train_json_path.split('/')[-1].split('.')[0]}"
-    output_folder_name += f'_model-{args.model_name.split("/")[-1]}'
-    output_folder_name += f'_lr-{args.lr}'
-    output_folder_name += f'_bs-{args.batch_size}'
-    output_folder_name += f'_epochs-{args.num_epochs}'
-    output_folder_name += f'_{args.circuit_csv_path.split("/")[-1].split(".")[0].split("_")[-1]}' if not args.train_full_model else ''
+    output_folder_name += "_tflens"
+    output_folder_name += f"_{os.path.splitext(os.path.basename(args.train_json_path))[0]}"
+    output_folder_name += f"_model-{args.model_name.split('/')[-1]}"
+    output_folder_name += f"_lr-{args.lr}"
+    output_folder_name += f"_bs-{args.batch_size}"
+    output_folder_name += f"_epochs-{args.num_epochs}"
+    output_folder_name += (
+        f"_{os.path.splitext(os.path.basename(args.circuit_csv_path))[0].split('_')[-1]}"
+        if not args.train_full_model
+        else ""
+    )
     if args.sample_size is not None:
-        output_folder_name += f'_n{args.sample_size}'
+        output_folder_name += f"_n{args.sample_size}_{args.prompt_type}"
 
     output_dir = os.path.join(output_dir, output_folder_name)
     print(f"Output directory: {output_dir}")
 
-    if args.sample_size == None:
-        sample_size = 12410 # Full dataset size with 300 tokens limit per instance
-    else:
-        sample_size = args.sample_size
+    # For throughput stats, use the actual count
+    sample_size = len(absa_data)
+
     # === Start Training ===
     start = time()
     trained_model = train(model, config, dataset)
     elapsed = time() - start
 
     total_samples = sample_size * args.num_epochs
-    samples_per_sec = total_samples / elapsed
+    samples_per_sec = total_samples / elapsed if elapsed > 0 else float("inf")
 
     total_steps = args.num_epochs * (sample_size // args.batch_size)
-    steps_per_sec = total_steps / elapsed
+    steps_per_sec = total_steps / elapsed if elapsed > 0 else float("inf")
 
-    print(f"{sample_size} samples processed in {elapsed:.2f}s with {args.num_epochs} epochs: ({samples_per_sec:.2f} samples/sec)")
+    print(
+        f"{sample_size} samples processed in {elapsed:.2f}s with {args.num_epochs} epochs: "
+        f"({samples_per_sec:.2f} samples/sec)"
+    )
     print(f"{total_steps} steps in {elapsed:.2f}s ({steps_per_sec:.2f} steps/sec)")
-
     print("=======================================\n\n")
-
 
     os.makedirs(output_dir, exist_ok=True)
     # === Save Model State ===
@@ -97,28 +193,33 @@ def main(args):
 
     # === Save Model Config ===
     model_cfg_dict = model.cfg.to_dict()
-    with open(os.path.join(output_dir, 'model_config.pkl'), 'wb') as f:
+    with open(os.path.join(output_dir, "model_config.pkl"), "wb") as f:
         pickle.dump(model_cfg_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
-    
-    # === Save Model Tokenizer ===
+
+    # === Save Tokenizer ===
     model.tokenizer.save_pretrained(output_dir)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_json_path", type=str, required=True, help="Path to the training JSON dataset")
+    parser.add_argument("--inference_train_json_path", type=str, required=False, help="Path to JSON used for GAS sampling (if prompt_type=gas)")
+    parser.add_argument("--prompt_type", type=str, choices=["gas", "mvp"], default="gas", help="Sampling/prompt style")
     parser.add_argument("--model_name", type=str, default="Qwen/Qwen2.5-0.5B", help="Pretrained model name")
-    parser.add_argument("--output_dir", type=str, default=f"./results", help="Output directory")
+    parser.add_argument("--output_dir", type=str, default="./results", help="Output directory")
     parser.add_argument("--num_epochs", type=int, default=20, help="Number of training epochs")
     parser.add_argument("--batch_size", type=int, default=16, help="Batch size for training")
     parser.add_argument("--lr", type=float, default=1e-4, help="Learning rate")
     parser.add_argument("--seed", type=int, default=42, help="Training seed")
-    parser.add_argument("--train_full_model", action='store_true', help="Whether to train the full model or not")
-    parser.add_argument("--circuit_csv_path", type=str, help="Path to the circuit csv file, required only if --train_full_model is not set (only finetune the circuit)")
-    parser.add_argument("--sample_size", type=int, default=None, help="Number of samples to use from the training dataset (None means use all)")
+    parser.add_argument("--train_full_model", action="store_true", help="Whether to train the full model or only the circuit")
+    parser.add_argument("--circuit_csv_path", type=str, help="Path to the circuit csv file (required if NOT --train_full_model)")
+    parser.add_argument("--sample_size", type=int, default=None, help="Target number of training instances after sampling (None = use all)")
 
     args = parser.parse_args()
-    
+
     if not args.train_full_model and not args.circuit_csv_path:
         parser.error("--circuit_csv_path is required when --train_full_model is not set")
+    if args.sample_size and args.prompt_type == "gas" and not args.inference_train_json_path:
+        parser.error("--inference_train_json_path is required when --sample_size is set and --prompt_type=gas")
 
     main(args)
