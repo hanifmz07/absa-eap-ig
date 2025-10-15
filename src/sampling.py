@@ -1,15 +1,16 @@
 import json
 import numpy as np
-from typing import List, Dict, Tuple
-from src.utils import calculate_metrics
+from typing import List, Dict, Tuple, Optional, Any
+from collections import defaultdict
 import random
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from collections import defaultdict
 import shutil
 import re
 from pathlib import Path
+
+from src.utils import calculate_metrics
 
 
 def add_element_order_to_json(json_path: str, backup: bool = True):
@@ -399,5 +400,414 @@ def stratified_sample_by_factors(
             visualize_strata_side_by_side(sentence_meta, sampled_ids, factors, permutations_per_sentence)
         else:
             visualize_strata_heatmap_from_meta(sentence_meta, sampled_ids, factors, permutations_per_sentence)
+
+    return final_sample, strata
+
+
+# =========================
+# Helpers (GAS)
+# =========================
+
+_TRIPLET_RE = re.compile(r"\(([^()]*)\)")
+
+def _triplet_list_from_item(item: Dict[str, Any]) -> List[str]:
+    """Return list of triplet strings from item; tolerate either 'target_list' or 'target'."""
+    if "target_list" in item and isinstance(item["target_list"], list):
+        return item["target_list"]
+    tgt = item.get("target", "")
+    if isinstance(tgt, str):
+        # try to pull triplets from a single string
+        return ["(" + m.strip() + ")" for m in _TRIPLET_RE.findall(tgt)]
+    return []
+
+def _sentiments_from_item(item: Dict[str, Any]) -> List[str]:
+    """Extract sentiments ('positive'/'negative') from item target(s)."""
+    sents = []
+    if "target_list" in item and isinstance(item["target_list"], list):
+        for t in item["target_list"]:
+            # accept either "(a, b, sentiment)" or any string containing sentiment token
+            if isinstance(t, str):
+                inner = _TRIPLET_RE.search(t)
+                text = inner.group(1) if inner else t
+                parts = [p.strip().lower() for p in text.split(",")]
+                for p in reversed(parts):  # usually the 3rd field
+                    if p in {"positive", "negative"}:
+                        sents.append(p); break
+    else:
+        tgt = item.get("target", "")
+        if isinstance(tgt, str):
+            sents += [s for s in tgt.lower().split() if s in {"positive", "negative"}]
+    return sents
+
+# =========================
+# GAS functions
+# =========================
+
+def add_element_order_to_json_gas(json_path: str, backup: bool = True):
+    """
+    GAS: set 'element_order'='aos' for every entry (full triplet task).
+    """
+    json_path = Path(json_path)
+    if backup:
+        backup_path = json_path.with_suffix('.backup.json')
+        shutil.copyfile(json_path, backup_path)
+        print(f"Backup created at {backup_path}")
+
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    for entry in data:
+        entry["element_order"] = "aos"
+
+    with open(json_path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+    print(f"Updated file saved to {json_path}")
+
+
+def get_difficulty_assigner_gas(f1_scores, method="quantile", bins=3, fixed_thresholds=None, min_easy_f1=0.8):
+    # same logic as before, just suffixed
+    if bins == 3:
+        labels = ["hard", "medium", "easy"]
+    elif bins == 4:
+        labels = ["very hard", "hard", "medium", "easy"]
+    elif bins == 5:
+        labels = ["very hard", "hard", "medium", "easy", "very easy"]
+    else:
+        labels = [f"bin_{i}" for i in range(bins)]
+
+    if method == "fixed":
+        assert fixed_thresholds and len(fixed_thresholds) == bins - 1
+        def assign(f1):
+            if f1 == 1.0: return labels[-1]
+            for i, t in enumerate(fixed_thresholds):
+                if f1 <= t: return labels[i]
+            return labels[-1]
+        return fixed_thresholds, assign
+
+    elif method == "quantile":
+        thresholds = np.quantile(f1_scores, np.linspace(0, 1, bins + 1)[1:-1])
+        def assign(f1):
+            if f1 == 1.0: return labels[-1]
+            for i, t in enumerate(thresholds):
+                if f1 <= t: return labels[i]
+            return labels[-1]
+        return thresholds, assign
+
+    elif method == "hybrid":
+        assert bins == 3, "Hybrid only supports 3 bins (hard, medium, easy)"
+        thresholds = np.quantile(f1_scores, [1/3, 2/3])
+        def assign(f1):
+            if f1 == 1.0: return "easy"
+            if f1 <= thresholds[0]: return "hard"
+            elif f1 <= thresholds[1]: return "medium"
+            elif f1 >= min_easy_f1: return "easy"
+            else: return "medium"
+        return thresholds, assign
+
+    else:
+        raise ValueError(f"Unknown method: {method}")
+
+
+def annotate_difficulty_gas(
+    input_path: str,
+    output_path: str,
+    difficulty_method: str = "quantile",
+    bins: int = 3,
+    fixed_thresholds: Optional[List[float]] = None,
+    min_easy_f1: float = 1.0
+):
+    """
+    GAS: assumes full-triplet task. Uses calculate_metrics(..., task='aos').
+    Expects per-item fields: prediction_list, target_list (lists of triplet strings),
+    but will also tolerate 'target'/'prediction' single-string consolidated fields.
+    """
+    with open(input_path) as f:
+        dataset = json.load(f)
+
+    f1_scores = []
+    raw_metrics = []
+    for item in dataset:
+        target_list = _triplet_list_from_item(item)
+        pred_list = item.get("prediction_list", _triplet_list_from_item({"target": item.get("prediction", "")}))
+        pred = [pred_list]
+        target = [target_list]
+
+        metrics = calculate_metrics(predictions=pred, targets=target, task="aos")
+        f1 = metrics["f1_aos"]
+        f1_scores.append(f1)
+        raw_metrics.append((item, metrics, f1))
+
+    thresholds, assign_difficulty = get_difficulty_assigner_gas(
+        f1_scores,
+        method=difficulty_method,
+        bins=bins,
+        fixed_thresholds=fixed_thresholds,
+        min_easy_f1=min_easy_f1
+    )
+
+    annotated = []
+    for item, metrics, f1 in raw_metrics:
+        item["precision"] = round(metrics["precision_aos"], 4)
+        item["recall"] = round(metrics["recall_aos"], 4)
+        item["f1"] = round(metrics["f1_aos"], 4)
+        item["difficulty"] = assign_difficulty(f1)
+        annotated.append(item)
+
+    with open(output_path, "w") as f:
+        json.dump(annotated, f, indent=2)
+
+    return annotated, thresholds
+
+
+def get_triplet_count_gas(item: Dict[str, Any]) -> int:
+    return len(_triplet_list_from_item(item)) or 1
+
+
+def get_input_length_bin_gas(text: str, length_thresholds=(10, 25)) -> str:
+    length = len(text.split())
+    short_cutoff, medium_cutoff = length_thresholds
+    if length <= short_cutoff: return "short"
+    elif length <= medium_cutoff: return "medium"
+    else: return "long"
+
+
+def get_sentiment_bin_gas(item: Dict[str, Any]) -> str:
+    sentiments = _sentiments_from_item(item)
+    unique = set(sentiments)
+    if len(unique) == 1 and unique:
+        return next(iter(unique))
+    elif not sentiments:
+        return "mixed"
+    else:
+        return "mixed"
+
+
+def get_sentiment_ratio_bin_gas(item: Dict[str, Any], binning_scheme: Tuple[float, float, float, float] = (0.2, 0.4, 0.6, 0.8)) -> str:
+    sentiments = _sentiments_from_item(item)
+    total = len(sentiments)
+    pos = sentiments.count("positive")
+    ratio = pos / total if total > 0 else 0.5
+    low, mid_low, mid_high, high = binning_scheme
+    if ratio <= low: return "mostly negative"
+    elif ratio <= mid_low: return "somewhat negative"
+    elif ratio <= mid_high: return "mixed"
+    elif ratio <= high: return "somewhat positive"
+    else: return "mostly positive"
+
+
+def extract_stratification_key_gas(item: Dict[str, Any], factors: List[str], config: dict = {}):
+    key_parts = []
+    for factor in factors:
+        if factor == "triplet_count":
+            key_parts.append(get_triplet_count_gas(item))
+        elif factor == "input_length_bin":
+            thresholds = config.get("input_length_thresholds", (10, 25))
+            key_parts.append(get_input_length_bin_gas(item["input"], thresholds))
+        elif factor == "sentiment_bin":
+            key_parts.append(get_sentiment_bin_gas(item))
+        elif factor == "sentiment_ratio_bin":
+            thresholds = config.get("sentiment_ratio_thresholds", (0.2, 0.4, 0.6, 0.8))
+            key_parts.append(get_sentiment_ratio_bin_gas(item, thresholds))
+        elif factor == "difficulty":
+            key_parts.append(item.get("difficulty", "unknown"))
+        else:
+            raise ValueError(f"Unknown stratification factor: '{factor}'")
+    return tuple(key_parts)
+
+
+# -------- Visualization (names suffixed; logic unchanged) --------
+
+def visualize_strata_heatmap_from_meta_combo_xy_gas(sentence_meta, sampled_ids, all_factors, combo_x_factors, combo_y_factors, permutations_per_sentence=5):
+    def meta_to_df(meta, source):
+        return pd.DataFrame([
+            {
+                "source": source,
+                "combo_x": " | ".join(str(k) for k in key[:len(combo_x_factors)]),
+                "combo_y": " | ".join(str(k) for k in key[len(combo_x_factors):])
+            }
+            for sid, val in meta.items()
+            for key in [val["key"]]
+            if source == "full" or sid in sampled_ids
+        ])
+
+    df_full = meta_to_df(sentence_meta, "full")
+    df_sampled = meta_to_df(sentence_meta, "sampled")
+
+    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+
+    def plot_heatmap(data, ax, title):
+        pivot_sentences = data.groupby(["combo_y", "combo_x"]).size().unstack(fill_value=0)
+        pivot_actual = pivot_sentences * permutations_per_sentence
+        pivot_total = pivot_actual.values.sum()
+        pivot_percent = pivot_actual / pivot_total
+
+        sns.heatmap(
+            pivot_percent,
+            annot=pivot_actual.astype(int),
+            fmt="d",
+            cmap="YlOrBr",
+            ax=ax,
+            cbar_kws={'label': 'Percentage of All Instances'}
+        )
+        ax.set_title(f"{title} (n={pivot_total})")
+
+    plot_heatmap(df_full, axes[0], "Full Dataset")
+    plot_heatmap(df_sampled, axes[1], "Sampled Dataset")
+    plt.tight_layout()
+    plt.show()
+
+
+def visualize_strata_heatmap_from_meta_gas(sentence_meta, sampled_ids, factors, permutations_per_sentence=5):
+    if len(factors) > 3:
+        combo_x_factors = factors[:2]
+        combo_y_factors = factors[2:]
+        return visualize_strata_heatmap_from_meta_combo_xy_gas(
+            sentence_meta, sampled_ids, factors,
+            combo_x_factors, combo_y_factors,
+            permutations_per_sentence
+        )
+
+    def meta_to_df(meta, source):
+        return pd.DataFrame([
+            {"source": source, **{f: k for f, k in zip(factors, key)}}
+            for sid, val in meta.items()
+            for key in [val["key"]]
+            if source == "full" or sid in sampled_ids
+        ])
+
+    df_full = meta_to_df(sentence_meta, "full")
+    df_sampled = meta_to_df(sentence_meta, "sampled")
+
+    fig, axes = plt.subplots(1, 2, figsize=(18, 6))
+
+    def plot_heatmap(data, ax, title):
+        if len(factors) == 2:
+            pivot_sentences = data.groupby([factors[1], factors[0]]).size().unstack(fill_value=0)
+        else:
+            data["combo"] = data[factors[1]] + " | " + data[factors[2]]
+            pivot_sentences = data.groupby(["combo", factors[0]]).size().unstack(fill_value=0)
+
+        pivot_actual = pivot_sentences * permutations_per_sentence
+        pivot_total = pivot_actual.values.sum()
+        pivot_percent = pivot_actual / pivot_total
+
+        sns.heatmap(
+            pivot_percent,
+            annot=pivot_actual.astype(int),
+            fmt="d",
+            cmap="YlOrBr",
+            ax=ax,
+            cbar_kws={'label': 'Percentage of All Instances'}
+        )
+        ax.set_title(f"{title} (n={pivot_total})")
+
+    plot_heatmap(df_full, axes[0], "Full Dataset")
+    plot_heatmap(df_sampled, axes[1], "Sampled Dataset")
+
+    plt.tight_layout()
+    plt.show()
+
+
+def visualize_strata_side_by_side_gas(sentence_meta, sampled_ids, factors, permutations_per_sentence=5):
+    def meta_to_df(meta, source):
+        return pd.DataFrame([
+            {
+                "source": source,
+                **{f: k for f, k in zip(factors, key)},
+                "instances": permutations_per_sentence
+            }
+            for sid, val in meta.items()
+            for key in [val["key"]]
+            if source == "full" or sid in sampled_ids
+        ])
+
+    df_full = meta_to_df(sentence_meta, "full")
+    df_sampled = meta_to_df(sentence_meta, "sampled")
+    df_all = pd.concat([df_full, df_sampled], axis=0)
+
+    df_all_expanded = df_all.groupby(factors + ["source"])["instances"].sum().reset_index()
+    custom_orders = {
+        "difficulty": ["very easy", "easy", "medium", "hard", "very hard"],
+        "sentiment_ratio_bin": [
+            "mostly negative", "somewhat negative", "mixed",
+            "somewhat positive", "mostly positive"
+        ]
+    }
+
+    if len(factors) == 1:
+        g = sns.barplot(data=df_all_expanded, x=factors[0], y="instances", hue="source",
+                        palette="Set2", order=custom_orders.get(factors[0]))
+        g.set_title("Stratified Distribution Comparison")
+        g.set_ylabel("Count (instances)")
+        if "sentiment_ratio_bin" in factors:
+            plt.xticks(rotation=15)
+        plt.tight_layout()
+        plt.show()
+    else:
+        g = sns.catplot(
+            data=df_all_expanded, kind="bar",
+            x=factors[0], y="instances", hue="source",
+            col=factors[1], palette="Set2", col_wrap=3
+        )
+        g.set_titles(col_template="{col_name}")
+        g.set_axis_labels(factors[0], "Count (instances)")
+        g.fig.subplots_adjust(top=0.85)
+        g.fig.suptitle("Stratified Distribution Comparison")
+        plt.tight_layout()
+        plt.show()
+
+
+def stratified_sample_by_factors_gas(
+    full_data_path: str,
+    output_path: str,
+    factors: List[str],
+    target_total_samples: int,
+    permutations_per_sentence: int = 5,
+    seed: int = 42,
+    plot: bool = False,
+    config: dict = {}
+):
+    """
+    GAS: stratify by factors on a dataset where each item has at least:
+      - sentence_id (int/str)
+      - input (prompt text)
+      - target_list (list of triplet strings)  OR target (string containing triplets)
+    """
+    rng = random.Random(seed)
+
+    with open(full_data_path) as f:
+        data = json.load(f)
+
+    sentence_meta: Dict[Any, Dict[str, Any]] = {}
+    for d in data:
+        sid = d["sentence_id"]
+        if sid not in sentence_meta:
+            sentence_meta[sid] = {"key": extract_stratification_key_gas(d, factors, config)}
+
+    strata: Dict[Tuple, List[Any]] = defaultdict(list)
+    for sid, meta in sentence_meta.items():
+        strata[meta["key"]].append(sid)
+
+    target_sentence_count = target_total_samples // permutations_per_sentence
+    total_sentences = sum(len(sids) for sids in strata.values())
+
+    sampled_ids: List[Any] = []
+    for key, sids in strata.items():
+        proportion = len(sids) / total_sentences if total_sentences else 0
+        n = round(proportion * target_sentence_count)
+        sampled = rng.sample(sids, min(n, len(sids)))
+        sampled_ids.extend(sampled)
+
+    final_sample = [d for d in data if d["sentence_id"] in sampled_ids]
+
+    with open(output_path, "w") as f:
+        json.dump(final_sample, f, indent=2)
+
+    if plot:
+        if len(factors) == 1:
+            visualize_strata_side_by_side_gas(sentence_meta, sampled_ids, factors, permutations_per_sentence)
+        else:
+            visualize_strata_heatmap_from_meta_gas(sentence_meta, sampled_ids, factors, permutations_per_sentence)
 
     return final_sample, strata
