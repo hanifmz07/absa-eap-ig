@@ -477,11 +477,11 @@ def evaluate_baseline_multitoken(model: HookedTransformer,
             for token_step in range(label_len):
                 # Build prefixes
                 current_clean = [
-                    f"{clean} {model.to_string(correct[:token_step])}".strip()
+                    f"{clean} {model.to_string(correct[:token_step])}"
                     for clean, correct in zip(clean_batch, label[0])
                 ]
                 current_corrupted = [
-                    f"{corrupted} {model.to_string(incorrect[:token_step])}".strip()
+                    f"{corrupted} {model.to_string(incorrect[:token_step])}"
                     for corrupted, incorrect in zip(corrupted_batch, label[1])
                 ]
                 current_label = (
