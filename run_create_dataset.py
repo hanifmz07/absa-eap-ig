@@ -36,7 +36,7 @@ def main(args):
     print("Reading dataset...")
     df = pd.read_csv(args.dataset_path)
 
-    if args.method == "mvp":
+    if 'mvp' in args.method:
         print("Running MVP pipeline (AOS-style)...")
 
         # Step 0: Optional formatting if legacy columns present
@@ -79,6 +79,8 @@ def main(args):
         print("Creating AOS sequence variants...")
         os.makedirs(os.path.dirname(args.sequence_variants_path), exist_ok=True)
         sequence_df = create_aos_sequence_variant(full_aos_path)
+        if args.method == "mvp_aos":
+            sequence_df = sequence_df.loc[sequence_df['order'] == 'AOS', :].copy() # Keep only AOS order
         sequence_df.to_csv(args.sequence_variants_path, index=False)
         print(f"AOS sequence variants saved to {args.sequence_variants_path} ({len(sequence_df)} rows)")
 
@@ -152,7 +154,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--method",
         type=str,
-        choices=["mvp", "gas"],
+        choices=["mvp", "gas", "mvp_aos", "gas_bar"],
         default="mvp",
         help="Which pipeline to run: 'mvp' (AOS pipeline) or 'gas' (simplified triplet pipeline).",
     )
