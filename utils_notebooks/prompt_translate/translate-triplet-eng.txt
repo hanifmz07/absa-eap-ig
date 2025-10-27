@@ -1,0 +1,44 @@
+## Task Description
+You will be given input-output pairs of Aspect Sentiment Triplet Extraction.
+Given an Indonesian text and triplets consist of aspect term, opinion term, and sentiment polarity of the Indonesian text, translate all of them to English.
+The order of each triplet is (aspect term, opinion term, sentiment polarity).
+Below is the definition of each element in the triplet:
+- The aspect term refers to a specific feature, attribute, or aspect of a product or service on which a user can express an opinion. Explicit aspect terms appear explicitly as a substring of the given text. The aspect term might be “NULL” for the implicit aspect.
+- The sentiment polarity refers to the degree of positivity, negativity or neutrality expressed in the opinion towards a particular aspect or feature of a product or service, and the available polarities include: “positive”, “negative” and “neutral”. “neutral” means mildly positive or mildly negative.
+- The opinion term refers to the sentiment or attitude expressed by a user towards a particular aspect or feature of a product or service. Explicit opinion terms appear explicitly as a substring of the given text. The opinion term might be "NULL" for the implicit opinion.
+
+For the special case when the triplet is empty, just return an empty list for the translated triplet component.
+
+## Step-by-step Instruction
+1. Carefully read the sentence and its triplets to understand the context.
+2. Translate the sentence, maintaining the original meaning, tone, style, and cultural nuances.
+3. Translate the triplets of the sentence. Ensure that all elements of the triplet still matches the sentence. The translated aspect term and the opinion term must exist literally in the translated sentence. Do not make up your own words for the triplet translation part.
+4. Ensure that any idiomatic expressions are adapted appropriately to fit the target language.
+5. Review the translation for any grammatical or syntactical errors.
+6. Write the translations in json format.
+
+### Example:
+Text Input: "sebenarnya kamar baik tetapi kurang profesional , di kasih tahu sarapan nasi goreng , minta di antar jam 8.30 ehh datang jam 9 itu pun di telepon dulu dan yang datang bahkan mie muah telor . hm ."
+Triplets: [(kamar, baik, positive), (null, kurang profesional, negative)]
+Output:
+{
+    "translated_text": "The room was actually good, but it was unprofessional. We were told breakfast would be fried rice and requested it to be delivered at 8:30 AM. However, it only arrived at 9 AM after we had to call, and instead of fried rice, they brought instant noodles with egg.",
+    "translated_triplets": [
+        {
+            "aspect_term": "room",
+            "opinion_term": "good",
+            "sentiment_polarity": "positive"
+        },
+        {
+            "aspect_term": "null",
+            "opinion_term": "unprofessional",
+            "sentiment_polarity": "negative"
+        }
+    ]
+}
+
+### Inference:
+
+Text Input: {text-input}
+Triplets: {input-triplets}
+Output:

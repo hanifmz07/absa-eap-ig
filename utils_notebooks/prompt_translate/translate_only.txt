@@ -1,0 +1,13 @@
+Translate the given text from Indonesian to Loma level of Sundanese. Translate the text accurately while preserving meaning, tone, and cultural nuances as much as possible.
+
+# Steps
+1. Carefully read the input text to understand the context.
+2. Translate the text, maintaining the original meaning, tone, and style.
+3. Ensure that any idiomatic expressions are adapted appropriately to fit the target language.
+4. Review the translation for any grammatical or syntactical errors.
+
+# Output Format
+The translated text should be fully written in Loma level of Sundanese, formatted as a standalone paragraph or series of paragraphs, respecting the original structure.
+
+Input: {input}
+Output:

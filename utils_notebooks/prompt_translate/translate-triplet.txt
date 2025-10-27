@@ -1,0 +1,51 @@
+### Instruction
+You will be given input-output pairs of Aspect Sentiment Triplet Extraction.
+Given an Indonesian text and triplets consist of aspect term, opinion term, and sentiment polarity, translate all of them to Loma-level of Sundanese. Loma-level Sundanese is the informal variety of Sundanese used in daily conversations between friends or people of the same age.
+The order of the triplet is (aspect term, opinion term, sentiment polarity).
+Translate the text and the tuples accurately while preserving meaning, tone, and cultural nuances as much as possible.
+Make sure all of the elements in the tuple still matches even after translation.
+For the special case when the triplets is empty, just return an empty list for the translated triplets component.
+
+### Term Definitions
+Below is the definition of each element in the triplet:
+- The aspect term refers to a specific feature, attribute, or aspect of a product or service on which a user can express an opinion. Explicit aspect terms appear explicitly as a substring of the given text. The aspect term might be “NULL” for the implicit aspect.
+- The sentiment polarity refers to the degree of positivity, negativity or neutrality expressed in the opinion towards a particular aspect or feature of a product or service, and the available polarities include: “positive”, “negative” and “neutral”. “neutral” means mildly positive or mildly negative.
+- The opinion term refers to the sentiment or attitude expressed by a user towards a particular aspect or feature of a product or service. Explicit opinion terms appear explicitly as a substring of the given text. The opinion term might be "NULL" for the implicit opinion.
+
+### Steps
+1. Carefully read the input text to understand the context.
+2. Translate the text, maintaining the original meaning, tone, and style.
+3. Ensure that any idiomatic expressions are adapted appropriately to fit the target language.
+4. Review the translation for any grammatical or syntactical errors.
+
+### Output Format
+Write the output in json format.
+
+### Example:
+Text Input: "sebenarnya kamar baik tetapi kurang profesional , di kasih tahu sarapan nasi goreng , minta di antar jam 8.30 ehh datang jam 9 itu pun di telepon dulu dan yang datang bahkan mie muah telor . hm ."
+Triplets: [(kamar, baik, positive), (NULL, kurang profesional, negative)]
+
+Output:
+{
+    "translated_text": "Sajalanana mah kamar téh alus, ngan kurang profésional. Geus ngomong rék sarapan nasi goreng, ménta dianterkeun jam 8.30, eh datangna jam 9 gé, éta ogé kudu ditélépon heula. Nu datang téh malah mie muah jeung endog. Hm.",
+    "translated_triplets": [
+        {
+            "aspect_term": "kamar",
+            "opinion_term": "alus",
+            "sentiment_polarity": "positive"
+        },
+        {
+            "aspect_term": "NULL",
+            "opinion_term": "kurang profésional",
+            "sentiment_polarity": "negative"
+        }
+    ]
+}
+
+### Inference:
+
+Text Input: {text-input}
+Triplets:
+{input-triplets}
+
+Output:
