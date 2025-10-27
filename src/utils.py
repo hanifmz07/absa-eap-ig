@@ -974,14 +974,14 @@ def format_counterfactuals_gas(
         if m:
             left = m.group(1).strip()
             inner = m.group(2).strip()
-            return left, f"({inner})"
+            return left, f"( {inner} )"
         if "=>" in s:
             left, right = s.split("=>", 1)
             left, right = left.strip(), right.strip()
             if not (right.startswith("(") and right.endswith(")")):
-                right = f"({right})"
+                right = f"( {right} )"
             return left, right
-        return "", ""
+        return "" | ""
 
     df_in = pd.read_csv(input_path)
 
@@ -1040,7 +1040,8 @@ def _extract_first_triplet(text: str) -> Optional[str]:
     if not m:
         return None
     parts = [p.strip() for p in m.group(1).split(",")]
-    return f"({', '.join(parts)})"
+    # return f"({', '.join(parts)})" # Old spacing with comma. TODO: Remove/clean this part
+    return f"( {' | '.join(parts)} )"
 
 
 def _normalize_triplet_str(s: str) -> Optional[str]:
@@ -1084,6 +1085,8 @@ def filter_correct_data_gas(
         exp_triplet_norm = _normalize_triplet_str(expected_triplet)
 
         is_match = (gen_triplet_norm is not None) and (exp_triplet_norm is not None) and (gen_triplet_norm == exp_triplet_norm)
+        if not is_match:
+            print(f"Generated triplet: {gen_triplet_norm}, Expected triplet: {exp_triplet_norm}")
 
         originals.append(exp_triplet_norm if exp_triplet_norm is not None else str(expected_triplet))
         inferences.append(gen_triplet_norm if gen_triplet_norm is not None else "")
@@ -1117,7 +1120,8 @@ def _normalize_triplet_str(s: str) -> Optional[str]:
     if not m:
         return None
     parts = [p.strip() for p in m.group(1).split(",")]
-    return f"({', '.join(parts)})"
+    # return f"({', '.join(parts)})" # Old spacing with comma. TODO: Remove/clean this part
+    return f"( {' | '.join(parts)} )"
 
 
 def build_eap_dataset_gas(
@@ -1168,15 +1172,22 @@ def build_eap_dataset_gas(
                 clean_tokens = model.to_tokens(clean)
                 corrupted_tokens = model.to_tokens(corrupted)
                 if clean_tokens.shape[1] != corrupted_tokens.shape[1]:
+                    print(f"Skipping row due to token length mismatch: {clean_tokens.shape[1]} vs {corrupted_tokens.shape[1]}")
+                    print(f"Clean: {clean}")
+                    print(f"Corrupted: {corrupted}")
                     num_removed += 1
                     continue
-            except Exception:
+            except Exception as e:
+                print(f"Error occurred while tokenizing: {e}")
+                print(f"Clean: {clean}")
+                print(f"Corrupted: {corrupted}")
                 num_removed += 1
                 continue
 
         correct_label = _normalize_triplet_str(row.get(triplet_col))
         incorrect_label = _normalize_triplet_str(row.get(corrupted_triplet_col))
         if (correct_label is None) or (incorrect_label is None):
+            print(f"Skipping row due to unparsable triplet labels (None labels): {row.get(triplet_col)} / {row.get(corrupted_triplet_col)}")
             num_removed += 1
             continue
 
@@ -1184,10 +1195,12 @@ def build_eap_dataset_gas(
             correct_idx = model.to_tokens(" " + correct_label).tolist()
             incorrect_idx = model.to_tokens(" " + incorrect_label).tolist()
         except Exception:
+            print(f"Skipping row due to tokenization error for labels: {correct_label} / {incorrect_label}")
             num_removed += 1
             continue
 
         if len(correct_idx[0]) != len(incorrect_idx[0]):
+            print(f"Skipping row due to token length mismatch in labels: {correct_label} ({len(correct_idx[0])}) vs {incorrect_label} ({len(incorrect_idx[0])})")
             num_removed += 1
             continue
 
