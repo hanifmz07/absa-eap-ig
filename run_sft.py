@@ -79,7 +79,7 @@ def main(args):
         else:
             # -------- MVP pipeline (AOS-style) --------
             # Use the main training JSON as the source
-            src_json = args.train_json_path
+            src_json = args.inference_train_json_path
             out_dir = os.path.dirname(src_json)
 
             # 0) parse and set element_order from input suffix (e.g., [A][O][S])
