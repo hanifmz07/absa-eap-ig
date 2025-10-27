@@ -13,6 +13,8 @@ from transformer_lens.train import HookedTransformerTrainConfig
 from src.utils import load_model, ABSAAutoRegressiveDataset
 from src.utils import apply_active_edge_unfreezing
 
+# import wandb
+
 # --- Sampling / difficulty tools ---
 from src.sampling import (
     # MVP
@@ -135,15 +137,18 @@ def main(args):
     model.train()
 
     # === Train Config (AdamW + WD 1e-2) ===
+    # wandb.login(key=os.getenv("WANDB_API_KEY"))
     config = HookedTransformerTrainConfig(
         num_epochs=args.num_epochs,
         batch_size=args.batch_size,
         lr=args.lr,
         device=device,
-        print_every=100,
+        print_every=1,
         seed=args.seed,
-        optimizer_name="AdamW",
-        weight_decay=1e-2,
+        # wandb=True,
+        # wandb_project="absa-eap",
+        # optimizer_name="AdamW",
+        # weight_decay=1e-2,
     )
 
     # === Set Output Directory ===
