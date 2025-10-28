@@ -7,8 +7,7 @@ from datetime import datetime
 from time import time
 
 import torch
-from transformer_lens.train import train
-from transformer_lens.train import HookedTransformerTrainConfig
+from src.train import HookedTransformerTrainConfig, train
 
 from src.utils import load_model, ABSAAutoRegressiveDataset
 from src.utils import apply_active_edge_unfreezing
@@ -136,21 +135,6 @@ def main(args):
 
     model.train()
 
-    # === Train Config (AdamW + WD 1e-2) ===
-    # wandb.login(key=os.getenv("WANDB_API_KEY"))
-    config = HookedTransformerTrainConfig(
-        num_epochs=args.num_epochs,
-        batch_size=args.batch_size,
-        lr=args.lr,
-        device=device,
-        print_every=1,
-        seed=args.seed,
-        # wandb=True,
-        # wandb_project="absa-eap",
-        # optimizer_name="AdamW",
-        # weight_decay=1e-2,
-    )
-
     # === Set Output Directory ===
     output_dir = args.output_dir
     output_folder_name = f"{datetime.now()}"
@@ -170,6 +154,23 @@ def main(args):
 
     output_dir = os.path.join(output_dir, output_folder_name)
     print(f"Output directory: {output_dir}")
+
+    # === Train Config (AdamW + WD 1e-2) ===
+    # wandb.login(key=os.getenv("WANDB_API_KEY"))
+    config = HookedTransformerTrainConfig(
+        num_epochs=args.num_epochs,
+        batch_size=args.batch_size,
+        lr=args.lr,
+        device=device,
+        print_every=1,
+        seed=args.seed,
+        save_mode=args.save_mode,
+        save_dir=output_dir,
+        # wandb=True,
+        # wandb_project="absa-eap",
+        # optimizer_name="AdamW",
+        # weight_decay=1e-2,
+    )
 
     # For throughput stats, use the actual count
     sample_size = len(absa_data)
@@ -192,17 +193,18 @@ def main(args):
     print(f"{total_steps} steps in {elapsed:.2f}s ({steps_per_sec:.2f} steps/sec)")
     print("=======================================\n\n")
 
-    os.makedirs(output_dir, exist_ok=True)
-    # === Save Model State ===
-    torch.save(trained_model.state_dict(), os.path.join(output_dir, "model.pt"))
+    if args.save_mode is None:
+        os.makedirs(output_dir, exist_ok=True)
+        # === Save Model State ===
+        torch.save(trained_model.state_dict(), os.path.join(output_dir, "model.pt"))
 
-    # === Save Model Config ===
-    model_cfg_dict = model.cfg.to_dict()
-    with open(os.path.join(output_dir, "model_config.pkl"), "wb") as f:
-        pickle.dump(model_cfg_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
+        # === Save Model Config ===
+        model_cfg_dict = model.cfg.to_dict()
+        with open(os.path.join(output_dir, "model_config.pkl"), "wb") as f:
+            pickle.dump(model_cfg_dict, f, protocol=pickle.HIGHEST_PROTOCOL)
 
-    # === Save Tokenizer ===
-    model.tokenizer.save_pretrained(output_dir)
+        # === Save Tokenizer ===
+        model.tokenizer.save_pretrained(output_dir)
 
 
 if __name__ == "__main__":
@@ -210,6 +212,7 @@ if __name__ == "__main__":
     parser.add_argument("--train_json_path", type=str, required=True, help="Path to the training JSON dataset")
     parser.add_argument("--inference_train_json_path", type=str, required=False, help="Path to JSON used for GAS sampling (if prompt_type=gas)")
     parser.add_argument("--prompt_type", type=str, choices=["gas", "mvp"], default="gas", help="Sampling/prompt style")
+    parser.add_argument("--save_mode", type=str, choices=["best", "every", None], default="best", help="Model saving mode during training")
     parser.add_argument("--model_name", type=str, default="Qwen/Qwen2.5-0.5B", help="Pretrained model name")
     parser.add_argument("--output_dir", type=str, default="./results", help="Output directory")
     parser.add_argument("--num_epochs", type=int, default=20, help="Number of training epochs")
