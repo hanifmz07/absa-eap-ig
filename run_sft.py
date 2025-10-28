@@ -155,6 +155,8 @@ def main(args):
     output_dir = os.path.join(output_dir, output_folder_name)
     print(f"Output directory: {output_dir}")
 
+    print(f"Save mode: {args.save_mode}")
+
     # === Train Config (AdamW + WD 1e-2) ===
     # wandb.login(key=os.getenv("WANDB_API_KEY"))
     config = HookedTransformerTrainConfig(
@@ -212,7 +214,7 @@ if __name__ == "__main__":
     parser.add_argument("--train_json_path", type=str, required=True, help="Path to the training JSON dataset")
     parser.add_argument("--inference_train_json_path", type=str, required=False, help="Path to JSON used for GAS sampling (if prompt_type=gas)")
     parser.add_argument("--prompt_type", type=str, choices=["gas", "mvp"], default="gas", help="Sampling/prompt style")
-    parser.add_argument("--save_mode", type=str, choices=["best", "every", None], default="best", help="Model saving mode during training")
+    parser.add_argument("--save_mode", type=str, choices=["best", "every", None], default=None, help="Model saving mode during training")
     parser.add_argument("--model_name", type=str, default="Qwen/Qwen2.5-0.5B", help="Pretrained model name")
     parser.add_argument("--output_dir", type=str, default="./results", help="Output directory")
     parser.add_argument("--num_epochs", type=int, default=20, help="Number of training epochs")

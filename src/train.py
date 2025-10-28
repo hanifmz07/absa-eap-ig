@@ -138,6 +138,7 @@ def train(
 
     for epoch in tqdm(range(1, config.num_epochs + 1)):
         samples = 0
+        epoch_loss = 0.0
         for step, batch in tqdm(enumerate(dataloader)):
             tokens = batch["tokens"].to(config.device)
             loss = model(tokens, return_type="loss")
@@ -151,6 +152,9 @@ def train(
             optimizer.zero_grad()
 
             samples += tokens.shape[0]
+
+            # Add loss to epoch loss
+            epoch_loss += loss.item()
 
             if config.wandb:
                 wandb.log({"train_loss": loss.item(), "samples": samples, "epoch": epoch})
@@ -168,10 +172,17 @@ def train(
             if config.max_steps is not None and step >= config.max_steps:
                 break
 
+        # End of epoch - print average loss
+        print(f"Average loss for epoch {epoch}: {epoch_loss / (step + 1):.4f}")
+        
         # End of epoch - handle "best" save mode
         if config.save_mode == "best":
-            if loss.item() < best_loss:
-                best_loss = loss.item()
+            # Calculate average epoch loss
+            epoch_loss /= (step + 1)
+            # if loss.item() < best_loss:
+            if epoch_loss < best_loss:
+                # best_loss = loss.item()
+                best_loss = epoch_loss
 
                 # Save the model
                 torch.save(model.state_dict(), f"{config.save_dir}/model.pt")
