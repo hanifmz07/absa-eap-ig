@@ -43,7 +43,8 @@ class HookedTransformerTrainConfig:
 
     num_epochs: int
     batch_size: int
-    lr: float = 1e-3
+    val_batch_size: Optional[int] = None
+    lr: float = 1e-4
     seed: int = 0
     momentum: float = 0.0
     max_grad_norm: Optional[float] = None
@@ -51,18 +52,22 @@ class HookedTransformerTrainConfig:
     optimizer_name: str = "Adam"
     device: Optional[str] = None
     warmup_steps: int = 0
-    save_mode: Optional[Literal["best", "steps"]] = None
+    save_mode: Optional[Literal["best", "steps", None]] = None
     save_every: Optional[int] = None
     save_dir: Optional[str] = None
     wandb: bool = False
-    wandb_project_name: Optional[str] = None
+    wandb_project: Optional[str] = None
+    wandb_run_name: Optional[str] = None
     print_every: Optional[int] = 50
     max_steps: Optional[int] = None
+    validation_mode: Optional[Literal["epoch", "steps", None]] = None
+    validation_steps: Optional[int] = None
 
 def train(
     model: HookedTransformer,
     config: HookedTransformerTrainConfig,
     dataset: Dataset,
+    val_dataset: Optional[Dataset] = None,
 ) -> HookedTransformer:
     """
     Trains an HookedTransformer model on an autoregressive language modeling task.
@@ -76,9 +81,9 @@ def train(
     torch.manual_seed(config.seed)
     model.train()
     if config.wandb:
-        if config.wandb_project_name is None:
-            config.wandb_project_name = "easy-transformer"
-        wandb.init(project=config.wandb_project_name, config=vars(config))
+        if config.wandb_project is None:
+            config.wandb_project = "easy-transformer"
+        wandb.init(project=config.wandb_project, config=vars(config), name=config.wandb_run_name)
 
     if config.device is None:
         config.device = utils.get_device()
@@ -168,7 +173,28 @@ def train(
                     # Save every N steps
                     if step % config.save_every == 0:
                         torch.save(model.state_dict(), f"{config.save_dir}/model_epoch{epoch}_step{step}.pt")
+            
+            # Handle validation based on "steps" mode
+            if val_dataset is not None and config.validation_mode == "steps" and config.validation_steps:
+                if step % config.validation_steps == 0 and step > 0:
+                    print(f"Running validation at step {step} of epoch {epoch}...")
+                    val_dataloader = DataLoader(val_dataset, batch_size=config.val_batch_size, shuffle=False)
+                    model.eval()
+                    val_loss = 0.0
+                    val_samples = 0
+                    with torch.no_grad():
+                        for val_step, val_batch in tqdm(enumerate(val_dataloader)):
+                            val_tokens = val_batch["tokens"].to(config.device)
+                            loss = model(val_tokens, return_type="loss")
+                            val_loss += loss.item()
+                            val_samples += val_tokens.shape[0]
+                    avg_val_loss = val_loss / len(val_dataloader)
+                    print(f"Validation loss at step {step} of epoch {epoch}: {avg_val_loss:.4f}")
+                    if config.wandb:
+                        wandb.log({"val_loss": avg_val_loss, "epoch": epoch, "step": step})
+                    model.train()
 
+            # Handle max steps
             if config.max_steps is not None and step >= config.max_steps:
                 break
 
@@ -187,5 +213,29 @@ def train(
                 # Save the model
                 torch.save(model.state_dict(), f"{config.save_dir}/model.pt")
                 print(f"New best loss on epoch {epoch}: {best_loss:.4f} - Model saved!")
+        
+        # Optional: Validate on validation dataset
+        # print(f"Validation mode: {config.validation_mode}")
+        # print(f"Val dataset is {'not ' if val_dataset is None else ''}None")
+        # print(f"Condition 1: {config.validation_mode == 'epoch'}")
+        # print(f"Condition 2: {val_dataset is not None}")
+        if val_dataset is not None and config.validation_mode == "epoch":
+            print(f"Running validation in the end of an epoch {epoch}...")
+            val_dataloader = DataLoader(val_dataset, batch_size=config.val_batch_size, shuffle=False)
+            model.eval()
+            val_loss = 0.0
+            val_samples = 0
+            with torch.no_grad():
+                for val_step, val_batch in tqdm(enumerate(val_dataloader)):
+                    val_tokens = val_batch["tokens"].to(config.device)
+                    loss = model(val_tokens, return_type="loss")
+                    val_loss += loss.item()
+                    val_samples += val_tokens.shape[0]
+            avg_val_loss = val_loss / len(val_dataloader)
+            print(f"Validation loss after epoch {epoch}: {avg_val_loss:.4f}")
+            if config.wandb:
+                wandb.log({"val_loss": avg_val_loss, "epoch": epoch})
+            model.train()
+
 
     return model
