@@ -196,6 +196,12 @@ def main(args):
     print(f"Device: {device}")
     print("=" * 50)
 
+    if not args.train_full_model:
+        top_k = os.path.basename(args.circuit_csv_path).split('_')[-1].replace('.csv','')
+    else:
+        top_k = "fullsft"
+    wandb_run_name = f"seed-{args.seed}_{top_k}_optimizer-{args.optimizer}_data-{args.train_json_path.split('/')[2]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
     # === Train Config (AdamW + WD 1e-2) ===
     wandb.login(key=os.getenv("WANDB_API_KEY"))
     config = HookedTransformerTrainConfig(
@@ -211,7 +217,7 @@ def main(args):
         val_batch_size=args.val_batch_size,
         wandb=True,
         wandb_project="absa-eap",
-        wandb_run_name=f"seed-{args.seed}_optimizer-{args.optimizer}_data-{args.train_json_path.split('/')[2]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}",
+        wandb_run_name=wandb_run_name,
         optimizer_name=args.optimizer,
         weight_decay=1e-2 if args.optimizer == "AdamW" else None,
     )

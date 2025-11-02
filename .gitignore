@@ -15,3 +15,7 @@ temp
 unused_code
 hotel_dataset/*/old/*
 .env
+hotel_dataset/empty_counterfacts*
+outputs/evals/eap/batch_experiments
+wandb
+utils_notebooks/*.csv
