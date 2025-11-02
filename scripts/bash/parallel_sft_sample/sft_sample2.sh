@@ -73,7 +73,8 @@ echo "========================================================" >> "$STDOUT_LOG"
         --save_mode "best" \
         --optimizer "AdamW" \
         --val_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json" \
-        --val_batch_size 16
+        --val_batch_size 16 \
+        --sample_size 1985
 
     echo ""
     echo "========================================================"

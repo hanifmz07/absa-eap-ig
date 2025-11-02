@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specifiy cuda device if needed
-export CUDA_VISIBLE_DEVICES=1
+export CUDA_VISIBLE_DEVICES=3
 
 # Extract language parameters from the command line arguments
 # Usage: ./sft5.sh <language> <dataset_folder>
@@ -24,7 +24,7 @@ if [ -z "$DATASET_FOLDER" ]; then
 fi
 
 # Seeds for the SFT process
-SEED=123
+SEED=31415
 
 # Define the log file names for clarity
 LOG_BASE_NAME="sft_full"
@@ -34,7 +34,6 @@ STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEE
 STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/${PID}_$(date).err"
 # Create necessary directories for logs
 mkdir -p "${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}"
-
 
 # --- Step 1: Initialize Log Files ---
 # Clear previous logs and add a timestamp to mark the start of this run.
@@ -73,7 +72,8 @@ echo "========================================================" >> "$STDOUT_LOG"
         --save_mode "best" \
         --optimizer "AdamW" \
         --val_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json" \
-        --val_batch_size 16
+        --val_batch_size 16 \
+        --sample_size 1985
 
     echo ""
     echo "========================================================"

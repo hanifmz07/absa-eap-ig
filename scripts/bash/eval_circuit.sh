@@ -42,12 +42,12 @@ echo "========================================================" >> "$STDOUT_LOG"
   TEST_JSON="hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json"
   SEEDS=(9584 123 2024 31415 777)
   # TOPKS=(1000 2000 5000)
-  TOPKS=("full_sft")
+  TOPKS=(2000)
   for SEED in "${SEEDS[@]}"; do
     for TOPK_CIRCUIT in "${TOPKS[@]}"; do
       
-      MODEL_DIR="outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/${TOPK_CIRCUIT}"
-      OUTPUT_DIR="outputs/evals/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/${TOPK_CIRCUIT}"
+      MODEL_DIR="outputs/modelsv3.1/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/topk_${TOPK_CIRCUIT}"
+      OUTPUT_DIR="outputs/evalsv3.1/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/topk_${TOPK_CIRCUIT}"
       
       for MODEL_PATH in "$MODEL_DIR"/*; do
         MODEL_NAME=$(basename "$MODEL_PATH")
@@ -65,7 +65,7 @@ echo "========================================================" >> "$STDOUT_LOG"
             --test_json_path "$TEST_JSON" \
             --model_path "$MODEL_PATH" \
             --output_dir "$EVAL_RESULT_DIR" \
-            --batch_size 1 \
+            --batch_size 5 \
             --save_predictions
 
         else

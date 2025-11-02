@@ -1,6 +1,6 @@
 #!/bin/bash
 # Specifiy cuda device if needed
-export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=7
 
 # Extract language parameters from the command line arguments
 # Usage: ./create_dataset.sh <language> <dataset_folder>
@@ -46,15 +46,16 @@ echo "========================================================" >> "$STDOUT_LOG"
         echo "--------------------------------------------------------"
         echo "🚀 Running dataset generation for seed $SEED..."
         echo "--------------------------------------------------------"
-        MODEL_PATH=$(echo "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/"*"_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20")
+        MODEL_PATH=$(echo "outputs/modelsbest_adamw/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/full_sft/"*"_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20")
         
         python run_create_dataset.py \
             --finetuned_model "$MODEL_PATH" \
-            --dataset_path "hotel_dataset/counterfacts/${DATASET_FOLDER}/${LANGUAGE}_counterfacts.csv" \
-            --filtered_data_path "eap_dataset/filtered_data/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual_filtered_AOS.csv" \
-            --full_aos_path "eap_dataset/full_aos/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual_full_AOS.csv" \
-            --sequence_variants_path "eap_dataset/sequence_variants/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual_AOS_sequence_variants.csv" \
-            --eap_output_path "eap_dataset/eap_output/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_eap_dataset_AOS_sequence_variants.csv"
+            --dataset_path "hotel_dataset/counterfactsv3.7.4/${DATASET_FOLDER}/${LANGUAGE}_counterfacts.csv" \
+            --filtered_data_path "eap_dataset/filtered_datav3.7.4/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual_filtered_AOS.csv" \
+            --full_aos_path "eap_dataset/full_aosv3.7.4/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual_full_AOS.csv" \
+            --sequence_variants_path "eap_dataset/sequence_variantsv3.7.4/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_counterfactual_AOS_sequence_variants.csv" \
+            --eap_output_path "eap_dataset/eap_outputv3.7.4/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_eap_dataset_AOS_sequence_variants.csv" \
+            --method "mvp"
 
     done
 

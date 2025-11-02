@@ -63,12 +63,16 @@ echo "========================================================" >> "$STDOUT_LOG"
     python run_sft.py \
         --train_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_train_augmented_noreasoning.json" \
         --model_name "Qwen/Qwen2.5-0.5B" \
-        --output_dir "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants" \
+        --output_dir "outputs/modelsbest_adamw/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/full_sft" \
         --num_epochs 20 \
         --batch_size 16 \
         --lr 1e-4 \
         --seed $SEED \
-        --train_full_model
+        --train_full_model \
+        --save_mode "best" \
+        --optimizer "AdamW" \
+        --val_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json" \
+        --val_batch_size 16
 
     echo ""
     echo "========================================================"
