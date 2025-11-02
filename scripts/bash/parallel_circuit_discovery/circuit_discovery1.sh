@@ -44,16 +44,16 @@ echo "========================================================" >> "$STDOUT_LOG"
     echo "Running circuit discover with seed $SEED"
     echo "--------------------------------------------------------"
 
-    MODEL_PATH=$(echo "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/"*"_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20")
+    MODEL_PATH=$(echo "outputs/modelsbest_adamw/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/full_sft/"*"_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20")
     
     python run_eap_multitokens.py \
         --base_model "Qwen/Qwen2.5-0.5B" \
         --finetuned_model "$MODEL_PATH" \
-        --dataset "eap_dataset/eap_output/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_eap_dataset_AOS_sequence_variants.csv" \
+        --dataset "eap_dataset/eap_outputv3.7.4/${LANGUAGE}/${DATASET_FOLDER}/seed_$SEED/tflens_Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20_eap_dataset_AOS_sequence_variants.csv" \
         --batch_size 5 \
         --ig_steps 5 \
         --topks 1000 2000 5000 \
-        --output_dir "outputs/multitokens/${DATASET_FOLDER}/${LANGUAGE}/seed_$SEED" \
+        --output_dir "outputs/multitokensv3.7.4/${DATASET_FOLDER}/${LANGUAGE}/seed_$SEED" \
         --device "cuda" \
         --element "aos"
 

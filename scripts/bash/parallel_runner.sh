@@ -2,15 +2,15 @@
 
 # --- Configuration ---
 # The name for our tmux session
-SESSION_NAME="sft_circuit_runners"
+SESSION_NAME="sft_circuit_runners5"
 
 # An array holding the names of the scripts to run (change the folder of the parallel scripts as needed)
 SCRIPTS=(
-    "scripts/bash/parallel_sft_circuit/sft_circuit1.sh"
-    "scripts/bash/parallel_sft_circuit/sft_circuit2.sh"
-    "scripts/bash/parallel_sft_circuit/sft_circuit3.sh"
-    "scripts/bash/parallel_sft_circuit/sft_circuit4.sh"
-    "scripts/bash/parallel_sft_circuit/sft_circuit5.sh"
+    "scripts/bash/parallel_sft_circuit2/sft_circuit1.sh"
+    "scripts/bash/parallel_sft_circuit2/sft_circuit2.sh"
+    "scripts/bash/parallel_sft_circuit2/sft_circuit3.sh"
+    # "scripts/bash/parallel_sft_circuit2/sft_circuit4.sh"
+    # "scripts/bash/parallel_sft_circuit2/sft_circuit5.sh"
 )
 # The command to activate the virtual environment
 ACTIVATE_CMD="source enveap/bin/activate"
@@ -36,15 +36,22 @@ if [ -z "$DATASET_FOLDER" ]; then
     exit 1 # Exit with a non-zero status to indicate an error
 fi
 
-# If the first script contains 'sft_circuit.sh', we need to ensure it has the third argument TOPK_CIRCUIT
-SFT_CIRCUIT_BOOL=false
-if [[ "${SCRIPTS[0]}" == *"sft_circuit"* ]]; then
-    TOPK_CIRCUIT="$3"
+BATCH_SIZE="$3"
+# Validate the batch size argument
+if [ -z "$BATCH_SIZE" ]; then
+    echo "Error: Batch size must be specified."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+# If the first script contains 'eval_circuit.sh', we need to ensure it has the third argument TOPK_CIRCUIT
+eval_CIRCUIT_BOOL=false
+if [[ "${SCRIPTS[0]}" == *"eval_circuit"* ]]; then
+    TOPK_CIRCUIT="$4"
     if [ -z "$TOPK_CIRCUIT" ]; then
-        echo "Error: TOPK_CIRCUIT must be specified for sft_circuit.sh."
+        echo "Error: TOPK_CIRCUIT must be specified for eval_circuit.sh."
         exit 1 # Exit with a non-zero status to indicate an error
     fi
-    SFT_CIRCUIT_BOOL=true
+    eval_CIRCUIT_BOOL=true
 fi
 
 # --- Script Logic ---
@@ -58,7 +65,7 @@ fi
 echo "Creating new tmux session '$SESSION_NAME'..."
 
 # Start a new detached tmux session. The first pane (index 0) is created automatically.
-tmux new-session -d -s "$SESSION_NAME" -n "SFT Scripts"
+tmux new-session -d -s "$SESSION_NAME" -n "eval Scripts"
 
 tmux split-window -v -t "$SESSION_NAME:0.0"
 tmux split-window -v -t "$SESSION_NAME:0.1"
@@ -83,12 +90,12 @@ for i in "${!SCRIPTS[@]}"; do
     SCRIPT_NAME=${SCRIPTS[$i]}
     TARGET_PANE="$SESSION_NAME:0.$PANE_INDEX"
     
-    # Construct the full command to be run in the pane (check for SFT_CIRCUIT_BOOL)
-    echo $SFT_CIRCUIT_BOOL
-    if [ "$SFT_CIRCUIT_BOOL" = true ]; then
-        FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER} ${TOPK_CIRCUIT}"
+    # Construct the full command to be run in the pane (check for eval_CIRCUIT_BOOL)
+    echo $eval_CIRCUIT_BOOL
+    if [ "$eval_CIRCUIT_BOOL" = true ]; then
+        FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER} ${BATCH_SIZE} ${TOPK_CIRCUIT}"
     else
-        FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER}"
+        FULL_CMD="$ACTIVATE_CMD && bash ./${SCRIPT_NAME} ${LANGUAGE} ${DATASET_FOLDER} ${BATCH_SIZE}"
     fi
 
     echo "Setting up pane $PANE_INDEX to run: ${SCRIPT_NAME}"

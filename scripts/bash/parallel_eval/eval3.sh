@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specifiy cuda device if needed
-export CUDA_VISIBLE_DEVICES=2
+export CUDA_VISIBLE_DEVICES=6
 
 # Extract language parameters from the command line arguments
 # Usage: ./sft5.sh <language> <dataset_folder>
@@ -23,6 +23,14 @@ if [ -z "$DATASET_FOLDER" ]; then
     exit 1 # Exit with a non-zero status to indicate an error
 fi
 
+BATCH_SIZE="$3"
+# Validate the batch size argument
+if [ -z "$BATCH_SIZE" ]; then
+    echo "Error: Batch size must be specified."
+    exit 1 # Exit with a non-zero status to indicate an error
+fi
+
+
 # Seeds for the SFT process
 SEED=2024
 
@@ -43,9 +51,9 @@ echo "========================================================" >> "$STDOUT_LOG"
 
 {
   TEST_JSON="hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json"
-
-  MODEL_DIR="outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants"
-  OUTPUT_DIR="outputs/evals/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants"
+  TOPK_CIRCUIT=("full_sft")
+  MODEL_DIR="outputs/modelsbest_adamw/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/${TOPK_CIRCUIT}"
+  OUTPUT_DIR="outputs/evalsbest_adamw/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/${TOPK_CIRCUIT}"
   
   for MODEL_PATH in "$MODEL_DIR"/*; do
     MODEL_NAME=$(basename "$MODEL_PATH")
@@ -60,8 +68,9 @@ echo "========================================================" >> "$STDOUT_LOG"
       python run_eval.py \
         --test_json_path "$TEST_JSON" \
         --model_path "$MODEL_PATH" \
+        --prompt_type "mvp" \
         --output_dir "$EVAL_RESULT_DIR" \
-        --batch_size 5 \
+        --batch_size $BATCH_SIZE \
         --save_predictions
 
     else

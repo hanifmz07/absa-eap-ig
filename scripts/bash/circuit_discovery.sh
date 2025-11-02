@@ -47,7 +47,7 @@ echo "========================================================" >> "$STDOUT_LOG"
         echo "Running circuit discover with seed $SEED"
         echo "--------------------------------------------------------"
 
-        MODEL_PATH=$(echo "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/"*"_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20")
+        MODEL_PATH=$(echo "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/full_sft/"*"_tflens_hotel_aste_train_augmented_noreasoning_model-Qwen2.5-0.5B_lr-0.0001_bs-16_epochs-20")
         
         python run_eap_multitokens.py \
             --base_model "Qwen/Qwen2.5-0.5B" \

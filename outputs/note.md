@@ -1,3 +1,8 @@
 Multitokens v1: First counterfactual data (the one with a lot of data that have different length of tokens) 
 Multitokens v2: Second counterfactual data, using huggingface model to get the counterfactual data from the test set
 Multitokens v3: Uses the same data as v3, but the model used is the one finetuned with TransformerLens, so some of the are filtered just like the v1 (but not as much because the token length are still the same). Note for the aspect term, there are still many cases where the length of the tokens are different because of whitespaces (about 20-30 out of 100), for example: 'bed' and ' bed' have different lengths of tokens.
+
+v3.7.1: AdamW
+v3.7.2: Adam
+v3.7.3: Adam
+v3.7.4: AdamW

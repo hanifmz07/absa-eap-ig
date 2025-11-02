@@ -1,4 +1,4 @@
-index,original_pair_gas,corrupted_pair_gas
+index,original_pair,corrupted_pair
 4,"tidak dapat snack . setelah di keluhan , baru dikasik snacknya . => (snack, tidak dapat, negative)","baik sangat radio . setelah di keluhan , baru dikasik snacknya . => (radio, baik sangat, positive)"
 10,"kamarnya oke . => (kamarnya, oke, positive)","pot bunga  busuk . => (pot bunga, busuk, negative)"
 18,"tempat tdr kurang bersih . => (tempat tidur, kurang bersih, negative)","baju anakku cukup cepat . => (baju anakku, cukup cepat, positive)"

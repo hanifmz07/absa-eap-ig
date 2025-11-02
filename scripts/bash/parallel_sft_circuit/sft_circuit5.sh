@@ -37,10 +37,10 @@ SEED=777
 LOG_BASE_NAME="sft_circuit"
 LOG_DIR="logs"
 PID=$$
-STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/topk_${TOPK_CIRCUIT}/${PID}_$(date).log"
-STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/topk_${TOPK_CIRCUIT}/${PID}_$(date).err"
+STDOUT_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/${PID}_$(date).log"
+STDERR_LOG="${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/${PID}_$(date).err"
 # Create necessary directories for logs
-mkdir -p "${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}/topk_${TOPK_CIRCUIT}"
+mkdir -p "${LOG_DIR}/${LOG_BASE_NAME}/${DATASET_FOLDER}/${LANGUAGE}/seed_${SEED}"
 
 # --- Step 1: Initialize Log Files ---
 # Clear previous logs and add a timestamp to mark the start of this run.
@@ -60,23 +60,30 @@ echo "========================================================" >> "$STDOUT_LOG"
 {
     echo "Running ABSA Targeted SFT"
 
-    echo ""
-    echo "--------------------------------------------------------"
-    echo "Running targeted sft with seed: $SEED with topk: $TOPK_CIRCUIT"
-    echo "--------------------------------------------------------"
+    TOPKS=(1000 2000)
+    for TOPK_CIRCUIT in "${TOPKS[@]}"
+    do
+        echo ""
+        echo "--------------------------------------------------------"
+        echo "Running targeted sft with seed: $SEED with topk: $TOPK_CIRCUIT"
+        echo "--------------------------------------------------------"
 
-    # The output of this python command will now be correctly
-    # redirected along with everything else in the loop.
-    python run_sft.py \
-        --train_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_train_augmented_noreasoning.json" \
-        --model_name "Qwen/Qwen2.5-0.5B" \
-        --output_dir "outputs/models/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/topk_${TOPK_CIRCUIT}" \
-        --num_epochs 20 \
-        --batch_size 16 \
-        --lr 1e-4 \
-        --seed $SEED \
-        --circuit_csv_path "outputs/multitokens/${DATASET_FOLDER}/${LANGUAGE}/seed_$SEED/aos_circuit_topk-${TOPK_CIRCUIT}.csv" \
-
+        # The output of this python command will now be correctly
+        # redirected along with everything else in the loop.
+        python run_sft.py \
+            --train_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_train_augmented_noreasoning.json" \
+            --model_name "Qwen/Qwen2.5-0.5B" \
+            --output_dir "outputs/modelsbestv3.7.4/eap/${DATASET_FOLDER}/circuit-${LANGUAGE}_finetune-${LANGUAGE}/seed_$SEED/aos_sequence_variants/topk_${TOPK_CIRCUIT}" \
+            --num_epochs 20 \
+            --batch_size 16 \
+            --lr 1e-4 \
+            --seed $SEED \
+            --circuit_csv_path "outputs/multitokensv3.7.4/${DATASET_FOLDER}/${LANGUAGE}/seed_$SEED/aos_circuit_topk-${TOPK_CIRCUIT}.csv" \
+            --save_mode "best" \
+            --optimizer "AdamW" \
+            --val_json_path "hotel_dataset/${LANGUAGE}/${DATASET_FOLDER}/hotel_aste_test_augmented.json" \
+            --val_batch_size 16
+    done
     echo ""
     echo "========================================================"
     echo "All seeds completed at: $(date)"
