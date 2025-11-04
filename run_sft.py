@@ -200,7 +200,7 @@ def main(args):
         top_k = os.path.basename(args.circuit_csv_path).split('_')[-1].replace('.csv','')
     else:
         top_k = "fullsft"
-    wandb_run_name = f"seed-{args.seed}_{top_k}_optimizer-{args.optimizer}_data-{args.train_json_path.split('/')[2]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    wandb_run_name = f"seed-{args.seed}_{top_k}_optimizer-{args.optimizer}_lr-{args.lr}_samplesize-{args.sample_size}_data-{args.train_json_path.split('/')[2]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
     # === Train Config (AdamW + WD 1e-2) ===
     wandb.login(key=os.getenv("WANDB_API_KEY"))
