@@ -220,6 +220,8 @@ def main(args):
         wandb_run_name=wandb_run_name,
         optimizer_name=args.optimizer,
         weight_decay=1e-2 if args.optimizer == "AdamW" else None,
+        top_k=top_k, # add top_k to config for logging
+        sample_size=args.sample_size, # add sample_size to config for logging
     )
 
     # For throughput stats, use the actual count

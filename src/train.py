@@ -1,7 +1,7 @@
 # Modified from transformer_lens training script to add save based on based on best loss
 
 from dataclasses import dataclass
-from typing import Optional, Literal
+from typing import Any, Optional, Literal
 
 import torch
 import torch.optim as optim
@@ -62,6 +62,8 @@ class HookedTransformerTrainConfig:
     max_steps: Optional[int] = None
     validation_mode: Optional[Literal["epoch", "steps", None]] = None
     validation_steps: Optional[int] = None
+    top_k: Any = None
+    sample_size: Any = None
 
 def train(
     model: HookedTransformer,
