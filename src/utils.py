@@ -328,7 +328,6 @@ def get_random_nodes(model, df: pd.DataFrame, *,
 
     rows = {"child_node": qkv_heads, "child_type": qkv_types}
 
-    # optionally include MLP nodes (child_type is None) and/or logits
     if include_mlp:
         rows["child_node"] += [f"m{l}" for l in range(n_layers)]
         rows["child_type"] += [None] * n_layers
@@ -380,7 +379,6 @@ def apply_active_edge_unfreezing(model,
     import re, os
 
     def _derive_like_path(path: str, like_topk: int) -> str:
-        # keep the same extension; only swap the topk number
         return re.sub(r"(topk-)\d+", rf"\g<1>{like_topk}", path)
 
     def _count_unique_pairs_from_csv(path: str) -> int:
@@ -389,7 +387,6 @@ def apply_active_edge_unfreezing(model,
             return ref.drop_duplicates(subset=["child_node","child_type"]).shape[0]
         return len(ref)
 
-    # --- only change below: compute sample_n from sibling CSV if requested ---
     like_used = None
     if random_circuit and sample_like_topk is not None and sample_n is None:
         like_path = _derive_like_path(csv_path, sample_like_topk)
