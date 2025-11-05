@@ -186,6 +186,7 @@ def main(args):
     output_folder_name += f"_lr-{args.lr}"
     output_folder_name += f"_bs-{args.batch_size}"
     output_folder_name += f"_epochs-{args.num_epochs}"
+    output_folder_name += f"_subtracted{len(subtract_ids)}" if args.subtract_data_by else ""
     output_folder_name += (
         f"_{os.path.splitext(os.path.basename(args.circuit_csv_path))[0].split('_')[-1]}"
         if not args.train_full_model
