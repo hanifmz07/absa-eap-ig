@@ -126,6 +126,17 @@ def main(args):
         with open(args.train_json_path, "r", encoding="utf-8") as f:
             absa_data = json.load(f)
 
+    # --- Data Subtraction ---
+    if args.subtract_data_by:
+        print(f"Subtracting data found in {args.subtract_data_by} from training data...")
+        with open(args.subtract_data_by, "r", encoding="utf-8") as f:
+            subtract_data = json.load(f)
+        subtract_ids = set([item['sentence_id'] for item in subtract_data])
+        original_count = len(absa_data)
+        absa_data = [item for item in absa_data if item['sentence_id'] not in subtract_ids]
+        new_count = len(absa_data)
+        print(f"Subtracted {original_count - new_count} items; new training data size: {new_count}")
+
     # === Load Model ===
     model = load_model(args.model_name, device=device)
 
@@ -213,6 +224,7 @@ def main(args):
     print(f"Random circuit sample_n: {args.random_circuit_sample_n}")
     print(f"Random circuit strict: {args.random_circuit_strict}")
     print(f"Random circuit sample_like_topk: {args.random_circuit_sample_like_topk}")
+    print(f"Data subtraction file: {args.subtract_data_by}")
 
     print("=" * 50)
 
@@ -220,7 +232,7 @@ def main(args):
         top_k = os.path.basename(args.circuit_csv_path).split('_')[-1].replace('.csv','')
     else:
         top_k = "fullsft"
-    wandb_run_name = f"seed-{args.seed}_{top_k}_optimizer-{args.optimizer}_lr-{args.lr}_samplesize-{args.sample_size}_data-{args.train_json_path.split('/')[2]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    wandb_run_name = f"seed-{args.seed}_{top_k}_optimizer-{args.optimizer}_lr-{args.lr}_samplesize-{args.sample_size}_data-{args.train_json_path.split('/')[2]}_subtractamount{len(subtract_ids) if args.subtract_data_by else 0}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
 
     # === Train Config (AdamW + WD 1e-2) ===
     wandb.login(key=os.getenv("WANDB_API_KEY"))
@@ -242,6 +254,7 @@ def main(args):
         weight_decay=1e-2 if args.optimizer == "AdamW" else None,
         top_k=top_k, # add top_k to config for logging
         sample_size=args.sample_size, # add sample_size to config for logging
+        subtract_data_amount=len(subtract_ids) if args.subtract_data_by else 0, # add subtraction amount to config for logging
     )
 
     # For throughput stats, use the actual count
@@ -313,7 +326,7 @@ if __name__ == "__main__":
     parser.add_argument("--random_circuit_sample_like_topk", type=int, default=None,
                         help="If --random_circuit is set, mirror the sample size from a sibling CSV by replacing topk-<N> with this value")
 
-
+    parser.add_argument("--subtract_data_by", type=str, default=None, help="Path to the JSON file used for data subtraction")
 
     args = parser.parse_args()
 

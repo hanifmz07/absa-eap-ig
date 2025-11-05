@@ -64,6 +64,7 @@ class HookedTransformerTrainConfig:
     validation_steps: Optional[int] = None
     top_k: Any = None
     sample_size: Any = None
+    subtract_data_amount: int = 0
 
 def train(
     model: HookedTransformer,
