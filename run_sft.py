@@ -9,7 +9,7 @@ from time import time
 import torch
 from src.train import HookedTransformerTrainConfig, train
 
-from src.utils import load_model, ABSAAutoRegressiveDataset
+from src.utils import load_model, ABSAAutoRegressiveDataset, load_finetuned_model_lens_from_dir
 from src.utils import apply_active_edge_unfreezing
 
 from dotenv import load_dotenv
@@ -138,7 +138,15 @@ def main(args):
         print(f"Subtracted {original_count - new_count} items; new training data size: {new_count}")
 
     # === Load Model ===
-    model = load_model(args.model_name, device=device)
+    if args.finetuned_model_path:
+        print(f"Loading finetuned model from {args.finetuned_model_path}...")
+        model = load_finetuned_model_lens_from_dir(
+            args.finetuned_model_path,
+            device=device,
+        )
+    else:
+        print(f"Loading base model {args.model_name}...")
+        model = load_model(args.model_name, device=device)
 
     # === Load Dataset ===
     dataset = ABSAAutoRegressiveDataset(
@@ -226,6 +234,7 @@ def main(args):
     print(f"Random circuit strict: {args.random_circuit_strict}")
     print(f"Random circuit sample_like_topk: {args.random_circuit_sample_like_topk}")
     print(f"Data subtraction file: {args.subtract_data_by}")
+    print(f"Finetuned model path: {args.finetuned_model_path}")
 
     print("=" * 50)
 
@@ -327,7 +336,8 @@ if __name__ == "__main__":
     parser.add_argument("--random_circuit_sample_like_topk", type=int, default=None,
                         help="If --random_circuit is set, mirror the sample size from a sibling CSV by replacing topk-<N> with this value")
 
-    parser.add_argument("--subtract_data_by", type=str, default=None, help="Path to the JSON file used for data subtraction")
+    parser.add_argument("--subtract_data_by", type=str, default=None, help="Path to the JSON file used for data subtraction on the training set")
+    parser.add_argument("--finetuned_model_path", type=str, default=None, help="Path to a finetuned model to load before doing further SFT")
 
     args = parser.parse_args()
 
