@@ -310,25 +310,114 @@ class ABSAAutoRegressiveDataset(Dataset):
             "tokens": tokens
         }
 
-def apply_active_edge_unfreezing(model, csv_path: str):
-    """
-    Apply selective unfreezing and gradient masking to a TransformerLens model
-    based on active attention and MLP nodes from an edge CSV file.
+def get_random_nodes(model, df: pd.DataFrame, *,
+                     include_mlp: bool = False,
+                     include_logits: bool = False,
+                     sample_n: Optional[int] = None,
+                     random_state: Optional[int] = None,
+                     strict: bool = False) -> pd.DataFrame:
+    n_layers = model.cfg.n_layers
+    n_heads  = model.cfg.n_heads
 
-    This function:
-    - Parses active attention heads and MLP layers from the CSV.
-    - Applies gradient masking to inactive heads in attention projection matrices (W_Q, W_K, W_V, W_O).
-    - Unfreezes MLP layers, embedding, and unembedding weights.
+    # base head names (no q/k/v suffix yet)
+    head_names = [f"a{l}.h{h}" for l in range(n_layers) for h in range(n_heads)]
 
-    Args:
-        model: TransformerLens model instance.
-        csv_path (str): Path to CSV file with 'child_node' and 'child_type' columns.
-    """
+    # expand into q/k/v
+    qkv_heads = head_names * 3
+    qkv_types = (["q"] * len(head_names)) + (["k"] * len(head_names)) + (["v"] * len(head_names))
+
+    rows = {"child_node": qkv_heads, "child_type": qkv_types}
+
+    # optionally include MLP nodes (child_type is None) and/or logits
+    if include_mlp:
+        rows["child_node"] += [f"m{l}" for l in range(n_layers)]
+        rows["child_type"] += [None] * n_layers
+
+    if include_logits:
+        rows["child_node"] += ["logits"]
+        rows["child_type"] += [None]
+
+    df_all = pd.DataFrame(rows)
+
+    # strict: exclude entire heads present in df regardless of q/k/v
+    if strict and not df.empty:
+        blocked_heads = set()
+        for cn in df.get("child_node", []):
+            if isinstance(cn, str) and cn.startswith("a") and ".h" in cn:
+                blocked_heads.add(cn)
+        if blocked_heads:
+            df_all = df_all[~df_all["child_node"].isin(blocked_heads)]
+
+    key = ["child_node", "child_type"]
+
+    def norm_keys(d: pd.DataFrame) -> pd.DataFrame:
+        out = d[key].copy()
+        out = out.astype("string").fillna("__NA__")
+        return out
+
+    # anti-join
+    mask = ~pd.MultiIndex.from_frame(norm_keys(df_all)).isin(
+        pd.MultiIndex.from_frame(norm_keys(df))
+    )
+    result = df_all[mask].copy().reset_index(drop=True)
+
+    if sample_n is not None and len(result) > 0:
+        actual_n = min(sample_n, len(result))
+        if actual_n < sample_n:
+            print(f"[RandomCircuit][Strict] Requested {sample_n} but only {actual_n} available after strict filtering; using {actual_n}.")
+        result = result.sample(n=actual_n, random_state=random_state).reset_index(drop=True)
+
+    return result
+
+
+def apply_active_edge_unfreezing(model, 
+                                csv_path: str, 
+                                random_circuit: bool = False,
+                                sample_n: Optional[int] = None,
+                                random_state: Optional[int] = None,
+                                strict: bool = False,
+                                sample_like_topk: Optional[int] = None):
+    import re, os
+
+    def _derive_like_path(path: str, like_topk: int) -> str:
+        # keep the same extension; only swap the topk number
+        return re.sub(r"(topk-)\d+", rf"\g<1>{like_topk}", path)
+
+    def _count_unique_pairs_from_csv(path: str) -> int:
+        ref = pd.read_csv(path)
+        if {"child_node","child_type"}.issubset(ref.columns):
+            return ref.drop_duplicates(subset=["child_node","child_type"]).shape[0]
+        return len(ref)
+
+    # --- only change below: compute sample_n from sibling CSV if requested ---
+    like_used = None
+    if random_circuit and sample_like_topk is not None and sample_n is None:
+        like_path = _derive_like_path(csv_path, sample_like_topk)
+        if os.path.exists(like_path):
+            like_n = _count_unique_pairs_from_csv(like_path)
+            if like_n > 0:
+                sample_n = like_n
+                like_used = like_path
+                print(f"[RandomCircuit] sample_like_topk={sample_like_topk} → '{like_path}' → unique pairs = {sample_n}")
+            else:
+                print(f"[RandomCircuit] '{like_path}' has no rows; falling back to provided sample_n={sample_n}")
+        else:
+            print(f"[RandomCircuit] sibling CSV not found for topk-{sample_like_topk}: {like_path}")
+
     df = pd.read_csv(csv_path)
     attention_targets = set()
     mlp_layers = set()
+    if random_circuit:
+        print(f"[Circuit Mode] Using RANDOM circuit (sample_n={sample_n}, random_state={random_state}, strict={strict})")
+        if like_used:
+            print(f"[Circuit Size] Mirroring size from: {like_used}")
+        df_circuit = get_random_nodes(model, df, sample_n=sample_n, random_state=random_state, strict=strict)
+        print(f"[Random] Rows used={len(df_circuit)}")
+    else:
+        print("[Circuit Mode] Using ACTUAL circuit from CSV")
+        df_circuit = df.copy()
 
-    for _, row in df.iterrows():
+    for _, row in df_circuit.iterrows():
         child_node = row.get("child_node")
         child_type = row.get("child_type")
 
@@ -347,6 +436,13 @@ def apply_active_edge_unfreezing(model, csv_path: str):
                     mlp_layers.add(layer)
                 except ValueError:
                     print(f"Warning: Could not parse MLP node: {child_node}")
+
+    # Quick summary
+    q_count = sum(1 for (_, _, t) in attention_targets if t == 'q')
+    k_count = sum(1 for (_, _, t) in attention_targets if t == 'k')
+    v_count = sum(1 for (_, _, t) in attention_targets if t == 'v')
+    uniq_heads = len({(l, h) for (l, h, _) in attention_targets})
+    print(f"[Parsed] unique_attn_heads={(uniq_heads)} | q={q_count}, k={k_count}, v={v_count} | mlp_layers={sorted(mlp_layers) if mlp_layers else []}")
 
     # Freeze all registered buffers (e.g., positional embeddings)
     for _, buffer in model.named_buffers():
@@ -394,6 +490,7 @@ def apply_active_edge_unfreezing(model, csv_path: str):
     for layer, heads in heads_per_layer.items():
         register_head_mask(model.blocks[layer].attn.W_O, heads)
 
+    print(f"[Done] Gradient masks registered.\n")
     return model
 
 

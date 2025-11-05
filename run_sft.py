@@ -55,7 +55,7 @@ def main(args):
             annotated, thresholds = annotate_difficulty_gas(
                 input_path=src_json,
                 output_path=annotated_path,
-                difficulty_method="quantile",
+                difficulty_method="hybrid",
                 bins=3,
                 min_easy_f1=1.0,
             )
@@ -79,6 +79,12 @@ def main(args):
                 absa_data = json.load(f)
 
         else:
+
+            if args.prompt_type == "mvp":
+                permutate = 5
+            else:
+                permutate = 1
+
             # -------- MVP pipeline (AOS-style) --------
             # Use the main training JSON as the source
             src_json = args.inference_train_json_path
@@ -92,7 +98,7 @@ def main(args):
             annotated, thresholds = annotate_difficulty(
                 input_path=src_json,
                 output_path=annotated_path,
-                difficulty_method="quantile",
+                difficulty_method="hybrid",
                 bins=3,
                 min_easy_f1=1.0,
             )
@@ -107,7 +113,7 @@ def main(args):
                 target_total_samples=args.sample_size,
                 # MVP often expands permutations later; keep 5 if your pipeline expects that,
                 # otherwise set to 1 to treat each item as a single instance.
-                permutations_per_sentence=5,
+                permutations_per_sentence=permutate,
                 seed=args.seed,
                 plot=False,
             )
@@ -147,7 +153,16 @@ def main(args):
 
     # === Circuit-unfreezing (targeted finetune) ===
     if not args.train_full_model:
-        model = apply_active_edge_unfreezing(model, args.circuit_csv_path)
+        model = apply_active_edge_unfreezing(
+            model,
+            args.circuit_csv_path,
+            random_circuit=args.random_circuit,
+            sample_n=args.random_circuit_sample_n,
+            random_state=args.seed,
+            strict=args.random_circuit_strict,
+            sample_like_topk=args.random_circuit_sample_like_topk,
+        )
+
 
     model.train()
 
@@ -194,6 +209,11 @@ def main(args):
     print(f"Validation mode: {args.validation_mode}")
     print(f"Val dataset: {'Yes' if val_dataset else 'No'}")
     print(f"Device: {device}")
+    print(f"Random circuit: {args.random_circuit}")
+    print(f"Random circuit sample_n: {args.random_circuit_sample_n}")
+    print(f"Random circuit strict: {args.random_circuit_strict}")
+    print(f"Random circuit sample_like_topk: {args.random_circuit_sample_like_topk}")
+
     print("=" * 50)
 
     if not args.train_full_model:
@@ -265,7 +285,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--train_json_path", type=str, required=True, help="Path to the training JSON dataset")
     parser.add_argument("--inference_train_json_path", type=str, required=False, help="Path to JSON used for GAS sampling (if prompt_type=gas)")
-    parser.add_argument("--prompt_type", type=str, choices=["gas", "mvp"], default="gas", help="Sampling/prompt style")
+    parser.add_argument("--prompt_type", type=str, choices=["gas", "mvp", "mvp_aos"], default="gas", help="Sampling/prompt style")
     parser.add_argument("--save_mode", type=str, choices=["best", "every", None], default=None, help="Model saving mode during training")
     parser.add_argument("--model_name", type=str, default="Qwen/Qwen2.5-0.5B", help="Pretrained model name")
     parser.add_argument("--output_dir", type=str, default="./results", help="Output directory")
@@ -283,6 +303,17 @@ if __name__ == "__main__":
     parser.add_argument("--train_full_model", action="store_true", help="Whether to train the full model or only the circuit")
     parser.add_argument("--circuit_csv_path", type=str, help="Path to the circuit csv file (required if NOT --train_full_model)")
     parser.add_argument("--sample_size", type=int, default=None, help="Target number of training instances after sampling (None = use all)")
+
+    parser.add_argument("--random_circuit", action="store_true",
+                    help="Use a random circuit sampled from q/k/v heads instead of the CSV contents")
+    parser.add_argument("--random_circuit_sample_n", type=int, default=None,
+                        help="If --random_circuit is set, number of (child_node, child_type) rows to sample")
+    parser.add_argument("--random_circuit_strict", action="store_true",
+                        help="If --random_circuit is set, exclude whole heads that already appear in the CSV regardless of q/k/v")
+    parser.add_argument("--random_circuit_sample_like_topk", type=int, default=None,
+                        help="If --random_circuit is set, mirror the sample size from a sibling CSV by replacing topk-<N> with this value")
+
+
 
     args = parser.parse_args()
 

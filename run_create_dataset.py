@@ -47,20 +47,30 @@ def main(args):
             formatted_path = os.path.join(folder, f"formatted_{filename}")
             df = pd.read_csv(formatted_path)
 
-        # Step 1: Filter Correct Predictions
-        os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
-        filtered_df = filter_correct_data(
-            model,
-            df,
-            sentence_col="original_sentence",
-            label_col="original_triplet",
-            filter_mode="AOS",
-            filter_only_correct=True,
-            save_path=args.filtered_data_path,
-            max_tokens=150,
-        )
-        filtered_df.to_csv(args.filtered_data_path, index=False)
-        print(f"Filtered data saved to {args.filtered_data_path} ({len(filtered_df)} rows)")
+        # Step 1: Filter Correct Predictions (optional)
+        if args.filter_data:
+            print("Filtering correct predictions (MVP)...")
+            os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
+            filtered_df = filter_correct_data(
+                model,
+                df,
+                sentence_col="original_sentence",
+                label_col="original_triplet",
+                filter_mode="AOS",
+                filter_only_correct=True,
+                save_path=args.filtered_data_path,
+                max_tokens=150,
+            )
+            filtered_df.to_csv(args.filtered_data_path, index=False)
+            print(f"Filtered data saved to {args.filtered_data_path} ({len(filtered_df)} rows)")
+            df_full = filtered_df
+        else:
+            print("Skipping filtering step — using raw dataset directly.")
+            os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
+            df["is_match"] = True
+            df.to_csv(args.filtered_data_path, index=False)
+            df_full = df.copy()
+
 
         # Step 2: Create Full AOS Dataset
         df_full = pd.read_csv(args.filtered_data_path)
@@ -111,19 +121,29 @@ def main(args):
             formatted_path = os.path.join(folder, f"formatted_{filename}")
             df = pd.read_csv(formatted_path)
 
-        # Step 1: Filter Correct Predictions (triplet-only comparison)
-        os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
-        filtered_df = filter_correct_data_gas(
-            model=model,
-            data=df,
-            sentence_col="original_sentence",
-            label_col="original_triplet",
-            max_tokens=60,
-            filter_only_correct=True,
-            save_path=args.filtered_data_path,
-        )
-        filtered_df.to_csv(args.filtered_data_path, index=False)
-        print(f"Filtered data saved to {args.filtered_data_path} ({len(filtered_df)} rows)")
+        # Step 1: Filter Correct Predictions (optional)
+        if args.filter_data:
+            print("Filtering correct predictions (GAS)...")
+            os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
+            filtered_df = filter_correct_data_gas(
+                model=model,
+                data=df,
+                sentence_col="original_sentence",
+                label_col="original_triplet",
+                max_tokens=60,
+                filter_only_correct=True,
+                save_path=args.filtered_data_path,
+            )
+            filtered_df.to_csv(args.filtered_data_path, index=False)
+            print(f"Filtered data saved to {args.filtered_data_path} ({len(filtered_df)} rows)")
+            df_filtered = filtered_df
+        else:
+            print("Skipping filtering step — using raw dataset directly.")
+            os.makedirs(os.path.dirname(args.filtered_data_path), exist_ok=True)
+            df["is_match"] = True
+            df.to_csv(args.filtered_data_path, index=False)
+            df_filtered = df.copy()
+
 
         # Step 2 & 3 are skipped in GAS pipeline
 
@@ -158,5 +178,11 @@ if __name__ == "__main__":
         default="mvp",
         help="Which pipeline to run: 'mvp' (AOS pipeline) or 'gas' (simplified triplet pipeline).",
     )
+    parser.add_argument(
+        "--filter_data",
+        action="store_true",
+        help="Whether to filter only correct predictions before building EAP dataset.",
+    )
+
     args = parser.parse_args()
     main(args)
