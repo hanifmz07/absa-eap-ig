@@ -81,6 +81,10 @@ for a directory whose name contains neither `topk` nor `_n<digits>` — that is 
 they tell a full run from a circuit run or a sub-sampled run. The run-folder
 naming in `run_sft.py` is therefore load-bearing, not cosmetic.
 
+That path does **not** match where `scripts/sft.sh` writes its runs — see
+[inconsistency 4](#inconsistencies-found-while-mapping). The `scripts/bash/`
+equivalents are consistent with each other; the SLURM set is not.
+
 ---
 
 ## Step 1 — Dataset Creation
@@ -178,7 +182,10 @@ then reports throughput and saves.
 Saving: with `save_mode=None` (the default used by `scripts/sft.sh`) the entry
 point writes `model.pt`, `model_config.pkl` and the tokenizer *after* training;
 with `save_mode='best'`, `train` writes `model.pt` whenever epoch loss improves,
-and the config/tokenizer up front.
+and the config/tokenizer up front; with `save_mode='every'` (plus `save_every`) it
+writes a checkpoint every N steps. Note the dataclass type hint says `'steps'`
+where the code means `'every'` — see
+[inconsistency 5](#inconsistencies-found-while-mapping).
 
 ### Optional stratified sub-sampling — `src/sampling.py`
 
@@ -408,7 +415,7 @@ These are side experiments, kept out of the five diagrams:
 | `run_sft_t5.py` | T5 fine-tuning variant |
 | `data.py` | Two-line HF `Dataset` loader used by the baselines |
 | `scripts/job.sh` | Older per-element (`aspect` / `opinion` / `sentiment`) circuit discovery job |
-| `scripts/bash/`, `scripts/bash/parallel_*` | Local/non-SLURM and parallel variants of the five job scripts |
+| `scripts/bash/`, `scripts/bash/parallel_*` | The parameterized (language × dataset-folder) variants of the five job scripts. These — not the SLURM scripts in `scripts/` — are the ones whose paths match the committed output layout (`outputs/multitokensv3.7.x/<dataset_folder>/<lang>/seed_<s>/`), so treat them as the current set and `scripts/*.sh` as the simplified ones the README documents |
 | `analysis.ipynb`, `eap_demo.ipynb`, `baseline_demo.ipynb`, `check_counterfact.ipynb`, `create_dataset_debug.ipynb`, `franken_adapter_demo.ipynb`, `utils_notebooks/` | Exploration and result aggregation |
 
 ---
@@ -423,11 +430,32 @@ they are listed so the diagrams are not read as an endorsement of the current st
    call at `:155` passes `filtered_df`, which is only bound inside the
    `if args.filter_data:` branch. GAS without `--filter_data` crashes.
 
-2. **`scripts/eval.sh` never passes `--prompt_type`,** which `run_eval.py` declares
-   `required=True`. As written, the job script fails at argument parsing for every
-   model. `scripts/bash/eval.sh` has the same gap.
+2. **Three eval scripts never pass `--prompt_type`,** which `run_eval.py` declares
+   `required=True`: `scripts/eval.sh`, `scripts/bash/eval.sh` and
+   `scripts/bash/eval_circuit.sh`. As written they fail at argument parsing for
+   every model. The `scripts/bash/parallel_eval*/` scripts do pass it
+   (`gas` in `parallel_eval_circuit/`, `mvp` in `parallel_eval/` and
+   `parallel_eval_circuit2/`), which suggests the flag was added to `run_eval.py`
+   after the three single-threaded scripts were last touched.
 
 3. **`src/utils.py:1090` uses `np.inf` / `np.nan` but `numpy` is never imported**
    in that module. The statement sits inside a `try: … except Exception: pass`, so
    the `NameError` is swallowed and `format_counterfactuals_gas` silently skips the
    integer coercion of its index column rather than crashing.
+
+4. **The SLURM scripts disagree about where full-SFT runs live.** `scripts/sft.sh`
+   writes to `outputs/models/eap/circuit-indo_finetune-indo/seed_$SEED/aos_sequence_variants`,
+   but `scripts/create_dataset.sh` and `scripts/circuit_discovery.sh` both search
+   `outputs/models/eap/indo/seed_${SEED}/aos_sequence_variants` for the model to
+   use. Run as documented in the README, steps 1 and 3 find nothing and log
+   "No valid model found" for every seed. `scripts/eval.sh` and
+   `scripts/sft_circuit.sh` use the `circuit-indo_finetune-indo` path, so `indo/`
+   is the odd one out. The `scripts/bash/` equivalents do not have this problem —
+   `scripts/bash/create_dataset.sh` globs
+   `outputs/modelsbest_adamw/eap/<dataset_folder>/circuit-<lang>_finetune-<lang>/seed_<s>/aos_sequence_variants/full_sft/*`.
+
+5. **`HookedTransformerTrainConfig.save_mode` is annotated
+   `Literal["best", "steps", None]`, but `train()` tests for `"every"`**
+   (`src/train.py:175`), and `run_sft.py` offers `choices=["best", "every", None]`.
+   Passing `--save_mode steps` is rejected by argparse; the value that actually
+   enables per-N-step checkpointing is `every`. The type hint is stale.

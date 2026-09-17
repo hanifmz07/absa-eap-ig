@@ -65,7 +65,7 @@
         <mxCell id="cs-random" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  random-circuit control&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="770" width="310" height="178" as="geometry"/>
         </mxCell>
-        <mxCell id="cs-random-15" value="+ get_random_nodes(model, df, include_mlp=False," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+        <mxCell id="cs-random-15" value="+ get_random_nodes(model, df, *, include_mlp=False," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
           <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
         </mxCell>
         <mxCell id="cs-random-16" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;include_logits=False, sample_n, random_state," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
