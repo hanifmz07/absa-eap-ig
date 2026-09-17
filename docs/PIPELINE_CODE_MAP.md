@@ -7,11 +7,11 @@ describes the draft class diagrams in [`docs/diagrams/`](diagrams/).
 
 - [How to read the diagrams](#how-to-read-the-diagrams)
 - [Execution order](#execution-order)
-- [Step 1 — Dataset Creation](#step-1--dataset-creation)
-- [Step 2 — Full SFT](#step-2--full-sft)
-- [Step 3 — Circuit Discovery](#step-3--circuit-discovery)
-- [Step 4 — Selective Circuit-Based SFT](#step-4--selective-circuit-based-sft)
-- [Step 5 — Evaluation](#step-5--evaluation)
+- [Step 1: Dataset Creation](#step-1-dataset-creation)
+- [Step 2: Full SFT](#step-2-full-sft)
+- [Step 3: Circuit Discovery](#step-3-circuit-discovery)
+- [Step 4: Selective Circuit-Based SFT](#step-4-selective-circuit-based-sft)
+- [Step 5: Evaluation](#step-5-evaluation)
 - [Code not owned by any of the five steps](#code-not-owned-by-any-of-the-five-steps)
 - [Inconsistencies found while mapping](#inconsistencies-found-while-mapping)
 
@@ -49,7 +49,7 @@ The diagrams use the standard UML *utility class* treatment: a box stereotyped
 its module-level functions are drawn as the box's operations. Real classes are
 stereotyped `«class»` or `«dataclass»` and carry genuine attributes and methods.
 Where one module serves several steps, it appears on several pages, each time
-showing only the operations that step uses — e.g. `src.utils` is split into
+showing only the operations that step uses. For example, `src.utils` is split into
 "MVP / AOS pipeline", "triplet helpers", "model loading", "circuit masking" and
 "scoring" boxes.
 
@@ -77,17 +77,17 @@ Full SFT ──▶ Dataset Creation ──▶ Circuit Discovery ──▶ Select
 
 `scripts/create_dataset.sh` and `scripts/circuit_discovery.sh` both locate the
 full-SFT run by globbing `outputs/models/eap/indo/seed_<SEED>/aos_sequence_variants`
-for a directory whose name contains neither `topk` nor `_n<digits>` — that is how
+for a directory whose name contains neither `topk` nor `_n<digits>`. That is how
 they tell a full run from a circuit run or a sub-sampled run. The run-folder
 naming in `run_sft.py` is therefore load-bearing, not cosmetic.
 
-That path does **not** match where `scripts/sft.sh` writes its runs — see
+That path does **not** match where `scripts/sft.sh` writes its runs; see
 [inconsistency 4](#inconsistencies-found-while-mapping). The `scripts/bash/`
 equivalents are consistent with each other; the SLURM set is not.
 
 ---
 
-## Step 1 — Dataset Creation
+## Step 1: Dataset Creation
 
 **Diagram:** `01_dataset_creation.drawio` · **Driver:** `scripts/create_dataset.sh`
 · **Entry point:** `run_create_dataset.py`
@@ -100,19 +100,19 @@ incorrect answer token ids.
 
 | Symbol | File | Role |
 | --- | --- | --- |
-| `main(args)` | `run_create_dataset.py` | Orchestrates steps 0–4; branches on `--method` |
+| `main(args)` | `run_create_dataset.py` | Orchestrates steps 0 to 4; branches on `--method` |
 | CLI args | `run_create_dataset.py` | `--finetuned_model`, `--dataset_path`, `--filtered_data_path`, `--full_aos_path`, `--sequence_variants_path`, `--eap_output_path`, `--method`, `--filter_data` |
 
 ### MVP / AOS pipeline (`--method mvp` or `mvp_aos`)
 
 | Function | File | Step |
 | --- | --- | --- |
-| `format_counterfactuals(input_path)` | `src/utils.py:1006` | 0 — splits legacy `original_pair` / `corrupted_pair` columns on `[A] [O] [S]` |
-| `filter_correct_data(model, data, sentence_col, label_col, max_tokens, filter_only_correct, filter_mode, save_path)` | `src/utils.py:576` | 1 — generates with the fine-tuned model and keeps only rows it already gets right |
-| `create_full_AOS_dataset(dataset_path)` | `src/utils.py:897` | 2 — splices the aspect of counterfactual 1 into counterfactual 3, giving `counterfact4_replaced` (a simultaneous A+O+S counterfactual) |
-| `create_aos_sequence_variant(dataset_path)` | `src/utils.py:959` | 3 — emits one row per tag order |
-| `create_sequences(a, o, s)` | `src/utils.py:939` | 3 — the five orders: `AOS`, `ASO`, `SAO`, `OAS`, `OSA` |
-| `build_eap_dataset(model, df, …, suffix)` | `src/utils.py:701` | 4 — tokenizes, drops pairs whose clean/corrupted lengths differ, drops label pairs whose token counts differ |
+| `format_counterfactuals(input_path)` | `src/utils.py:1006` | 0. Splits legacy `original_pair` / `corrupted_pair` columns on `[A] [O] [S]` |
+| `filter_correct_data(model, data, sentence_col, label_col, max_tokens, filter_only_correct, filter_mode, save_path)` | `src/utils.py:576` | 1. Generates with the fine-tuned model and keeps only rows it already gets right |
+| `create_full_AOS_dataset(dataset_path)` | `src/utils.py:897` | 2. Splices the aspect of counterfactual 1 into counterfactual 3, giving `counterfact4_replaced` (a simultaneous A+O+S counterfactual) |
+| `create_aos_sequence_variant(dataset_path)` | `src/utils.py:959` | 3. Emits one row per tag order |
+| `create_sequences(a, o, s)` | `src/utils.py:939` | 3. The five orders: `AOS`, `ASO`, `SAO`, `OAS`, `OSA` |
+| `build_eap_dataset(model, df, …, suffix)` | `src/utils.py:701` | 4. Tokenizes, drops pairs whose clean/corrupted lengths differ, drops label pairs whose token counts differ |
 
 `--method mvp_aos` runs the same code and then keeps only `order == 'AOS'`.
 
@@ -134,7 +134,7 @@ Steps 2 and 3 are skipped; the whole triplet string is the label.
 (`:530`), `extract_by_mode` (`:545`), `load_finetuned_model_lens_from_dir` (`:147`).
 
 `append_labels` (`:670`) is defined here for multi-token label prefixing but is
-currently unused — the call site inside `build_eap_dataset` is commented out.
+currently unused: the call site inside `build_eap_dataset` is commented out.
 
 ### Artifacts
 
@@ -151,7 +151,7 @@ The final CSV has columns `clean`, `corrupted`, `correct_label`,
 
 ---
 
-## Step 2 — Full SFT
+## Step 2: Full SFT
 
 **Diagram:** `02_full_sft.drawio` · **Driver:** `scripts/sft.sh`
 · **Entry point:** `run_sft.py --train_full_model`
@@ -162,7 +162,7 @@ The final CSV has columns `clean`, `corrupted`, `correct_label`,
 model, builds the dataset, builds a `HookedTransformerTrainConfig`, calls `train`,
 then reports throughput and saves.
 
-### Model loading — `src/utils.py`
+### Model loading (`src/utils.py`)
 
 | Symbol | Line | Role |
 | --- | --- | --- |
@@ -184,10 +184,10 @@ point writes `model.pt`, `model_config.pkl` and the tokenizer *after* training;
 with `save_mode='best'`, `train` writes `model.pt` whenever epoch loss improves,
 and the config/tokenizer up front; with `save_mode='every'` (plus `save_every`) it
 writes a checkpoint every N steps. Note the dataclass type hint says `'steps'`
-where the code means `'every'` — see
+where the code means `'every'`; see
 [inconsistency 5](#inconsistencies-found-while-mapping).
 
-### Optional stratified sub-sampling — `src/sampling.py`
+### Optional stratified sub-sampling (`src/sampling.py`)
 
 Only runs when `--sample_size` is given. MVP and GAS have parallel implementations.
 
@@ -209,7 +209,7 @@ the training set (used for the data-subtraction ablations).
 
 ---
 
-## Step 3 — Circuit Discovery
+## Step 3: Circuit Discovery
 
 **Diagram:** `03_circuit_discovery.drawio` · **Driver:** `scripts/circuit_discovery.sh`
 · **Entry point:** `run_eap_multitokens.py`
@@ -226,10 +226,10 @@ measure the kept sub-graph's faithfulness.
 | `log_results_csv(...)` | `run_eap_multitokens.py:13` | Appends one row per top-k to the faithfulness log |
 
 `main` sets `use_split_qkv_input`, `use_attn_result`, `use_hook_mlp_in` and
-`ungroup_grouped_query_attention` to `True` before attribution — `attribute()`
+`ungroup_grouped_query_attention` to `True` before attribution. `attribute()`
 asserts all four, because the per-head hooks have nothing to attach to otherwise.
 
-### Graph model — `eap/graph.py`
+### Graph model (`eap/graph.py`)
 
 | Class | Line | Role |
 | --- | --- | --- |
@@ -250,10 +250,10 @@ scheme), `apply_topn` / `apply_threshold` / `apply_greedy` (circuit selection),
 
 Scores live in a single `[n_forward, n_backward]` tensor; `Node` and `Edge` are
 views onto it. `real_edge_mask` marks which of those cells are actually reachable
-edges — `graph.real_edge_mask.sum()` is the "total real edges" the entry point
+edges. `graph.real_edge_mask.sum()` is the "total real edges" the entry point
 prints (~171 K for Qwen2.5-0.5B).
 
-### Attribution — `eap/attribute.py`
+### Attribution (`eap/attribute.py`)
 
 | Function | Line | Role |
 | --- | --- | --- |
@@ -273,7 +273,7 @@ ig_steps=5)`, which routes to `modified_get_scores_eap_ig`.
 `eap/attribute_node.py` mirrors all of the above at node and neuron level
 (`attribute_node`, `:350`). No pipeline script currently calls it.
 
-### Circuit evaluation — `eap/evaluate.py`
+### Circuit evaluation (`eap/evaluate.py`)
 
 | Function | Line | Role |
 | --- | --- | --- |
@@ -283,19 +283,19 @@ ig_steps=5)`, which routes to `modified_get_scores_eap_ig`.
 
 Faithfulness = `evaluate_graph_multitoken(...) / evaluate_baseline_multitoken(...)`.
 
-### Metric — `src/metric.py`
+### Metric (`src/metric.py`)
 
 `logit_diff(logits, clean_logits, input_length, labels, mean, loss)` returns
 `logit(correct) − logit(incorrect)` at the answer position;
 `get_logit_positions(logits, input_length)` selects that position.
 The entry point passes `partial(logit_diff, loss=False, mean=True)`.
 
-### Data plumbing — `src/utils.py`
+### Data plumbing (`src/utils.py`)
 
 `EAPDataset` (`:849`) wraps the EAP CSV, `collate_EAP` (`:832`) batches it,
 `safe_parse` (`:808`) turns the stringified token-id lists back into lists, and
 `edge_merging(graph_paths)` (`:874`) walks a saved `Graph` and emits the in-graph
-edges as a DataFrame of `parent_node`, `child_node`, `child_type` — **this CSV is
+edges as a DataFrame of `parent_node`, `child_node`, `child_type`. **This CSV is
 the hand-off to Step 4.** It is only written when `--element aos`.
 
 `eap/visualization.py` (`get_color`, `generate_random_color`, `cmap`, `color`)
@@ -311,20 +311,20 @@ outputs/multitokens/seed_<s>/
                              top_k, edge_percentage, circuit_score, faithfulness
 ```
 
-`run_eap.py` is the earlier single-element prototype — its own local `EAPDataset`,
+`run_eap.py` is the earlier single-element prototype, with its own local `EAPDataset`,
 `prob_diff_multitoken`, hard-coded paths and `mps` device. It is superseded by
 `run_eap_multitokens.py` and is not called by any job script.
 
 ---
 
-## Step 4 — Selective Circuit-Based SFT
+## Step 4: Selective Circuit-Based SFT
 
 **Diagram:** `04_selective_circuit_sft.drawio` · **Driver:** `scripts/sft_circuit.sh`
 · **Entry point:** `run_sft.py --circuit_csv_path …` (i.e. without `--train_full_model`)
 
 Same training loop as Step 2, but gradients outside the circuit are zeroed.
 
-### Circuit masking — `src/utils.py`
+### Circuit masking (`src/utils.py`)
 
 | Symbol | Line | Role |
 | --- | --- | --- |
@@ -332,7 +332,7 @@ Same training loop as Step 2, but gradients outside the circuit are zeroed.
 | `register_head_mask(weight_tensor, active_heads)` | `:449` (nested) | Builds a 0/1 mask and attaches `mask_hook` via `Tensor.register_hook` |
 | `_derive_like_path(path, like_topk)` | `:381` (nested) | Rewrites `topk-<N>` in a path, for `--random_circuit_sample_like_topk` |
 | `_count_unique_pairs_from_csv(path)` | `:384` (nested) | Counts unique `(child_node, child_type)` rows, so a random circuit can match a real circuit's size |
-| `get_random_nodes(model, df, include_mlp, include_logits, sample_n, random_state, strict)` | `:313` | The random-circuit control: enumerates every `a<L>.h<H>` × `{q,k,v}`, anti-joins against the real circuit, then samples. `strict=True` also excludes whole heads that appear in the real circuit under any projection |
+| `get_random_nodes(model, df, *, include_mlp, include_logits, sample_n, random_state, strict)` | `:313` | The random-circuit control: enumerates every `a<L>.h<H>` × `{q,k,v}`, anti-joins against the real circuit, then samples. `strict=True` also excludes whole heads that appear in the real circuit under any projection |
 
 **What is actually frozen.** No parameter is detached. The whole model still
 receives gradients; `register_head_mask` multiplies the incoming gradient of
@@ -340,7 +340,7 @@ receives gradients; `register_head_mask` multiplies the incoming gradient of
 that appears in any q/k/v role) by a per-head 0/1 mask, so inactive heads get a
 zero update. Embeddings, layer norms, MLP weights and the unembedding are **not**
 masked and keep training. `mlp_layers` is parsed and printed but never turned into
-a mask — worth knowing before you interpret a "circuit-only" result.
+a mask, which is worth knowing before you interpret a "circuit-only" result.
 
 ### Reused from Step 2
 
@@ -361,7 +361,7 @@ project `absa-eap`.
 
 ---
 
-## Step 5 — Evaluation
+## Step 5: Evaluation
 
 **Diagram:** `05_evaluation.drawio` · **Driver:** `scripts/eval.sh`
 · **Entry point:** `run_eval.py`
@@ -374,17 +374,17 @@ project `absa-eap`.
 2. Batched greedy generation (`max_new_tokens=300`, `stop_at_eos=True`,
    `do_sample=False`, `padding_side='left'`)
 3. Strip the prompt prefix from each generation
-4. Split target and prediction into triplet lists — on `" [SSEP] "` for
+4. Split target and prediction into triplet lists: on `" [SSEP] "` for
    `--prompt_type mvp`, on `";"` for `--prompt_type gas`
 5. Bucket by `element_order` and score each bucket
 
-### Scoring — `src/utils.py`
+### Scoring (`src/utils.py`)
 
 | Function | Line | Role |
 | --- | --- | --- |
 | `calculate_metrics(predictions, targets, task)` | `:165` | Micro TP/FP/FN over triplet strings → `precision_<task>`, `recall_<task>`, `f1_<task>` |
 | `parse_absa_string(text)` | `:196` | `"[A] a [O] o [S] s [SSEP] …"` → `[{A,O,S}, …]` |
-| `postprocess_absa_outputs(preds, labels, sentence_id, task)` | `:229` | MvP-style majority vote across the permutations of one sentence — used by `run_eval_franken.py`, not by `run_eval.py` |
+| `postprocess_absa_outputs(preds, labels, sentence_id, task)` | `:229` | MvP-style majority vote across the permutations of one sentence. Used by `run_eval_franken.py`, not by `run_eval.py` |
 
 Results are scaled ×100 and written per model directory:
 
@@ -415,17 +415,17 @@ These are side experiments, kept out of the five diagrams:
 | `run_sft_t5.py` | T5 fine-tuning variant |
 | `data.py` | Two-line HF `Dataset` loader used by the baselines |
 | `scripts/job.sh` | Older per-element (`aspect` / `opinion` / `sentiment`) circuit discovery job |
-| `scripts/bash/`, `scripts/bash/parallel_*` | The parameterized (language × dataset-folder) variants of the five job scripts. These — not the SLURM scripts in `scripts/` — are the ones whose paths match the committed output layout (`outputs/multitokensv3.7.x/<dataset_folder>/<lang>/seed_<s>/`), so treat them as the current set and `scripts/*.sh` as the simplified ones the README documents |
+| `scripts/bash/`, `scripts/bash/parallel_*` | The parameterized (language × dataset-folder) variants of the five job scripts. These, not the SLURM scripts in `scripts/`, are the ones whose paths match the committed output layout (`outputs/multitokensv3.7.x/<dataset_folder>/<lang>/seed_<s>/`), so treat them as the current set and `scripts/*.sh` as the simplified ones the README documents |
 | `analysis.ipynb`, `eap_demo.ipynb`, `baseline_demo.ipynb`, `check_counterfact.ipynb`, `create_dataset_debug.ipynb`, `franken_adapter_demo.ipynb`, `utils_notebooks/` | Exploration and result aggregation |
 
 ---
 
 ## Inconsistencies found while mapping
 
-Three things that surfaced while tracing the call graphs. None are fixed here —
+Five things that surfaced while tracing the call graphs. None are fixed here;
 they are listed so the diagrams are not read as an endorsement of the current state.
 
-1. **`run_create_dataset.py:155` — `NameError` in the GAS path without `--filter_data`.**
+1. **`run_create_dataset.py:155`: `NameError` in the GAS path without `--filter_data`.**
    The `else` branch at `:145` assigns `df_filtered`, but the `build_eap_dataset_gas`
    call at `:155` passes `filtered_df`, which is only bound inside the
    `if args.filter_data:` branch. GAS without `--filter_data` crashes.
@@ -450,7 +450,7 @@ they are listed so the diagrams are not read as an endorsement of the current st
    use. Run as documented in the README, steps 1 and 3 find nothing and log
    "No valid model found" for every seed. `scripts/eval.sh` and
    `scripts/sft_circuit.sh` use the `circuit-indo_finetune-indo` path, so `indo/`
-   is the odd one out. The `scripts/bash/` equivalents do not have this problem —
+   is the odd one out. The `scripts/bash/` equivalents do not have this problem:
    `scripts/bash/create_dataset.sh` globs
    `outputs/modelsbest_adamw/eap/<dataset_folder>/circuit-<lang>_finetune-<lang>/seed_<s>/aos_sequence_variants/full_sft/*`.
 
