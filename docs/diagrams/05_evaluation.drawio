@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="page-0" name="5. Evaluation">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="heading" value="5. Evaluation — run_eval.py" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1000" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subheading" value="Greedy batched generation over the held-out test set, followed by micro precision / recall / F1 per element order. Predictions and targets are split on the prompt-type separator (&lt;i&gt;[SSEP]&lt;/i&gt; for MVP, &lt;i&gt;;&lt;/i&gt; for GAS) and compared as sets of triplet strings." style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="40" y="64" width="1000" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/eval.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="170" width="320" height="164" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh-1" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-sh" vertex="1">
+          <mxGeometry x="0" y="46" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh-2" value="TEST_JSON = hotel_aste_test_augmented.json" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-sh" vertex="1">
+          <mxGeometry x="0" y="68" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh-3" value="MODEL_DIR, OUTPUT_DIR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-sh" vertex="1">
+          <mxGeometry x="0" y="90" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh-4" value="skips model dirs already evaluated" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-sh" vertex="1">
+          <mxGeometry x="0" y="112" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh-5" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ev-sh" vertex="1">
+          <mxGeometry x="0" y="134" width="320" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-sh-6" value="python run_eval.py &amp;#8230; (per model dir)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-sh" vertex="1">
+          <mxGeometry x="0" y="142" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_eval.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="370" width="320" height="318" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-7" value="+ test_json_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="46" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-8" value="+ model_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="68" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-9" value="+ prompt_type: mvp | gas" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="90" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-10" value="+ output_dir: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="112" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-11" value="+ batch_size: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="134" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-12" value="+ save_predictions: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="156" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="178" width="320" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-14" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="186" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-15" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;1. load model, pick device" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="208" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-16" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;2. batched greedy generate (max 300 new tokens)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="230" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-17" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;3. strip the prompt prefix from each output" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="252" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-18" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;4. split target / prediction into triplet lists" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="274" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-entry-19" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;5. group by element_order, score each group" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-entry" vertex="1">
+          <mxGeometry x="0" y="296" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-franken" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_eval_franken.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="724" width="320" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-franken-20" value="variant for Franken-adapter checkpoints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-franken" vertex="1">
+          <mxGeometry x="0" y="46" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-franken-21" value="loads base Qwen + raw state_dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-franken" vertex="1">
+          <mxGeometry x="0" y="68" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-franken-22" value="uses postprocess_absa_outputs (voting)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-franken" vertex="1">
+          <mxGeometry x="0" y="90" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-franken-23" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ev-franken" vertex="1">
+          <mxGeometry x="0" y="112" width="320" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-franken-24" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-franken" vertex="1">
+          <mxGeometry x="0" y="120" width="320" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-load" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  model loading&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="430" y="170" width="450" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-load-25" value="+ load_finetuned_model_lens_from_dir(dir, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-load" vertex="1">
+          <mxGeometry x="0" y="46" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-load-26" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: HookedTransformer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-load" vertex="1">
+          <mxGeometry x="0" y="68" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-model" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformer&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="430" y="296" width="450" height="156" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-model-27" value="+ generate(input, max_new_tokens=300," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-model" vertex="1">
+          <mxGeometry x="0" y="46" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-model-28" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;stop_at_eos=True, do_sample=False," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-model" vertex="1">
+          <mxGeometry x="0" y="68" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-model-29" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;return_type='str', padding_side='left')" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-model" vertex="1">
+          <mxGeometry x="0" y="90" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-model-30" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: str | List[str]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-model" vertex="1">
+          <mxGeometry x="0" y="112" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-model-31" value="+ eval() &amp;#183; to(device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-model" vertex="1">
+          <mxGeometry x="0" y="134" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-note" value="&lt;b&gt;Per-order scoring.&lt;/b&gt; Test items carry an &lt;i&gt;element_order&lt;/i&gt; (&lt;i&gt;aos&lt;/i&gt;, &lt;i&gt;aso&lt;/i&gt;, &lt;i&gt;sao&lt;/i&gt;, &amp;#8230;). Predictions are bucketed by that key and &lt;i&gt;calculate_metrics&lt;/i&gt; runs once per bucket, so the result file holds &lt;i&gt;precision_&amp;lt;order&amp;gt;&lt;/i&gt; / &lt;i&gt;recall_&amp;lt;order&amp;gt;&lt;/i&gt; / &lt;i&gt;f1_&amp;lt;order&amp;gt;&lt;/i&gt; triples, scaled by 100." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="430" y="488" width="450" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  scoring&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="950" y="170" width="430" height="244" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-32" value="+ calculate_metrics(predictions, targets, task)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-33" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: {precision_&amp;lt;task&amp;gt;, recall_&amp;lt;task&amp;gt;, f1_&amp;lt;task&amp;gt;}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-34" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;micro TP / FP / FN over triplet strings" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-35" value="+ parse_absa_string(text) : List[Dict[str, str]]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-36" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;'[A] a [O] o [S] s [SSEP] &amp;#8230;' &amp;#8594; [{A,O,S}, &amp;#8230;]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="134" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-37" value="+ postprocess_absa_outputs(preds, labels," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="156" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-38" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;sentence_id, task)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="178" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-39" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;majority-vote aggregation across the permutations" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="200" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-metrics-40" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;of one sentence (MvP-style)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-metrics" vertex="1">
+          <mxGeometry x="0" y="222" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-circuit-eval" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.evaluate  (cross-reference)&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="950" y="450" width="430" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-circuit-eval-41" value="+ evaluate_baseline_multitoken(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-circuit-eval" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-circuit-eval-42" value="+ evaluate_graph_multitoken(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-circuit-eval" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-circuit-eval-43" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;circuit faithfulness is measured in step 3," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-circuit-eval" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-circuit-eval-44" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;not here — this step scores task quality" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-circuit-eval" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-in" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;hotel_aste_test_augmented.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="170" width="370" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-in-45" value="sentence_id, input, target" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-in" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-in-46" value="task_elements, element_order" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-in" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-raw" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;raw_inference_results.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="296" width="370" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-raw-47" value="list of decoded generations" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-raw" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-raw-48" value="(debugging copy, always written)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-raw" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-res" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;evaluation_results.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="422" width="370" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-res-49" value="precision_&amp;lt;order&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-res" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-res-50" value="recall_&amp;lt;order&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-res" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-res-51" value="f1_&amp;lt;order&amp;gt;   (&amp;#215;100)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-res" vertex="1">
+          <mxGeometry x="0" y="90" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-inf" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;inference_results.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="570" width="370" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-inf-52" value="sentence_id, task_elements" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-inf" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-inf-53" value="element_order, input, target" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-inf" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-inf-54" value="prediction, target_list, prediction_list" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-inf" vertex="1">
+          <mxGeometry x="0" y="90" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev-inf-55" value="written only with --save_predictions" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ev-inf" vertex="1">
+          <mxGeometry x="0" y="112" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-56" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="ev-sh" target="ev-entry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-57" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ev-entry" target="ev-load">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-58" value="returns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ev-load" target="ev-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-59" value="generate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ev-entry" target="ev-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-60" value="calculate_metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ev-entry" target="ev-metrics">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-61" value="postprocess_absa_outputs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ev-franken" target="ev-metrics">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-62" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ev-in" target="ev-entry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-63" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ev-entry" target="ev-raw">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-64" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ev-entry" target="ev-res">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-65" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ev-entry" target="ev-inf">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Colours: yellow = SLURM/bash job script &amp;#183; orange = python entry point &amp;#183; blue = &lt;i&gt;src/&lt;/i&gt; helper module &amp;#183; purple = &lt;i&gt;eap/&lt;/i&gt; circuit package &amp;#183; green = on-disk artifact &amp;#183; grey = third-party class.&lt;br&gt;Arrows: dashed open = «use» (calls/imports) &amp;#183; solid green = data flow (reads/writes) &amp;#183; hollow triangle = generalization &amp;#183; filled diamond = composition.&lt;br&gt;Boxes stereotyped «module» are Python modules drawn as UML utility classes: the repo is mostly function-based, so module-level functions are shown as the module's operations." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="926" width="1780" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="page-0" name="4. Selective Circuit-Based SFT">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="heading" value="4. Selective Circuit-Based SFT — run_sft.py --circuit_csv_path" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1000" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subheading" value="The same training loop as Full SFT, but every parameter outside the discovered circuit is held fixed. Freezing is done with backward hooks that zero the gradient of inactive attention heads, so the optimizer sees updates only for the heads named in the circuit CSV. A random-circuit control of the same size is available via --random_circuit." style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="40" y="64" width="1000" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-sh" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/sft_circuit.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="180" width="310" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-sh-1" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-sh" vertex="1">
+          <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-sh-2" value="TOPKS = 1000 2000 5000" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-sh" vertex="1">
+          <mxGeometry x="0" y="68" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-sh-3" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cs-sh" vertex="1">
+          <mxGeometry x="0" y="90" width="310" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-sh-4" value="python run_sft.py --circuit_csv_path &amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-sh" vertex="1">
+          <mxGeometry x="0" y="98" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_sft.py  (circuit mode)&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="336" width="310" height="252" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-5" value="+ circuit_csv_path: str  (required)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-6" value="+ train_full_model = False" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="68" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-7" value="+ random_circuit: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="90" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-8" value="+ random_circuit_sample_n: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="112" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-9" value="+ random_circuit_strict: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="134" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-10" value="+ random_circuit_sample_like_topk: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="156" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-11" value="+ seed &amp;#8594; random_state" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="178" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-12" value="+ num_epochs, batch_size, lr, optimizer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="200" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="222" width="310" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-entry-14" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-entry" vertex="1">
+          <mxGeometry x="0" y="230" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-note" value="&lt;b&gt;top_k&lt;/b&gt; for the run name and for W&amp;amp;B logging is parsed straight out of the circuit CSV filename (&lt;i&gt;&amp;#8230;_topk-2000.csv&lt;/i&gt; &amp;#8594; &lt;i&gt;topk-2000&lt;/i&gt;), so the filename convention from circuit discovery is load-bearing here." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="624" width="310" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  random-circuit control&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="770" width="310" height="178" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random-15" value="+ get_random_nodes(model, df, include_mlp=False," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+          <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random-16" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;include_logits=False, sample_n, random_state," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+          <mxGeometry x="0" y="68" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random-17" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;strict=False) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+          <mxGeometry x="0" y="90" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random-18" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;all a&amp;lt;L&amp;gt;.h&amp;lt;H&amp;gt; &amp;#215; {q,k,v}, anti-joined against" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+          <mxGeometry x="0" y="112" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random-19" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;the real circuit, then sampled" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+          <mxGeometry x="0" y="134" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-random-20" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;strict=True also drops whole heads in the circuit" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-random" vertex="1">
+          <mxGeometry x="0" y="156" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  circuit masking&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="180" width="470" height="398" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-21" value="+ apply_active_edge_unfreezing(model, csv_path," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="46" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-22" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;random_circuit=False, sample_n=None," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="68" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-23" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;random_state=None, strict=False," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="90" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-24" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;sample_like_topk=None) : HookedTransformer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="112" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-25" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;1. read circuit CSV (or sample a random one)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="134" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-26" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;2. parse child_node &amp;#8594; (layer, head, q|k|v)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="156" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-27" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;and m&amp;lt;L&amp;gt; &amp;#8594; mlp_layers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="178" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-28" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;3. buffer.requires_grad = False for all buffers" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="200" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-29" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;4. register gradient masks on W_Q / W_K / W_V" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="222" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-30" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;per (layer, projection)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="244" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-31" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;5. register a mask on W_O for every head that" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="266" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-32" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;appears in any q/k/v role" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="288" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-33" value="- _derive_like_path(path, like_topk) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="310" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-34" value="- _count_unique_pairs_from_csv(path) : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="332" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-35" value="- register_head_mask(weight_tensor, active_heads)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="354" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-mask-36" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;- mask_hook(grad) : grad * mask" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-mask" vertex="1">
+          <mxGeometry x="0" y="376" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-note2" value="&lt;b&gt;What is actually frozen.&lt;/b&gt; No parameter is detached: the whole model still receives gradients, but &lt;i&gt;Tensor.register_hook&lt;/i&gt; multiplies the incoming gradient of &lt;i&gt;W_Q/W_K/W_V/W_O&lt;/i&gt; by a per-head 0/1 mask, so inactive heads get a zero update. Embeddings, layer norms, MLP weights and the unembedding are &lt;b&gt;not&lt;/b&gt; masked and keep training — &lt;i&gt;mlp_layers&lt;/i&gt; is parsed and reported but never turned into a mask." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="420" y="614" width="470" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-attn" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformer.blocks[L].attn&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="800" width="470" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-attn-37" value="+ W_Q, W_K, W_V : [n_heads, d_model, d_head]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-attn" vertex="1">
+          <mxGeometry x="0" y="46" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-attn-38" value="+ W_O : [n_heads, d_head, d_model]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-attn" vertex="1">
+          <mxGeometry x="0" y="68" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-attn-39" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cs-attn" vertex="1">
+          <mxGeometry x="0" y="90" width="470" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-attn-40" value="Tensor.register_hook(mask_hook)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-attn" vertex="1">
+          <mxGeometry x="0" y="98" width="470" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-ds" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ABSAAutoRegressiveDataset&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="960" y="180" width="430" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-ds-41" value="(identical to Full SFT)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-ds" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-ds-42" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cs-ds" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-ds-43" value="+ __getitem__(idx) : {'tokens': Tensor}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-ds" vertex="1">
+          <mxGeometry x="0" y="76" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-cfg" value="&lt;i&gt;«dataclass»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformerTrainConfig&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="960" y="314" width="430" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-cfg-44" value="+ top_k = 'topk-&amp;lt;k&amp;gt;'  (from the CSV name)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-cfg" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-cfg-45" value="+ sample_size, subtract_data_amount" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-cfg" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-cfg-46" value="+ optimizer_name, lr, num_epochs, &amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-cfg" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-cfg-47" value="+ wandb_run_name = seed-&amp;lt;s&amp;gt;_topk-&amp;lt;k&amp;gt;_&amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-cfg" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-train" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.train&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="960" y="484" width="430" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-train-48" value="+ train(model, config, dataset, val_dataset)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-train" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-train-49" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: HookedTransformer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-train" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-train-50" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;unchanged — the masks live on the tensors," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-train" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-train-51" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;not in the loop" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-train" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-load" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  model loading&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="960" y="654" width="430" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-load-52" value="+ load_model(model_name, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-load" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-load-53" value="+ load_finetuned_model_lens_from_dir(dir, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-load" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-load-54" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;--finetuned_model_path continues SFT from a" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-load" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-load-55" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;checkpoint instead of the base model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-load" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-samp" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.sampling&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="960" y="824" width="430" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-samp-56" value="+ annotate_difficulty(_gas) &amp;#183; stratified_sample_by_factors(_gas)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-samp" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-samp-57" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;same optional budget control as Full SFT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-samp" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-csv" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;#8230;/aos_circuit_topk-&amp;lt;k&amp;gt;.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="180" width="360" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-csv-58" value="parent_node" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-in-csv" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-csv-59" value="child_node" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-in-csv" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-csv-60" value="child_type (q | k | v | None)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-in-csv" vertex="1">
+          <mxGeometry x="0" y="90" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-json" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;hotel_aste_train_augmented&amp;#8230;.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="328" width="360" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-json-61" value="sentence_id, input, target" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-in-json" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-in-json-62" value="task_elements, element_order" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-in-json" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;outputs/models/&amp;#8230;_topk-&amp;lt;k&amp;gt;/&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="454" width="360" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-out-63" value="model.pt" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-out" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-out-64" value="model_config.pkl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-out" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-out-65" value="tokenizer files" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-out" vertex="1">
+          <mxGeometry x="0" y="90" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-wandb" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Weights &amp;amp; Biases&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1460" y="602" width="360" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-wandb-66" value="project = 'absa-eap'" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-wandb" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-wandb-67" value="run = seed-&amp;lt;s&amp;gt;_topk-&amp;lt;k&amp;gt;_&amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-wandb" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cs-wandb-68" value="train_loss, val_loss, samples" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cs-wandb" vertex="1">
+          <mxGeometry x="0" y="90" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-69" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="cs-sh" target="cs-entry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-70" value="apply_active_edge_unfreezing(model, csv)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-entry" target="cs-mask">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-71" value="random_circuit = True" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-mask" target="cs-random">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-72" value="enumerates heads from model.cfg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-random" target="cs-attn">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-73" value="register_head_mask" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-mask" target="cs-attn">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-74" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-entry" target="cs-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-75" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-entry" target="cs-cfg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-76" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-entry" target="cs-train">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-77" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-entry" target="cs-load">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-78" value="sample_size set" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-entry" target="cs-samp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-79" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-train" target="cs-cfg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-80" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cs-train" target="cs-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-81" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cs-in-csv" target="cs-mask">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-82" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cs-in-json" target="cs-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-83" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cs-train" target="cs-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-84" value="logs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cs-train" target="cs-wandb">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Colours: yellow = SLURM/bash job script &amp;#183; orange = python entry point &amp;#183; blue = &lt;i&gt;src/&lt;/i&gt; helper module &amp;#183; purple = &lt;i&gt;eap/&lt;/i&gt; circuit package &amp;#183; green = on-disk artifact &amp;#183; grey = third-party class.&lt;br&gt;Arrows: dashed open = «use» (calls/imports) &amp;#183; solid green = data flow (reads/writes) &amp;#183; hollow triangle = generalization &amp;#183; filled diamond = composition.&lt;br&gt;Boxes stereotyped «module» are Python modules drawn as UML utility classes: the repo is mostly function-based, so module-level functions are shown as the module's operations." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1008" width="1780" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

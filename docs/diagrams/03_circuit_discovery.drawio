@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="page-0" name="3. Circuit Discovery">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="heading" value="3. Circuit Discovery — run_eap_multitokens.py (EAP-IG)" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1000" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subheading" value="Edge Attribution Patching with Integrated Gradients over the fine-tuned model. Every candidate edge of the transformer's computational graph is scored by how much it moves &lt;i&gt;logit_diff&lt;/i&gt; between the clean and corrupted prompt; the top-k edges form the circuit, whose faithfulness is then measured by re-running the model with all other edges patched to their corrupted activations." style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="40" y="64" width="1000" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/circuit_discovery.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="180" width="310" height="164" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh-1" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-sh" vertex="1">
+          <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh-2" value="topks = 1000 2000 5000" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-sh" vertex="1">
+          <mxGeometry x="0" y="68" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh-3" value="ig_steps = 5, batch_size = 5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-sh" vertex="1">
+          <mxGeometry x="0" y="90" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh-4" value="element = 'aos'" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-sh" vertex="1">
+          <mxGeometry x="0" y="112" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh-5" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cd-sh" vertex="1">
+          <mxGeometry x="0" y="134" width="310" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-sh-6" value="python run_eap_multitokens.py &amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-sh" vertex="1">
+          <mxGeometry x="0" y="142" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_eap_multitokens.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="380" width="310" height="274" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-7" value="+ base_model, finetuned_model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-8" value="+ dataset (EAP csv)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="68" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-9" value="+ batch_size, ig_steps" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="90" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-10" value="+ topks: List[int]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="112" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-11" value="+ output_dir, device, log_file" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="134" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-12" value="+ element: aspect|opinion|sentiment|aos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="156" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="178" width="310" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-14" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="186" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-15" value="+ log_results_csv(log_path, element, metric," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="208" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-16" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;total_edges, baseline_score, top_k," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="230" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-17" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;score, faithfulness)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry" vertex="1">
+          <mxGeometry x="0" y="252" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-note-cfg" value="&lt;b&gt;Required model flags&lt;/b&gt; set before attribution:&lt;br&gt;&lt;i&gt;use_split_qkv_input&lt;/i&gt;, &lt;i&gt;use_attn_result&lt;/i&gt;, &lt;i&gt;use_hook_mlp_in&lt;/i&gt;, &lt;i&gt;ungroup_grouped_query_attention&lt;/i&gt;. &lt;i&gt;attribute()&lt;/i&gt; asserts all four — without them the per-head hooks have nothing to attach to." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="690" width="310" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-old" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_eap.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="846" width="310" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-old-18" value="earlier single-element prototype" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry-old" vertex="1">
+          <mxGeometry x="0" y="46" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-old-19" value="local EAPDataset / prob_diff_multitoken" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry-old" vertex="1">
+          <mxGeometry x="0" y="68" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-old-20" value="hard-coded paths, mps device" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry-old" vertex="1">
+          <mxGeometry x="0" y="90" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-old-21" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cd-entry-old" vertex="1">
+          <mxGeometry x="0" y="112" width="310" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-entry-old-22" value="+ filter_dataset() &amp;#183; main()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-entry-old" vertex="1">
+          <mxGeometry x="0" y="120" width="310" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.graph.Graph&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="180" width="440" height="604" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-23" value="+ nodes: Dict[str, Node]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="46" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-24" value="+ edges: Dict[str, Edge]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="68" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-25" value="+ n_forward, n_backward: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="90" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-26" value="+ scores: Tensor[n_fwd, n_bwd]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="112" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-27" value="+ in_graph: Tensor[n_fwd, n_bwd]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="134" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-28" value="+ real_edge_mask: Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="156" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-29" value="+ nodes_in_graph, nodes_scores: Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="178" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-30" value="+ neurons_in_graph, neurons_scores: Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="200" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-31" value="+ cfg: GraphConfig" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="222" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-32" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="244" width="440" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-33" value="+ from_model(model_or_config, neuron_level," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="252" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-34" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;node_scores) : Graph  &amp;lt;&amp;lt;factory&amp;gt;&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="274" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-35" value="+ from_pt(path) &amp;#183; from_json(path)  &amp;lt;&amp;lt;factory&amp;gt;&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="296" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-36" value="+ add_edge(parent, child, qkv)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="318" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-37" value="+ forward_index(node) &amp;#183; backward_index(node, qkv)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="340" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-38" value="+ prev_index(node) &amp;#183; get_dst_nodes()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="362" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-39" value="+ apply_topn(n, absolute, level, reset, prune)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="384" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-40" value="+ apply_threshold(threshold, &amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="406" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-41" value="+ apply_greedy(n_edges, &amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="428" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-42" value="+ prune() &amp;#183; reset(empty=True)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="450" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-43" value="+ count_included_edges() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="472" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-44" value="+ count_included_nodes() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="494" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-45" value="+ count_included_neurons() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="516" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-46" value="+ weighted_edge_count() : float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="538" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-47" value="+ to_pt(path) &amp;#183; to_json(path)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="560" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-graph-48" value="+ to_graphviz(filename, &amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-graph" vertex="1">
+          <mxGeometry x="0" y="582" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.graph.Node&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="820" width="440" height="178" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-49" value="+ name, layer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node" vertex="1">
+          <mxGeometry x="0" y="46" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-50" value="+ in_hook, out_hook, index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node" vertex="1">
+          <mxGeometry x="0" y="68" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-51" value="+ qkv_inputs: List[str]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node" vertex="1">
+          <mxGeometry x="0" y="90" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-52" value="+ parents, children: Set[Node]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node" vertex="1">
+          <mxGeometry x="0" y="112" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-53" value="+ parent_edges, child_edges: Set[Edge]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node" vertex="1">
+          <mxGeometry x="0" y="134" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-54" value="/ in_graph, score  (views on Graph tensors)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node" vertex="1">
+          <mxGeometry x="0" y="156" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-subs" value="&lt;i&gt;«classes»&lt;/i&gt;&lt;br&gt;&lt;b&gt;Node subclasses&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1034" width="440" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-subs-55" value="InputNode&amp;#160;&amp;#160;&amp;#8594; 'input', hook_embed" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node-subs" vertex="1">
+          <mxGeometry x="0" y="46" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-subs-56" value="AttentionNode &amp;#8594; 'a&amp;lt;L&amp;gt;.h&amp;lt;H&amp;gt;', per-head q/k/v hooks" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node-subs" vertex="1">
+          <mxGeometry x="0" y="68" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-subs-57" value="MLPNode&amp;#160;&amp;#160;&amp;#160;&amp;#8594; 'm&amp;lt;L&amp;gt;', hook_mlp_in/out" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node-subs" vertex="1">
+          <mxGeometry x="0" y="90" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-node-subs-58" value="LogitNode&amp;#160;&amp;#160;&amp;#8594; 'logits', always in graph" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-node-subs" vertex="1">
+          <mxGeometry x="0" y="112" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-edge" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.graph.Edge&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1204" width="440" height="156" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-edge-59" value="+ name: '&amp;lt;parent&amp;gt;-&amp;gt;&amp;lt;child&amp;gt;&amp;lt;qkv&amp;gt;'" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-edge" vertex="1">
+          <mxGeometry x="0" y="46" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-edge-60" value="+ parent, child: Node" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-edge" vertex="1">
+          <mxGeometry x="0" y="68" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-edge-61" value="+ qkv: 'q' | 'k' | 'v' | None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-edge" vertex="1">
+          <mxGeometry x="0" y="90" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-edge-62" value="+ hook, index, matrix_index" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-edge" vertex="1">
+          <mxGeometry x="0" y="112" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-edge-63" value="/ score, in_graph  (views on Graph tensors)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-edge" vertex="1">
+          <mxGeometry x="0" y="134" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-gcfg" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.graph.GraphConfig(dict)&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="420" y="1396" width="440" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-gcfg-64" value="n_layers, n_heads, d_model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-gcfg" vertex="1">
+          <mxGeometry x="0" y="46" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-gcfg-65" value="parallel_attn_mlp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-gcfg" vertex="1">
+          <mxGeometry x="0" y="68" width="440" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.attribute&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="930" y="180" width="450" height="508" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-66" value="+ attribute(model, graph, dataloader, metric, method," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="46" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-67" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;intervention='patching', aggregation='sum'," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="68" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-68" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;ig_steps, is_absa=False, batch_size, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="90" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-69" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;lt;&amp;lt;dispatcher&amp;gt;&amp;gt; writes into graph.scores" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="112" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-70" value="+ modified_get_scores_eap_ig(model, graph, df, metric," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="134" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-71" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;batch_size, steps, quiet, device) : Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="156" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-72" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;ABSA path — groups rows by label length and" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="178" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-73" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;attributes one target token at a time" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="200" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-74" value="+ get_scores_eap(&amp;#8230;)  — plain EAP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="222" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-75" value="+ get_scores_eap_ig(&amp;#8230;) — non-ABSA EAP-IG" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="244" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-76" value="+ get_scores_ig_activations(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="266" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-77" value="+ get_scores_clean_corrupted(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="288" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-78" value="+ make_hooks_and_matrices(model, graph, batch_size," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="310" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-79" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;n_pos, scores)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="332" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-80" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#8594; (fwd_corrupted, fwd_clean, bwd), act_diff" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="354" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-81" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;- activation_hook(index, acts, hook, add)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="376" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-82" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;- gradient_hook(prev_index, bwd_index, grads, hook)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="398" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-83" value="+ tokenize_plus(model, inputs, max_length)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="420" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-84" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#8594; tokens, attention_mask, input_lengths, n_pos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="442" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-85" value="+ compute_mean_activations(model, graph, dataloader," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="464" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-86" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;per_position)  — for mean interventions" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr" vertex="1">
+          <mxGeometry x="0" y="486" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.attribute_node&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="930" y="724" width="450" height="178" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node-87" value="+ attribute_node(model, graph, dataloader, metric," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr-node" vertex="1">
+          <mxGeometry x="0" y="46" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node-88" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;method, intervention, aggregation, ig_steps," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr-node" vertex="1">
+          <mxGeometry x="0" y="68" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node-89" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;neuron=False)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr-node" vertex="1">
+          <mxGeometry x="0" y="90" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node-90" value="+ get_scores_eap / _eap_ig / _ig_activations /" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr-node" vertex="1">
+          <mxGeometry x="0" y="112" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node-91" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;_clean_corrupted  (node- and neuron-level twins)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr-node" vertex="1">
+          <mxGeometry x="0" y="134" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-attr-node-92" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;not used by the current pipeline scripts" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-attr-node" vertex="1">
+          <mxGeometry x="0" y="156" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils.EAPDataset&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="930" y="938" width="450" height="186" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-93" value="- df: DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="46" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-94" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="68" width="450" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-95" value="+ __len__() &amp;#183; __getitem__(idx)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="76" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-96" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#8594; (clean, corrupted, [correct_idx, incorrect_idx])" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="98" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-97" value="+ shuffle() &amp;#183; head(n)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="120" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-98" value="+ to_dataloader(batch_size) : DataLoader" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="142" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eapds-99" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;collate_fn = collate_EAP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eapds" vertex="1">
+          <mxGeometry x="0" y="164" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eaphelp" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  EAP helpers&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="930" y="1160" width="450" height="156" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eaphelp-100" value="+ collate_EAP(batch) : (clean, corrupted, labels)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eaphelp" vertex="1">
+          <mxGeometry x="0" y="46" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eaphelp-101" value="+ safe_parse(raw) : list" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eaphelp" vertex="1">
+          <mxGeometry x="0" y="68" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eaphelp-102" value="+ edge_merging(graph_paths) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eaphelp" vertex="1">
+          <mxGeometry x="0" y="90" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eaphelp-103" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;in-graph edges &amp;#8594; parent_node, child_node, child_type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eaphelp" vertex="1">
+          <mxGeometry x="0" y="112" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eaphelp-104" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;this CSV is the hand-off to selective SFT" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eaphelp" vertex="1">
+          <mxGeometry x="0" y="134" width="450" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.evaluate&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="180" width="420" height="288" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-105" value="+ evaluate_baseline_multitoken(model, df, metrics," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="46" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-106" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;run_corrupted=False, quiet, batch_size)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="68" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-107" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;unpatched score, token-step by token-step" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="90" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-108" value="+ evaluate_graph_multitoken(model, graph, df, metrics," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="112" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-109" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;batch_size, intervention='patching'," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="134" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-110" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;intervention_dataloader, skip_clean)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="156" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-111" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;rebuilds every node input from in-graph edges only" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="178" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-112" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;- make_input_construction_hook(s)(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="200" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-113" value="+ evaluate_baseline(model, dataloader, metrics, &amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="222" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-114" value="+ evaluate_graph(model, graph, dataloader, metrics, &amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="244" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-eval-115" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;single-token originals" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-eval" vertex="1">
+          <mxGeometry x="0" y="266" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-metric" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.metric&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="504" width="420" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-metric-116" value="+ logit_diff(logits, clean_logits, input_length," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-metric" vertex="1">
+          <mxGeometry x="0" y="46" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-metric-117" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;labels, mean=True, loss=False) : Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-metric" vertex="1">
+          <mxGeometry x="0" y="68" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-metric-118" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;logit(correct) &amp;#8722; logit(incorrect) at the answer position" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-metric" vertex="1">
+          <mxGeometry x="0" y="90" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-metric-119" value="+ get_logit_positions(logits, input_length) : Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-metric" vertex="1">
+          <mxGeometry x="0" y="112" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-viz" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap.visualization&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="674" width="420" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-viz-120" value="+ get_color(qkv, score) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-viz" vertex="1">
+          <mxGeometry x="0" y="46" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-viz-121" value="+ generate_random_color(colorscheme) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-viz" vertex="1">
+          <mxGeometry x="0" y="68" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-viz-122" value="+ cmap(cmap_name, rgb_order) &amp;#183; color(cmap_name, index)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-viz" vertex="1">
+          <mxGeometry x="0" y="90" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-viz-123" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;used by Graph.to_graphviz()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-viz" vertex="1">
+          <mxGeometry x="0" y="112" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformer&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1450" y="844" width="420" height="186" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-124" value="+ cfg.use_split_qkv_input = True" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="46" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-125" value="+ cfg.use_attn_result = True" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="68" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-126" value="+ cfg.use_hook_mlp_in = True" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="90" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-127" value="+ cfg.ungroup_grouped_query_attention = True" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="112" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-128" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="134" width="420" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-129" value="+ hooks(fwd_hooks, bwd_hooks)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="142" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-model-130" value="+ to_tokens / to_string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-model" vertex="1">
+          <mxGeometry x="0" y="164" width="420" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-in" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap_dataset/&amp;#8230;.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1940" y="180" width="360" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-in-131" value="clean, corrupted" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-in" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-in-132" value="correct_idx, incorrect_idx" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-in" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-pt" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;lt;element&amp;gt;_circuit_topk-&amp;lt;k&amp;gt;.pt&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1940" y="306" width="360" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-pt-133" value="serialized Graph:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-pt" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-pt-134" value="cfg, scores, in_graph masks" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-pt" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-csv" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;lt;element&amp;gt;_circuit_topk-&amp;lt;k&amp;gt;.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1940" y="432" width="360" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-csv-135" value="parent_node" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-csv" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-csv-136" value="child_node   (e.g. a12.h3, m7)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-csv" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-csv-137" value="child_type   (q | k | v | None)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-csv" vertex="1">
+          <mxGeometry x="0" y="90" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-log" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;faithfulness log csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1940" y="580" width="360" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-log-138" value="element, metric, total_edges" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-log" vertex="1">
+          <mxGeometry x="0" y="46" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-log-139" value="baseline_score, top_k, edge_percentage" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-log" vertex="1">
+          <mxGeometry x="0" y="68" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="cd-log-140" value="circuit_score, faithfulness" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="cd-log" vertex="1">
+          <mxGeometry x="0" y="90" width="360" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-141" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="cd-sh" target="cd-entry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-142" value="Graph.from_model(model)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-entry" target="cd-graph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-143" value="attribute(&amp;#8230;, method='EAP-IG-inputs', is_absa=True)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-entry" target="cd-attr">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-144" value="baseline &amp;amp; top-k scores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-entry" target="cd-eval">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-145" value="partial(logit_diff, &amp;#8230;)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-entry" target="cd-metric">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-146" value="edge_merging" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-entry" target="cd-eaphelp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-147" value="nodes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=1;startSize=14;endArrow=open;endFill=0;endSize=10;strokeColor=#9673a6;fontSize=10;" parent="1" edge="1" source="cd-graph" target="cd-node">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-148" value="edges" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=1;startSize=14;endArrow=open;endFill=0;endSize=10;strokeColor=#9673a6;fontSize=10;" parent="1" edge="1" source="cd-graph" target="cd-edge">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-149" value="cfg" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=1;startSize=14;endArrow=open;endFill=0;endSize=10;strokeColor=#9673a6;fontSize=10;" parent="1" edge="1" source="cd-graph" target="cd-gcfg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-150" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=16;strokeColor=#9673a6;fontSize=10;" parent="1" edge="1" source="cd-node-subs" target="cd-node">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-151" value="parent / child" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;endSize=12;strokeColor=#666666;fontSize=10;" parent="1" edge="1" source="cd-edge" target="cd-node">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-152" value="writes graph.scores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-attr" target="cd-graph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-153" value="batches" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-attr" target="cd-eapds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-154" value="metric(&amp;#8230;).backward()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-attr" target="cd-metric">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-155" value="fwd / bwd hooks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-attr" target="cd-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-156" value="reads in_graph" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-eval" target="cd-graph">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-157" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-eval" target="cd-eapds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-158" value="collate_EAP / safe_parse" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-eapds" target="cd-eaphelp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-159" value="to_graphviz" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="cd-graph" target="cd-viz">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-160" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cd-in" target="cd-eapds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-161" value="to_pt" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cd-graph" target="cd-pt">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-162" value="edge_merging" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cd-pt" target="cd-csv">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-163" value="log_results_csv" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="cd-entry" target="cd-log">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Colours: yellow = SLURM/bash job script &amp;#183; orange = python entry point &amp;#183; blue = &lt;i&gt;src/&lt;/i&gt; helper module &amp;#183; purple = &lt;i&gt;eap/&lt;/i&gt; circuit package &amp;#183; green = on-disk artifact &amp;#183; grey = third-party class.&lt;br&gt;Arrows: dashed open = «use» (calls/imports) &amp;#183; solid green = data flow (reads/writes) &amp;#183; hollow triangle = generalization &amp;#183; filled diamond = composition.&lt;br&gt;Boxes stereotyped «module» are Python modules drawn as UML utility classes: the repo is mostly function-based, so module-level functions are shown as the module's operations." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1546" width="2260" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

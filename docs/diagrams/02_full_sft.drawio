@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="page-0" name="2. Full SFT">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="heading" value="2. Full SFT — run_sft.py --train_full_model" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1000" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subheading" value="Supervised fine-tuning of every parameter of the base model on the ABSA training set, producing the reference model that dataset creation filters with and that circuit discovery attributes through. Optional stratified sub-sampling controls the training budget." style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="40" y="64" width="1000" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-sh" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/sft.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="170" width="300" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-sh-1" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-sh" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-sh-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="fs-sh" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-sh-3" value="python run_sft.py --train_full_model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-sh" vertex="1">
+          <mxGeometry x="0" y="76" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_sft.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="304" width="300" height="296" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-4" value="+ train_json_path, val_json_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-5" value="+ inference_train_json_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-6" value="+ model_name = 'Qwen/Qwen2.5-0.5B'" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-7" value="+ output_dir, save_mode" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-8" value="+ num_epochs, batch_size, lr" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="134" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-9" value="+ optimizer: AdamW|Adam|SGD" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="156" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-10" value="+ seed, sample_size, prompt_type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="178" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-11" value="+ train_full_model = True" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="200" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-12" value="+ subtract_data_by" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="222" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-13" value="+ finetuned_model_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="244" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-14" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="266" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-entry-15" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-entry" vertex="1">
+          <mxGeometry x="0" y="274" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-note" value="&lt;b&gt;Output folder name&lt;/b&gt; encodes the run: &lt;i&gt;&amp;lt;timestamp&amp;gt;_tflens_&amp;lt;train file&amp;gt;_model-&amp;lt;name&amp;gt;_lr-&amp;lt;lr&amp;gt;_bs-&amp;lt;bs&amp;gt;_epochs-&amp;lt;n&amp;gt;[_subtracted&amp;lt;k&amp;gt;][_n&amp;lt;sample&amp;gt;_&amp;lt;prompt_type&amp;gt;]&lt;/i&gt;. Circuit runs append &lt;i&gt;topk-&amp;lt;k&amp;gt;&lt;/i&gt; instead — that is how the shell scripts tell full runs from circuit runs." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="636" width="300" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  model loading&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="170" width="400" height="244" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-16" value="+ get_cfg_dict(base_model_name, hf_config) : dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-17" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;Qwen2 and Bloom layouts only" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-18" value="+ load_model(base_model_name, fine_tuned_model_path," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="90" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-19" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;device) : HookedTransformer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="112" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-20" value="+ load_finetuned_model(base_model_name," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="134" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-21" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;fine_tuned_model_path, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="156" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-22" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;converts HF weights &amp;#8594; TransformerLens" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="178" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-23" value="+ load_finetuned_model_lens_from_dir(dir, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="200" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-load-24" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;reloads model.pt + model_config.pkl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-load" vertex="1">
+          <mxGeometry x="0" y="222" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds" value="&lt;i&gt;«class»&lt;/i&gt;&lt;br&gt;&lt;b&gt;ABSAAutoRegressiveDataset&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="450" width="400" height="230" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-25" value="- data: List[dict]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-26" value="- tokenizer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-27" value="- max_len: int = 300" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="90" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-28" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="112" width="400" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-29" value="+ __init__(data, tokenizer, max_len=300," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="120" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-30" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;shuffle=False, seed=42, sample_size=None)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="142" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-31" value="+ __len__() : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="164" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-32" value="+ __getitem__(idx) : {'tokens': Tensor}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="186" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ds-33" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;input + ' ' + target + eos, padded to max_len" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ds" vertex="1">
+          <mxGeometry x="0" y="208" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-torchds" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;torch.utils.data.Dataset&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="716" width="400" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-torchds-34" value="(PyTorch map-style dataset)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-torchds" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-model" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformer&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="820" width="400" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-model-35" value="+ cfg &amp;#183; tokenizer &amp;#183; blocks[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-model" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-model-36" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="fs-model" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-model-37" value="+ forward(tokens, return_type='loss')" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-model" vertex="1">
+          <mxGeometry x="0" y="76" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-model-38" value="+ state_dict() &amp;#183; to(device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-model" vertex="1">
+          <mxGeometry x="0" y="98" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg" value="&lt;i&gt;«dataclass»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformerTrainConfig&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="880" y="170" width="430" height="376" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-39" value="+ num_epochs: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-40" value="+ batch_size: int &amp;#183; val_batch_size: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-41" value="+ lr: float = 1e-4 &amp;#183; seed: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-42" value="+ momentum: float &amp;#183; weight_decay: float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-43" value="+ max_grad_norm: float" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="134" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-44" value="+ optimizer_name: str = 'Adam'" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="156" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-45" value="+ device: str &amp;#183; warmup_steps: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="178" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-46" value="+ save_mode: 'best'|'steps'|None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="200" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-47" value="+ save_every: int &amp;#183; save_dir: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="222" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-48" value="+ validation_mode: 'epoch'|'steps'|None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="244" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-49" value="+ validation_steps: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="266" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-50" value="+ wandb: bool &amp;#183; wandb_project" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="288" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-51" value="+ wandb_run_name &amp;#183; print_every &amp;#183; max_steps" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="310" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-52" value="+ top_k &amp;#183; sample_size &amp;#183; subtract_data_amount" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="332" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-cfg-53" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;(last three are logging-only)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-cfg" vertex="1">
+          <mxGeometry x="0" y="354" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.train&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="880" y="582" width="430" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-54" value="+ train(model, config, dataset, val_dataset)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-55" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: HookedTransformer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-56" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#183; builds Adam / AdamW / SGD + LambdaLR warm-up" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-57" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#183; per-step loss = model(tokens, return_type='loss')" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-58" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#183; save_mode='best' &amp;#8594; save on best epoch loss" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="134" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-59" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#183; validation per epoch or per N steps" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="156" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-train-60" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#183; logs train_loss / val_loss to Weights &amp;amp; Biases" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-train" vertex="1">
+          <mxGeometry x="0" y="178" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-wandb" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;wandb&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="880" y="818" width="430" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-wandb-61" value="+ init(project, config, name)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-wandb" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-wandb-62" value="+ log(dict)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-wandb" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.sampling  —  MVP&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1380" y="170" width="400" height="332" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-63" value="+ add_element_order_to_json(json_path, backup=True)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-64" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;derives element_order from the [A][O][S] suffix" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-65" value="+ annotate_difficulty(input_path, output_path," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="90" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-66" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;difficulty_method, bins=3, min_easy_f1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="112" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-67" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: (annotated, thresholds)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="134" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-68" value="+ get_difficulty_assigner(f1_scores, method, bins," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="156" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-69" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;fixed_thresholds, min_easy_f1)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="178" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-70" value="+ stratified_sample_by_factors(full_data_path," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="200" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-71" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;output_path, factors, target_total_samples," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="222" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-72" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;permutations_per_sentence, seed, plot)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="244" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-73" value="+ extract_stratification_key(item, factors, config)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="266" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-74" value="+ get_triplet_count &amp;#183; get_input_length_bin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="288" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-mvp-75" value="+ get_sentiment_bin &amp;#183; get_sentiment_ratio_bin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-mvp" vertex="1">
+          <mxGeometry x="0" y="310" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.sampling  —  GAS&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1380" y="538" width="400" height="222" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-76" value="+ add_element_order_to_json_gas(json_path)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-77" value="+ annotate_difficulty_gas(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-78" value="+ get_difficulty_assigner_gas(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="90" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-79" value="+ stratified_sample_by_factors_gas(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="112" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-80" value="+ extract_stratification_key_gas(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="134" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-81" value="+ get_triplet_count_gas &amp;#183; get_input_length_bin_gas" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="156" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-82" value="+ get_sentiment_bin_gas &amp;#183; get_sentiment_ratio_bin_gas" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="178" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-gas-83" value="- _triplet_list_from_item &amp;#183; _sentiments_from_item" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-gas" vertex="1">
+          <mxGeometry x="0" y="200" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-viz" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.sampling  —  strata plots&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1380" y="796" width="400" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-viz-84" value="+ visualize_strata_heatmap_from_meta(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-viz" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-viz-85" value="+ visualize_strata_heatmap_from_meta_combo_xy(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-viz" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-viz-86" value="+ visualize_strata_side_by_side(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-viz" vertex="1">
+          <mxGeometry x="0" y="90" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-viz-87" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;(+ _gas twins; only when plot=True)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp-viz" vertex="1">
+          <mxGeometry x="0" y="112" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-metrics" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  metrics&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1380" y="966" width="400" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-metrics-88" value="+ calculate_metrics(predictions, targets, task)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-metrics" vertex="1">
+          <mxGeometry x="0" y="46" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-metrics-89" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: {precision_&amp;lt;task&amp;gt;, recall_&amp;lt;task&amp;gt;, f1_&amp;lt;task&amp;gt;}" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-metrics" vertex="1">
+          <mxGeometry x="0" y="68" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-metrics-90" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;used to score difficulty bins" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-metrics" vertex="1">
+          <mxGeometry x="0" y="90" width="400" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-in" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;hotel_aste_train_augmented&amp;#8230;.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1850" y="170" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-in-91" value="sentence_id, input, target" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-in" vertex="1">
+          <mxGeometry x="0" y="46" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-in-92" value="task_elements, element_order" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-in" vertex="1">
+          <mxGeometry x="0" y="68" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ann" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;lt;n&amp;gt;_mvp_full_annotated.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1850" y="296" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ann-93" value="+ precision, recall, f1" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ann" vertex="1">
+          <mxGeometry x="0" y="46" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-ann-94" value="+ difficulty: easy|medium|hard" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-ann" vertex="1">
+          <mxGeometry x="0" y="68" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;lt;n&amp;gt;_mvp_sample.json&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1850" y="422" width="350" height="68" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-samp-95" value="stratified subset of sentences" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-samp" vertex="1">
+          <mxGeometry x="0" y="46" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;outputs/models/&amp;#8230;/&amp;lt;run&amp;gt;/&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1850" y="526" width="350" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-out-96" value="model.pt" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-out" vertex="1">
+          <mxGeometry x="0" y="46" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-out-97" value="model_config.pkl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-out" vertex="1">
+          <mxGeometry x="0" y="68" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="fs-out-98" value="tokenizer.json, vocab.json, &amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="fs-out" vertex="1">
+          <mxGeometry x="0" y="90" width="350" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-99" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="fs-sh" target="fs-entry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-100" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-entry" target="fs-load">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-101" value="creates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-entry" target="fs-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-102" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=16;strokeColor=#9673a6;fontSize=10;" parent="1" edge="1" source="fs-ds" target="fs-torchds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-103" value="returns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="fs-load" target="fs-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-104" value="builds" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-entry" target="fs-cfg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-105" value="train(model, config, dataset)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-entry" target="fs-train">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-106" value="reads" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-train" target="fs-cfg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-107" value="DataLoader" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-train" target="fs-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-108" value="forward / backward" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-train" target="fs-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-109" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-train" target="fs-wandb">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-110" value="prompt_type = mvp, sample_size set" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-entry" target="fs-samp-mvp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-111" value="prompt_type = gas" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-entry" target="fs-samp-gas">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-112" value="plot=True" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-samp-mvp" target="fs-samp-viz">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-113" value="F1 per item" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-samp-mvp" target="fs-metrics">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-114" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="fs-samp-gas" target="fs-metrics">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-115" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="fs-in" target="fs-samp-mvp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-116" value="annotate_difficulty" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="fs-samp-mvp" target="fs-ann">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-117" value="stratified_sample_by_factors" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="fs-ann" target="fs-samp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-118" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="fs-train" target="fs-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Colours: yellow = SLURM/bash job script &amp;#183; orange = python entry point &amp;#183; blue = &lt;i&gt;src/&lt;/i&gt; helper module &amp;#183; purple = &lt;i&gt;eap/&lt;/i&gt; circuit package &amp;#183; green = on-disk artifact &amp;#183; grey = third-party class.&lt;br&gt;Arrows: dashed open = «use» (calls/imports) &amp;#183; solid green = data flow (reads/writes) &amp;#183; hollow triangle = generalization &amp;#183; filled diamond = composition.&lt;br&gt;Boxes stereotyped «module» are Python modules drawn as UML utility classes: the repo is mostly function-based, so module-level functions are shown as the module's operations." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="1138" width="2160" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

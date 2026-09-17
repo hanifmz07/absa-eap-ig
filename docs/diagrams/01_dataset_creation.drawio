@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="page-0" name="1. Dataset Creation">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="heading" value="1. Dataset Creation — run_create_dataset.py" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1000" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subheading" value="Turns raw counterfactual pairs into an EAP-IG dataset of (clean, corrupted) prompt pairs with matching-length correct/incorrect label token ids. Two variants: the MVP/AOS pipeline (&lt;i&gt;[A] [O] [S]&lt;/i&gt; markers, five tag orders) and the simpler GAS pipeline (&lt;i&gt;sentence =&amp;gt; ( a | o | s )&lt;/i&gt;)." style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="40" y="64" width="1000" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-sh" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/create_dataset.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="170" width="300" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-sh-1" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-sh" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-sh-2" value="MODEL_PARENT_DIR" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-sh" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-sh-3" value="FINETUNED_MODEL (latest full run)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-sh" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-sh-4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="dc-sh" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-sh-5" value="python run_create_dataset.py &amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-sh" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_create_dataset.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="348" width="300" height="252" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-6" value="+ finetuned_model: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-7" value="+ dataset_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-8" value="+ filtered_data_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-9" value="+ full_aos_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-10" value="+ sequence_variants_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="134" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-11" value="+ eap_output_path: str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="156" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-12" value="+ method: mvp|mvp_aos|gas|gas_bar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="178" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-13" value="+ filter_data: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="200" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-14" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="222" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-entry-15" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-entry" vertex="1">
+          <mxGeometry x="0" y="230" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-load" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  (model loading)&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="636" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-load-16" value="+ load_finetuned_model_lens_from_dir(dir, device)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-load" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-load-17" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;: HookedTransformer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-load" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model" value="&lt;i&gt;«external»&lt;/i&gt;&lt;br&gt;&lt;b&gt;HookedTransformer&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#f5f5f5;strokeColor=#666666;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="762" width="300" height="164" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model-18" value="+ cfg: HookedTransformerConfig" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-model" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model-19" value="+ tokenizer" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-model" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model-20" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="dc-model" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model-21" value="+ generate(input, max_new_tokens, &amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-model" vertex="1">
+          <mxGeometry x="0" y="98" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model-22" value="+ to_tokens(text) : Tensor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-model" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-model-23" value="+ to_string(tokens) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-model" vertex="1">
+          <mxGeometry x="0" y="142" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  MVP / AOS pipeline&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="170" width="430" height="376" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-24" value="+ format_counterfactuals(input_path) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-25" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;step 0 — split 'original_pair' on [A] [O] [S]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-26" value="+ filter_correct_data(model, data, sentence_col, label_col," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-27" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;max_tokens=150, filter_only_correct=True," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-28" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;filter_mode='AOS', save_path) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="134" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-29" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;step 1 — keep rows the model already predicts correctly" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="156" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-30" value="+ create_full_AOS_dataset(dataset_path) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="178" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-31" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;step 2 — aspect of cf1 + opinion/sentiment of cf3" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="200" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-32" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#8594; counterfact4_replaced (simultaneous AOS)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="222" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-33" value="+ create_aos_sequence_variant(dataset_path) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="244" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-34" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;step 3 — one row per tag order" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="266" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-35" value="+ build_eap_dataset(model, df, sentence_col, triplet_col," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="288" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-36" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;corrupted_col, corrupted_triplet_col, suffix," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="310" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-37" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;filer_same_length_counterfactuals=True) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="332" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-mvp-38" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;step 4 — tokenize + drop length-mismatched pairs" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-mvp" vertex="1">
+          <mxGeometry x="0" y="354" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  triplet helpers&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="582" width="430" height="222" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-39" value="+ convert_triplet_string(triplet_str) : tuple" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-40" value="+ extract_triplet_fixed(text) : tuple | None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-41" value="+ create_sequences(a, o, s) : Dict[str, str]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-42" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;AOS &amp;#183; ASO &amp;#183; SAO &amp;#183; OAS &amp;#183; OSA" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-43" value="+ get_tag_suffix(order) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="134" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-44" value="+ format_by_mode(aspect, opinion, sentiment, mode) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="156" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-45" value="+ build_suffix_from_mode(mode) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="178" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-helpers-46" value="+ extract_by_mode(text, mode) : str" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-helpers" vertex="1">
+          <mxGeometry x="0" y="200" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  GAS pipeline&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="910" y="170" width="430" height="310" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-47" value="+ format_counterfactuals_gas(input_path, col_original," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-48" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;col_counter, index_col_name," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-49" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;coerce_index_to_int=True) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-50" value="+ filter_correct_data_gas(model, data, sentence_col," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-51" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;label_col, max_tokens=60," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="134" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-52" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;filter_only_correct=True, save_path) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="156" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-53" value="+ build_eap_dataset_gas(model, df, sentence_col, triplet_col," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="178" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-54" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;corrupted_col, corrupted_triplet_col," style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="200" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-55" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;filter_same_length_counterfactuals=True) : DataFrame" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="222" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-56" value="- _extract_first_triplet(text) : str | None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="244" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-57" value="- _normalize_triplet_str(s) : str | None" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="266" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-gas-58" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;normalises to '( a | o | s )'" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-gas" vertex="1">
+          <mxGeometry x="0" y="288" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-notused" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils  —  also defined here&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="910" y="516" width="430" height="134" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-notused-59" value="+ append_labels(model, clean, corrupted, labels)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-notused" vertex="1">
+          <mxGeometry x="0" y="46" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-notused-60" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;multi-token label prefixing (currently unused)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-notused" vertex="1">
+          <mxGeometry x="0" y="68" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-notused-61" value="+ safe_parse(raw) &amp;#183; collate_EAP(batch)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-notused" vertex="1">
+          <mxGeometry x="0" y="90" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-notused-62" value="&amp;#160;&amp;#160;&amp;#160;&amp;#160;consumed later by circuit discovery" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-notused" vertex="1">
+          <mxGeometry x="0" y="112" width="430" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-note" value="&lt;b&gt;Pipeline variants&lt;/b&gt;&lt;br&gt;&lt;b&gt;mvp&lt;/b&gt; — all five tag orders kept.&lt;br&gt;&lt;b&gt;mvp_aos&lt;/b&gt; — same, then filtered down to &lt;i&gt;order == 'AOS'&lt;/i&gt;.&lt;br&gt;&lt;b&gt;gas / gas_bar&lt;/b&gt; — no A/O/S modes; steps 2 and 3 are skipped and the whole triplet string is the label.&lt;br&gt;&lt;b&gt;--filter_data&lt;/b&gt; — when omitted, every row is marked &lt;i&gt;is_match = True&lt;/i&gt; and the generation-based filter is skipped." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="910" y="686" width="430" height="150" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a0" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;hotel_dataset/&amp;#8230;/counterfacts.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="170" width="370" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a0-63" value="original_pair | original_sentence" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a0" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a0-64" value="corrupted_pair | counterfact&amp;#8230;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a0" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a0-65" value="original_triplet" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a0" vertex="1">
+          <mxGeometry x="0" y="90" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a1" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;#8230;_counterfactual_filtered_AOS.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="318" width="370" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a1-66" value="original_sentence, original_triplet" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a1" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a1-67" value="original_label, inference" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a1" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a1-68" value="is_match: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a1" vertex="1">
+          <mxGeometry x="0" y="90" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a2" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;#8230;_counterfactual_full_AOS.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="466" width="370" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a2-69" value="+ counterfact4_replaced" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a2" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a2-70" value="+ counterfact_triplet4_replaced" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a2" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a3" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;&amp;#8230;_AOS_sequence_variants.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="592" width="370" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a3-71" value="order: AOS|ASO|SAO|OAS|OSA" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a3" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a3-72" value="original_label_variant" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a3" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a3-73" value="counterfact_label_variant" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a3" vertex="1">
+          <mxGeometry x="0" y="90" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a4" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap_dataset/&amp;#8230;.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1410" y="740" width="370" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a4-74" value="clean, corrupted" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a4" vertex="1">
+          <mxGeometry x="0" y="46" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a4-75" value="correct_label, incorrect_label" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a4" vertex="1">
+          <mxGeometry x="0" y="68" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="dc-a4-76" value="correct_idx, incorrect_idx" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="dc-a4" vertex="1">
+          <mxGeometry x="0" y="90" width="370" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-77" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="dc-sh" target="dc-entry">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-78" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="dc-entry" target="dc-load">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-79" value="returns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="dc-load" target="dc-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-80" value="method = mvp / mvp_aos" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="dc-entry" target="dc-mvp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-81" value="method = gas / gas_bar" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="dc-entry" target="dc-gas">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="dc-mvp" target="dc-helpers">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-83" value="generate / to_tokens" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="dc-mvp" target="dc-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-84" value="generate / to_tokens" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="dc-gas" target="dc-model">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-85" value="read" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="dc-a0" target="dc-mvp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-86" value="filter_correct_data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="dc-mvp" target="dc-a1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-87" value="create_full_AOS_dataset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="dc-a1" target="dc-a2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-88" value="create_aos_sequence_variant" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="dc-a2" target="dc-a3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-89" value="build_eap_dataset" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="dc-a3" target="dc-a4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Colours: yellow = SLURM/bash job script &amp;#183; orange = python entry point &amp;#183; blue = &lt;i&gt;src/&lt;/i&gt; helper module &amp;#183; purple = &lt;i&gt;eap/&lt;/i&gt; circuit package &amp;#183; green = on-disk artifact &amp;#183; grey = third-party class.&lt;br&gt;Arrows: dashed open = «use» (calls/imports) &amp;#183; solid green = data flow (reads/writes) &amp;#183; hollow triangle = generalization &amp;#183; filled diamond = composition.&lt;br&gt;Boxes stereotyped «module» are Python modules drawn as UML utility classes: the repo is mostly function-based, so module-level functions are shown as the module's operations." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="986" width="1740" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

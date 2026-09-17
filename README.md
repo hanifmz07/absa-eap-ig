@@ -6,6 +6,10 @@ This repository contains a complete pipeline for Aspect-Based Sentiment Analysis
 
 All scripts loop over a fixed list of random seeds to ensure robust and reproducible results. You can safely modify these scripts to run in parallel (e.g., background jobs with &, SLURM arrays, or GNU parallel), depending on your compute setup. Please make sure to keep all job logs, as we will use them to track training loss, total training time, and samples processed per second for performance analysis.
 
+For a map of which modules, classes and functions implement each step — plus draft
+class diagrams in draw.io format — see [`docs/PIPELINE_CODE_MAP.md`](docs/PIPELINE_CODE_MAP.md)
+and [`docs/diagrams/`](docs/diagrams/).
+
 ## Step-by-Step Instructions
 
 ### 1. Full Fine-Tuning

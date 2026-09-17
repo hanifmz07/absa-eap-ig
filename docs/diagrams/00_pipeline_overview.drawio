@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="page-0" name="0. Pipeline Overview">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="heading" value="ABSA Circuit Fine-Tuning Pipeline — Overview" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="30" width="1000" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="subheading" value="Execution order is Full SFT &amp;#8594; Dataset Creation &amp;#8594; Circuit Discovery &amp;#8594; Selective Circuit-Based SFT &amp;#8594; Evaluation: dataset creation needs a fully fine-tuned model to filter on, and circuit discovery attributes through that same model." style="text;html=1;align=left;verticalAlign=top;fontSize=12;fontColor=#555555;" vertex="1" parent="1">
+          <mxGeometry x="40" y="64" width="1000" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-sft" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/sft.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="150" width="300" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-sft-1" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-sft" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-sft-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-sh-sft" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-sft-3" value="run_sft.py --train_full_model" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-sft" vertex="1">
+          <mxGeometry x="0" y="76" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_sft.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="284" width="300" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-4" value="+ train_json_path, model_name" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-5" value="+ lr, batch_size, num_epochs, seed" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-6" value="+ train_full_model = True" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-sft" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-8" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;outputs/models/&amp;#8230;/&amp;lt;run&amp;gt;/&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="462" width="300" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-out-9" value="model.pt" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft-out" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-out-10" value="model_config.pkl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft-out" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sft-out-11" value="tokenizer files" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sft-out" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ds" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/create_dataset.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="150" width="300" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ds-12" value="SEEDS = 9584 123 2024 31415 777" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-ds" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ds-13" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-sh-ds" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ds-14" value="run_create_dataset.py" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-ds" vertex="1">
+          <mxGeometry x="0" y="76" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_create_dataset.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="284" width="300" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-15" value="+ finetuned_model, dataset_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-16" value="+ method: mvp | mvp_aos | gas | gas_bar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-17" value="+ filter_data: bool" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-18" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-ds" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-19" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap_dataset/&amp;#8230;/*.csv&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="462" width="300" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-out-20" value="clean, corrupted" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds-out" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-out-21" value="correct_label, incorrect_label" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds-out" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ds-out-22" value="correct_idx, incorrect_idx" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ds-out" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-cd" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/circuit_discovery.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="780" y="150" width="300" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-cd-23" value="SEEDS, topks = 1000 2000 5000" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-cd" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-cd-24" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-sh-cd" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-cd-25" value="run_eap_multitokens.py" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-cd" vertex="1">
+          <mxGeometry x="0" y="76" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_eap_multitokens.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="780" y="284" width="300" height="164" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-26" value="+ finetuned_model, dataset" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-27" value="+ ig_steps, topks, element" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-28" value="+ output_dir, batch_size" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-29" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-cd" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-30" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-31" value="+ log_results_csv(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd" vertex="1">
+          <mxGeometry x="0" y="142" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;outputs/multitokens/seed_&amp;lt;s&amp;gt;/&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="780" y="484" width="300" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-out-32" value="aos_circuit_topk-&amp;lt;k&amp;gt;.pt" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd-out" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-out-33" value="aos_circuit_topk-&amp;lt;k&amp;gt;.csv" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd-out" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-cd-out-34" value="faithfulness_log.csv" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-cd-out" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-csft" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/sft_circuit.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="150" width="300" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-csft-35" value="SEEDS &amp;#215; TOPKS = 1000 2000 5000" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-csft" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-csft-36" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-sh-csft" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-csft-37" value="run_sft.py --circuit_csv_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-csft" vertex="1">
+          <mxGeometry x="0" y="76" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_sft.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="284" width="300" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-38" value="+ circuit_csv_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-39" value="+ random_circuit (control)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-40" value="+ train_full_model = False" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-41" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-csft" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-42" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;outputs/models/&amp;#8230;_topk-&amp;lt;k&amp;gt;/&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="462" width="300" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-out-43" value="model.pt" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft-out" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-out-44" value="model_config.pkl" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft-out" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-csft-out-45" value="tokenizer files" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-csft-out" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ev" value="&lt;i&gt;«job script»&lt;/i&gt;&lt;br&gt;&lt;b&gt;scripts/eval.sh&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#fff2cc;strokeColor=#d6b656;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="150" width="300" height="98" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ev-46" value="SEEDS, TEST_JSON" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-ev" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ev-47" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-sh-ev" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-sh-ev-48" value="run_eval.py (per model dir)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-sh-ev" vertex="1">
+          <mxGeometry x="0" y="76" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev" value="&lt;i&gt;«entry point»&lt;/i&gt;&lt;br&gt;&lt;b&gt;run_eval.py&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#ffe6cc;strokeColor=#d79b00;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="284" width="300" height="142" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-49" value="+ test_json_path, model_path" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-50" value="+ prompt_type: mvp | gas" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-51" value="+ save_predictions" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-52" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="ov-ev" vertex="1">
+          <mxGeometry x="0" y="112" width="300" height="8" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-53" value="+ main(args)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev" vertex="1">
+          <mxGeometry x="0" y="120" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-out" value="&lt;i&gt;«artifact»&lt;/i&gt;&lt;br&gt;&lt;b&gt;outputs/evals/&amp;#8230;/&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#d5e8d4;strokeColor=#82b366;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="462" width="300" height="112" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-out-54" value="evaluation_results.json" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev-out" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-out-55" value="inference_results.json" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev-out" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-ev-out-56" value="raw_inference_results.json" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-ev-out" vertex="1">
+          <mxGeometry x="0" y="90" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-utils" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.utils&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="40" y="640" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-utils-57" value="model loading &amp;#183; dataset building" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-utils" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-utils-58" value="circuit masking &amp;#183; metrics" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-utils" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-train" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.train&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="640" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-train-59" value="HookedTransformerTrainConfig" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-train" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-train-60" value="train(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-train" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-eap" value="&lt;i&gt;«package»&lt;/i&gt;&lt;br&gt;&lt;b&gt;eap&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#e1d5e7;strokeColor=#9673a6;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="780" y="640" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-eap-61" value="graph &amp;#183; attribute &amp;#183; evaluate" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-eap" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-eap-62" value="attribute_node &amp;#183; visualization" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-eap" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-sampling" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.sampling&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1150" y="640" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-sampling-63" value="difficulty annotation" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-sampling" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-sampling-64" value="stratified sampling" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-sampling" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-metric" value="&lt;i&gt;«module»&lt;/i&gt;&lt;br&gt;&lt;b&gt;src.metric&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=46;fillColor=#dae8fc;strokeColor=#6c8ebf;horizontalStack=0;resizeParent=1;resizeParentMax=0;html=1;verticalAlign=middle;align=center;whiteSpace=wrap;collapsible=0;marginBottom=0;" parent="1" vertex="1">
+          <mxGeometry x="1520" y="640" width="300" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-metric-65" value="logit_diff(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-metric" vertex="1">
+          <mxGeometry x="0" y="46" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="ov-lib-metric-66" value="get_logit_positions(&amp;#8230;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=6;spacingRight=6;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;fontSize=11;" parent="ov-lib-metric" vertex="1">
+          <mxGeometry x="0" y="68" width="300" height="22" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-67" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="ov-sh-sft" target="ov-sft">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-68" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-sft" target="ov-sft-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-69" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="ov-sh-ds" target="ov-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-70" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-ds" target="ov-ds-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-71" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="ov-sh-cd" target="ov-cd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-72" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-cd" target="ov-cd-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-73" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="ov-sh-csft" target="ov-csft">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-74" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-csft" target="ov-csft-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-75" value="sbatch" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#d79b00;fontSize=10;" parent="1" edge="1" source="ov-sh-ev" target="ov-ev">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-76" value="writes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-ev" target="ov-ev-out">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-77" value="fine-tuned model" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-sft-out" target="ov-ds">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-78" value="model under study" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-sft-out" target="ov-cd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-79" value="clean/corrupted pairs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-ds-out" target="ov-cd">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-80" value="circuit edge list" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-cd-out" target="ov-csft">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-81" value="checkpoints" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-csft-out" target="ov-ev">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-82" value="baseline checkpoint" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;endSize=8;strokeWidth=2;strokeColor=#82b366;fontSize=10;" parent="1" edge="1" source="ov-sft-out" target="ov-ev">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-83" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-sft" target="ov-lib-utils">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-84" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-sft" target="ov-lib-train">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-85" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-sft" target="ov-lib-sampling">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-86" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-ds" target="ov-lib-utils">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-87" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-cd" target="ov-lib-eap">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-88" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-cd" target="ov-lib-metric">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-89" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-csft" target="ov-lib-utils">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e-90" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endFill=0;endSize=12;strokeColor=#6c8ebf;fontSize=10;" parent="1" edge="1" source="ov-ev" target="ov-lib-utils">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&lt;br&gt;Colours: yellow = SLURM/bash job script &amp;#183; orange = python entry point &amp;#183; blue = &lt;i&gt;src/&lt;/i&gt; helper module &amp;#183; purple = &lt;i&gt;eap/&lt;/i&gt; circuit package &amp;#183; green = on-disk artifact &amp;#183; grey = third-party class.&lt;br&gt;Arrows: dashed open = «use» (calls/imports) &amp;#183; solid green = data flow (reads/writes) &amp;#183; hollow triangle = generalization &amp;#183; filled diamond = composition.&lt;br&gt;Boxes stereotyped «module» are Python modules drawn as UML utility classes: the repo is mostly function-based, so module-level functions are shown as the module's operations." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffff;strokeColor=#b0b0b0;align=left;verticalAlign=top;spacingLeft=8;spacingTop=4;fontSize=11;size=14;" parent="1" vertex="1">
+          <mxGeometry x="40" y="790" width="1780" height="130" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
